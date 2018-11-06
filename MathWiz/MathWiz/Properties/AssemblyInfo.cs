@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("MathWiz")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A program that teachers can utilize to drill students in their math skills and track their progress")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("SCC")]
 [assembly: AssemblyProduct("MathWiz")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
