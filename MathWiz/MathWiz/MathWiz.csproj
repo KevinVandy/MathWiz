@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.cs" />
+    <Compile Include="Klass.cs" />
+    <Compile Include="Question.cs" />
+    <Compile Include="Test.cs" />
     <Compile Include="frmAboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,9 +62,18 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="MasteryTest.cs" />
+    <Compile Include="MathWizDA.cs" />
+    <Compile Include="MathWizDB.cs" />
+    <Compile Include="Parent.cs" />
     <Compile Include="PasswordHash.cs" />
+    <Compile Include="PlacementTest.cs" />
+    <Compile Include="PracticeTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student.cs" />
+    <Compile Include="Teacher.cs" />
+    <Compile Include="User.cs" />
     <EmbeddedResource Include="frmAboutBox.resx">
       <DependentUpon>frmAboutBox.cs</DependentUpon>
     </EmbeddedResource>
