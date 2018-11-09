@@ -19,7 +19,7 @@ namespace MathWiz
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            Question q = new Question();
         }
 
         //menu item actions
