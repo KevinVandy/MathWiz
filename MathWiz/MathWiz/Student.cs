@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathWiz
 {
-    class Student : User
+    public class Student : User
     {
         public short MasteryLevel { get; set; }
         //list of grades???

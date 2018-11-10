@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathWiz
 {
-    class Parent : User
+    public class Parent : User
     {
         public List<Student> Children { get; set; }
 

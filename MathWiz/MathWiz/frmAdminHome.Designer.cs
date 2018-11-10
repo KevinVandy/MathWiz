@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.SuspendLayout();
             // 
             // frmAdminHome
@@ -45,5 +46,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }

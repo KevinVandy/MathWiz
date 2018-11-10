@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathWiz
 {
-    class PlacementTest : Test
+    public class PlacementTest : Test
     {
 
     }

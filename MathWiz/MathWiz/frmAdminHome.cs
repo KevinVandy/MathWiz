@@ -19,7 +19,7 @@ namespace MathWiz
 
         private void frmAdminHome_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void frmAdminHome_FormClosing(object sender, FormClosingEventArgs e)

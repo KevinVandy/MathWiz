@@ -40,7 +40,7 @@ namespace MathWiz
         {
             //just for my testing purposes, rewrite when making logging in functional
             Form homeForm = new Form();
-            string whichForm = "student";
+            string whichForm = "admin";
             switch (whichForm)
             {
                 case "admin":

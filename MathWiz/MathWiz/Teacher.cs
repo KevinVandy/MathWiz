@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathWiz
 {
-    class Teacher : User
+    public class Teacher : User
     {
         List<Klass> Klasses { get; set; }
 
@@ -14,7 +14,7 @@ namespace MathWiz
         public Teacher() : base() { }
 
         //normal constructor
-        public Teacher(string username, string firstName, string lastName, List<Klass> klasses) : base(username, firstName, lastName)
+        public Teacher(string username, string firstName, string lastName, List<Klass> klasses) : base(username, firstName, lastName) //no password
         {
             this.Klasses = klasses;
         }
