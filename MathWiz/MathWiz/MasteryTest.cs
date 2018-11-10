@@ -8,5 +8,13 @@ namespace MathWiz
 {
     class MasteryTest : Test
     {
+        public decimal Grade { get; set; }
+
+        public MasteryTest() : base() { }
+
+        public MasteryTest(List<Question> questions, int timeLimit, decimal grade) : base(questions, timeLimit)
+        {
+            this.Grade = grade;
+        }
     }
 }

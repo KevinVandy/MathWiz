@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathWiz
 {
-    class User
+    public abstract class User
     {
         public string Username { get; set; }
         public string FirstName { get; set; }
@@ -33,5 +33,14 @@ namespace MathWiz
             this.LastName = lastName;
             this.Password = new PasswordHash(password).ToString(); //probably not secure, but this will get it working
         }
+
+        //methods for all users
+
+        public bool VerifyLogin(string username, string password)
+        {
+            //TODO
+            return true;
+        }
+
     }
 }

@@ -8,5 +8,6 @@ namespace MathWiz
 {
     class Admin : User
     {
+
     }
 }

@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace MathWiz
 {
-    class Test
+    public abstract class Test
     {
+        public List<Question> Questions { get; set; }
+        public int TimeLimit { get; set; }
+
+        //empty constructor
+        public Test() { }
+
+        //full constructor
+        public Test(List<Question> questions, int timeLimit)
+        {
+            this.Questions = questions;
+            this.TimeLimit = timeLimit;
+        }
+
+        //methods for all tests
     }
 }

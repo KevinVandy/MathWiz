@@ -19,7 +19,7 @@ namespace MathWiz
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Question q = new Question();
+            
         }
 
         //menu item actions
@@ -32,6 +32,12 @@ namespace MathWiz
         {
             Form aboutBox = new frmAboutBox();
             aboutBox.ShowDialog();
+        }
+
+        //button actions
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
