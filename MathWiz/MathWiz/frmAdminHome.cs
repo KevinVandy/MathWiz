@@ -24,8 +24,7 @@ namespace MathWiz
 
         private void frmAdminHome_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Form form = new frmLogin();
-            form.Show();
+            
         }
     }
 }

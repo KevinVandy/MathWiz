@@ -40,7 +40,7 @@ namespace MathWiz
         {
             //just for my testing purposes, rewrite when making logging in functional
             Form homeForm = new Form();
-            string whichForm = "parent";
+            string whichForm = "student";
             switch (whichForm)
             {
                 case "admin":
@@ -57,14 +57,11 @@ namespace MathWiz
                     break;
             }
 
-            homeForm.Show();
-            this.Hide();
-        }
-
-        //makes sure that the entire application shuts down when the login box is closed
-        private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
+            //keep this stuff
+            this.Hide();            //hide login form
+            homeForm.ShowDialog();  //only show the home form
+            this.Show();            //after the home form closes, show the login form again
+            txtPassword.Text = null;//get rid of password text for security
         }
     }
 }

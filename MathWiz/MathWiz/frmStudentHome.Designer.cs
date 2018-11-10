@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "frmStudentHome";
             this.Text = "frmStudentHome";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmStudentHome_FormClosing);
             this.Load += new System.EventHandler(this.frmStudentHome_Load);
             this.ResumeLayout(false);
