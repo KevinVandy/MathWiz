@@ -8,5 +8,8 @@ namespace MathWiz
 {
     class Klass
     {
+        public Teacher teacher { get; set; }
+        public List<Student> students { get; set; }
+
     }
 }

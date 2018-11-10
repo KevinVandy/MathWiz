@@ -47,6 +47,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.cs" />
+    <Compile Include="frmAdminHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminHome.Designer.cs">
+      <DependentUpon>frmAdminHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmParentHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmParentHome.Designer.cs">
+      <DependentUpon>frmParentHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStudentHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStudentHome.Designer.cs">
+      <DependentUpon>frmStudentHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTeacherHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTeacherHome.Designer.cs">
+      <DependentUpon>frmTeacherHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Klass.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="Test.cs" />
@@ -77,8 +101,20 @@
     <EmbeddedResource Include="frmAboutBox.resx">
       <DependentUpon>frmAboutBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminHome.resx">
+      <DependentUpon>frmAdminHome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmParentHome.resx">
+      <DependentUpon>frmParentHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStudentHome.resx">
+      <DependentUpon>frmStudentHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTeacherHome.resx">
+      <DependentUpon>frmTeacherHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
