@@ -10,6 +10,8 @@ namespace MathWiz
     //Class for inserting, updating, or deleting from the database
     public class MathWizDB
     {
-        
+        readonly static SqlConnection conn = MathWizConn.GetMathWizConnection();
+
+
     }
 }

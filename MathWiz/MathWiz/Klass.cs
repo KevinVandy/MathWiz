@@ -8,8 +8,17 @@ namespace MathWiz
 {
     public class Klass
     {
-        public Teacher teacher { get; set; }
-        public List<Student> students { get; set; }
+        public Teacher Teacher { get; set; }
+        public List<Student> Students { get; set; }
 
+        //empty constructor
+        public Klass() { } 
+
+        //full constructor
+        public Klass(Teacher teacher, List<Student> students)
+        {
+            this.Teacher = teacher;
+            this.Students = students;
+        }
     }
 }

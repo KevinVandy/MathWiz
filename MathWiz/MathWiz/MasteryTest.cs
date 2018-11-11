@@ -8,13 +8,15 @@ namespace MathWiz
 {
     public class MasteryTest : Test
     {
-        public decimal Grade { get; set; }
+        public decimal PassThreshhold { get; set; }
 
+        //empty constructor
         public MasteryTest() : base() { }
 
-        public MasteryTest(List<Question> questions, int timeLimit, decimal grade) : base(questions, timeLimit)
+        //full constructor
+        public MasteryTest(List<Question> questions, TimeSpan timeLimit, decimal passThreshhold) : base(questions, timeLimit)
         {
-            this.Grade = grade;
+            this.PassThreshhold = passThreshhold;
         }
     }
 }

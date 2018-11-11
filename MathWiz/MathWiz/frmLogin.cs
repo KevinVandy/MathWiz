@@ -38,30 +38,44 @@ namespace MathWiz
         //button actions
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //just for my testing purposes, rewrite when making logging in functional
-            Form homeForm = new Form();
-            string whichForm = "admin";
-            switch (whichForm)
+            string username = txtUsername.Text;
+            string password = txtPassword.Text; //testing password is "helloThere"
+
+            //TODO find out what type of user is logging in so it can create the right object AND the right form
+            User user;
+            Form homeForm;
+            if (true)
             {
-                case "admin":
-                    homeForm = new frmAdminHome();
-                    break;
-                case "teacher":
-                    homeForm = new frmTeacherHome();
-                    break;
-                case "student":
-                    homeForm = new frmStudentHome();
-                    break;
-                case "parent":
-                    homeForm = new frmParentHome();
-                    break;
+                user = new Admin();
+                homeForm = new frmAdminHome(); //instantiate home form
+            }
+            else if (true)
+            {
+                user = new Teacher();
+                homeForm = new frmTeacherHome(); //instantiate home form
+            }
+            else if (true)
+            {
+                user = new Parent();
+                homeForm = new frmParentHome(); //instantiate home form
+            }
+            else if (true)
+            {
+                user = new Student();
+                homeForm = new frmStudentHome(); //instantiate home form
             }
 
-            //keep this stuff
-            this.Hide();            //hide login form
-            homeForm.ShowDialog();  //only show the home form
-            this.Show();            //after the home form closes, show the login form again
-            txtPassword.Text = null;//get rid of password text for security
+            if (user.VerifyPassword(username, password))
+            {
+                this.Hide();            //hide login form
+                homeForm.ShowDialog();  //only show the home form
+                this.Show();            //after the home form closes, show the login form again
+                txtPassword.Text = null;//get rid of password text for security
+            }
+            else //login fail
+            {
+                MessageBox.Show("Your Password was incorrect", ""); //replace this with red label
+            }
         }
     }
 }

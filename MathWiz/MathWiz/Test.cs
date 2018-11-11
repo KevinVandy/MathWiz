@@ -9,13 +9,13 @@ namespace MathWiz
     public abstract class Test
     {
         public List<Question> Questions { get; set; }
-        public int TimeLimit { get; set; }
+        public TimeSpan TimeLimit { get; set; }
 
         //empty constructor
         public Test() { }
 
         //full constructor
-        public Test(List<Question> questions, int timeLimit)
+        public Test(List<Question> questions, TimeSpan timeLimit)
         {
             this.Questions = questions;
             this.TimeLimit = timeLimit;
