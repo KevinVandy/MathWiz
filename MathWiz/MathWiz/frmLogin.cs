@@ -16,11 +16,89 @@ namespace MathWiz
         {
             InitializeComponent();
         }
-
-        //form load
+        
         private void Form1_Load(object sender, EventArgs e)
         {
             
+        }
+        
+        //button actions
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            //hide the errors if they were previously shown so that they only show when triggered again
+            lblUsernameError.Hide();
+            lblPasswordError.Hide();
+
+            string username = txtUsername.Text;
+            string password = txtPassword.Text; //testing password is "helloThere"
+
+            //TODO find out what type of user is logging in so it can create the right object AND the right form
+            User user;
+            Form homeForm;
+            if (false) //if(MathWizDA.FindAdminUsername(username))
+            {
+                user = new Admin();
+                if (user.VerifyPassword(username, password))
+                {
+                    homeForm = new frmAdminHome(); //instantiate home form
+                    Login(homeForm);
+                }
+                else
+                {
+                    lblPasswordError.Show();
+                }
+            }
+            else if (false) //else if(MathWizDA.FindTeacherUsername(username))
+            {
+                user = new Teacher();
+                if (user.VerifyPassword(username, password))
+                {
+                    homeForm = new frmTeacherHome(); //instantiate home form
+                    Login(homeForm);
+                }
+                else
+                {
+                    lblPasswordError.Show();
+                }
+            }
+            else if (false) //else if(MathWizDA.FindParentUsername(username))
+            {
+                user = new Parent();
+                if (user.VerifyPassword(username, password))
+                {
+                    homeForm = new frmParentHome(); //instantiate home form
+                    Login(homeForm);
+                }
+                else
+                {
+                    lblPasswordError.Show();
+                }
+            }
+            else if (true) //else if(MathWizDA.FindStudentUsername(username))
+            {
+                user = new Student();
+                if (user.VerifyPassword(username, password))
+                {
+                    homeForm = new frmStudentHome(); //instantiate home form
+                    Login(homeForm);
+                }
+                else
+                {
+                    lblPasswordError.Show();
+                }
+            }
+            else //could not find username
+            {
+                lblUsernameError.Show();
+            }
+        }
+
+        private void Login(Form homeForm)
+        {
+            txtPassword.Text = null;//get rid of password text for security so that the next user who uses the computer doesn't have it
+            this.Hide();            //hide login form
+            homeForm.ShowDialog();  //only show the home form (of the type that was passed)
+            this.Show();            //after the home form closes, show the login form again
         }
 
         //menu item actions
@@ -35,47 +113,9 @@ namespace MathWiz
             aboutBox.ShowDialog();
         }
 
-        //button actions
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void iCantLogInToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text;
-            string password = txtPassword.Text; //testing password is "helloThere"
-
-            //TODO find out what type of user is logging in so it can create the right object AND the right form
-            User user;
-            Form homeForm;
-            if (true)
-            {
-                user = new Admin();
-                homeForm = new frmAdminHome(); //instantiate home form
-            }
-            else if (true)
-            {
-                user = new Teacher();
-                homeForm = new frmTeacherHome(); //instantiate home form
-            }
-            else if (true)
-            {
-                user = new Parent();
-                homeForm = new frmParentHome(); //instantiate home form
-            }
-            else if (true)
-            {
-                user = new Student();
-                homeForm = new frmStudentHome(); //instantiate home form
-            }
-
-            if (user.VerifyPassword(username, password))
-            {
-                this.Hide();            //hide login form
-                homeForm.ShowDialog();  //only show the home form
-                this.Show();            //after the home form closes, show the login form again
-                txtPassword.Text = null;//get rid of password text for security
-            }
-            else //login fail
-            {
-                MessageBox.Show("Your Password was incorrect", ""); //replace this with red label
-            }
+            //TODO Reset Password - maybe iteration 3
         }
     }
 }
