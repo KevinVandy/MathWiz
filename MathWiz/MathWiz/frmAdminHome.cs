@@ -12,7 +12,7 @@ namespace MathWiz
 {
     public partial class frmAdminHome : Form
     {
-        public frmAdminHome()
+        public frmAdminHome(Admin admin)
         {
             InitializeComponent();
         }

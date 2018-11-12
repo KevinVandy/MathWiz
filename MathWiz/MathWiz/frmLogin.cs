@@ -40,7 +40,8 @@ namespace MathWiz
                 user = new Admin();
                 if (user.VerifyPassword(username, password))
                 {
-                    homeForm = new frmAdminHome(); //instantiate home form
+                    //user = MathWizDA.SelectAdmin(username);
+                    homeForm = new frmAdminHome((Admin)user); //instantiate home form
                     Login(homeForm);
                 }
                 else
@@ -53,7 +54,8 @@ namespace MathWiz
                 user = new Teacher();
                 if (user.VerifyPassword(username, password))
                 {
-                    homeForm = new frmTeacherHome(); //instantiate home form
+                    //user = MathWizDA.SelectTeacher(username);
+                    homeForm = new frmTeacherHome((Teacher)user); //instantiate home form
                     Login(homeForm);
                 }
                 else
@@ -66,7 +68,8 @@ namespace MathWiz
                 user = new Parent();
                 if (user.VerifyPassword(username, password))
                 {
-                    homeForm = new frmParentHome(); //instantiate home form
+                    //user = MathWizDA.SelectParent(username);
+                    homeForm = new frmParentHome((Parent)user); //instantiate home form
                     Login(homeForm);
                 }
                 else
@@ -79,7 +82,8 @@ namespace MathWiz
                 user = new Student();
                 if (user.VerifyPassword(username, password))
                 {
-                    homeForm = new frmStudentHome(); //instantiate home form
+                    //user = MathWizDA.SelectStudent(username);
+                    homeForm = new frmStudentHome((Student)user); //instantiate home form
                     Login(homeForm);
                 }
                 else

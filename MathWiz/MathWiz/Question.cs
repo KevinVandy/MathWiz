@@ -15,6 +15,7 @@ namespace MathWiz
         public string RightAnswer { get; set; }
         public string StudentAnswer { get; set; }
         public TimeSpan TimeLimit { get; set; }
+        public TimeSpan TimeTakenToCorrectlyAnswer { get; set; }
         public int Weight { get; set; }
         public bool RandomlyGenerated { get; set; }
 
@@ -31,6 +32,7 @@ namespace MathWiz
             this.RightAnswer = null; //TODO call method to generate answer based on question (or it will also be set during generation of question)
             this.StudentAnswer = null;
             this.TimeLimit = timeLimit;
+            this.TimeTakenToCorrectlyAnswer = new TimeSpan();
             this.Weight = weight;
             this.RandomlyGenerated = true;
         }
@@ -44,6 +46,7 @@ namespace MathWiz
             this.RightAnswer = rightAnswer;
             this.StudentAnswer = studentAnswer;
             this.TimeLimit = timeLimit;
+            this.TimeTakenToCorrectlyAnswer = new TimeSpan();
             this.Weight = weight;
             this.RandomlyGenerated = false;
         }
@@ -57,12 +60,13 @@ namespace MathWiz
             this.RightAnswer = rightAnswer;
             this.StudentAnswer = studentAnswer;
             this.TimeLimit = timeLimit;
+            this.TimeTakenToCorrectlyAnswer = new TimeSpan();
             this.Weight = weight;
             this.RandomlyGenerated = false;
         }
 
         //full constructor
-        public Question(int masteryLevel, string questionText, List<RadioButton> choices, string rightAnswer, string studentAnswer, TimeSpan timeLimit, int weight, bool randomlyGenerated)
+        public Question(int masteryLevel, string questionText, List<RadioButton> choices, string rightAnswer, string studentAnswer, TimeSpan timeLimit, TimeSpan timeTakenToCorrectlyAnswer, int weight, bool randomlyGenerated)
         {
             this.MasteryLevel = masteryLevel;
             this.QuestionText = questionText;
@@ -70,6 +74,7 @@ namespace MathWiz
             this.RightAnswer = rightAnswer;
             this.StudentAnswer = studentAnswer;
             this.TimeLimit = timeLimit;
+            this.TimeTakenToCorrectlyAnswer = timeTakenToCorrectlyAnswer;
             this.Weight = weight;
             this.RandomlyGenerated = randomlyGenerated;
         }
