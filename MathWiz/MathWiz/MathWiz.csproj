@@ -92,6 +92,7 @@
     <Compile Include="frmTeacherHome.Designer.cs">
       <DependentUpon>frmTeacherHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Grade.cs" />
     <Compile Include="Klass.cs" />
     <Compile Include="MathWizConn.cs" />
     <Compile Include="Question.cs" />

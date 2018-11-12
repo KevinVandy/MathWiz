@@ -9,13 +9,13 @@ namespace MathWiz
 {
     public class Question
     {
-        public short MasteryLevel { get; set; }
+        public int MasteryLevel { get; set; }
         public string QuestionText { get; set; }
         public List<RadioButton> Choices { get; set; }
         public string RightAnswer { get; set; }
         public string StudentAnswer { get; set; }
         public TimeSpan TimeLimit { get; set; }
-        public short Weight { get; set; }
+        public int Weight { get; set; }
         public bool RandomlyGenerated { get; set; }
 
 
@@ -23,7 +23,7 @@ namespace MathWiz
         public Question() { }
 
         //normal constructor randomly generated
-        public Question(short masteryLevel, TimeSpan timeLimit, short weight = 1)
+        public Question(int masteryLevel, TimeSpan timeLimit, int weight = 1)
         {
             this.MasteryLevel = masteryLevel;
             this.QuestionText = null; //TODO call method to generate question based on masterylevel
@@ -36,7 +36,7 @@ namespace MathWiz
         }
 
         //normal custom constructor no choices
-        public Question(short masteryLevel, string questionText, string rightAnswer, string studentAnswer, TimeSpan timeLimit, short weight = 1)
+        public Question(int masteryLevel, string questionText, string rightAnswer, string studentAnswer, TimeSpan timeLimit, int weight = 1)
         {
             this.MasteryLevel = masteryLevel;
             this.QuestionText = questionText;
@@ -49,7 +49,7 @@ namespace MathWiz
         }
 
         //normal custom constructor with choices
-        public Question(short masteryLevel, string questionText, List<RadioButton> choices, string rightAnswer, string studentAnswer, TimeSpan timeLimit, short weight = 1)
+        public Question(int masteryLevel, string questionText, List<RadioButton> choices, string rightAnswer, string studentAnswer, TimeSpan timeLimit, int weight = 1)
         {
             this.MasteryLevel = masteryLevel;
             this.QuestionText = questionText;
@@ -62,7 +62,7 @@ namespace MathWiz
         }
 
         //full constructor
-        public Question(short masteryLevel, string questionText, List<RadioButton> choices, string rightAnswer, string studentAnswer, TimeSpan timeLimit, short weight, bool randomlyGenerated)
+        public Question(int masteryLevel, string questionText, List<RadioButton> choices, string rightAnswer, string studentAnswer, TimeSpan timeLimit, int weight, bool randomlyGenerated)
         {
             this.MasteryLevel = masteryLevel;
             this.QuestionText = questionText;
