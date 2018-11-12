@@ -16,7 +16,7 @@ namespace MathWiz
         public PlacementTest() : base() { }
 
         //full constructor
-        public PlacementTest(List<Question> questions, TimeSpan timeLimit, int minLevel, int maxLevel, int attemptsAllowed) : base(questions, timeLimit)
+        public PlacementTest(List<Question> questions, TimeSpan timeLimit, bool randomlyGenerated, int minLevel, int maxLevel, int attemptsAllowed) : base(questions, timeLimit, randomlyGenerated)
         {
             this.MinLevel = minLevel;
             this.MaxLevel = maxLevel;

@@ -16,7 +16,7 @@ namespace MathWiz
         public PracticeTest() : base() { }
 
         //full constructor
-        public PracticeTest(List<Question> questions, TimeSpan timeLimit, int minLevel, int maxLevel) : base(questions, timeLimit)
+        public PracticeTest(List<Question> questions, TimeSpan timeLimit, bool randomlyGenerated, int minLevel, int maxLevel) : base(questions, timeLimit, randomlyGenerated)
         {
             this.MinLevel = minLevel;
             this.MaxLevel = maxLevel;

@@ -116,6 +116,7 @@ namespace MathWiz
         private void iCantLogInToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO Reset Password - maybe iteration 3
+            MessageBox.Show("Well that sucks\n\ntesting password: helloThere", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

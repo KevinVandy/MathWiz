@@ -14,7 +14,7 @@ namespace MathWiz
         public MasteryTest() : base() { }
 
         //full constructor
-        public MasteryTest(List<Question> questions, TimeSpan timeLimit, decimal passThreshhold) : base(questions, timeLimit)
+        public MasteryTest(List<Question> questions, TimeSpan timeLimit, bool randomlyGenerated, decimal passThreshhold) : base(questions, timeLimit, randomlyGenerated)
         {
             this.PassThreshhold = passThreshhold;
         }
