@@ -8,6 +8,7 @@ namespace MathWiz
 {
     public class Klass
     {
+        public string KlassName { get; set; }
         public List<Student> Students { get; set; }
         public PlacementTest PlacementTest { get; set; }
         public List<PracticeTest> PracticeTests { get; set; }
@@ -17,8 +18,9 @@ namespace MathWiz
         public Klass() { }
 
         //normal constructor
-        public Klass(List<Student> students)
+        public Klass(string klassName, List<Student> students)
         {
+            this.KlassName = klassName;
             this.Students = students;
             this.PlacementTest = null;
             this.PracticeTests = null;
@@ -26,8 +28,9 @@ namespace MathWiz
         }
 
         //full constructor
-        public Klass(List<Student> students, PlacementTest placementTest, List<PracticeTest> practiceTests, List<MasteryTest> masteryTests)
+        public Klass(string klassName, List<Student> students, PlacementTest placementTest, List<PracticeTest> practiceTests, List<MasteryTest> masteryTests)
         {
+            this.KlassName = klassName;
             this.Students = students;
             this.PlacementTest = placementTest;
             this.PracticeTests = practiceTests;
