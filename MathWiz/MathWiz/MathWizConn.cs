@@ -14,7 +14,7 @@ namespace MathWiz
         {
             try
             { //this is not working yet
-                string connectionString = @"Data Source = MathWizGroup3.db.2823567.e83.hostedresource.net; Initial Catalog = MathWizGroup3; Persist Security Info = True; User ID = MathWizGroup 3; Password = P@ssw@rd3;";
+                string connectionString = @"Data Source = MathWizGroup3.db.2823567.e83.hostedresource.net; Initial Catalog = MathWizGroup3; Persist Security Info = True; User ID = MathWizGroup3; Password = P@ssw@rd3;";
 
                 SqlConnection conn = new SqlConnection(connectionString);
                 return conn;
