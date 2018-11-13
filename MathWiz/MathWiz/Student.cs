@@ -17,7 +17,7 @@ namespace MathWiz
         public Student() : base() { }
 
         //short constructor - delete this if we don't ever use it
-        public Student(string username, string firstName, string lastName, int masteryLevel) : base(username, firstName, lastName)
+        public Student(string username, string firstName, string lastName, int masteryLevel = 0) : base(username, firstName, lastName)
         {
             this.MasteryLevel = masteryLevel;
         }

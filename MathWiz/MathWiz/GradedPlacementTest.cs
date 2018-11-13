@@ -15,7 +15,7 @@ namespace MathWiz
         public GradedPlacementTest() { }
 
         //full constructor
-        public GradedPlacementTest(PlacementTest placementTest, int recommendedLevel, decimal score, TimeSpan timeTakenToComplete, DateTime dateTaken, List<Question> rightlyAnsweredQuestions, List<Question> wronglyAnsweredQuestions, string feedback = "") : base(score, timeTakenToComplete, dateTaken, rightlyAnsweredQuestions, wronglyAnsweredQuestions, feedback)
+        public GradedPlacementTest(PlacementTest placementTest, int recommendedLevel, decimal score, TimeSpan timeTakenToComplete, DateTime dateTaken, List<GradedQuestion> rightlyAnsweredQuestions, List<GradedQuestion> wronglyAnsweredQuestions, string feedback = "") : base(score, timeTakenToComplete, dateTaken, rightlyAnsweredQuestions, wronglyAnsweredQuestions, feedback)
         {
             this.PlacementTest = placementTest;
             this.RecommendedLevel = recommendedLevel;

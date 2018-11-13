@@ -6,10 +6,23 @@ using System.Threading.Tasks;
 
 namespace MathWiz
 {
-    class GradedQuestion
+    public class GradedQuestion //notice, this does not extend off Grade or Question, instead it has a question as a property
     {
         Question Question { get; set; }
         public string StudentAnswer { get; set; }
+        public bool Correct { get; set; } //could change to decimal score if we want to possibly give partial credit
         public TimeSpan TimeTakenToAnswer { get; set; }
+
+        //empty constructor
+        public GradedQuestion() { }
+
+        //full constructor
+        public GradedQuestion(Question question, string studentAnswer, bool correct, TimeSpan timeTakenToAnswer)
+        {
+            this.Question = question;
+            this.StudentAnswer = studentAnswer;
+            this.Correct = correct;
+            this.TimeTakenToAnswer = timeTakenToAnswer;
+        }
     }
 }
