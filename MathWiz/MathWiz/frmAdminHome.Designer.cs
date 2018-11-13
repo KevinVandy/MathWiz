@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminHome));
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.SuspendLayout();
             // 
             // frmAdminHome
@@ -48,7 +47,5 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
