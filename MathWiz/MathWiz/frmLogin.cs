@@ -41,7 +41,7 @@ namespace MathWiz
                 if (user.VerifyPassword(username, password))
                 {
                     //user = MathWizDA.SelectAdmin(username);
-                    homeForm = new frmAdminHome((Admin)user); //instantiate home form
+                    homeForm = new frmAdminHome((Admin)user); //instantiate home form, pass user object, maybe we should just pass the username instead
                     Login(homeForm);
                 }
                 else

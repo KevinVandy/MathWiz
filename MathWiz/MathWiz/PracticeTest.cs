@@ -10,7 +10,6 @@ namespace MathWiz
     {
         public int MinLevel { get; set; }
         public int MaxLevel { get; set; }
-        
 
         //empty constructor
         public PracticeTest() : base() { }

@@ -10,17 +10,15 @@ namespace MathWiz
     {
         public int MinLevel { get; set; }
         public int MaxLevel { get; set; }
-        public int AttemptsAllowed { get; set; }
 
         //empty constructor
         public PlacementTest() : base() { }
 
         //full constructor
-        public PlacementTest(List<Question> questions, TimeSpan timeLimit, bool randomlyGenerated, int minLevel, int maxLevel, int attemptsAllowed) : base(questions, timeLimit, randomlyGenerated)
+        public PlacementTest(List<Question> questions, TimeSpan timeLimit, bool randomlyGenerated, int minLevel, int maxLevel) : base(questions, timeLimit, randomlyGenerated)
         {
             this.MinLevel = minLevel;
             this.MaxLevel = maxLevel;
-            this.AttemptsAllowed = attemptsAllowed;
         }
     }
 }

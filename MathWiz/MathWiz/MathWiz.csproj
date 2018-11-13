@@ -93,6 +93,10 @@
       <DependentUpon>frmTeacherHome.cs</DependentUpon>
     </Compile>
     <Compile Include="Grade.cs" />
+    <Compile Include="GradedMasteryTest.cs" />
+    <Compile Include="GradedPlacementTest.cs" />
+    <Compile Include="GradedPracticeTest.cs" />
+    <Compile Include="GradedQuestion.cs" />
     <Compile Include="Klass.cs" />
     <Compile Include="MathWizConn.cs" />
     <Compile Include="Question.cs" />

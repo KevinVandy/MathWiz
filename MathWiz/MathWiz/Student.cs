@@ -9,23 +9,26 @@ namespace MathWiz
     public class Student : User
     {
         public int MasteryLevel { get; set; }
-        public List<Grade> Grades { get; set; }
+        public GradedPlacementTest GradedPlacementTest { get; set; }
+        public List<GradedPracticeTest> GradedPracticeTests { get; set; }
+        public List<GradedMasteryTest> GradedMasteryTests { get; set; }
 
         //empty constructor
         public Student() : base() { }
 
-        //normal constructor
-        public Student(string username, string firstName, string lastName, int masteryLevel, List<Grade> grades = null) : base(username, firstName, lastName)
+        //short constructor - delete this if we don't ever use it
+        public Student(string username, string firstName, string lastName, int masteryLevel) : base(username, firstName, lastName)
         {
             this.MasteryLevel = masteryLevel;
-            this.Grades = grades;
         }
 
         //full constructor
-        public Student(string username, string firstName, string lastName, string password, int masteryLevel, List<Grade> grades) : base(username, firstName, lastName, password)
+        public Student(string username, string firstName, string lastName, string password, int masteryLevel, GradedPlacementTest gradedPlacementTest, List<GradedPracticeTest> gradedPracticeTests, List<GradedMasteryTest> gradedMasteryTests) : base(username, firstName, lastName, password)
         {
             this.MasteryLevel = masteryLevel;
-            this.Grades = grades;
+            this.GradedPlacementTest = gradedPlacementTest;
+            this.GradedPracticeTests = gradedPracticeTests;
+            this.GradedMasteryTests = gradedMasteryTests;
         }
     }
 }

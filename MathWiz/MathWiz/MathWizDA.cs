@@ -55,9 +55,7 @@ namespace MathWiz
                 {
                     conn.Close();
                 }
-                
             }
-            
             return admin;
         }
     }
