@@ -14,15 +14,169 @@ namespace MathWiz
     {
         readonly static SqlConnection conn = MathWizConn.GetMathWizConnection();
 
-        public static Admin SelectAdmin(int id)
+        //Begin Find Users Methods - used for finding out which type of user is logging in
+        public static bool FindAdmin(string username)
+        {
+            string query = "SELECT Username FROM admins WHERE Username = @username";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@Username", username);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                if (reader.Read() && reader.HasRows) //if true, this means that it found a record with the username
+                {
+                    reader.Close();
+                    conn.Close();
+                    return true;
+                }
+                reader.Close();
+            }
+            catch(SqlException ex)
+            { 
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                {
+                    conn.Close();
+                }
+            }
+            return false;
+        }
+
+        public static bool FindTeacher(string username)
+        {
+            string query = "SELECT Username FROM teachers WHERE Username = @username";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@Username", username);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                if (reader.Read() && reader.HasRows) //if true, this means that it found a record with the username
+                {
+                    reader.Close();
+                    conn.Close();
+                    return true;
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                {
+                    conn.Close();
+                }
+            }
+            return false;
+        }
+
+        public static bool FindParent(string username)
+        {
+            string query = "SELECT Username FROM parents WHERE Username = @username";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@Username", username);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                if (reader.Read() && reader.HasRows) //if true, this means that it found a record with the username
+                {
+                    reader.Close();
+                    return true;
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                {
+                    conn.Close();
+                }
+            }
+            return false;
+        }
+
+        public static bool FindStudent(string username)
+        {
+            string query = "SELECT Username FROM students WHERE Username = @username";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@Username", username);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                if (reader.Read() && reader.HasRows) //if true, this means that it found a record with the username
+                {
+                    reader.Close();
+                    conn.Close();
+                    return true;
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                {
+                    conn.Close();
+                }
+            }
+            return false;
+        }
+        //End Find Users Methods
+
+        //Begin SELECT Users Methods
+        public static Admin SelectAdmin(string username)
         {
             //make the object that will eventually get returned
             Admin admin = new Admin();
             
             //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT * FROM Admins Where ID = @ID";
+            string query = "SELECT * FROM admins Where Username = @username";
             SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@BranchName", id);
+            selectCommand.Parameters.AddWithValue("@username", username);
 
             //try the select command
             try
@@ -33,21 +187,19 @@ namespace MathWiz
 
                 if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
                 {
-                    //might need to change table names after the real database is made
                     admin.Username = Convert.ToString(reader["Username"]);
                     admin.FirstName = Convert.ToString(reader["FirstName"]);
                     admin.LastName = Convert.ToString(reader["LastName"]);
-                    //maybe select password too
                 }
                 reader.Close();
             }
             catch(SqlException ex)
             {
-                MessageBox.Show("There was a problem connecting to the server. Check you internet connection.\n\n" + ex, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Someone dun messed up.\n\n" + ex, "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -59,15 +211,15 @@ namespace MathWiz
             return admin;
         }
 
-        public static Teacher SelectTeacher(int id)
+        public static Teacher SelectTeacher(string username)
         {
             //make the object that will eventually get returned
             Teacher teacher = new Teacher();
 
             //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT * FROM Teachers WHERE ID = @ID";
+            string query = "SELECT * FROM teachers Where Username = @username";
             SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@BranchName", id);
+            selectCommand.Parameters.AddWithValue("@username", username);
 
             //try the select command
             try
@@ -88,11 +240,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("There was a problem connecting to the server. Check you internet connection.\n\n" + ex, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Someone dun messed up.\n\n" + ex, "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -104,15 +256,15 @@ namespace MathWiz
             return teacher;
         }
 
-        public static Student selectStudent(int id)
+        public static Student SelectStudent(string username)
         {
             //make the object that will eventually get returned
             Student student = new Student();
 
             //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT * FROM Students WHERE ID = @ID";
+            string query = "SELECT * FROM students Where Username = @username";
             SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@BranchName", id);
+            selectCommand.Parameters.AddWithValue("@username", username);
 
             //try the select command
             try
@@ -133,11 +285,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("There was a problem connecting to the server. Check you internet connection.\n\n" + ex, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Someone dun messed up.\n\n" + ex, "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -149,15 +301,15 @@ namespace MathWiz
             return student;
         }
 
-        public static Parent SelectParent(int id)
+        public static Parent SelectParent(string username)
         {
             //make the object that will eventually get returned
             Parent parent = new Parent();
 
             //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT * FROM Parents WHERE ID = @ID";
+            string query = "SELECT * FROM parents Where Username = @username";
             SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@BranchName", id);
+            selectCommand.Parameters.AddWithValue("@username", username);
 
             //try the select command
             try
@@ -178,11 +330,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("There was a problem connecting to the server. Check you internet connection.\n\n" + ex, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Someone dun messed up.\n\n" + ex, "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -193,6 +345,7 @@ namespace MathWiz
             }
             return parent;
         }
+        //End SELECT Users Methods
 
         public static PracticeTest SelectPracTest(int id)
         {
@@ -223,11 +376,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("There was a problem connecting to the server. Check you internet connection.\n\n" + ex, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Someone dun messed up.\n\n" + ex, "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -268,11 +421,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("There was a problem connecting to the server. Check you internet connection.\n\n" + ex, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Someone dun messed up.\n\n" + ex, "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -313,11 +466,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("There was a problem connecting to the server. Check you internet connection.\n\n" + ex, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Someone dun messed up.\n\n" + ex, "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -358,11 +511,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("There was a problem connecting to the server. Check you internet connection.\n\n" + ex, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Someone dun messed up.\n\n" + ex, "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -403,11 +556,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("There was a problem connecting to the server. Check you internet connection.\n\n" + ex, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Someone dun messed up.\n\n" + ex, "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -448,11 +601,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("There was a problem connecting to the server. Check you internet connection.\n\n" + ex, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Someone dun messed up.\n\n" + ex, "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -493,11 +646,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("There was a problem connecting to the server. Check you internet connection.\n\n" + ex, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Someone dun messed up.\n\n" + ex, "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -538,11 +691,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("There was a problem connecting to the server. Check you internet connection.\n\n" + ex, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Someone dun messed up.\n\n" + ex, "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -583,11 +736,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("There was a problem connecting to the server. Check you internet connection.\n\n" + ex, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Someone dun messed up.\n\n" + ex, "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

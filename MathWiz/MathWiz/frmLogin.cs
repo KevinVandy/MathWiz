@@ -20,7 +20,7 @@ namespace MathWiz
         
         private void Form1_Load(object sender, EventArgs e)
         {
-            SqlConnection conn = MathWizConn.GetMathWizConnection();
+            
         }
         
         //button actions
@@ -32,69 +32,81 @@ namespace MathWiz
 
             string username = txtUsername.Text;
             string password = txtPassword.Text; //testing password is "helloThere"
-
-            //TODO find out what type of user is logging in so it can create the right object AND the right form
+            
             User user;
             Form homeForm;
-            if (false) //if(MathWizDA.FindAdminUsername(username))
-            {
-                user = new Admin();
-                if (user.VerifyPassword(username, password))
-                {
-                    //user = MathWizDA.SelectAdmin(username);
-                    homeForm = new frmAdminHome((Admin)user); //instantiate home form, pass user object, maybe we should just pass the username instead
-                    Login(homeForm);
-                }
-                else
-                {
-                    lblPasswordError.Show();
-                }
-            }
-            else if (false) //else if(MathWizDA.FindTeacherUsername(username))
-            {
-                user = new Teacher();
-                if (user.VerifyPassword(username, password))
-                {
-                    //user = MathWizDA.SelectTeacher(username);
-                    homeForm = new frmTeacherHome((Teacher)user); //instantiate home form
-                    Login(homeForm);
-                }
-                else
-                {
-                    lblPasswordError.Show();
-                }
-            }
-            else if (false) //else if(MathWizDA.FindParentUsername(username))
-            {
-                user = new Parent();
-                if (user.VerifyPassword(username, password))
-                {
-                    //user = MathWizDA.SelectParent(username);
-                    homeForm = new frmParentHome((Parent)user); //instantiate home form
-                    Login(homeForm);
-                }
-                else
-                {
-                    lblPasswordError.Show();
-                }
-            }
-            else if (true) //else if(MathWizDA.FindStudentUsername(username))
-            {
-                user = new Student();
-                if (user.VerifyPassword(username, password))
-                {
-                    //user = MathWizDA.SelectStudent(username);
-                    homeForm = new frmStudentHome((Student)user); //instantiate home form
-                    Login(homeForm);
-                }
-                else
-                {
-                    lblPasswordError.Show();
-                }
-            }
-            else //could not find username
+
+            if(username == "" && password == "")
             {
                 lblUsernameError.Show();
+                lblPasswordError.Show();
+            }
+            if(username == "")
+            {
+                lblUsernameError.Show();
+            }
+            else if(password == "")
+            {
+                lblPasswordError.Show();
+            }
+            else
+            {
+                if (MathWizDA.FindAdmin(username))
+                {
+                    user = new Admin();
+                    if (user.VerifyPassword(username, password))
+                    {
+                        homeForm = new frmAdminHome(username); 
+                        Login(homeForm);
+                    }
+                    else
+                    {
+                        lblPasswordError.Show();
+                    }
+                }
+                else if (MathWizDA.FindTeacher(username))
+                {
+                    user = new Teacher();
+                    if (user.VerifyPassword(username, password))
+                    {
+                        homeForm = new frmTeacherHome(username); 
+                        Login(homeForm);
+                    }
+                    else
+                    {
+                        lblPasswordError.Show();
+                    }
+                }
+                else if (MathWizDA.FindParent(username))
+                {
+                    user = new Parent();
+                    if (user.VerifyPassword(username, password))
+                    {
+                        homeForm = new frmParentHome(username); 
+                        Login(homeForm);
+                    }
+                    else
+                    {
+                        lblPasswordError.Show();
+                    }
+                }
+                else if (MathWizDA.FindStudent(username))
+                {
+                    user = new Student();
+                    if (user.VerifyPassword(username, password))
+                    {
+                        homeForm = new frmStudentHome(username); 
+                        Login(homeForm);
+                    }
+                    else
+                    {
+                        lblPasswordError.Show();
+                    }
+                }
+                else //could not find username
+                {
+                    lblUsernameError.Show();
+                }
             }
         }
 

@@ -12,9 +12,11 @@ namespace MathWiz
 {
     public partial class frmStudentHome : Form
     {
-        public frmStudentHome(Student student)
+        Student student;
+        public frmStudentHome(string username)
         {
             InitializeComponent();
+            student = MathWizDA.SelectStudent(username);
         }
 
         private void frmStudentHome_Load(object sender, EventArgs e)

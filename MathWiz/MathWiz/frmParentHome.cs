@@ -12,9 +12,11 @@ namespace MathWiz
 {
     public partial class frmParentHome : Form
     {
-        public frmParentHome(Parent parent)
+        Parent parent;
+        public frmParentHome(string username)
         {
             InitializeComponent();
+            parent = MathWizDA.SelectParent(username);
         }
 
         private void frmParentHome_Load(object sender, EventArgs e)

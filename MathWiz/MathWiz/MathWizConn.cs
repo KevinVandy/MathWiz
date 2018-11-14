@@ -13,7 +13,7 @@ namespace MathWiz
         public static SqlConnection GetMathWizConnection()
         {
             try
-            { //this is not working yet
+            {
                 string connectionString = @"Data Source = MathWizGroup3.db.2823567.e83.hostedresource.net; Initial Catalog = MathWizGroup3; Persist Security Info = True; User ID = MathWizGroup3; Password = P@ssw@rd3;";
 
                 SqlConnection conn = new SqlConnection(connectionString);
@@ -21,7 +21,7 @@ namespace MathWiz
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Problem connecting to the database.\n\n" + ex.ToString());
                 return null;
             }
             
