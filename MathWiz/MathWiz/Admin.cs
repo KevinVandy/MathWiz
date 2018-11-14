@@ -11,7 +11,13 @@ namespace MathWiz
         //empty constructor
         public Admin() : base() { }
 
-        //full constructor
+        //normal constructor
+        public Admin(string username, string firstName, string lastName) : base(username, firstName, lastName) //no password
+        {
+
+        }
+
+        //full constructor - use when creating account
         public Admin(string username, string firstName, string lastName, string password) : base(username, firstName, lastName, password)
         {
 

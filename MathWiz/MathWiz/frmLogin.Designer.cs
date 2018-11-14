@@ -34,6 +34,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iCantLogInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblUsernameError = new System.Windows.Forms.Label();
             this.lblPasswordError = new System.Windows.Forms.Label();
-            this.iCantLogInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,9 +83,16 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // iCantLogInToolStripMenuItem
+            // 
+            this.iCantLogInToolStripMenuItem.Name = "iCantLogInToolStripMenuItem";
+            this.iCantLogInToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.iCantLogInToolStripMenuItem.Text = "I Can\'t Log in!";
+            this.iCantLogInToolStripMenuItem.Click += new System.EventHandler(this.iCantLogInToolStripMenuItem_Click);
             // 
             // txtUsername
             // 
@@ -159,13 +166,6 @@
             this.lblPasswordError.Text = "Password is incorrect";
             this.lblPasswordError.Visible = false;
             // 
-            // iCantLogInToolStripMenuItem
-            // 
-            this.iCantLogInToolStripMenuItem.Name = "iCantLogInToolStripMenuItem";
-            this.iCantLogInToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.iCantLogInToolStripMenuItem.Text = "I Can\'t Log in!";
-            this.iCantLogInToolStripMenuItem.Click += new System.EventHandler(this.iCantLogInToolStripMenuItem_Click);
-            // 
             // frmLogin
             // 
             this.AcceptButton = this.btnLogin;
@@ -180,12 +180,14 @@
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.menuStrip);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(360, 260);
             this.MinimumSize = new System.Drawing.Size(360, 260);
             this.Name = "frmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Log in to MathWiz";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip.ResumeLayout(false);

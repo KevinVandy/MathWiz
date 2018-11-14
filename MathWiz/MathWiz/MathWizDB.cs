@@ -9,11 +9,11 @@ using System.Windows.Forms;
 namespace MathWiz
 {
     //Class for inserting, updating, or deleting from the database
-    public class MathWizDB
+    public static class MathWizDB
     {
         readonly static SqlConnection conn = MathWizConn.GetMathWizConnection();
 
-        private void InsertParent(Parent newParent)
+        public static void InsertParent(Parent newParent)
         {
             string insertStatement = "INSERT INTO parents (Username, FirstName, LastName, PasswordHash) " +
                 "VALUES(@Username, @FirstName, @LastName, @Password)";
@@ -50,7 +50,7 @@ namespace MathWiz
             }
         }
 
-        private void InsertStudent(Student newStudent)
+        public static void InsertStudent(Student newStudent)
         {
             string insertStatement = "INSERT INTO students (Username, FirstName, LastName, PasswordHash) " +
                 "VALUES(@Username, @FirstName, @LastName, @Password)";
@@ -87,7 +87,7 @@ namespace MathWiz
             }
         }
 
-        private void InsertTeacher(Teacher newTeacher)
+        public static void InsertTeacher(Teacher newTeacher)
         {
             string insertStatement = "INSERT INTO teachers (Username, FirstName, LastName, PasswordHash) " +
                 "VALUES(@Username, @FirstName, @LastName, @Password)";
@@ -124,7 +124,7 @@ namespace MathWiz
             }
         }
 
-        private void InsertAdmin(Admin newAdmin)
+        public static void InsertAdmin(Admin newAdmin)
         {
             string insertStatement = "INSERT INTO admins (Username, FirstName, LastName, PasswordHash) " +
                 "VALUES(@Username, @FirstName, @LastName, @Password)";
@@ -161,7 +161,7 @@ namespace MathWiz
             }
         }
 
-        private void InsertQuestion(Question newQuestion, int testID)
+        public static void InsertQuestion(Question newQuestion, int testID)
         {
             string insertStatement = "INSERT INTO questions (TestID, MasteryLevel, QuestionText, CorrectAnswer, TimeLimit, Weight, RandomlyGenerated) " +
                 "VALUES(@TestID, @MasteryLevel, @QuestionText, @CorrectAnswer, @TimeLimit, @Weight, @RNG)";
@@ -201,7 +201,7 @@ namespace MathWiz
             }
         }
 
-        private void InsertKlass(Klass newKlass, int teacherID)
+        public static void InsertKlass(Klass newKlass, int teacherID)
         {
             string insertStatement = "INSERT INTO klasses (TeacherID, KlassName) " +
                 "VALUES(@TeacherID, @KlassName)";
@@ -236,7 +236,7 @@ namespace MathWiz
             }
         }
 
-        private void InsertTest(Test newTest, string testType, decimal passThreshold, int minLevel, int maxLevel)
+        public static void InsertTest(Test newTest, string testType, decimal passThreshold, int minLevel, int maxLevel)
         {
             //Everything besides TestType can be null
             string insertStatement = "INSERT INTO tests (TestType, TimeLimit, RandomlyGenerated, PassThreshHold, MinLevel, MaxLevel) " +
@@ -276,7 +276,7 @@ namespace MathWiz
             }
         }
 
-        private void InsertGradedQuestion(GradedQuestion newQuestion, int questionID, int gradedTestID)
+        public static void InsertGradedQuestion(GradedQuestion newQuestion, int questionID, int gradedTestID)
         {
             string insertStatement = "INSERT INTO graded_questions (GradedTestID, QuestionID, StudentAnswer, Correct, TimeTakenToAnswer) " +
                 "VALUES(@TestID, @QuestionID, @StudentAnswer, @Correct, @Time)";
@@ -314,7 +314,7 @@ namespace MathWiz
             }
         }
 
-        private void InsertGradedTest(GradedTest newTest, int studentID, int testID, int attempts, byte passed, int recommendedLevel)
+        public static void InsertGradedTest(GradedTest newTest, int studentID, int testID, int attempts, byte passed, int recommendedLevel)
         {
             // StudentID, TestID, and Score must be present
             // Everything else can be null
