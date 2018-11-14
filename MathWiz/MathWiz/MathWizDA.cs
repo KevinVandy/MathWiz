@@ -167,7 +167,7 @@ namespace MathWiz
         }
         //End Find Users Methods
 
-        //SELECT Password
+        //SELECT Password - still untested
         public static string SelectPasswordHash(string username)
         {
             string passwordHash = "";
@@ -273,7 +273,7 @@ namespace MathWiz
 
                 if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
                 {
-                    //might need to change table names after the real database is made
+                    
                     teacher.Username = Convert.ToString(reader["Username"]);
                     teacher.FirstName = Convert.ToString(reader["FirstName"]);
                     teacher.LastName = Convert.ToString(reader["LastName"]);
@@ -318,7 +318,7 @@ namespace MathWiz
 
                 if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
                 {
-                    //might need to change table names after the real database is made
+                    
                     student.Username = Convert.ToString(reader["Username"]);
                     student.FirstName = Convert.ToString(reader["FirstName"]);
                     student.LastName = Convert.ToString(reader["LastName"]);
@@ -363,7 +363,7 @@ namespace MathWiz
 
                 if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
                 {
-                    //might need to change table names after the real database is made
+                    
                     parent.Username = Convert.ToString(reader["Username"]);
                     parent.FirstName = Convert.ToString(reader["FirstName"]);
                     parent.LastName = Convert.ToString(reader["LastName"]);
@@ -409,7 +409,7 @@ namespace MathWiz
 
                 if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
                 {
-                    //might need to change table names after the real database is made
+                    
                     //pracTest.Username = Convert.ToString(reader["Username"]);
                     //pracTest.FirstName = Convert.ToString(reader["FirstName"]);
                     //pracTest.LastName = Convert.ToString(reader["LastName"]);
@@ -454,7 +454,7 @@ namespace MathWiz
 
                 if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
                 {
-                    //might need to change table names after the real database is made
+                    
                     //placeTest.Username = Convert.ToString(reader["Username"]);
                     //placeTest.FirstName = Convert.ToString(reader["FirstName"]);
                     //placeTest.LastName = Convert.ToString(reader["LastName"]);
@@ -499,7 +499,7 @@ namespace MathWiz
 
                 if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
                 {
-                    //might need to change table names after the real database is made
+                    
                     //mastTest.Username = Convert.ToString(reader["Username"]);
                     //mastTest.FirstName = Convert.ToString(reader["FirstName"]);
                     //mastTest.LastName = Convert.ToString(reader["LastName"]);
@@ -544,7 +544,7 @@ namespace MathWiz
 
                 if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
                 {
-                    //might need to change table names after the real database is made
+                    
                     //question.Username = Convert.ToString(reader["Username"]);
                     //question.FirstName = Convert.ToString(reader["FirstName"]);
                     //question.LastName = Convert.ToString(reader["LastName"]);
@@ -589,7 +589,7 @@ namespace MathWiz
 
                 if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
                 {
-                    //might need to change table names after the real database is made
+                    
                     //gradePrac.Username = Convert.ToString(reader["Username"]);
                     //gradePrac.FirstName = Convert.ToString(reader["FirstName"]);
                     //gradePrac.LastName = Convert.ToString(reader["LastName"]);
@@ -634,7 +634,7 @@ namespace MathWiz
 
                 if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
                 {
-                    //might need to change table names after the real database is made
+                    
                     //gradePlace.Username = Convert.ToString(reader["Username"]);
                     //gradePlace.FirstName = Convert.ToString(reader["FirstName"]);
                     //gradePlace.LastName = Convert.ToString(reader["LastName"]);
@@ -679,7 +679,7 @@ namespace MathWiz
 
                 if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
                 {
-                    //might need to change table names after the real database is made
+                    
                     //gradeMaster.Username = Convert.ToString(reader["Username"]);
                     //gradeMaster.FirstName = Convert.ToString(reader["FirstName"]);
                     //gradeMaster.LastName = Convert.ToString(reader["LastName"]);
@@ -724,7 +724,7 @@ namespace MathWiz
 
                 if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
                 {
-                    //might need to change table names after the real database is made
+                    
                     //gradeQuestion.Username = Convert.ToString(reader["Username"]);
                     //gradeQuestion.FirstName = Convert.ToString(reader["FirstName"]);
                     //gradeQuestion.LastName = Convert.ToString(reader["LastName"]);
@@ -769,7 +769,7 @@ namespace MathWiz
 
                 if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
                 {
-                    //might need to change table names after the real database is made
+                    
                     //klass.Username = Convert.ToString(reader["Username"]);
                     //klass.FirstName = Convert.ToString(reader["FirstName"]);
                     //klass.LastName = Convert.ToString(reader["LastName"]);
