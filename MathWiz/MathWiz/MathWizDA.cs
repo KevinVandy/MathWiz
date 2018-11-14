@@ -167,6 +167,49 @@ namespace MathWiz
         }
         //End Find Users Methods
 
+        //SELECT Password
+        public static string SelectPasswordHash(string username)
+        {
+            string passwordHash = "";
+
+            string query = "SELECT PasswordHash FROM admins WHERE Username = @username " +
+                           "UNION SELECT PasswordHash FROM teachers WHERE Username = @username " +
+                           "UNION SELECT PasswordHash FROM parents WHERE Username = @username " +
+                           "UNION SELECT PasswordHash FROM students WHERE Username = @username";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@username", username);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
+                {
+                    passwordHash = Convert.ToString(reader["PasswordHash"]);
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                {
+                    conn.Close();
+                }
+            }
+            return passwordHash;
+        }
+    
+
         //Begin SELECT Users Methods
         public static Admin SelectAdmin(string username)
         {
@@ -234,7 +277,7 @@ namespace MathWiz
                     teacher.Username = Convert.ToString(reader["Username"]);
                     teacher.FirstName = Convert.ToString(reader["FirstName"]);
                     teacher.LastName = Convert.ToString(reader["LastName"]);
-                    //maybe select password too
+                    
                 }
                 reader.Close();
             }
@@ -279,7 +322,7 @@ namespace MathWiz
                     student.Username = Convert.ToString(reader["Username"]);
                     student.FirstName = Convert.ToString(reader["FirstName"]);
                     student.LastName = Convert.ToString(reader["LastName"]);
-                    //maybe select password too
+                    
                 }
                 reader.Close();
             }
@@ -324,7 +367,7 @@ namespace MathWiz
                     parent.Username = Convert.ToString(reader["Username"]);
                     parent.FirstName = Convert.ToString(reader["FirstName"]);
                     parent.LastName = Convert.ToString(reader["LastName"]);
-                    //maybe select password too
+                    
                 }
                 reader.Close();
             }
@@ -370,7 +413,7 @@ namespace MathWiz
                     //pracTest.Username = Convert.ToString(reader["Username"]);
                     //pracTest.FirstName = Convert.ToString(reader["FirstName"]);
                     //pracTest.LastName = Convert.ToString(reader["LastName"]);
-                    //maybe select password too
+                    
                 }
                 reader.Close();
             }
@@ -415,7 +458,7 @@ namespace MathWiz
                     //placeTest.Username = Convert.ToString(reader["Username"]);
                     //placeTest.FirstName = Convert.ToString(reader["FirstName"]);
                     //placeTest.LastName = Convert.ToString(reader["LastName"]);
-                    //maybe select password too
+                    
                 }
                 reader.Close();
             }
@@ -460,7 +503,7 @@ namespace MathWiz
                     //mastTest.Username = Convert.ToString(reader["Username"]);
                     //mastTest.FirstName = Convert.ToString(reader["FirstName"]);
                     //mastTest.LastName = Convert.ToString(reader["LastName"]);
-                    //maybe select password too
+                    
                 }
                 reader.Close();
             }
@@ -505,7 +548,7 @@ namespace MathWiz
                     //question.Username = Convert.ToString(reader["Username"]);
                     //question.FirstName = Convert.ToString(reader["FirstName"]);
                     //question.LastName = Convert.ToString(reader["LastName"]);
-                    //maybe select password too
+                    
                 }
                 reader.Close();
             }
@@ -550,7 +593,7 @@ namespace MathWiz
                     //gradePrac.Username = Convert.ToString(reader["Username"]);
                     //gradePrac.FirstName = Convert.ToString(reader["FirstName"]);
                     //gradePrac.LastName = Convert.ToString(reader["LastName"]);
-                    //maybe select password too
+                    
                 }
                 reader.Close();
             }
@@ -595,7 +638,7 @@ namespace MathWiz
                     //gradePlace.Username = Convert.ToString(reader["Username"]);
                     //gradePlace.FirstName = Convert.ToString(reader["FirstName"]);
                     //gradePlace.LastName = Convert.ToString(reader["LastName"]);
-                    //maybe select password too
+                    
                 }
                 reader.Close();
             }
@@ -640,7 +683,7 @@ namespace MathWiz
                     //gradeMaster.Username = Convert.ToString(reader["Username"]);
                     //gradeMaster.FirstName = Convert.ToString(reader["FirstName"]);
                     //gradeMaster.LastName = Convert.ToString(reader["LastName"]);
-                    //maybe select password too
+                    
                 }
                 reader.Close();
             }
@@ -685,7 +728,7 @@ namespace MathWiz
                     //gradeQuestion.Username = Convert.ToString(reader["Username"]);
                     //gradeQuestion.FirstName = Convert.ToString(reader["FirstName"]);
                     //gradeQuestion.LastName = Convert.ToString(reader["LastName"]);
-                    //maybe select password too
+                    
                 }
                 reader.Close();
             }
@@ -730,7 +773,7 @@ namespace MathWiz
                     //klass.Username = Convert.ToString(reader["Username"]);
                     //klass.FirstName = Convert.ToString(reader["FirstName"]);
                     //klass.LastName = Convert.ToString(reader["LastName"]);
-                    //maybe select password too
+                    
                 }
                 reader.Close();
             }
