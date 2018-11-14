@@ -173,9 +173,9 @@ namespace MathWiz
             string passwordHash = "";
 
             string query = "SELECT PasswordHash FROM admins WHERE Username = @username " +
-                           "UNION SELECT PasswordHash FROM teachers WHERE Username = @username " +
-                           "UNION SELECT PasswordHash FROM parents WHERE Username = @username " +
-                           "UNION SELECT PasswordHash FROM students WHERE Username = @username";
+                     "UNION SELECT PasswordHash FROM teachers WHERE Username = @username " +
+                     "UNION SELECT PasswordHash FROM parents WHERE Username = @username " +
+                     "UNION SELECT PasswordHash FROM students WHERE Username = @username";
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@username", username);
 
