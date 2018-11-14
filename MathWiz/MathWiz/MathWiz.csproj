@@ -92,7 +92,7 @@
     <Compile Include="frmTeacherHome.Designer.cs">
       <DependentUpon>frmTeacherHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Grade.cs" />
+    <Compile Include="GradedTest.cs" />
     <Compile Include="GradedMasteryTest.cs" />
     <Compile Include="GradedPlacementTest.cs" />
     <Compile Include="GradedPracticeTest.cs" />

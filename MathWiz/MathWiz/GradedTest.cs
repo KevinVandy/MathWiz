@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathWiz
 {
-    public abstract class Grade
+    public abstract class GradedTest
     {
         public decimal Score { get; set; }
         public TimeSpan TimeTakenToComplete { get; set; }
@@ -16,10 +16,10 @@ namespace MathWiz
         public string Feedback { get; set; }
 
         //empty constructor
-        public Grade() { }
+        public GradedTest() { }
 
         //full constructor
-        public Grade(decimal score, TimeSpan timeTakenToComplete, DateTime dateTaken, List<GradedQuestion> rightlyAnsweredQuestions, List<GradedQuestion> wronglyAnsweredQuestions, string feedback = "")
+        public GradedTest(decimal score, TimeSpan timeTakenToComplete, DateTime dateTaken, List<GradedQuestion> rightlyAnsweredQuestions, List<GradedQuestion> wronglyAnsweredQuestions, string feedback = "")
         {
             this.Score = score;
             this.TimeTakenToComplete = timeTakenToComplete;

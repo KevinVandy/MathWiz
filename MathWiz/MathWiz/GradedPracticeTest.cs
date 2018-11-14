@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MathWiz
 {
-    public class GradedPracticeTest : Grade
+    public class GradedPracticeTest : GradedTest
     {
         PracticeTest PracticeTest { get; set; }
 
