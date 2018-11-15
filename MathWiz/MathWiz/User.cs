@@ -86,5 +86,10 @@ namespace MathWiz
             }
             return true;
         }
+
+        public override string ToString()
+        {
+            return this.Id.ToString("000000") + ": " + this.FirstName + " " + this.LastName;
+        }
     }
 }

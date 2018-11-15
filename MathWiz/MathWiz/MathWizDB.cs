@@ -50,15 +50,17 @@ namespace MathWiz
             }
         }
 
-        public static void InsertStudent(Student newStudent)
+        public static void InsertStudent(Student newStudent, int parentID, int klassID)
         {
-            string insertStatement = "INSERT INTO students (Username, FirstName, LastName, PasswordHash) " +
-                "VALUES(@Username, @FirstName, @LastName, @Password)";
+            string insertStatement = "INSERT INTO students (ParentID, KlassID, Username, FirstName, LastName, PasswordHash) " +
+                "VALUES(@ParentID, @KlassID, @Username, @FirstName, @LastName, @Password)";
 
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand(insertStatement, conn);
 
             // create your parameters and add values from object
+            Cmd.Parameters.AddWithValue("@ParentID", parentID);
+            Cmd.Parameters.AddWithValue("@KlassID", klassID);
             Cmd.Parameters.AddWithValue("@Username", newStudent.Username);
             Cmd.Parameters.AddWithValue("@FirstName", newStudent.FirstName);
             Cmd.Parameters.AddWithValue("@LastName", newStudent.LastName);

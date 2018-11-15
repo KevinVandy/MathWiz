@@ -778,7 +778,6 @@ namespace MathWiz
                     gradeQuestion.StudentAnswer = Convert.ToString(reader["StudentAnswer"]);
                     gradeQuestion.Correct = Convert.ToBoolean(reader["Correct"]);
                     gradeQuestion.TimeTakenToAnswer = TimeSpan.Parse(reader["TimeTakenToAnswer"].ToString());
-                    
                 }
                 reader.Close();
             }
@@ -841,6 +840,49 @@ namespace MathWiz
                 }
             }
             return klass;
+        }
+
+        public static List<Klass> SelectAllKlasses()
+        {
+            List<Klass> klasses = new List<Klass>();
+
+            //make the query the safe way by binding values to prevent SQL injection
+            string query = "SELECT * FROM klasses";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                Klass klass = new Klass();
+
+                while (reader.Read())
+                {
+                    klass.Id = Convert.ToInt16(reader["Id"]);
+                    klass.KlassName = Convert.ToString(reader["KlassName"]);
+
+                    klasses.Add(klass);
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                {
+                    conn.Close();
+                }
+            }
+            return klasses;
         }
     }
 }

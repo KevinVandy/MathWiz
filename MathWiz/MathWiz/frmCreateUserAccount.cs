@@ -13,6 +13,7 @@ namespace MathWiz
     public partial class frmCreateUserAccount : Form
     {
         List<Parent> parentChoices;
+        List<Klass> klassChoices;
 
         public frmCreateUserAccount()
         {
@@ -67,6 +68,16 @@ namespace MathWiz
                     btnCreateUser.Text = "Create Student";
 
                     parentChoices = MathWizDA.SelectAllParents();
+                    klassChoices = MathWizDA.SelectAllKlasses();
+
+                    foreach(Parent p in parentChoices)
+                    {
+                        cmbParent.Items.Add(p.ToString());
+                    }
+                    foreach(Klass k in klassChoices)
+                    {
+                        cmbClass.Items.Add(k.ToString());
+                    }
 
                     break;
             }
@@ -120,10 +131,10 @@ namespace MathWiz
                 case "Student":
 
                     Student newStudent = new Student(username, firstName, lastName, password);
-                    MathWizDB.InsertStudent(newStudent);
-
+                    int parentID = Convert.ToInt16(cmbParent.SelectedItem.ToString().Substring(0, 6));
+                    int klassID = Convert.ToInt16(cmbClass.SelectedItem.ToString().Substring(0, 4));
+                    MathWizDB.InsertStudent(newStudent, parentID, klassID);
                     
-
                     break;
             }
         }

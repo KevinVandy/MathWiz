@@ -37,5 +37,10 @@ namespace MathWiz
             this.PracticeTests = practiceTests;
             this.MasteryTests = masteryTests;
         }
+
+        public override string ToString()
+        {
+            return this.Id.ToString("0000") + ": " + this.KlassName;
+        }
     }
 }
