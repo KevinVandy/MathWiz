@@ -100,6 +100,11 @@ namespace MathWiz
             txtUsername.Text = txtFirstName.Text + txtLastName.Text + txtID.Text;
         }
 
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+            lblUsernameError.Hide();
+        }
+
         private void btnCreateUser_Click(object sender, EventArgs e)
         {
             string firstName = txtFirstName.Text;
@@ -107,38 +112,47 @@ namespace MathWiz
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
-            switch (this.Tag.ToString())
+            if (MathWizDA.FindUsername(username))
             {
-                case "Admin":
-                    
-                    Admin newAdmin = new Admin(username, firstName, lastName, password);
-                    MathWizDB.InsertAdmin(newAdmin);
-
-                    break;
-
-                case "Teacher":
-
-                    Teacher newTeacher = new Teacher(username, firstName, lastName, password);
-                    MathWizDB.InsertTeacher(newTeacher);
-
-                    break;
-
-                case "Parent":
-
-                    Parent newParent = new Parent(username, firstName, lastName, password);
-                    MathWizDB.InsertParent(newParent);
-
-                    break;
-
-                case "Student":
-
-                    Student newStudent = new Student(username, firstName, lastName, password);
-                    int parentID = Convert.ToInt16(cmbParent.SelectedItem.ToString().Substring(0, 6));
-                    int klassID = Convert.ToInt16(cmbClass.SelectedItem.ToString().Substring(0, 4));
-                    MathWizDB.InsertStudent(newStudent, parentID, klassID);
-                    
-                    break;
+                lblUsernameError.Text = "That username has already been taken";
+                lblUsernameError.Show();
             }
+            else
+            {
+                switch (this.Tag.ToString())
+                {
+                    case "Admin":
+
+                        Admin newAdmin = new Admin(username, firstName, lastName, password);
+                        MathWizDB.InsertAdmin(newAdmin);
+
+                        break;
+
+                    case "Teacher":
+
+                        Teacher newTeacher = new Teacher(username, firstName, lastName, password);
+                        MathWizDB.InsertTeacher(newTeacher);
+
+                        break;
+
+                    case "Parent":
+
+                        Parent newParent = new Parent(username, firstName, lastName, password);
+                        MathWizDB.InsertParent(newParent);
+
+                        break;
+
+                    case "Student":
+
+                        Student newStudent = new Student(username, firstName, lastName, password);
+                        int parentID = Convert.ToInt16(cmbParent.SelectedItem.ToString().Substring(0, 6));
+                        int klassID = Convert.ToInt16(cmbClass.SelectedItem.ToString().Substring(0, 4));
+                        MathWizDB.InsertStudent(newStudent, parentID, klassID);
+
+                        break;
+                }
+            }
+            
             lblAdded.Text = firstName + " " + lastName + " was successfully added";
             lblAdded.Show();
 
@@ -155,5 +169,7 @@ namespace MathWiz
         {
             this.Close();
         }
+
+        
     }
 }
