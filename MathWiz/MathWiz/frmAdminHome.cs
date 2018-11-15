@@ -31,6 +31,11 @@ namespace MathWiz
             lstUserTypes.Items.Add("Teachers");
             lstUserTypes.Items.Add("Parents");
             lstUserTypes.Items.Add("Students");
+
+            allAdmins = MathWizDA.SelectAllAdmins();
+            allTeachers = MathWizDA.SelectAllTeachers();
+            allParents = MathWizDA.SelectAllParents();
+            allStudents = MathWizDA.SelectAllStudents();
         }
 
         private void btnCreateAdmin_Click(object sender, EventArgs e)
@@ -68,7 +73,37 @@ namespace MathWiz
 
         private void lstUserTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            lstUsers.Enabled = true;
+            lstUsers.Items.Clear();
+            
+            if(lstUserTypes.SelectedIndex == 0)
+            {
+                foreach(Admin a in allAdmins)
+                {
+                    lstUsers.Items.Add(a.ToString());
+                }
+            }
+            else if (lstUserTypes.SelectedIndex == 1)
+            {
+                foreach (Teacher t in allTeachers)
+                {
+                    lstUsers.Items.Add(t.ToString());
+                }
+            }
+            else if (lstUserTypes.SelectedIndex == 2)
+            {
+                foreach (Parent p in allParents)
+                {
+                    lstUsers.Items.Add(p.ToString());
+                }
+            }
+            else if (lstUserTypes.SelectedIndex == 3)
+            {
+                foreach (Student s in allStudents)
+                {
+                    lstUsers.Items.Add(s.ToString());
+                }
+            }
         }
 
         private void lstUsers_SelectedIndexChanged(object sender, EventArgs e)

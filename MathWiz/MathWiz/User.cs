@@ -62,8 +62,7 @@ namespace MathWiz
         public bool VerifyPassword(string username, string password)
         {
             //get the password hash from the database
-            //database is not written yet, so the testing password is "helloThere"
-            string passwordHash = HashPassword("helloThere"); // = MathWizDA.SelectPasswordHash(username);
+            string passwordHash = MathWizDA.SelectPasswordHash(username);
 
             //turn the passwordHash string into a byte array again
             byte[] hashBytes = Convert.FromBase64String(passwordHash);

@@ -391,6 +391,92 @@ namespace MathWiz
         //End SELECT Single Users Methods
 
         //Begin SELECT ALL Users Methods
+        public static List<Admin> SelectAllAdmins()
+        {
+            List<Admin> admins = new List<Admin>();
+
+            //make the query the safe way by binding values to prevent SQL injection
+            string query = "SELECT * FROM admins";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Admin admin = new Admin();
+                    admin.Id = Convert.ToInt16(reader["Id"]);
+                    admin.Username = Convert.ToString(reader["Username"]);
+                    admin.FirstName = Convert.ToString(reader["FirstName"]);
+                    admin.LastName = Convert.ToString(reader["LastName"]);
+
+                    admins.Add(admin);
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                {
+                    conn.Close();
+                }
+            }
+            return admins;
+        }
+
+        public static List<Teacher> SelectAllTeachers()
+        {
+            List<Teacher> teachers = new List<Teacher>();
+
+            //make the query the safe way by binding values to prevent SQL injection
+            string query = "SELECT * FROM teachers";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                
+                while (reader.Read())
+                {
+                    Teacher teacher = new Teacher();
+                    teacher.Id = Convert.ToInt16(reader["Id"]);
+                    teacher.Username = Convert.ToString(reader["Username"]);
+                    teacher.FirstName = Convert.ToString(reader["FirstName"]);
+                    teacher.LastName = Convert.ToString(reader["LastName"]);
+
+                    teachers.Add(teacher);
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                {
+                    conn.Close();
+                }
+            }
+            return teachers;
+        }
+
         public static List<Parent> SelectAllParents()
         {
             List<Parent> parents = new List<Parent>();
@@ -403,13 +489,11 @@ namespace MathWiz
             try
             {
                 conn.Open();
-
                 SqlDataReader reader = selectCommand.ExecuteReader();
-
-                Parent parent = new Parent();
-
+                
                 while (reader.Read()) 
                 {
+                    Parent parent = new Parent();
                     parent.Id = Convert.ToInt16(reader["Id"]);
                     parent.Username = Convert.ToString(reader["Username"]);
                     parent.FirstName = Convert.ToString(reader["FirstName"]);
@@ -437,7 +521,50 @@ namespace MathWiz
             return parents;
         }
 
-        
+        public static List<Student> SelectAllStudents()
+        {
+            List<Student> students = new List<Student>();
+
+            //make the query the safe way by binding values to prevent SQL injection
+            string query = "SELECT * FROM students";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                
+                while (reader.Read())
+                {
+                    Student student = new Student();
+                    student.Id = Convert.ToInt16(reader["Id"]);
+                    student.Username = Convert.ToString(reader["Username"]);
+                    student.FirstName = Convert.ToString(reader["FirstName"]);
+                    student.LastName = Convert.ToString(reader["LastName"]);
+                    student.MasteryLevel = Convert.ToInt16(reader["MasteryLevel"]);
+
+                    students.Add(student);
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                {
+                    conn.Close();
+                }
+            }
+            return students;
+        }
+
         //End SELECT ALL Users Methods
 
         public static PracticeTest SelectPracTest(int id)
@@ -853,13 +980,11 @@ namespace MathWiz
             try
             {
                 conn.Open();
-
                 SqlDataReader reader = selectCommand.ExecuteReader();
-
-                Klass klass = new Klass();
-
+                
                 while (reader.Read())
                 {
+                    Klass klass = new Klass();
                     klass.Id = Convert.ToInt16(reader["Id"]);
                     klass.KlassName = Convert.ToString(reader["KlassName"]);
 

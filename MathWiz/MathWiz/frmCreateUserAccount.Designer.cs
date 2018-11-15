@@ -44,6 +44,7 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblClass = new System.Windows.Forms.Label();
             this.cmbClass = new System.Windows.Forms.ComboBox();
+            this.lblAdded = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtFirstName
@@ -200,6 +201,18 @@
             this.cmbClass.Size = new System.Drawing.Size(162, 24);
             this.cmbClass.TabIndex = 15;
             // 
+            // lblAdded
+            // 
+            this.lblAdded.AutoSize = true;
+            this.lblAdded.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdded.ForeColor = System.Drawing.Color.Green;
+            this.lblAdded.Location = new System.Drawing.Point(302, 166);
+            this.lblAdded.Name = "lblAdded";
+            this.lblAdded.Size = new System.Drawing.Size(220, 19);
+            this.lblAdded.TabIndex = 16;
+            this.lblAdded.Text = "First Last was succesfully Added";
+            this.lblAdded.Visible = false;
+            // 
             // frmCreateUserAccount
             // 
             this.AcceptButton = this.btnCreateUser;
@@ -207,6 +220,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(574, 333);
+            this.Controls.Add(this.lblAdded);
             this.Controls.Add(this.cmbClass);
             this.Controls.Add(this.lblClass);
             this.Controls.Add(this.btnCancel);
@@ -251,5 +265,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lblClass;
         private System.Windows.Forms.ComboBox cmbClass;
+        private System.Windows.Forms.Label lblAdded;
     }
 }

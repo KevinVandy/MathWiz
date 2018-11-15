@@ -137,6 +137,15 @@ namespace MathWiz
                     
                     break;
             }
+            lblAdded.Show();
+
+            txtFirstName.Clear();
+            txtLastName.Clear();
+            txtID.Clear();
+            txtUsername.Clear();
+            txtPassword.Clear();
+            cmbParent.SelectedItem = null;
+            cmbClass.SelectedItem = null;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
