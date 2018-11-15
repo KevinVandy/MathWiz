@@ -86,11 +86,13 @@ namespace MathWiz
         private void txtFirstName_TextChanged(object sender, EventArgs e)
         {
             txtUsername.Text = txtFirstName.Text + txtLastName.Text + txtID.Text;
+            lblAdded.Hide();
         }
 
         private void txtLastName_TextChanged(object sender, EventArgs e)
         {
             txtUsername.Text = txtFirstName.Text + txtLastName.Text + txtID.Text;
+            lblAdded.Hide();
         }
 
         private void txtID_TextChanged(object sender, EventArgs e)
@@ -137,6 +139,7 @@ namespace MathWiz
                     
                     break;
             }
+            lblAdded.Text = firstName + " " + lastName + " was successfully added";
             lblAdded.Show();
 
             txtFirstName.Clear();

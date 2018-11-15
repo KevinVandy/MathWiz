@@ -206,7 +206,7 @@
             this.lblAdded.AutoSize = true;
             this.lblAdded.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAdded.ForeColor = System.Drawing.Color.Green;
-            this.lblAdded.Location = new System.Drawing.Point(302, 166);
+            this.lblAdded.Location = new System.Drawing.Point(281, 165);
             this.lblAdded.Name = "lblAdded";
             this.lblAdded.Size = new System.Drawing.Size(220, 19);
             this.lblAdded.TabIndex = 16;
