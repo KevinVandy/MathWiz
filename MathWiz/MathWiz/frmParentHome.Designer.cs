@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmParentHome));
             this.grpManageChildren = new System.Windows.Forms.GroupBox();
+            this.lstChildren = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lstChildren = new System.Windows.Forms.ListBox();
             this.grpManageChildren.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +50,15 @@
             this.grpManageChildren.TabIndex = 0;
             this.grpManageChildren.TabStop = false;
             this.grpManageChildren.Text = "Your Children";
+            // 
+            // lstChildren
+            // 
+            this.lstChildren.FormattingEnabled = true;
+            this.lstChildren.ItemHeight = 16;
+            this.lstChildren.Location = new System.Drawing.Point(6, 35);
+            this.lstChildren.Name = "lstChildren";
+            this.lstChildren.Size = new System.Drawing.Size(214, 308);
+            this.lstChildren.TabIndex = 0;
             // 
             // menuStrip1
             // 
@@ -75,7 +84,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(108, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -96,18 +105,9 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // lstChildren
-            // 
-            this.lstChildren.FormattingEnabled = true;
-            this.lstChildren.ItemHeight = 16;
-            this.lstChildren.Location = new System.Drawing.Point(6, 35);
-            this.lstChildren.Name = "lstChildren";
-            this.lstChildren.Size = new System.Drawing.Size(214, 308);
-            this.lstChildren.TabIndex = 0;
             // 
             // frmParentHome
             // 
@@ -118,7 +118,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmParentHome";
             this.Text = "MathWiz - Parent Portal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

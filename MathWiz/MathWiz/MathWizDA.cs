@@ -389,9 +389,9 @@ namespace MathWiz
             return parent;
         }
 
-        public static Student SelectStudentsViaParent(int parentID)
+        public static List<Student> SelectStudentsViaParent(int parentID)
         {
-            Student student = new Student();
+            List<Student> students = new List<Student>();
 
             //make the query the safe way by binding values to prevent SQL injection
             string query = "SELECT * FROM students WHERE ParentID = @ParentID";
@@ -404,13 +404,16 @@ namespace MathWiz
 
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read())
+                while (reader.Read())
                 {
-
+                    Student student = new Student();
+                    student.Id = Convert.ToInt16(reader["Id"]);
                     student.Username = Convert.ToString(reader["Username"]);
                     student.FirstName = Convert.ToString(reader["FirstName"]);
                     student.LastName = Convert.ToString(reader["LastName"]);
+                    student.MasteryLevel = Convert.ToInt16(reader["MasteryLevel"]);
 
+                    students.Add(student);
                 }
                 reader.Close();
             }
@@ -429,7 +432,7 @@ namespace MathWiz
                     conn.Close();
                 }
             }
-            return student;
+            return students;
         }
         //End SELECT Single Users Methods
 
