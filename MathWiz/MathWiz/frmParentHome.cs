@@ -39,6 +39,6 @@ namespace MathWiz
             Form aboutBox = new frmAboutBox();
             aboutBox.ShowDialog();
         }
-
+        
     }
 }
