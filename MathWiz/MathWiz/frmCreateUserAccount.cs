@@ -22,7 +22,7 @@ namespace MathWiz
 
         private void frmCreateUserAccount_Load(object sender, EventArgs e)
         {
-            switch (this.Tag)
+            switch (this.Tag.ToString())
             {
                 case "Admin":
 
@@ -105,7 +105,7 @@ namespace MathWiz
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
-            switch (this.Tag)
+            switch (this.Tag.ToString())
             {
                 case "Admin":
                     

@@ -110,5 +110,10 @@ namespace MathWiz
         {
 
         }
+
+        private void gbxManageAccounts_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
