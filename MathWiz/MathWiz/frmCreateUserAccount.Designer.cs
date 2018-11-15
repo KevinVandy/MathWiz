@@ -45,6 +45,8 @@
             this.lblClass = new System.Windows.Forms.Label();
             this.cmbClass = new System.Windows.Forms.ComboBox();
             this.lblAdded = new System.Windows.Forms.Label();
+            this.lblUsernameError = new System.Windows.Forms.Label();
+            this.lblPasswordError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtFirstName
@@ -72,6 +74,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(162, 22);
             this.txtUsername.TabIndex = 5;
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // lblUsername
             // 
@@ -109,7 +112,7 @@
             this.cmbParent.FormattingEnabled = true;
             this.cmbParent.Location = new System.Drawing.Point(339, 39);
             this.cmbParent.Name = "cmbParent";
-            this.cmbParent.Size = new System.Drawing.Size(162, 24);
+            this.cmbParent.Size = new System.Drawing.Size(200, 24);
             this.cmbParent.TabIndex = 1;
             // 
             // lblParent
@@ -198,7 +201,7 @@
             this.cmbClass.FormattingEnabled = true;
             this.cmbClass.Location = new System.Drawing.Point(339, 82);
             this.cmbClass.Name = "cmbClass";
-            this.cmbClass.Size = new System.Drawing.Size(162, 24);
+            this.cmbClass.Size = new System.Drawing.Size(200, 24);
             this.cmbClass.TabIndex = 15;
             // 
             // lblAdded
@@ -206,12 +209,36 @@
             this.lblAdded.AutoSize = true;
             this.lblAdded.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAdded.ForeColor = System.Drawing.Color.Green;
-            this.lblAdded.Location = new System.Drawing.Point(281, 165);
+            this.lblAdded.Location = new System.Drawing.Point(157, 314);
             this.lblAdded.Name = "lblAdded";
             this.lblAdded.Size = new System.Drawing.Size(220, 19);
             this.lblAdded.TabIndex = 16;
             this.lblAdded.Text = "First Last was succesfully Added";
             this.lblAdded.Visible = false;
+            // 
+            // lblUsernameError
+            // 
+            this.lblUsernameError.AutoSize = true;
+            this.lblUsernameError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsernameError.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblUsernameError.Location = new System.Drawing.Point(282, 168);
+            this.lblUsernameError.Name = "lblUsernameError";
+            this.lblUsernameError.Size = new System.Drawing.Size(222, 15);
+            this.lblUsernameError.TabIndex = 17;
+            this.lblUsernameError.Text = "That Username has already been taken";
+            this.lblUsernameError.Visible = false;
+            // 
+            // lblPasswordError
+            // 
+            this.lblPasswordError.AutoSize = true;
+            this.lblPasswordError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordError.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblPasswordError.Location = new System.Drawing.Point(282, 213);
+            this.lblPasswordError.Name = "lblPasswordError";
+            this.lblPasswordError.Size = new System.Drawing.Size(132, 15);
+            this.lblPasswordError.TabIndex = 18;
+            this.lblPasswordError.Text = "A Password is required";
+            this.lblPasswordError.Visible = false;
             // 
             // frmCreateUserAccount
             // 
@@ -219,7 +246,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(574, 333);
+            this.ClientSize = new System.Drawing.Size(587, 354);
+            this.Controls.Add(this.lblPasswordError);
+            this.Controls.Add(this.lblUsernameError);
             this.Controls.Add(this.lblAdded);
             this.Controls.Add(this.cmbClass);
             this.Controls.Add(this.lblClass);
@@ -266,5 +295,7 @@
         private System.Windows.Forms.Label lblClass;
         private System.Windows.Forms.ComboBox cmbClass;
         private System.Windows.Forms.Label lblAdded;
+        private System.Windows.Forms.Label lblUsernameError;
+        private System.Windows.Forms.Label lblPasswordError;
     }
 }

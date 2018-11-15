@@ -15,6 +15,47 @@ namespace MathWiz
         readonly static SqlConnection conn = MathWizConn.GetMathWizConnection();
 
         //Begin Find Users Methods - used for finding out which type of user is logging in
+        public static bool FindUsername(string username) //Find out if a username has already been taken in any of the user tables
+        {
+            string query = "SELECT Username FROM admins WHERE Username = @username " +
+                     "UNION SELECT Username FROM teachers WHERE Username = @username " +
+                     "UNION SELECT Username FROM parents WHERE Username = @username " +
+                     "UNION SELECT Username FROM students WHERE Username = @username";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@username", username);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                if (reader.Read() && reader.HasRows) //if true, this means that it found a record with the username
+                {
+                    reader.Close();
+                    conn.Close();
+                    return true;
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                {
+                    conn.Close();
+                }
+            }
+            return false;
+        }
+
         public static bool FindAdmin(string username)
         {
             string query = "SELECT Username FROM admins WHERE Username = @username";
