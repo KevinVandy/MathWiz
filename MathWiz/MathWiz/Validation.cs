@@ -79,7 +79,8 @@ namespace MathWiz
 
         public bool IsInteger(TextBox txtBox)
         {
-            bool isNumeric = int.TryParse(txtBox.Text, out int n);
+            int n;
+            bool isNumeric = int.TryParse(txtBox.Text, out n);
             if(isNumeric == false)
             {
                 MessageBox.Show(txtBox.Tag.ToString() + " must be an integer.", "Input Error");

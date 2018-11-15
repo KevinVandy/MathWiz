@@ -101,19 +101,19 @@ namespace MathWiz
             return testQuestions;
         }
 
-        private int GenerateRandomNumbers(int masteryLevel)
+        private List<int> GenerateRandomNumbers(int masteryLevel)
         {
-            int aNumber;
+            List<int> listRandoms = new List<int>();
             if(masteryLevel <=6 )
             {
-                aNumber = rnd.Next(0, 10);
+                 listRandoms = Enumerable.Range(0, 10).OrderBy(x => rnd.Next()).Take(10).ToList();
             }
             else
             {
-                aNumber = rnd.Next(0, 20);
+                //listRandoms = Enumerable.Range()
             }
-
-            return aNumber;
+            return listRandoms;
+            //return aNumber;
         }
 
     }

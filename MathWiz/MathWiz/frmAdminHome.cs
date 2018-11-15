@@ -125,5 +125,10 @@ namespace MathWiz
                 btnDeleteSelectedUser.Enabled = false;
             }
         }
+
+        private void gbxManageAccounts_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
