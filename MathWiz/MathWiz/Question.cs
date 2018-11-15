@@ -15,6 +15,22 @@ namespace MathWiz
      *  Instead, I have just provided multiple different constructors that will make it act like their own unique objects.
      *  This is an important decision, and if we get it wrong, it could cost a lot of time, so we need to talk it over.
      */
+
+    /*I was looking at 12 mastery levels
+     * 1. simple addition
+     * 2. simple subtraction
+     * 3. simple mixed add, sub
+     * 7. simple multiplication
+     * 8. simple division
+     * 9. mixed mult, div
+     * 4. complex addition
+     * 5. complex sub
+     * 6. complex mixed add, sub
+     * 10. advanced mult
+     * 11. advanced div
+     * 13. advanced mixed mult, div*/
+
+
     public class Question
     {
         public int Id { get; set; }
@@ -25,7 +41,10 @@ namespace MathWiz
         public TimeSpan TimeLimit { get; set; }
         public int Weight { get; set; }
         public bool RandomlyGenerated { get; set; }
-        
+
+        Random rnd = new Random();
+        //declare a list of question objects that will later be fed back  to the test
+        private List<Question> testQuestions = new List<Question>();
         //empty constructor
         public Question() { }
 
@@ -75,6 +94,26 @@ namespace MathWiz
             this.TimeLimit = timeLimit;
             this.Weight = weight;
             this.RandomlyGenerated = randomlyGenerated;
+        }
+        /*stuff*/
+         private List<Question> GenerateQuestions(int masteryLevel)
+        {
+            return testQuestions;
+        }
+
+        private int GenerateRandomNumbers(int masteryLevel)
+        {
+            int aNumber;
+            if(masteryLevel <=6 )
+            {
+                aNumber = rnd.Next(0, 10);
+            }
+            else
+            {
+                aNumber = rnd.Next(0, 20);
+            }
+
+            return aNumber;
         }
 
     }
