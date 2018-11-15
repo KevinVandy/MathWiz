@@ -408,6 +408,7 @@ namespace MathWiz
                     parent.Username = Convert.ToString(reader["Username"]);
                     parent.FirstName = Convert.ToString(reader["FirstName"]);
                     parent.LastName = Convert.ToString(reader["LastName"]);
+                    parent.Id = Convert.ToInt32(reader["Id"]);
                     
                 }
                 reader.Close();
