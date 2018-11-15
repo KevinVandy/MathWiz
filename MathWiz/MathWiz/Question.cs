@@ -42,8 +42,10 @@ namespace MathWiz
         public int Weight { get; set; }
         public bool RandomlyGenerated { get; set; }
 
-        Random rnd = new Random();
+
         //declare a list of question objects that will later be fed back  to the test
+        private static List<int> easyRandoms = new List<int>();
+        private static List<int> hardRandoms = new List<int>();
         private List<Question> testQuestions = new List<Question>();
         //empty constructor
         public Question() { }
@@ -101,20 +103,78 @@ namespace MathWiz
             return testQuestions;
         }
 
-        private List<int> GenerateRandomNumbers(int masteryLevel)
+        public static List<int> GenerateEasyRandomNumbers()
         {
-            List<int> listRandoms = new List<int>();
-            if(masteryLevel <=6 )
-            {
-                 listRandoms = Enumerable.Range(0, 10).OrderBy(x => rnd.Next()).Take(10).ToList();
-            }
-            else
-            {
-                //listRandoms = Enumerable.Range()
-            }
-            return listRandoms;
-            //return aNumber;
+            Random rnd = new Random();
+            easyRandoms = Enumerable.Range(0, 10).OrderBy(x => rnd.Next()).Take(10).ToList();
+            return easyRandoms;
         }
+
+        public static List<int> GenerateHardRandomNumbers()
+        {
+            Random rnd = new Random();
+            hardRandoms = Enumerable.Range(10, 10).OrderBy(x => rnd.Next()).Take(10).ToList();
+            return hardRandoms;
+        }
+
+        public static List<Question> GenerateRandomQuestions(int masteryLevel, TimeSpan timeLimit)
+        {
+            List<Question> qL = new List<Question>();
+            
+
+            int caseswitch = masteryLevel;
+            switch(masteryLevel)
+            {
+                case 1:
+                    Console.WriteLine("Case1");
+                    break;
+                case 2:
+                    Console.WriteLine("Case2");
+                    break;
+                case 3:
+                    Console.WriteLine("Case3");
+                    break;
+                case 4:
+                    Console.WriteLine("Case4");
+                    break;
+                case 5:
+                    Console.WriteLine("Case5");
+                    break;
+                case 6:
+                    Console.WriteLine("Case6");
+                    break;
+                case 7:
+                    Console.WriteLine("Case7");
+                    break;
+                case 8:
+                    Console.WriteLine("Case8");
+                    break;
+                case 9:
+                    Console.WriteLine("Case9");
+                    break;
+                case 10:
+                    Console.WriteLine("Case10");
+                    break;
+                case 11:
+                    Console.WriteLine("Case11");
+                    break;
+                case 12:
+                    Console.WriteLine("Case12");
+                    break;
+                case 13:
+                    Console.WriteLine("Case13");
+                    break;
+                default:
+                    Console.WriteLine("Default");
+                    break;
+                    
+
+            }
+            return qL;
+
+        }
+
+        
 
     }
 }
