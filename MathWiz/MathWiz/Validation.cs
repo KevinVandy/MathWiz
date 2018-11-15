@@ -11,6 +11,7 @@ namespace MathWiz
      * then just let me know, and I'll write another method. The validation I wrote usually asks you to pass the entire
      * control for validation. It makes it easier to manipulate. In the case of checkbox and radio button validation 
      * pass the enitre groupbox containing those controls*/
+     //testing ability to commit to repo BJP
     public class Validation
     {
         bool theTruth;
