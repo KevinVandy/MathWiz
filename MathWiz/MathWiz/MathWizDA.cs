@@ -776,8 +776,8 @@ namespace MathWiz
                 {
                     gradeQuestion.Id = Convert.ToInt16(reader["QuestionID"]);
                     gradeQuestion.StudentAnswer = Convert.ToString(reader["StudentAnswer"]);
-                    gradeQuestion.Correct = Convert.ToByte(reader["Correct"]);
-                    gradeQuestion.TimeTakenToAnswer = Convert.ToDateTime(reader["TimeTakenToAnswer"]);
+                    gradeQuestion.Correct = Convert.ToBoolean(reader["Correct"]);
+                    //gradeQuestion.TimeTakenToAnswer = (TimeSpan)Convert.ToDateTime(reader["TimeTakenToAnswer"]);
                     
                 }
                 reader.Close();
