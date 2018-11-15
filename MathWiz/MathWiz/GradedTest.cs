@@ -8,6 +8,7 @@ namespace MathWiz
 {
     public abstract class GradedTest
     {
+        public int Id { get; set; }
         public decimal Score { get; set; }
         public TimeSpan TimeTakenToComplete { get; set; }
         public DateTime DateTaken { get; set; }

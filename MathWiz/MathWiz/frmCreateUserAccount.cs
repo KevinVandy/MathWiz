@@ -12,6 +12,8 @@ namespace MathWiz
 {
     public partial class frmCreateUserAccount : Form
     {
+        List<Parent> parentChoices;
+
         public frmCreateUserAccount()
         {
             InitializeComponent();
@@ -64,6 +66,8 @@ namespace MathWiz
 
                     btnCreateUser.Text = "Create Student";
 
+                    parentChoices = MathWizDA.SelectAllParents();
+
                     break;
             }
         }
@@ -85,37 +89,40 @@ namespace MathWiz
 
         private void btnCreateUser_Click(object sender, EventArgs e)
         {
+            string firstName = txtFirstName.Text;
+            string lastName = txtLastName.Text;
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+
             switch (this.Tag)
             {
                 case "Admin":
-
                     
-                    string firstName = txtFirstName.Text;
-                    string lastName = txtLastName.Text;
-                    string username = txtUsername.Text;
-                    string password = txtPassword.Text;
-
-                    Admin newAdmin = new Admin(firstName, lastName, username, password);
-
+                    Admin newAdmin = new Admin(username, firstName, lastName, password);
                     MathWizDB.InsertAdmin(newAdmin);
 
                     break;
 
                 case "Teacher":
 
-                    
+                    Teacher newTeacher = new Teacher(username, firstName, lastName, password);
+                    MathWizDB.InsertTeacher(newTeacher);
 
                     break;
 
                 case "Parent":
 
-                    
+                    Parent newParent = new Parent(username, firstName, lastName, password);
+                    MathWizDB.InsertParent(newParent);
 
                     break;
 
                 case "Student":
 
+                    Student newStudent = new Student(username, firstName, lastName, password);
+                    MathWizDB.InsertStudent(newStudent);
 
+                    
 
                     break;
             }

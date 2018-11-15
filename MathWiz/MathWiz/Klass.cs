@@ -8,6 +8,7 @@ namespace MathWiz
 {
     public class Klass
     {
+        public int Id { get; set; }
         public string KlassName { get; set; }
         public List<Student> Students { get; set; }
         public PlacementTest PlacementTest { get; set; }

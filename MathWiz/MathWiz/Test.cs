@@ -8,6 +8,7 @@ namespace MathWiz
 {
     public abstract class Test
     {
+        public int Id { get; set; }
         public List<Question> Questions { get; set; }
         public TimeSpan TimeLimit { get; set; }
         public bool RandomlyGenerated { get; set; }

@@ -14,13 +14,13 @@ namespace MathWiz
         public Parent() : base() { }
 
         //normal constructor
-        public Parent(string username, string firstName, string lastName, List<Student> children) : base(username, firstName, lastName) //no password
+        public Parent(string username, string firstName, string lastName, List<Student> children = null) : base(username, firstName, lastName) //no password
         {
             this.Children = children;
         }
 
         //full constructor
-        public Parent(string username, string firstName, string lastName, string password, List<Student> children) : base(username, firstName, lastName, password)
+        public Parent(string username, string firstName, string lastName, string password, List<Student> children = null) : base(username, firstName, lastName, password)
         {
             this.Children = children;
         }

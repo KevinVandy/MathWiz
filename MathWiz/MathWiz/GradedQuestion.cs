@@ -8,7 +8,8 @@ namespace MathWiz
 {
     public class GradedQuestion //notice, this does not extend off Grade or Question, instead it has a question as a property
     {
-        Question Question { get; set; }
+        public int Id { get; set; }
+        public Question Question { get; set; }
         public string StudentAnswer { get; set; }
         public bool Correct { get; set; } //could change to decimal score if we want to possibly give partial credit
         public TimeSpan TimeTakenToAnswer { get; set; }

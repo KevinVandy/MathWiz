@@ -210,7 +210,7 @@ namespace MathWiz
         }
     
 
-        //Begin SELECT Users Methods
+        //Begin SELECT Single Users Methods
         public static Admin SelectAdmin(string username)
         {
             //make the object that will eventually get returned
@@ -388,7 +388,57 @@ namespace MathWiz
             }
             return parent;
         }
-        //End SELECT Users Methods
+        //End SELECT Single Users Methods
+
+        //Begin SELECT ALL Users Methods
+        public static List<Parent> SelectAllParents()
+        {
+            List<Parent> parents = new List<Parent>();
+
+            //make the query the safe way by binding values to prevent SQL injection
+            string query = "SELECT * FROM parents";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+
+            //try the select command
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                Parent parent = new Parent();
+
+                while (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
+                {
+                    parent.Id = Convert.ToInt16(reader["Id"]);
+                    parent.Username = Convert.ToString(reader["Username"]);
+                    parent.FirstName = Convert.ToString(reader["FirstName"]);
+                    parent.LastName = Convert.ToString(reader["LastName"]);
+
+                    parents.Add(parent);
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                {
+                    conn.Close();
+                }
+            }
+            return parents;
+        }
+
+        
+        //End SELECT ALL Users Methods
 
         public static PracticeTest SelectPracTest(int id)
         {
