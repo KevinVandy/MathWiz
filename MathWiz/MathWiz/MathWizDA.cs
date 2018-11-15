@@ -775,9 +775,11 @@ namespace MathWiz
                 if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
                 {
                     
-                    //gradeQuestion.Username = Convert.ToString(reader["Username"]);
-                    //gradeQuestion.FirstName = Convert.ToString(reader["FirstName"]);
-                    //gradeQuestion.LastName = Convert.ToString(reader["LastName"]);
+                    gradeQuestion.GradedTestID = Convert.ToInt16(reader["GradedTestID"]);
+                    gradeQuestion.QuestionID = Convert.ToInt16(reader["QuestionID"]);
+                    gradeQuestion.StudentAnswer = Convert.ToString(reader["StudentAnswer"]);
+                    gradeQuestion.Correct = Convert.ToByte(reader["Correct"]);
+                    gradeQuestion.TimeTakenToAnswer = Convert.ToDateTime(reader["TimeTakenToAnswer"]);
                     
                 }
                 reader.Close();
@@ -820,9 +822,8 @@ namespace MathWiz
                 if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
                 {
                     
-                    //klass.Username = Convert.ToString(reader["Username"]);
-                    //klass.FirstName = Convert.ToString(reader["FirstName"]);
-                    //klass.LastName = Convert.ToString(reader["LastName"]);
+                    klass.TeacherID = Convert.ToInt16(reader["TeacherID"]);
+                    klass.KlassName = Convert.ToString(reader["KlassName"]);
                     
                 }
                 reader.Close();
