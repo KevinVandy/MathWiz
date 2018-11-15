@@ -47,6 +47,7 @@
             this.lblAdded = new System.Windows.Forms.Label();
             this.lblUsernameError = new System.Windows.Forms.Label();
             this.lblPasswordError = new System.Windows.Forms.Label();
+            this.btnClassQuestion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtFirstName
@@ -240,6 +241,17 @@
             this.lblPasswordError.Text = "A Password is required";
             this.lblPasswordError.Visible = false;
             // 
+            // btnClassQuestion
+            // 
+            this.btnClassQuestion.Location = new System.Drawing.Point(545, 82);
+            this.btnClassQuestion.Name = "btnClassQuestion";
+            this.btnClassQuestion.Size = new System.Drawing.Size(30, 26);
+            this.btnClassQuestion.TabIndex = 19;
+            this.btnClassQuestion.Text = "?";
+            this.btnClassQuestion.UseVisualStyleBackColor = true;
+            this.btnClassQuestion.Visible = false;
+            this.btnClassQuestion.Click += new System.EventHandler(this.btnClassQuestion_Click);
+            // 
             // frmCreateUserAccount
             // 
             this.AcceptButton = this.btnCreateUser;
@@ -247,6 +259,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(587, 354);
+            this.Controls.Add(this.btnClassQuestion);
             this.Controls.Add(this.lblPasswordError);
             this.Controls.Add(this.lblUsernameError);
             this.Controls.Add(this.lblAdded);
@@ -297,5 +310,6 @@
         private System.Windows.Forms.Label lblAdded;
         private System.Windows.Forms.Label lblUsernameError;
         private System.Windows.Forms.Label lblPasswordError;
+        private System.Windows.Forms.Button btnClassQuestion;
     }
 }

@@ -105,6 +105,11 @@
     <Compile Include="GradedQuestion.cs" />
     <Compile Include="Klass.cs" />
     <Compile Include="MathWizConn.cs" />
+    <Compile Include="MathWizGroup3DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MathWizGroup3DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Question.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="frmAboutBox.cs">
@@ -161,6 +166,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="MathWizGroup3DataSet.xsc">
+      <DependentUpon>MathWizGroup3DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MathWizGroup3DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MathWizGroup3DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MathWizGroup3DataSet.xss">
+      <DependentUpon>MathWizGroup3DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

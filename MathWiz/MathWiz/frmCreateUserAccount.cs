@@ -48,6 +48,8 @@ namespace MathWiz
 
                     btnCreateUser.Text = "Create Teacher";
 
+                    btnClassQuestion.Show();
+
                     break;
 
                 case "Parent":
@@ -145,7 +147,7 @@ namespace MathWiz
                     case "Student":
 
                         Student newStudent = new Student(username, firstName, lastName, password);
-                        int parentID = Convert.ToInt16(cmbParent.SelectedItem.ToString().Substring(0, 6));
+                        int parentID = Convert.ToInt16(cmbParent.SelectedItem.ToString().Substring(0, 4));
                         int klassID = Convert.ToInt16(cmbClass.SelectedItem.ToString().Substring(0, 4));
                         MathWizDB.InsertStudent(newStudent, parentID, klassID);
 
@@ -170,6 +172,9 @@ namespace MathWiz
             this.Close();
         }
 
-        
+        private void btnClassQuestion_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("You can add the teacher to a class later");
+        }
     }
 }

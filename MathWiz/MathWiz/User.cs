@@ -88,7 +88,7 @@ namespace MathWiz
 
         public override string ToString()
         {
-            return this.Id.ToString("000000") + ": " + this.FirstName + " " + this.LastName;
+            return this.Id.ToString("0000") + ": " + this.FirstName + " " + this.LastName;
         }
     }
 }
