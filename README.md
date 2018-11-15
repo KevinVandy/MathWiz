@@ -9,5 +9,5 @@ Test Logins:
   
   Parent: RyanReynolds helloThere
   
-  Student: ForestGump helloThere
+  Student: ForrestGump helloThere
 
