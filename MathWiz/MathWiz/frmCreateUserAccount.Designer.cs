@@ -115,7 +115,7 @@
             // 
             this.lblParent.AutoSize = true;
             this.lblParent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblParent.Location = new System.Drawing.Point(273, 42);
+            this.lblParent.Location = new System.Drawing.Point(281, 42);
             this.lblParent.Name = "lblParent";
             this.lblParent.Size = new System.Drawing.Size(50, 17);
             this.lblParent.TabIndex = 7;
@@ -185,7 +185,7 @@
             // 
             this.lblClass.AutoSize = true;
             this.lblClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClass.Location = new System.Drawing.Point(281, 83);
+            this.lblClass.Location = new System.Drawing.Point(291, 85);
             this.lblClass.Name = "lblClass";
             this.lblClass.Size = new System.Drawing.Size(42, 17);
             this.lblClass.TabIndex = 14;

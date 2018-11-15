@@ -185,7 +185,7 @@ namespace MathWiz
 
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
+                if (reader.Read()) 
                 {
                     passwordHash = Convert.ToString(reader["PasswordHash"]);
                 }
@@ -228,7 +228,7 @@ namespace MathWiz
 
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
+                if (reader.Read()) 
                 {
                     admin.Username = Convert.ToString(reader["Username"]);
                     admin.FirstName = Convert.ToString(reader["FirstName"]);
@@ -271,7 +271,7 @@ namespace MathWiz
 
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
+                if (reader.Read()) 
                 {
                     
                     teacher.Username = Convert.ToString(reader["Username"]);
@@ -316,7 +316,7 @@ namespace MathWiz
 
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
+                if (reader.Read()) 
                 {
                     
                     student.Username = Convert.ToString(reader["Username"]);
@@ -361,7 +361,7 @@ namespace MathWiz
 
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
+                if (reader.Read()) 
                 {
                     
                     parent.Username = Convert.ToString(reader["Username"]);
@@ -408,7 +408,7 @@ namespace MathWiz
 
                 Parent parent = new Parent();
 
-                while (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
+                while (reader.Read()) 
                 {
                     parent.Id = Convert.ToInt16(reader["Id"]);
                     parent.Username = Convert.ToString(reader["Username"]);
@@ -457,7 +457,7 @@ namespace MathWiz
 
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
+                if (reader.Read()) 
                 {
                     
                     //pracTest.Username = Convert.ToString(reader["Username"]);
@@ -502,7 +502,7 @@ namespace MathWiz
 
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
+                if (reader.Read()) 
                 {
                     
                     //placeTest.Username = Convert.ToString(reader["Username"]);
@@ -547,7 +547,7 @@ namespace MathWiz
 
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
+                if (reader.Read()) 
                 {
                     
                     //mastTest.Username = Convert.ToString(reader["Username"]);
@@ -592,7 +592,7 @@ namespace MathWiz
 
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
+                if (reader.Read()) 
                 {
                     
                     //question.Username = Convert.ToString(reader["Username"]);
@@ -637,7 +637,7 @@ namespace MathWiz
 
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
+                if (reader.Read()) 
                 {
                     
                     //gradePrac.Username = Convert.ToString(reader["Username"]);
@@ -682,7 +682,7 @@ namespace MathWiz
 
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
+                if (reader.Read()) 
                 {
                     
                     //gradePlace.Username = Convert.ToString(reader["Username"]);
@@ -727,7 +727,7 @@ namespace MathWiz
 
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
+                if (reader.Read()) 
                 {
                     
                     //gradeMaster.Username = Convert.ToString(reader["Username"]);
@@ -755,7 +755,7 @@ namespace MathWiz
             return gradeMaster;
         }
 
-        public static GradedQuestion SelectGradeQuestions(int id)
+        public static GradedQuestion SelectGradeQuestion(int id)
         {
             //make the object that will eventually get returned
             GradedQuestion gradeQuestion = new GradedQuestion();
@@ -772,11 +772,9 @@ namespace MathWiz
 
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
+                if (reader.Read()) 
                 {
-                    
-                    gradeQuestion.GradedTestID = Convert.ToInt16(reader["GradedTestID"]);
-                    gradeQuestion.QuestionID = Convert.ToInt16(reader["QuestionID"]);
+                    gradeQuestion.Id = Convert.ToInt16(reader["QuestionID"]);
                     gradeQuestion.StudentAnswer = Convert.ToString(reader["StudentAnswer"]);
                     gradeQuestion.Correct = Convert.ToByte(reader["Correct"]);
                     gradeQuestion.TimeTakenToAnswer = Convert.ToDateTime(reader["TimeTakenToAnswer"]);
@@ -819,10 +817,9 @@ namespace MathWiz
 
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read()) //use 'if' if you are selecting 1 record, but use 'while' if selecting more than 1 record
+                if (reader.Read()) 
                 {
                     
-                    klass.TeacherID = Convert.ToInt16(reader["TeacherID"]);
                     klass.KlassName = Convert.ToString(reader["KlassName"]);
                     
                 }
