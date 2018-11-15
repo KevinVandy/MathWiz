@@ -21,7 +21,7 @@ namespace MathWiz
 
         private void frmParentHome_Load(object sender, EventArgs e)
         {
-            List<Student> myChildren = MathWizDA.SelectStudentsViaParent();
+            List<Student> myChildren = MathWizDA.SelectStudentsViaParent(parent.Id);
             foreach (Student child in myChildren) {
                 lstChildren.Items.Add(child);
             }

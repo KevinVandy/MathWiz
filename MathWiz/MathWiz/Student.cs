@@ -30,5 +30,10 @@ namespace MathWiz
             this.GradedPracticeTests = gradedPracticeTests;
             this.GradedMasteryTests = gradedMasteryTests;
         }
+
+        public override string ToString()
+        {
+            return this.Username + ": " + this.MasteryLevel;
+        }
     }
 }
