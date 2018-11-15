@@ -104,9 +104,9 @@
             // 
             this.lstChildren.FormattingEnabled = true;
             this.lstChildren.ItemHeight = 16;
-            this.lstChildren.Location = new System.Drawing.Point(6, 35);
+            this.lstChildren.Location = new System.Drawing.Point(6, 30);
             this.lstChildren.Name = "lstChildren";
-            this.lstChildren.Size = new System.Drawing.Size(214, 308);
+            this.lstChildren.Size = new System.Drawing.Size(214, 324);
             this.lstChildren.TabIndex = 0;
             // 
             // frmParentHome
