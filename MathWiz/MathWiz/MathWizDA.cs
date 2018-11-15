@@ -221,7 +221,7 @@ namespace MathWiz
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@username", username);
 
-            //try the select command
+            
             try
             {
                 conn.Open();
@@ -264,7 +264,7 @@ namespace MathWiz
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@username", username);
 
-            //try the select command
+            
             try
             {
                 conn.Open();
@@ -309,7 +309,7 @@ namespace MathWiz
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@username", username);
 
-            //try the select command
+            
             try
             {
                 conn.Open();
@@ -354,7 +354,7 @@ namespace MathWiz
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@username", username);
 
-            //try the select command
+            
             try
             {
                 conn.Open();
@@ -399,7 +399,7 @@ namespace MathWiz
             string query = "SELECT * FROM parents";
             SqlCommand selectCommand = new SqlCommand(query, conn);
 
-            //try the select command
+            
             try
             {
                 conn.Open();
@@ -450,7 +450,7 @@ namespace MathWiz
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@BranchName", id);
 
-            //try the select command
+            
             try
             {
                 conn.Open();
@@ -495,7 +495,7 @@ namespace MathWiz
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@BranchName", id);
 
-            //try the select command
+            
             try
             {
                 conn.Open();
@@ -540,7 +540,7 @@ namespace MathWiz
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@BranchName", id);
 
-            //try the select command
+            
             try
             {
                 conn.Open();
@@ -585,7 +585,7 @@ namespace MathWiz
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@BranchName", id);
 
-            //try the select command
+            
             try
             {
                 conn.Open();
@@ -630,7 +630,7 @@ namespace MathWiz
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@BranchName", id);
 
-            //try the select command
+            
             try
             {
                 conn.Open();
@@ -675,7 +675,7 @@ namespace MathWiz
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@BranchName", id);
 
-            //try the select command
+            
             try
             {
                 conn.Open();
@@ -720,7 +720,7 @@ namespace MathWiz
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@BranchName", id);
 
-            //try the select command
+            
             try
             {
                 conn.Open();
@@ -765,7 +765,7 @@ namespace MathWiz
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@BranchName", id);
 
-            //try the select command
+            
             try
             {
                 conn.Open();
@@ -777,7 +777,7 @@ namespace MathWiz
                     gradeQuestion.Id = Convert.ToInt16(reader["QuestionID"]);
                     gradeQuestion.StudentAnswer = Convert.ToString(reader["StudentAnswer"]);
                     gradeQuestion.Correct = Convert.ToBoolean(reader["Correct"]);
-                    //gradeQuestion.TimeTakenToAnswer = (TimeSpan)Convert.ToDateTime(reader["TimeTakenToAnswer"]);
+                    gradeQuestion.TimeTakenToAnswer = TimeSpan.Parse(reader["TimeTakenToAnswer"].ToString());
                     
                 }
                 reader.Close();
@@ -810,7 +810,7 @@ namespace MathWiz
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@BranchName", id);
 
-            //try the select command
+            
             try
             {
                 conn.Open();
