@@ -388,6 +388,49 @@ namespace MathWiz
             }
             return parent;
         }
+
+        public static Student SelectStudentsViaParent(int parentID)
+        {
+            Student student = new Student();
+
+            //make the query the safe way by binding values to prevent SQL injection
+            string query = "SELECT * FROM students WHERE ParentID = @ParentID";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@ParentID", parentID);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                if (reader.Read())
+                {
+
+                    student.Username = Convert.ToString(reader["Username"]);
+                    student.FirstName = Convert.ToString(reader["FirstName"]);
+                    student.LastName = Convert.ToString(reader["LastName"]);
+
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                {
+                    conn.Close();
+                }
+            }
+            return student;
+        }
         //End SELECT Single Users Methods
 
         //Begin SELECT ALL Users Methods
