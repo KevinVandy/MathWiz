@@ -104,11 +104,26 @@ namespace MathWiz
                     lstUsers.Items.Add(s.ToString());
                 }
             }
+            if (lstUsers.SelectedItem != null)
+            {
+                btnDeleteSelectedUser.Enabled = true;
+            }
+            else
+            {
+                btnDeleteSelectedUser.Enabled = false;
+            }
         }
 
         private void lstUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if(lstUsers.SelectedItem != null)
+            {
+                btnDeleteSelectedUser.Enabled = true;
+            }
+            else
+            {
+                btnDeleteSelectedUser.Enabled = false;
+            }
         }
 
         private void gbxManageAccounts_Enter(object sender, EventArgs e)
