@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace MathWiz
@@ -18,9 +18,8 @@ namespace MathWiz
         List<Teacher> allTeachers = new List<Teacher>();
         List<Parent> allParents = new List<Parent>();
         List<Student> allStudents = new List<Student>();
-
         List<Klass> allKlasses = new List<Klass>();
-
+        
         public frmAdminHome(string username)
         {
             InitializeComponent();
@@ -29,29 +28,37 @@ namespace MathWiz
 
         private void frmAdminHome_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'mathWizGroup3DataSet1.admins' table. You can move, or remove it, as needed.
-            this.adminsTableAdapter.Fill(this.mathWizGroup3DataSet1.admins);
-            // TODO: This line of code loads data into the 'mathWizGroup3DataSet1.students' table. You can move, or remove it, as needed.
-            this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet1.students);
-            // TODO: This line of code loads data into the 'mathWizGroup3DataSet1.parents' table. You can move, or remove it, as needed.
-            this.parentsTableAdapter.Fill(this.mathWizGroup3DataSet1.parents);
-            // TODO: This line of code loads data into the 'mathWizGroup3DataSet1.teachers' table. You can move, or remove it, as needed.
-            this.teachersTableAdapter.Fill(this.mathWizGroup3DataSet1.teachers);
-            // TODO: This line of code loads data into the 'mathWizGroup3DataSet.admins' table. You can move, or remove it, as needed.
-            this.adminsTableAdapter.Fill(this.mathWizGroup3DataSet1.admins);
+            Thread loadingThread = new Thread(LoadData);
+            loadingThread.Start();
+            this.UseWaitCursor = true;
+            Thread.Sleep(3000);
+            this.UseWaitCursor = false;
+            dgvUsers.Update();
+            dgvUsers.Refresh();
 
-            allAdmins = MathWizDA.SelectAllAdmins();
-            allTeachers = MathWizDA.SelectAllTeachers();
-            allParents = MathWizDA.SelectAllParents();
-            allStudents = MathWizDA.SelectAllStudents();
-            allKlasses = MathWizDA.SelectAllKlasses();
-
-            foreach(Klass k in allKlasses)
+            foreach (Klass k in allKlasses)
             {
                 lstClasses.Items.Add(k.ToString());
             }
 
             rdoStudents.Checked = true;
+        }
+
+        private void LoadData() //this is opened in another thread
+        {
+            try
+            {
+                this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet1.students);
+                this.adminsTableAdapter.Fill(this.mathWizGroup3DataSet1.admins);
+                this.teachersTableAdapter.Fill(this.mathWizGroup3DataSet1.teachers);
+                this.parentsTableAdapter.Fill(this.mathWizGroup3DataSet1.parents);
+                
+                allKlasses = MathWizDA.SelectAllKlasses();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void btnCreateAdmin_Click(object sender, EventArgs e)
@@ -80,6 +87,17 @@ namespace MathWiz
             Form createUserForm = new frmCreateUserAccount();
             createUserForm.Tag = "Student";
             createUserForm.ShowDialog();
+        }
+
+
+        private void btnViewUserInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnDeleteSelectedUser_Click(object sender, EventArgs e)
@@ -113,10 +131,14 @@ namespace MathWiz
             //only enable the delete user button if someone is selected
             if (dgvUsers.SelectedRows != null)
             {
+                btnViewUserInfo.Enabled = true;
+                btnChangePassword.Enabled = true;
                 btnDeleteSelectedUser.Enabled = true;
             }
             else
             {
+                btnViewUserInfo.Enabled = false;
+                btnChangePassword.Enabled = false;
                 btnDeleteSelectedUser.Enabled = false;
             }
         }
@@ -133,17 +155,29 @@ namespace MathWiz
             }
         }
 
-        private void fillByStudentsToolStripButton_Click(object sender, EventArgs e)
+        private void btnRefresh_Click(object sender, EventArgs e)
         {
-            try
-            {
-                this.studentsTableAdapter.FillByStudents(this.mathWizGroup3DataSet1.students);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
+            this.UseWaitCursor = true;
+            LoadData();
+            dgvUsers.Update();
+            dgvUsers.Refresh();
+            this.UseWaitCursor = false;
+        }
+        
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form aboutForm = new frmAboutBox();
+            aboutForm.Show();
+        }
 
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

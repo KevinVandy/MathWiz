@@ -115,7 +115,11 @@ namespace MathWiz
             txtPassword.Text = null;//get rid of password text for security so that the next user who uses the computer doesn't have it
             this.Hide();            //hide login form
             homeForm.ShowDialog();  //only show the home form (of the type that was passed)
-            this.Show();            //after the home form closes, show the login form again
+            if (!this.IsDisposed)   //only reshow this login form again if the user is logging out or clicking the red X, not if they are exiting the application
+            {
+                this.Show();        //after the home form closes, show the login form again
+            }
+            
         }
 
         //menu item actions
