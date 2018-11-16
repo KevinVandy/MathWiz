@@ -360,5 +360,36 @@ namespace MathWiz
                 conn.Close();
             }
         }
+        public static void UpdatePassword(string username, string passwordHash)
+        {
+            string insertStatement = "UPDATE PasswordHash i"; //need subquery?
+
+            // create command object with SQL query and link to connection object
+            SqlCommand Cmd = new SqlCommand(insertStatement, conn);
+
+            // create your parameters and add values from object
+            //Cmd.Parameters.AddWithValue("@Username", newParent.Username);
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // execute the query
+                Cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // always close the connection
+                conn.Close();
+            }
+        }
     }
 }

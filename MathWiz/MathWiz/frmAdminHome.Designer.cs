@@ -32,24 +32,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminHome));
             this.gbxManageAccounts = new System.Windows.Forms.GroupBox();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mathWizGroup3DataSet1 = new MathWiz.MathWizGroup3DataSet();
             this.pnlUserTypes = new System.Windows.Forms.Panel();
             this.rdoStudents = new System.Windows.Forms.RadioButton();
             this.rdoParents = new System.Windows.Forms.RadioButton();
             this.rdoTeachers = new System.Windows.Forms.RadioButton();
             this.rdoAdmins = new System.Windows.Forms.RadioButton();
             this.btnDeleteSelectedUser = new System.Windows.Forms.Button();
-            this.lstUsers = new System.Windows.Forms.ListBox();
             this.btnCreateStudent = new System.Windows.Forms.Button();
             this.btnCreateParent = new System.Windows.Forms.Button();
             this.btnCreateTeacher = new System.Windows.Forms.Button();
             this.btnCreateAdmin = new System.Windows.Forms.Button();
-            this.teachersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,26 +54,31 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbxManageClasses = new System.Windows.Forms.GroupBox();
+            this.lstStudentsInKlass = new System.Windows.Forms.ListBox();
             this.lstClasses = new System.Windows.Forms.ListBox();
             this.btnCreateClass = new System.Windows.Forms.Button();
-            this.mathWizGroup3DataSet = new MathWiz.MathWizGroup3DataSet();
-            this.adminsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.adminsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.adminsTableAdapter();
-            this.teachersTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.teachersTableAdapter();
+            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mathWizGroup3DataSet1 = new MathWiz.MathWizGroup3DataSet();
             this.parentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.teachersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.teachersTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.teachersTableAdapter();
             this.parentsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.parentsTableAdapter();
             this.studentsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.studentsTableAdapter();
+            this.adminsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.adminsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.adminsTableAdapter();
             this.gbxManageAccounts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet1)).BeginInit();
             this.pnlUserTypes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.teachersBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.gbxManageClasses.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adminsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.parentsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teachersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adminsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // gbxManageAccounts
@@ -89,14 +86,13 @@
             this.gbxManageAccounts.Controls.Add(this.dgvUsers);
             this.gbxManageAccounts.Controls.Add(this.pnlUserTypes);
             this.gbxManageAccounts.Controls.Add(this.btnDeleteSelectedUser);
-            this.gbxManageAccounts.Controls.Add(this.lstUsers);
             this.gbxManageAccounts.Controls.Add(this.btnCreateStudent);
             this.gbxManageAccounts.Controls.Add(this.btnCreateParent);
             this.gbxManageAccounts.Controls.Add(this.btnCreateTeacher);
             this.gbxManageAccounts.Controls.Add(this.btnCreateAdmin);
             this.gbxManageAccounts.Location = new System.Drawing.Point(24, 47);
             this.gbxManageAccounts.Name = "gbxManageAccounts";
-            this.gbxManageAccounts.Size = new System.Drawing.Size(1144, 309);
+            this.gbxManageAccounts.Size = new System.Drawing.Size(1097, 269);
             this.gbxManageAccounts.TabIndex = 0;
             this.gbxManageAccounts.TabStop = false;
             this.gbxManageAccounts.Text = "Manage Accounts";
@@ -109,51 +105,14 @@
             this.dgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
             this.usernameDataGridViewTextBoxColumn,
             this.firstNameDataGridViewTextBoxColumn,
             this.lastNameDataGridViewTextBoxColumn});
-            this.dgvUsers.DataSource = this.parentsBindingSource;
-            this.dgvUsers.Location = new System.Drawing.Point(643, 44);
+            this.dgvUsers.DataSource = this.adminsBindingSource;
+            this.dgvUsers.Location = new System.Drawing.Point(406, 44);
             this.dgvUsers.Name = "dgvUsers";
-            this.dgvUsers.Size = new System.Drawing.Size(475, 228);
+            this.dgvUsers.Size = new System.Drawing.Size(475, 200);
             this.dgvUsers.TabIndex = 7;
-            this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // usernameDataGridViewTextBoxColumn
-            // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            // 
-            // studentsBindingSource
-            // 
-            this.studentsBindingSource.DataMember = "students";
-            this.studentsBindingSource.DataSource = this.mathWizGroup3DataSet1;
-            // 
-            // mathWizGroup3DataSet1
-            // 
-            this.mathWizGroup3DataSet1.DataSetName = "MathWizGroup3DataSet";
-            this.mathWizGroup3DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // pnlUserTypes
             // 
@@ -161,16 +120,16 @@
             this.pnlUserTypes.Controls.Add(this.rdoParents);
             this.pnlUserTypes.Controls.Add(this.rdoTeachers);
             this.pnlUserTypes.Controls.Add(this.rdoAdmins);
-            this.pnlUserTypes.Location = new System.Drawing.Point(257, 46);
+            this.pnlUserTypes.Location = new System.Drawing.Point(239, 46);
             this.pnlUserTypes.Name = "pnlUserTypes";
-            this.pnlUserTypes.Size = new System.Drawing.Size(161, 163);
+            this.pnlUserTypes.Size = new System.Drawing.Size(161, 190);
             this.pnlUserTypes.TabIndex = 8;
             // 
             // rdoStudents
             // 
             this.rdoStudents.AutoSize = true;
             this.rdoStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoStudents.Location = new System.Drawing.Point(16, 135);
+            this.rdoStudents.Location = new System.Drawing.Point(16, 159);
             this.rdoStudents.Name = "rdoStudents";
             this.rdoStudents.Size = new System.Drawing.Size(120, 21);
             this.rdoStudents.TabIndex = 3;
@@ -183,7 +142,7 @@
             // 
             this.rdoParents.AutoSize = true;
             this.rdoParents.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoParents.Location = new System.Drawing.Point(16, 93);
+            this.rdoParents.Location = new System.Drawing.Point(16, 109);
             this.rdoParents.Name = "rdoParents";
             this.rdoParents.Size = new System.Drawing.Size(113, 21);
             this.rdoParents.TabIndex = 2;
@@ -196,7 +155,7 @@
             // 
             this.rdoTeachers.AutoSize = true;
             this.rdoTeachers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoTeachers.Location = new System.Drawing.Point(16, 51);
+            this.rdoTeachers.Location = new System.Drawing.Point(16, 59);
             this.rdoTeachers.Name = "rdoTeachers";
             this.rdoTeachers.Size = new System.Drawing.Size(124, 21);
             this.rdoTeachers.TabIndex = 1;
@@ -222,7 +181,7 @@
             // 
             this.btnDeleteSelectedUser.Enabled = false;
             this.btnDeleteSelectedUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteSelectedUser.Location = new System.Drawing.Point(257, 233);
+            this.btnDeleteSelectedUser.Location = new System.Drawing.Point(907, 205);
             this.btnDeleteSelectedUser.Name = "btnDeleteSelectedUser";
             this.btnDeleteSelectedUser.Size = new System.Drawing.Size(161, 39);
             this.btnDeleteSelectedUser.TabIndex = 1;
@@ -230,22 +189,10 @@
             this.btnDeleteSelectedUser.UseVisualStyleBackColor = true;
             this.btnDeleteSelectedUser.Click += new System.EventHandler(this.btnDeleteSelectedUser_Click);
             // 
-            // lstUsers
-            // 
-            this.lstUsers.Enabled = false;
-            this.lstUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstUsers.FormattingEnabled = true;
-            this.lstUsers.ItemHeight = 16;
-            this.lstUsers.Location = new System.Drawing.Point(442, 44);
-            this.lstUsers.Name = "lstUsers";
-            this.lstUsers.Size = new System.Drawing.Size(180, 228);
-            this.lstUsers.TabIndex = 5;
-            this.lstUsers.SelectedIndexChanged += new System.EventHandler(this.lstUsers_SelectedIndexChanged);
-            // 
             // btnCreateStudent
             // 
             this.btnCreateStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateStudent.Location = new System.Drawing.Point(16, 233);
+            this.btnCreateStudent.Location = new System.Drawing.Point(16, 197);
             this.btnCreateStudent.Name = "btnCreateStudent";
             this.btnCreateStudent.Size = new System.Drawing.Size(217, 39);
             this.btnCreateStudent.TabIndex = 4;
@@ -256,7 +203,7 @@
             // btnCreateParent
             // 
             this.btnCreateParent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateParent.Location = new System.Drawing.Point(16, 170);
+            this.btnCreateParent.Location = new System.Drawing.Point(16, 146);
             this.btnCreateParent.Name = "btnCreateParent";
             this.btnCreateParent.Size = new System.Drawing.Size(217, 39);
             this.btnCreateParent.TabIndex = 3;
@@ -267,7 +214,7 @@
             // btnCreateTeacher
             // 
             this.btnCreateTeacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateTeacher.Location = new System.Drawing.Point(16, 107);
+            this.btnCreateTeacher.Location = new System.Drawing.Point(16, 95);
             this.btnCreateTeacher.Name = "btnCreateTeacher";
             this.btnCreateTeacher.Size = new System.Drawing.Size(217, 39);
             this.btnCreateTeacher.TabIndex = 2;
@@ -285,11 +232,6 @@
             this.btnCreateAdmin.Text = "Create New Admin Account";
             this.btnCreateAdmin.UseVisualStyleBackColor = true;
             this.btnCreateAdmin.Click += new System.EventHandler(this.btnCreateAdmin_Click);
-            // 
-            // teachersBindingSource
-            // 
-            this.teachersBindingSource.DataMember = "teachers";
-            this.teachersBindingSource.DataSource = this.mathWizGroup3DataSet1;
             // 
             // menuStrip1
             // 
@@ -377,6 +319,7 @@
             // 
             // gbxManageClasses
             // 
+            this.gbxManageClasses.Controls.Add(this.lstStudentsInKlass);
             this.gbxManageClasses.Controls.Add(this.lstClasses);
             this.gbxManageClasses.Controls.Add(this.btnCreateClass);
             this.gbxManageClasses.Location = new System.Drawing.Point(24, 379);
@@ -386,9 +329,19 @@
             this.gbxManageClasses.TabStop = false;
             this.gbxManageClasses.Text = "Manage Classes";
             // 
+            // lstStudentsInKlass
+            // 
+            this.lstStudentsInKlass.Enabled = false;
+            this.lstStudentsInKlass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstStudentsInKlass.FormattingEnabled = true;
+            this.lstStudentsInKlass.ItemHeight = 16;
+            this.lstStudentsInKlass.Location = new System.Drawing.Point(473, 39);
+            this.lstStudentsInKlass.Name = "lstStudentsInKlass";
+            this.lstStudentsInKlass.Size = new System.Drawing.Size(180, 228);
+            this.lstStudentsInKlass.TabIndex = 7;
+            // 
             // lstClasses
             // 
-            this.lstClasses.Enabled = false;
             this.lstClasses.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstClasses.FormattingEnabled = true;
             this.lstClasses.ItemHeight = 16;
@@ -396,6 +349,7 @@
             this.lstClasses.Name = "lstClasses";
             this.lstClasses.Size = new System.Drawing.Size(180, 228);
             this.lstClasses.TabIndex = 6;
+            this.lstClasses.SelectedIndexChanged += new System.EventHandler(this.lstClasses_SelectedIndexChanged);
             // 
             // btnCreateClass
             // 
@@ -407,28 +361,47 @@
             this.btnCreateClass.Text = "Create New Class";
             this.btnCreateClass.UseVisualStyleBackColor = true;
             // 
-            // mathWizGroup3DataSet
+            // usernameDataGridViewTextBoxColumn
             // 
-            this.mathWizGroup3DataSet.DataSetName = "MathWizGroup3DataSet";
-            this.mathWizGroup3DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
+            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
+            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
             // 
-            // adminsBindingSource
+            // firstNameDataGridViewTextBoxColumn
             // 
-            this.adminsBindingSource.DataMember = "admins";
-            this.adminsBindingSource.DataSource = this.mathWizGroup3DataSet;
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
             // 
-            // adminsTableAdapter
+            // lastNameDataGridViewTextBoxColumn
             // 
-            this.adminsTableAdapter.ClearBeforeFill = true;
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
             // 
-            // teachersTableAdapter
+            // studentsBindingSource
             // 
-            this.teachersTableAdapter.ClearBeforeFill = true;
+            this.studentsBindingSource.DataMember = "students";
+            this.studentsBindingSource.DataSource = this.mathWizGroup3DataSet1;
+            // 
+            // mathWizGroup3DataSet1
+            // 
+            this.mathWizGroup3DataSet1.DataSetName = "MathWizGroup3DataSet";
+            this.mathWizGroup3DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // parentsBindingSource
             // 
             this.parentsBindingSource.DataMember = "parents";
             this.parentsBindingSource.DataSource = this.mathWizGroup3DataSet1;
+            // 
+            // teachersBindingSource
+            // 
+            this.teachersBindingSource.DataMember = "teachers";
+            this.teachersBindingSource.DataSource = this.mathWizGroup3DataSet1;
+            // 
+            // teachersTableAdapter
+            // 
+            this.teachersTableAdapter.ClearBeforeFill = true;
             // 
             // parentsTableAdapter
             // 
@@ -438,12 +411,21 @@
             // 
             this.studentsTableAdapter.ClearBeforeFill = true;
             // 
+            // adminsBindingSource
+            // 
+            this.adminsBindingSource.DataMember = "admins";
+            this.adminsBindingSource.DataSource = this.mathWizGroup3DataSet1;
+            // 
+            // adminsTableAdapter
+            // 
+            this.adminsTableAdapter.ClearBeforeFill = true;
+            // 
             // frmAdminHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1214, 623);
+            this.ClientSize = new System.Drawing.Size(1197, 688);
             this.Controls.Add(this.gbxManageClasses);
             this.Controls.Add(this.gbxManageAccounts);
             this.Controls.Add(this.menuStrip1);
@@ -455,17 +437,16 @@
             this.Load += new System.EventHandler(this.frmAdminHome_Load);
             this.gbxManageAccounts.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet1)).EndInit();
             this.pnlUserTypes.ResumeLayout(false);
             this.pnlUserTypes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.teachersBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.gbxManageClasses.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adminsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.parentsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teachersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adminsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -474,7 +455,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gbxManageAccounts;
-        private System.Windows.Forms.ListBox lstUsers;
         private System.Windows.Forms.Button btnCreateStudent;
         private System.Windows.Forms.Button btnCreateParent;
         private System.Windows.Forms.Button btnCreateTeacher;
@@ -500,9 +480,6 @@
         private System.Windows.Forms.Button btnCreateClass;
         private System.Windows.Forms.ListBox lstClasses;
         private System.Windows.Forms.DataGridView dgvUsers;
-        private MathWizGroup3DataSet mathWizGroup3DataSet;
-        private System.Windows.Forms.BindingSource adminsBindingSource;
-        private MathWizGroup3DataSetTableAdapters.adminsTableAdapter adminsTableAdapter;
         private MathWizGroup3DataSet mathWizGroup3DataSet1;
         private System.Windows.Forms.BindingSource teachersBindingSource;
         private MathWizGroup3DataSetTableAdapters.teachersTableAdapter teachersTableAdapter;
@@ -510,9 +487,11 @@
         private MathWizGroup3DataSetTableAdapters.parentsTableAdapter parentsTableAdapter;
         private System.Windows.Forms.BindingSource studentsBindingSource;
         private MathWizGroup3DataSetTableAdapters.studentsTableAdapter studentsTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ListBox lstStudentsInKlass;
+        private System.Windows.Forms.BindingSource adminsBindingSource;
+        private MathWizGroup3DataSetTableAdapters.adminsTableAdapter adminsTableAdapter;
     }
 }

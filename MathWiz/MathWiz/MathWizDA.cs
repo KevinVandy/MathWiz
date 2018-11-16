@@ -1020,9 +1020,9 @@ namespace MathWiz
             Klass klass = new Klass();
 
             //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT * FROM Klasses WHERE ID = @ID";
+            string query = "SELECT * FROM Klasses WHERE Id = @ID";
             SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@BranchName", id);
+            selectCommand.Parameters.AddWithValue("@Id", id);
 
             
             try
@@ -1057,6 +1057,54 @@ namespace MathWiz
             return klass;
         }
 
+        public static List<Student> SelectAllStudentsInKlass(int klassID)
+        {
+            List<Student> students = new List<Student>();
+
+            //make the query the safe way by binding values to prevent SQL injection
+            string query = "SELECT * FROM students WHERE KlassID = @klassID";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@klassID", klassID);
+
+            try
+            {
+                if (conn == null || conn.State == ConnectionState.Closed) //only open the connection if it is not open already to prevent crash
+                {
+                    conn.Open();
+                }
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Student student = new Student();
+                    student.Id = Convert.ToInt16(reader["Id"]);
+                    student.Username = Convert.ToString(reader["Username"]);
+                    student.FirstName = Convert.ToString(reader["FirstName"]);
+                    student.LastName = Convert.ToString(reader["LastName"]);
+                    student.MasteryLevel = Convert.ToInt16(reader["MasteryLevel"]);
+
+                    students.Add(student);
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                {
+                    conn.Close();
+                }
+            }
+            return students;
+        }
+
         public static List<Klass> SelectAllKlasses()
         {
             List<Klass> klasses = new List<Klass>();
@@ -1069,16 +1117,19 @@ namespace MathWiz
             {
                 conn.Open();
                 SqlDataReader reader = selectCommand.ExecuteReader();
-                
+
+                Klass klass = new Klass();
+
                 while (reader.Read())
                 {
-                    Klass klass = new Klass();
+                    klass = new Klass();
                     klass.Id = Convert.ToInt16(reader["Id"]);
                     klass.KlassName = Convert.ToString(reader["KlassName"]);
-
                     klasses.Add(klass);
                 }
                 reader.Close();
+
+                klass.Students = SelectAllStudentsInKlass(klass.Id);
             }
             catch (SqlException ex)
             {

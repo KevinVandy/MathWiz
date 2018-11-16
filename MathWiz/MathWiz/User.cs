@@ -14,7 +14,7 @@ namespace MathWiz
         public string Username { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Password { get; set; } //TODO work on security, private?
+        public string Password { get; set; } //to set a password value, you must go throgh the full constructor OR use the SetNewPassword method for it to be hashed
 
         //empty constructor
         public User() { }
@@ -84,6 +84,12 @@ namespace MathWiz
                 }
             }
             return true;
+        }
+
+        public void SetNewPassword(string username, string password)
+        {
+            this.Password = HashPassword(password);
+
         }
 
         public override string ToString()
