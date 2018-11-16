@@ -179,5 +179,19 @@ namespace MathWiz
         {
             Application.Exit();
         }
+
+        //event handlers to save data when someone edits a cell in the users table
+        private void dgvUsers_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            SaveDataInCellSheet();
+        }
+
+        private void SaveDataInCellSheet()
+        {
+            adminsTableAdapter.Update(mathWizGroup3DataSet1.admins);
+            teachersTableAdapter.Update(mathWizGroup3DataSet1.teachers);
+            parentsTableAdapter.Update(mathWizGroup3DataSet1.parents);
+            studentsTableAdapter.Update(mathWizGroup3DataSet1.students);
+        }
     }
 }
