@@ -139,5 +139,10 @@ namespace MathWiz
             //TODO Reset Password - maybe iteration 3
             MessageBox.Show("Well that sucks\n\ntesting password: helloThere", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -13,11 +13,6 @@ namespace MathWiz
     public partial class frmAdminHome : Form
     {
         Admin admin;
-
-        List<Admin> allAdmins = new List<Admin>();
-        List<Teacher> allTeachers = new List<Teacher>();
-        List<Parent> allParents = new List<Parent>();
-        List<Student> allStudents = new List<Student>();
         List<Klass> allKlasses = new List<Klass>();
         
         public frmAdminHome(string username)
@@ -28,39 +23,63 @@ namespace MathWiz
 
         private void frmAdminHome_Load(object sender, EventArgs e)
         {
-            Thread loadingThread = new Thread(LoadData);
-            loadingThread.Start();
-            this.UseWaitCursor = true;
-            Thread.Sleep(3000);
-            this.UseWaitCursor = false;
+            backgroundWorkerFormDataLoad.RunWorkerAsync(); //load data
+            rdoStudents.Checked = true;
+        }
+
+        //Begin Background Worker event handlers for loading data
+        private void backgroundWorkerFormDataLoad_DoWork(object sender, DoWorkEventArgs e)//load data in the background so form remains responsive
+        {
+            backgroundWorkerFormDataLoad.ReportProgress(0);
+            this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet.students);
+
+            backgroundWorkerFormDataLoad.ReportProgress(20);
+            this.adminsTableAdapter.Fill(this.mathWizGroup3DataSet.admins);
+
+            backgroundWorkerFormDataLoad.ReportProgress(40);
+            this.teachersTableAdapter.Fill(this.mathWizGroup3DataSet.teachers);
+
+            backgroundWorkerFormDataLoad.ReportProgress(60);
+            this.parentsTableAdapter.Fill(this.mathWizGroup3DataSet.parents);
+
+            backgroundWorkerFormDataLoad.ReportProgress(80);
+            allKlasses = MathWizDA.SelectAllKlasses();
+
+            backgroundWorkerFormDataLoad.ReportProgress(100); //done
+        }
+
+        private void backgroundWorkerFormDataLoad_ProgressChanged(object sender, ProgressChangedEventArgs e)//update progress bar
+        {
+            pgbLoadData.Value = e.ProgressPercentage;
+            switch (e.ProgressPercentage)
+            {
+                case 0: lblProgress.Text = "Loading Students"; break;
+                case 20: lblProgress.Text = "Loading Admins"; break;
+                case 40: lblProgress.Text = "Loading Teachers"; break;
+                case 60: lblProgress.Text = "Loading Parents"; break;
+                case 80: lblProgress.Text = "Loading Classes"; break;
+                case 100:
+                    lblProgress.Text = "";
+                    Thread.Sleep(1000);
+                    pgbLoadData.Value = 0;
+                    break;
+            }
+        }
+
+        private void backgroundWorkerFormDataLoad_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) //refresh the form with the newly loaded data
+        {
             dgvUsers.Update();
             dgvUsers.Refresh();
 
+            lstClasses.Items.Clear();
             foreach (Klass k in allKlasses)
             {
                 lstClasses.Items.Add(k.ToString());
             }
-
-            rdoStudents.Checked = true;
         }
+        //End Background Worker event handlers for loading data
 
-        private void LoadData() //this is opened in another thread
-        {
-            try
-            {
-                this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet1.students);
-                this.adminsTableAdapter.Fill(this.mathWizGroup3DataSet1.admins);
-                this.teachersTableAdapter.Fill(this.mathWizGroup3DataSet1.teachers);
-                this.parentsTableAdapter.Fill(this.mathWizGroup3DataSet1.parents);
-                
-                allKlasses = MathWizDA.SelectAllKlasses();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
+        //Begin Button Event Handlers
         private void btnCreateAdmin_Click(object sender, EventArgs e)
         {
             Form createUserForm = new frmCreateUserAccount();
@@ -107,6 +126,14 @@ namespace MathWiz
             //TODO Delete a user
         }
 
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            if (!backgroundWorkerFormDataLoad.IsBusy)
+            {
+                backgroundWorkerFormDataLoad.RunWorkerAsync();
+            }
+        }
+
         private void rdoUserTypes_CheckChanged(object sender, EventArgs e)
         {
 
@@ -114,18 +141,22 @@ namespace MathWiz
             if (rdoAdmins.Checked)
             {
                 dgvUsers.DataSource = adminsBindingSource;
+                usernameToolStripLabel.Text = "Search for an Admin";
             }
             else if (rdoTeachers.Checked)
             {
                 dgvUsers.DataSource = teachersBindingSource;
+                usernameToolStripLabel.Text = "Search for a Teacher";
             }
             else if (rdoParents.Checked)
             {
                 dgvUsers.DataSource = parentsBindingSource;
+                usernameToolStripLabel.Text = "Search for a Parent";
             }
             else if (rdoStudents.Checked)
             {
                 dgvUsers.DataSource = studentsBindingSource;
+                usernameToolStripLabel.Text = "Search for a Student";
             }
 
             //only enable the delete user button if someone is selected
@@ -154,15 +185,6 @@ namespace MathWiz
                 }
             }
         }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            this.UseWaitCursor = true;
-            LoadData();
-            dgvUsers.Update();
-            dgvUsers.Refresh();
-            this.UseWaitCursor = false;
-        }
         
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -179,8 +201,41 @@ namespace MathWiz
         {
             Application.Exit();
         }
+        
+        //button to search for a user
+        private void fillByUsernameSearchToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (rdoAdmins.Checked)
+                {
+                    this.adminsTableAdapter.FillByAdminSearch(this.mathWizGroup3DataSet.admins, "%" + usernameToolStripTextBox.Text.Trim() + "%");
+                }
+                else if (rdoTeachers.Checked)
+                {
+                    this.teachersTableAdapter.FillByTeacherSearch(this.mathWizGroup3DataSet.teachers, "%" + usernameToolStripTextBox.Text.Trim() + "%");
+                }
+                else if (rdoParents.Checked)
+                {
+                    this.parentsTableAdapter.FillByParentSearch(this.mathWizGroup3DataSet.parents, "%" + usernameToolStripTextBox.Text.Trim() + "%");
+                }
+                else if (rdoStudents.Checked)
+                {
+                    this.studentsTableAdapter.FillByStudentSearch(this.mathWizGroup3DataSet.students, "%" + usernameToolStripTextBox.Text.Trim() + "%");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
 
         //event handlers to save data when someone edits a cell in the users table
+        private void dgvUsers_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            SaveDataInCellSheet();
+        }
+        
         private void dgvUsers_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             SaveDataInCellSheet();
@@ -188,10 +243,12 @@ namespace MathWiz
 
         private void SaveDataInCellSheet()
         {
-            adminsTableAdapter.Update(mathWizGroup3DataSet1.admins);
-            teachersTableAdapter.Update(mathWizGroup3DataSet1.teachers);
-            parentsTableAdapter.Update(mathWizGroup3DataSet1.parents);
-            studentsTableAdapter.Update(mathWizGroup3DataSet1.students);
+            adminsTableAdapter.Update(mathWizGroup3DataSet.admins);
+            teachersTableAdapter.Update(mathWizGroup3DataSet.teachers);
+            parentsTableAdapter.Update(mathWizGroup3DataSet.parents);
+            studentsTableAdapter.Update(mathWizGroup3DataSet.students);
         }
+
+        
     }
 }
