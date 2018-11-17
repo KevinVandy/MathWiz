@@ -45,6 +45,10 @@
             this.lblClass = new System.Windows.Forms.Label();
             this.cmbClass = new System.Windows.Forms.ComboBox();
             this.lblAdded = new System.Windows.Forms.Label();
+            this.lblUsernameError = new System.Windows.Forms.Label();
+            this.lblPasswordError = new System.Windows.Forms.Label();
+            this.btnClassQuestion = new System.Windows.Forms.Button();
+            this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // txtFirstName
@@ -53,7 +57,7 @@
             this.txtFirstName.Location = new System.Drawing.Point(100, 42);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(162, 22);
-            this.txtFirstName.TabIndex = 2;
+            this.txtFirstName.TabIndex = 0;
             this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
             // 
             // txtLastName
@@ -62,7 +66,7 @@
             this.txtLastName.Location = new System.Drawing.Point(100, 83);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(162, 22);
-            this.txtLastName.TabIndex = 3;
+            this.txtLastName.TabIndex = 1;
             this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             // 
             // txtUsername
@@ -71,7 +75,8 @@
             this.txtUsername.Location = new System.Drawing.Point(100, 163);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(162, 22);
-            this.txtUsername.TabIndex = 5;
+            this.txtUsername.TabIndex = 3;
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // lblUsername
             // 
@@ -105,12 +110,13 @@
             // 
             // cmbParent
             // 
+            this.cmbParent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbParent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbParent.FormattingEnabled = true;
             this.cmbParent.Location = new System.Drawing.Point(339, 39);
             this.cmbParent.Name = "cmbParent";
-            this.cmbParent.Size = new System.Drawing.Size(162, 24);
-            this.cmbParent.TabIndex = 1;
+            this.cmbParent.Size = new System.Drawing.Size(200, 24);
+            this.cmbParent.TabIndex = 5;
             // 
             // lblParent
             // 
@@ -128,7 +134,7 @@
             this.txtPassword.Location = new System.Drawing.Point(100, 204);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(162, 22);
-            this.txtPassword.TabIndex = 6;
+            this.txtPassword.TabIndex = 4;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // label1
@@ -146,7 +152,7 @@
             this.txtID.Location = new System.Drawing.Point(100, 124);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(100, 20);
-            this.txtID.TabIndex = 4;
+            this.txtID.TabIndex = 2;
             this.txtID.TextChanged += new System.EventHandler(this.txtID_TextChanged);
             // 
             // lblID
@@ -165,7 +171,7 @@
             this.btnCreateUser.Location = new System.Drawing.Point(100, 261);
             this.btnCreateUser.Name = "btnCreateUser";
             this.btnCreateUser.Size = new System.Drawing.Size(162, 32);
-            this.btnCreateUser.TabIndex = 8;
+            this.btnCreateUser.TabIndex = 7;
             this.btnCreateUser.Text = "Create User Account";
             this.btnCreateUser.UseVisualStyleBackColor = true;
             this.btnCreateUser.Click += new System.EventHandler(this.btnCreateUser_Click);
@@ -177,7 +183,7 @@
             this.btnCancel.Location = new System.Drawing.Point(315, 261);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(162, 32);
-            this.btnCancel.TabIndex = 9;
+            this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -194,24 +200,65 @@
             // 
             // cmbClass
             // 
+            this.cmbClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbClass.FormattingEnabled = true;
             this.cmbClass.Location = new System.Drawing.Point(339, 82);
             this.cmbClass.Name = "cmbClass";
-            this.cmbClass.Size = new System.Drawing.Size(162, 24);
-            this.cmbClass.TabIndex = 15;
+            this.cmbClass.Size = new System.Drawing.Size(200, 24);
+            this.cmbClass.TabIndex = 6;
             // 
             // lblAdded
             // 
             this.lblAdded.AutoSize = true;
             this.lblAdded.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAdded.ForeColor = System.Drawing.Color.Green;
-            this.lblAdded.Location = new System.Drawing.Point(281, 165);
+            this.lblAdded.Location = new System.Drawing.Point(157, 314);
             this.lblAdded.Name = "lblAdded";
             this.lblAdded.Size = new System.Drawing.Size(220, 19);
             this.lblAdded.TabIndex = 16;
             this.lblAdded.Text = "First Last was succesfully Added";
             this.lblAdded.Visible = false;
+            // 
+            // lblUsernameError
+            // 
+            this.lblUsernameError.AutoSize = true;
+            this.lblUsernameError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsernameError.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblUsernameError.Location = new System.Drawing.Point(282, 168);
+            this.lblUsernameError.Name = "lblUsernameError";
+            this.lblUsernameError.Size = new System.Drawing.Size(222, 15);
+            this.lblUsernameError.TabIndex = 17;
+            this.lblUsernameError.Text = "That Username has already been taken";
+            this.lblUsernameError.Visible = false;
+            // 
+            // lblPasswordError
+            // 
+            this.lblPasswordError.AutoSize = true;
+            this.lblPasswordError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordError.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblPasswordError.Location = new System.Drawing.Point(282, 213);
+            this.lblPasswordError.Name = "lblPasswordError";
+            this.lblPasswordError.Size = new System.Drawing.Size(132, 15);
+            this.lblPasswordError.TabIndex = 18;
+            this.lblPasswordError.Text = "A Password is required";
+            this.lblPasswordError.Visible = false;
+            // 
+            // btnClassQuestion
+            // 
+            this.btnClassQuestion.Location = new System.Drawing.Point(545, 82);
+            this.btnClassQuestion.Name = "btnClassQuestion";
+            this.btnClassQuestion.Size = new System.Drawing.Size(30, 26);
+            this.btnClassQuestion.TabIndex = 19;
+            this.btnClassQuestion.Text = "?";
+            this.btnClassQuestion.UseVisualStyleBackColor = true;
+            this.btnClassQuestion.Visible = false;
+            this.btnClassQuestion.Click += new System.EventHandler(this.btnClassQuestion_Click);
+            // 
+            // backgroundWorkerLoadData
+            // 
+            this.backgroundWorkerLoadData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerLoadData_DoWork);
+            this.backgroundWorkerLoadData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerLoadData_RunWorkerCompleted);
             // 
             // frmCreateUserAccount
             // 
@@ -219,7 +266,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(574, 333);
+            this.ClientSize = new System.Drawing.Size(587, 354);
+            this.Controls.Add(this.btnClassQuestion);
+            this.Controls.Add(this.lblPasswordError);
+            this.Controls.Add(this.lblUsernameError);
             this.Controls.Add(this.lblAdded);
             this.Controls.Add(this.cmbClass);
             this.Controls.Add(this.lblClass);
@@ -266,5 +316,9 @@
         private System.Windows.Forms.Label lblClass;
         private System.Windows.Forms.ComboBox cmbClass;
         private System.Windows.Forms.Label lblAdded;
+        private System.Windows.Forms.Label lblUsernameError;
+        private System.Windows.Forms.Label lblPasswordError;
+        private System.Windows.Forms.Button btnClassQuestion;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerLoadData;
     }
 }

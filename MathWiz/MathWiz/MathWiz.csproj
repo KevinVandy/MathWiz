@@ -56,6 +56,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,6 +74,12 @@
     </Compile>
     <Compile Include="frmAdminHome.Designer.cs">
       <DependentUpon>frmAdminHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCreateUserAccount.cs">
       <SubType>Form</SubType>
@@ -105,6 +112,11 @@
     <Compile Include="GradedQuestion.cs" />
     <Compile Include="Klass.cs" />
     <Compile Include="MathWizConn.cs" />
+    <Compile Include="MathWizGroup3DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MathWizGroup3DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Question.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="frmAboutBox.cs">
@@ -137,6 +149,9 @@
     <EmbeddedResource Include="frmAdminHome.resx">
       <DependentUpon>frmAdminHome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCreateUserAccount.resx">
       <DependentUpon>frmCreateUserAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +176,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="MathWizGroup3DataSet.xsc">
+      <DependentUpon>MathWizGroup3DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MathWizGroup3DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MathWizGroup3DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MathWizGroup3DataSet.xss">
+      <DependentUpon>MathWizGroup3DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

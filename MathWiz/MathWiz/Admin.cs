@@ -8,6 +8,8 @@ namespace MathWiz
 {
     public class Admin : User
     {
+        //no custom properties yet
+
         //empty constructor
         public Admin() : base() { }
 

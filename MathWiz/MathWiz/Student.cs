@@ -30,5 +30,15 @@ namespace MathWiz
             this.GradedPracticeTests = gradedPracticeTests;
             this.GradedMasteryTests = gradedMasteryTests;
         }
+
+        //public override string ToString() //could you use something else than ToString()? I made the function below so I can use the toString - kevin
+        //{
+        //    return this.Username + ": " + this.MasteryLevel;
+        //}
+
+        public string ToUsernameAndML()
+        {
+            return this.Username + ": " + this.MasteryLevel;
+        }
     }
 }

@@ -10,18 +10,11 @@ using System.Windows.Forms;
 
 namespace MathWiz
 {
-    public partial class frmStudentHome : Form
+    public partial class frmChangePassword : Form
     {
-        Student student;
-        public frmStudentHome(string username)
+        public frmChangePassword()
         {
             InitializeComponent();
-            student = MathWizDA.SelectStudent(username);
-        }
-
-        private void frmStudentHome_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

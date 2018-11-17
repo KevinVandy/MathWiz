@@ -48,6 +48,8 @@ namespace MathWiz
 
                     btnCreateUser.Text = "Create Teacher";
 
+                    btnClassQuestion.Show();
+
                     break;
 
                 case "Parent":
@@ -67,17 +69,7 @@ namespace MathWiz
 
                     btnCreateUser.Text = "Create Student";
 
-                    parentChoices = MathWizDA.SelectAllParents();
-                    klassChoices = MathWizDA.SelectAllKlasses();
-
-                    foreach(Parent p in parentChoices)
-                    {
-                        cmbParent.Items.Add(p.ToString());
-                    }
-                    foreach(Klass k in klassChoices)
-                    {
-                        cmbClass.Items.Add(k.ToString());
-                    }
+                    backgroundWorkerLoadData.RunWorkerAsync(); //load parent and klass data for dropdown menu, but in the background
 
                     break;
             }
@@ -100,6 +92,11 @@ namespace MathWiz
             txtUsername.Text = txtFirstName.Text + txtLastName.Text + txtID.Text;
         }
 
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+            lblUsernameError.Hide();
+        }
+
         private void btnCreateUser_Click(object sender, EventArgs e)
         {
             string firstName = txtFirstName.Text;
@@ -107,38 +104,47 @@ namespace MathWiz
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
-            switch (this.Tag.ToString())
+            if (MathWizDA.FindUsername(username))
             {
-                case "Admin":
-                    
-                    Admin newAdmin = new Admin(username, firstName, lastName, password);
-                    MathWizDB.InsertAdmin(newAdmin);
-
-                    break;
-
-                case "Teacher":
-
-                    Teacher newTeacher = new Teacher(username, firstName, lastName, password);
-                    MathWizDB.InsertTeacher(newTeacher);
-
-                    break;
-
-                case "Parent":
-
-                    Parent newParent = new Parent(username, firstName, lastName, password);
-                    MathWizDB.InsertParent(newParent);
-
-                    break;
-
-                case "Student":
-
-                    Student newStudent = new Student(username, firstName, lastName, password);
-                    int parentID = Convert.ToInt16(cmbParent.SelectedItem.ToString().Substring(0, 6));
-                    int klassID = Convert.ToInt16(cmbClass.SelectedItem.ToString().Substring(0, 4));
-                    MathWizDB.InsertStudent(newStudent, parentID, klassID);
-                    
-                    break;
+                lblUsernameError.Text = "That username has already been taken";
+                lblUsernameError.Show();
             }
+            else
+            {
+                switch (this.Tag.ToString())
+                {
+                    case "Admin":
+
+                        Admin newAdmin = new Admin(username, firstName, lastName, password);
+                        MathWizDB.InsertAdmin(newAdmin);
+
+                        break;
+
+                    case "Teacher":
+
+                        Teacher newTeacher = new Teacher(username, firstName, lastName, password);
+                        MathWizDB.InsertTeacher(newTeacher);
+
+                        break;
+
+                    case "Parent":
+
+                        Parent newParent = new Parent(username, firstName, lastName, password);
+                        MathWizDB.InsertParent(newParent);
+
+                        break;
+
+                    case "Student":
+
+                        Student newStudent = new Student(username, firstName, lastName, password);
+                        int parentID = Convert.ToInt16(cmbParent.SelectedItem.ToString().Substring(0, 4));
+                        int klassID = Convert.ToInt16(cmbClass.SelectedItem.ToString().Substring(0, 4));
+                        MathWizDB.InsertStudent(newStudent, parentID, klassID);
+
+                        break;
+                }
+            }
+            
             lblAdded.Text = firstName + " " + lastName + " was successfully added";
             lblAdded.Show();
 
@@ -154,6 +160,29 @@ namespace MathWiz
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnClassQuestion_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("You can add the teacher to a class later");
+        }
+
+        private void backgroundWorkerLoadData_DoWork(object sender, DoWorkEventArgs e)
+        {
+            parentChoices = MathWizDA.SelectAllParents();
+            klassChoices = MathWizDA.SelectAllKlasses();
+        }
+
+        private void backgroundWorkerLoadData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            foreach (Parent p in parentChoices)
+            {
+                cmbParent.Items.Add(p.ToString());
+            }
+            foreach (Klass k in klassChoices)
+            {
+                cmbClass.Items.Add(k.ToString());
+            }
         }
     }
 }

@@ -15,6 +15,47 @@ namespace MathWiz
         readonly static SqlConnection conn = MathWizConn.GetMathWizConnection();
 
         //Begin Find Users Methods - used for finding out which type of user is logging in
+        public static bool FindUsername(string username) //Find out if a username has already been taken in any of the user tables
+        {
+            string query = "SELECT Username FROM admins WHERE Username = @username " +
+                     "UNION SELECT Username FROM teachers WHERE Username = @username " +
+                     "UNION SELECT Username FROM parents WHERE Username = @username " +
+                     "UNION SELECT Username FROM students WHERE Username = @username";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@username", username);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                if (reader.Read() && reader.HasRows) //if true, this means that it found a record with the username
+                {
+                    reader.Close();
+                    conn.Close();
+                    return true;
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                {
+                    conn.Close();
+                }
+            }
+            return false;
+        }
+
         public static bool FindAdmin(string username)
         {
             string query = "SELECT Username FROM admins WHERE Username = @username";
@@ -367,6 +408,7 @@ namespace MathWiz
                     parent.Username = Convert.ToString(reader["Username"]);
                     parent.FirstName = Convert.ToString(reader["FirstName"]);
                     parent.LastName = Convert.ToString(reader["LastName"]);
+                    parent.Id = Convert.ToInt32(reader["Id"]);
                     
                 }
                 reader.Close();
@@ -387,6 +429,52 @@ namespace MathWiz
                 }
             }
             return parent;
+        }
+
+        public static List<Student> SelectStudentsViaParent(int parentID)
+        {
+            List<Student> students = new List<Student>();
+
+            //make the query the safe way by binding values to prevent SQL injection
+            string query = "SELECT * FROM students WHERE ParentID = @ParentID";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@ParentID", parentID);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Student student = new Student();
+                    student.Id = Convert.ToInt16(reader["Id"]);
+                    student.Username = Convert.ToString(reader["Username"]);
+                    student.FirstName = Convert.ToString(reader["FirstName"]);
+                    student.LastName = Convert.ToString(reader["LastName"]);
+                    student.MasteryLevel = Convert.ToInt16(reader["MasteryLevel"]);
+
+                    students.Add(student);
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                {
+                    conn.Close();
+                }
+            }
+            return students;
         }
         //End SELECT Single Users Methods
 
@@ -932,9 +1020,9 @@ namespace MathWiz
             Klass klass = new Klass();
 
             //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT * FROM Klasses WHERE ID = @ID";
+            string query = "SELECT * FROM Klasses WHERE Id = @ID";
             SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@BranchName", id);
+            selectCommand.Parameters.AddWithValue("@Id", id);
 
             
             try
@@ -969,6 +1057,54 @@ namespace MathWiz
             return klass;
         }
 
+        public static List<Student> SelectAllStudentsInKlass(int klassID)
+        {
+            List<Student> students = new List<Student>();
+
+            //make the query the safe way by binding values to prevent SQL injection
+            string query = "SELECT * FROM students WHERE KlassID = @klassID";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@klassID", klassID);
+
+            try
+            {
+                if (conn == null || conn.State == ConnectionState.Closed) //only open the connection if it is not open already to prevent crash
+                {
+                    conn.Open();
+                }
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Student student = new Student();
+                    student.Id = Convert.ToInt16(reader["Id"]);
+                    student.Username = Convert.ToString(reader["Username"]);
+                    student.FirstName = Convert.ToString(reader["FirstName"]);
+                    student.LastName = Convert.ToString(reader["LastName"]);
+                    student.MasteryLevel = Convert.ToInt16(reader["MasteryLevel"]);
+
+                    students.Add(student);
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                {
+                    conn.Close();
+                }
+            }
+            return students;
+        }
+
         public static List<Klass> SelectAllKlasses()
         {
             List<Klass> klasses = new List<Klass>();
@@ -981,16 +1117,19 @@ namespace MathWiz
             {
                 conn.Open();
                 SqlDataReader reader = selectCommand.ExecuteReader();
-                
+
+                Klass klass = new Klass();
+
                 while (reader.Read())
                 {
-                    Klass klass = new Klass();
+                    klass = new Klass();
                     klass.Id = Convert.ToInt16(reader["Id"]);
                     klass.KlassName = Convert.ToString(reader["KlassName"]);
-
                     klasses.Add(klass);
                 }
                 reader.Close();
+
+                klass.Students = SelectAllStudentsInKlass(klass.Id);
             }
             catch (SqlException ex)
             {
