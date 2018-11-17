@@ -13,6 +13,11 @@ namespace MathWiz
 {
     public partial class frmLogin : Form
     {
+        User user;
+        Form homeForm;
+        string errorFlag = "";
+        int loginAttempts = 0;
+
         public frmLogin()
         {
             InitializeComponent();
@@ -29,97 +34,116 @@ namespace MathWiz
             //hide the errors if they were previously shown so that they only show when triggered again
             lblUsernameError.Hide();
             lblPasswordError.Hide();
-
-            string username = txtUsername.Text;
-            string password = txtPassword.Text; //testing password is "helloThere"
             
-            User user;
-            Form homeForm;
-
-            if(username == "" && password == "")
+            if(txtUsername.Text == "" && txtPassword.Text == "")
             {
                 lblUsernameError.Show();
                 lblPasswordError.Show();
             }
-            if(username == "")
+            if(txtUsername.Text == "")
             {
                 lblUsernameError.Show();
             }
-            else if(password == "")
+            else if(txtPassword.Text == "")
             {
                 lblPasswordError.Show();
             }
             else
             {
-                if (MathWizDA.FindAdmin(username))
-                {
-                    user = new Admin();
-                    if (user.VerifyPassword(username, password))
-                    {
-                        homeForm = new frmAdminHome(username); 
-                        Login(homeForm);
-                    }
-                    else
-                    {
-                        lblPasswordError.Show();
-                    }
-                }
-                else if (MathWizDA.FindTeacher(username))
-                {
-                    user = new Teacher();
-                    if (user.VerifyPassword(username, password))
-                    {
-                        homeForm = new frmTeacherHome(username); 
-                        Login(homeForm);
-                    }
-                    else
-                    {
-                        lblPasswordError.Show();
-                    }
-                }
-                else if (MathWizDA.FindParent(username))
-                {
-                    user = new Parent();
-                    if (user.VerifyPassword(username, password))
-                    {
-                        homeForm = new frmParentHome(username); 
-                        Login(homeForm);
-                    }
-                    else
-                    {
-                        lblPasswordError.Show();
-                    }
-                }
-                else if (MathWizDA.FindStudent(username))
-                {
-                    user = new Student();
-                    if (user.VerifyPassword(username, password))
-                    {
-                        homeForm = new frmStudentHome(username); 
-                        Login(homeForm);
-                    }
-                    else
-                    {
-                        lblPasswordError.Show();
-                    }
-                }
-                else //could not find username
-                {
-                    lblUsernameError.Show();
-                }
+                btnLogin.Enabled = false;
+                backgroundWorkerLogin.RunWorkerAsync();
             }
         }
 
-        private void Login(Form homeForm)
+        private void backgroundWorkerLogin_DoWork(object sender, DoWorkEventArgs e)
         {
-            txtPassword.Text = null;//get rid of password text for security so that the next user who uses the computer doesn't have it
-            this.Hide();            //hide login form
-            homeForm.ShowDialog();  //only show the home form (of the type that was passed)
-            if (!this.IsDisposed)   //only reshow this login form again if the user is logging out or clicking the red X, not if they are exiting the application
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+
+            if (MathWizDA.FindAdmin(username))
             {
-                this.Show();        //after the home form closes, show the login form again
+                user = new Admin();
+                if (user.VerifyPassword(username, password))
+                {
+                    homeForm = new frmAdminHome(username);
+                }
+                else
+                {
+                    errorFlag = "password";
+                }
             }
-            
+            else if (MathWizDA.FindTeacher(username))
+            {
+                user = new Teacher();
+                if (user.VerifyPassword(username, password))
+                {
+                    homeForm = new frmTeacherHome(username);
+                }
+                else
+                {
+                    errorFlag = "password";
+                }
+            }
+            else if (MathWizDA.FindParent(username))
+            {
+                user = new Parent();
+                if (user.VerifyPassword(username, password))
+                {
+                    homeForm = new frmParentHome(username);
+                }
+                else
+                {
+                    errorFlag = "password";
+                }
+            }
+            else if (MathWizDA.FindStudent(username))
+            {
+                user = new Student();
+                if (user.VerifyPassword(username, password))
+                {
+                    homeForm = new frmStudentHome(username);
+                }
+                else
+                {
+                    errorFlag = "password";
+                }
+            }
+            else //could not find username
+            {
+                errorFlag = "username";
+            }
+        }
+
+        private void backgroundWorkerLogin_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error == null && errorFlag == "")
+            {
+                txtPassword.Text = null;//get rid of password text for security so that the next user who uses the computer doesn't have it
+                this.Hide();            //hide login form
+                homeForm.ShowDialog();  //only show the home form (of the type that was passed)
+                if (!this.IsDisposed)   //only reshow this login form again if the user is logging out or clicking the red X, not if they are exiting the application
+                {
+                    this.Show();        //after the home form closes, show the login form again
+                }
+            }
+            else if (errorFlag == "username")
+            {
+                lblUsernameError.Show();
+            }
+            else if (errorFlag == "password")
+            {
+                lblPasswordError.Show();
+            }
+            else if(loginAttempts < 3)
+            {
+                loginAttempts++;
+                backgroundWorkerLogin.RunWorkerAsync();
+            }
+            else
+            {
+                MessageBox.Show("Could Not log in. This could be due to a slow internet connection. Try again.");
+            }
+            btnLogin.Enabled = true; //re-enable login button for the next user
         }
 
         //menu item actions
@@ -136,13 +160,15 @@ namespace MathWiz
 
         private void iCantLogInToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TODO Reset Password - maybe iteration 3
-            MessageBox.Show("Well that sucks\n\ntesting password: helloThere", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Ask your teacher to reset your password", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            backgroundWorkerLogin.CancelAsync();
             this.Close();
         }
+
+        
     }
 }

@@ -40,7 +40,6 @@
             this.Name = "frmTeacherHome";
             this.Text = "MathWiz - Teacher Portal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTeacherHome_FormClosing);
             this.Load += new System.EventHandler(this.frmTeacherHome_Load);
             this.ResumeLayout(false);
 

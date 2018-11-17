@@ -69,17 +69,7 @@ namespace MathWiz
 
                     btnCreateUser.Text = "Create Student";
 
-                    parentChoices = MathWizDA.SelectAllParents();
-                    klassChoices = MathWizDA.SelectAllKlasses();
-
-                    foreach(Parent p in parentChoices)
-                    {
-                        cmbParent.Items.Add(p.ToString());
-                    }
-                    foreach(Klass k in klassChoices)
-                    {
-                        cmbClass.Items.Add(k.ToString());
-                    }
+                    backgroundWorkerLoadData.RunWorkerAsync(); //load parent and klass data for dropdown menu, but in the background
 
                     break;
             }
@@ -175,6 +165,24 @@ namespace MathWiz
         private void btnClassQuestion_Click(object sender, EventArgs e)
         {
             MessageBox.Show("You can add the teacher to a class later");
+        }
+
+        private void backgroundWorkerLoadData_DoWork(object sender, DoWorkEventArgs e)
+        {
+            parentChoices = MathWizDA.SelectAllParents();
+            klassChoices = MathWizDA.SelectAllKlasses();
+        }
+
+        private void backgroundWorkerLoadData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            foreach (Parent p in parentChoices)
+            {
+                cmbParent.Items.Add(p.ToString());
+            }
+            foreach (Klass k in klassChoices)
+            {
+                cmbClass.Items.Add(k.ToString());
+            }
         }
     }
 }

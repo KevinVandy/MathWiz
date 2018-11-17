@@ -43,6 +43,7 @@
             this.lblUsernameError = new System.Windows.Forms.Label();
             this.lblPasswordError = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.backgroundWorkerLogin = new System.ComponentModel.BackgroundWorker();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,7 +70,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(99, 24);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -85,14 +86,14 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // iCantLogInToolStripMenuItem
             // 
             this.iCantLogInToolStripMenuItem.Name = "iCantLogInToolStripMenuItem";
-            this.iCantLogInToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.iCantLogInToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
             this.iCantLogInToolStripMenuItem.Text = "I Can\'t Log in!";
             this.iCantLogInToolStripMenuItem.Click += new System.EventHandler(this.iCantLogInToolStripMenuItem_Click);
             // 
@@ -183,6 +184,12 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // backgroundWorkerLogin
+            // 
+            this.backgroundWorkerLogin.WorkerSupportsCancellation = true;
+            this.backgroundWorkerLogin.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerLogin_DoWork);
+            this.backgroundWorkerLogin.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerLogin_RunWorkerCompleted);
+            // 
             // frmLogin
             // 
             this.AcceptButton = this.btnLogin;
@@ -231,6 +238,7 @@
         private System.Windows.Forms.Label lblPasswordError;
         private System.Windows.Forms.ToolStripMenuItem iCantLogInToolStripMenuItem;
         private System.Windows.Forms.Button btnCancel;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerLogin;
     }
 }
 

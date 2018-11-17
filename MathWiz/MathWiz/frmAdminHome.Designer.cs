@@ -33,7 +33,6 @@
             this.gbxManageAccounts = new System.Windows.Forms.GroupBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnChangePassword = new System.Windows.Forms.Button();
-            this.btnViewUserInfo = new System.Windows.Forms.Button();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,9 +90,7 @@
             // 
             // gbxManageAccounts
             // 
-            this.gbxManageAccounts.Controls.Add(this.btnRefresh);
             this.gbxManageAccounts.Controls.Add(this.btnChangePassword);
-            this.gbxManageAccounts.Controls.Add(this.btnViewUserInfo);
             this.gbxManageAccounts.Controls.Add(this.dgvUsers);
             this.gbxManageAccounts.Controls.Add(this.pnlUserTypes);
             this.gbxManageAccounts.Controls.Add(this.btnDeleteSelectedUser);
@@ -111,7 +108,7 @@
             // btnRefresh
             // 
             this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.Location = new System.Drawing.Point(907, 196);
+            this.btnRefresh.Location = new System.Drawing.Point(931, 24);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(161, 39);
             this.btnRefresh.TabIndex = 11;
@@ -123,25 +120,13 @@
             // 
             this.btnChangePassword.Enabled = false;
             this.btnChangePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangePassword.Location = new System.Drawing.Point(907, 96);
+            this.btnChangePassword.Location = new System.Drawing.Point(907, 44);
             this.btnChangePassword.Name = "btnChangePassword";
             this.btnChangePassword.Size = new System.Drawing.Size(161, 39);
             this.btnChangePassword.TabIndex = 10;
             this.btnChangePassword.Text = "Change Password";
             this.btnChangePassword.UseVisualStyleBackColor = true;
             this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
-            // 
-            // btnViewUserInfo
-            // 
-            this.btnViewUserInfo.Enabled = false;
-            this.btnViewUserInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewUserInfo.Location = new System.Drawing.Point(907, 46);
-            this.btnViewUserInfo.Name = "btnViewUserInfo";
-            this.btnViewUserInfo.Size = new System.Drawing.Size(161, 39);
-            this.btnViewUserInfo.TabIndex = 9;
-            this.btnViewUserInfo.Text = "View User Info";
-            this.btnViewUserInfo.UseVisualStyleBackColor = true;
-            this.btnViewUserInfo.Click += new System.EventHandler(this.btnViewUserInfo_Click);
             // 
             // dgvUsers
             // 
@@ -202,7 +187,7 @@
             this.studentsBindingSource.DataMember = "students";
             this.studentsBindingSource.DataSource = this.mathWizGroup3DataSet;
             // 
-            // mathWizGroup3DataSet1
+            // mathWizGroup3DataSet
             // 
             this.mathWizGroup3DataSet.DataSetName = "MathWizGroup3DataSet";
             this.mathWizGroup3DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
@@ -274,7 +259,7 @@
             // 
             this.btnDeleteSelectedUser.Enabled = false;
             this.btnDeleteSelectedUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteSelectedUser.Location = new System.Drawing.Point(907, 146);
+            this.btnDeleteSelectedUser.Location = new System.Drawing.Point(907, 197);
             this.btnDeleteSelectedUser.Name = "btnDeleteSelectedUser";
             this.btnDeleteSelectedUser.Size = new System.Drawing.Size(161, 39);
             this.btnDeleteSelectedUser.TabIndex = 1;
@@ -435,7 +420,7 @@
             this.fillByAdminSearchToolStripButton});
             this.fillBySearchToolStrip.Location = new System.Drawing.Point(0, 24);
             this.fillBySearchToolStrip.Name = "fillBySearchToolStrip";
-            this.fillBySearchToolStrip.Size = new System.Drawing.Size(1197, 37);
+            this.fillBySearchToolStrip.Size = new System.Drawing.Size(1197, 41);
             this.fillBySearchToolStrip.TabIndex = 3;
             this.fillBySearchToolStrip.Text = "fillByAdminSearchToolStrip";
             // 
@@ -443,7 +428,7 @@
             // 
             this.usernameToolStripLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.usernameToolStripLabel.Name = "usernameToolStripLabel";
-            this.usernameToolStripLabel.Size = new System.Drawing.Size(150, 34);
+            this.usernameToolStripLabel.Size = new System.Drawing.Size(150, 38);
             this.usernameToolStripLabel.Text = "Search for a Student";
             // 
             // usernameToolStripTextBox
@@ -453,17 +438,17 @@
             this.usernameToolStripTextBox.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.usernameToolStripTextBox.Margin = new System.Windows.Forms.Padding(1, 4, 1, 4);
             this.usernameToolStripTextBox.Name = "usernameToolStripTextBox";
-            this.usernameToolStripTextBox.Size = new System.Drawing.Size(200, 29);
+            this.usernameToolStripTextBox.Size = new System.Drawing.Size(200, 33);
             // 
             // fillByAdminSearchToolStripButton
             // 
-            this.fillByAdminSearchToolStripButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.fillByAdminSearchToolStripButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.fillByAdminSearchToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.fillByAdminSearchToolStripButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.fillByAdminSearchToolStripButton.Margin = new System.Windows.Forms.Padding(10, 1, 0, 2);
+            this.fillByAdminSearchToolStripButton.Margin = new System.Windows.Forms.Padding(10, 4, 0, 4);
             this.fillByAdminSearchToolStripButton.Name = "fillByAdminSearchToolStripButton";
             this.fillByAdminSearchToolStripButton.Padding = new System.Windows.Forms.Padding(4);
-            this.fillByAdminSearchToolStripButton.Size = new System.Drawing.Size(73, 34);
+            this.fillByAdminSearchToolStripButton.Size = new System.Drawing.Size(73, 33);
             this.fillByAdminSearchToolStripButton.Text = "Search";
             this.fillByAdminSearchToolStripButton.Click += new System.EventHandler(this.fillByUsernameSearchToolStripButton_Click);
             // 
@@ -510,13 +495,14 @@
             // 
             this.pgbLoadData.Location = new System.Drawing.Point(456, 27);
             this.pgbLoadData.Name = "pgbLoadData";
-            this.pgbLoadData.Size = new System.Drawing.Size(665, 34);
+            this.pgbLoadData.Size = new System.Drawing.Size(449, 34);
             this.pgbLoadData.TabIndex = 12;
             // 
             // lblProgress
             // 
             this.lblProgress.AutoSize = true;
-            this.lblProgress.Location = new System.Drawing.Point(736, 38);
+            this.lblProgress.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblProgress.Location = new System.Drawing.Point(638, 37);
             this.lblProgress.Name = "lblProgress";
             this.lblProgress.Size = new System.Drawing.Size(90, 13);
             this.lblProgress.TabIndex = 13;
@@ -528,6 +514,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1197, 688);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.lblProgress);
             this.Controls.Add(this.pgbLoadData);
             this.Controls.Add(this.fillBySearchToolStrip);
@@ -592,7 +579,6 @@
         private System.Windows.Forms.BindingSource adminsBindingSource;
         private MathWizGroup3DataSetTableAdapters.adminsTableAdapter adminsTableAdapter;
         private System.Windows.Forms.Button btnChangePassword;
-        private System.Windows.Forms.Button btnViewUserInfo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;

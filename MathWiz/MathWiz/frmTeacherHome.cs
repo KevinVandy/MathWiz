@@ -23,10 +23,5 @@ namespace MathWiz
         {
 
         }
-
-        private void frmTeacherHome_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
-        }
     }
 }
