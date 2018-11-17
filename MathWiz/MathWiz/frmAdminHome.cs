@@ -26,6 +26,8 @@ namespace MathWiz
             backgroundWorkerFormDataLoad.RunWorkerAsync(); //load data, but as a background job so the form does not freeze
         }
 
+
+
         //Begin Background Worker event handlers for loading data
         private void backgroundWorkerFormDataLoad_DoWork(object sender, DoWorkEventArgs e)//load data in the background so form remains responsive
         {
@@ -52,7 +54,6 @@ namespace MathWiz
             {
                 MessageBox.Show("Error Loading Data. Try Refreshing");
             }
-            
         }
 
         private void backgroundWorkerFormDataLoad_ProgressChanged(object sender, ProgressChangedEventArgs e)//update progress bar
@@ -61,7 +62,6 @@ namespace MathWiz
             switch (e.ProgressPercentage)
             {
                 case 1:
-
                     lblProgress.Text = "Loading Admins";
                     break;
 
@@ -70,7 +70,6 @@ namespace MathWiz
                     break;
 
                 case 40:
-
                     lblProgress.Text = "Loading Parents";
                     break;
 
@@ -80,20 +79,16 @@ namespace MathWiz
 
                 case 80:
                     lblProgress.Text = "Loading Classes";
-
                     break;
 
                 case 100:
-
                     lblProgress.Text = "";
-
                     break;
             }
         }
 
         private void backgroundWorkerFormDataLoad_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) //refresh the form with the newly loaded data
         {
-            dgvUsers.DataSource = studentsBindingSource;
             dgvUsers.Update();
             dgvUsers.Refresh();
             rdoAdmins.Checked = true;
@@ -108,6 +103,34 @@ namespace MathWiz
         //End Background Worker event handlers for loading data
 
         //Begin Button Event Handlers
+        //unfortunatley, using the same background worker as when page loads for refreshing causes exception, so this instead
+        private void btnRefresh_Click(object sender, EventArgs e) 
+        {
+            if (rdoAdmins.Checked)
+            {
+                this.adminsTableAdapter.Fill(this.mathWizGroup3DataSet.admins);
+            }
+            else if (rdoTeachers.Checked)
+            {
+                this.teachersTableAdapter.Fill(this.mathWizGroup3DataSet.teachers);
+            }
+            else if (rdoParents.Checked)
+            {
+                this.parentsTableAdapter.Fill(this.mathWizGroup3DataSet.parents);
+            }
+            else if (rdoStudents.Checked)
+            {
+                this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet.students);
+            }
+
+            allKlasses = MathWizDA.SelectAllKlasses();
+
+            dgvUsers.Update();
+            dgvUsers.Refresh();
+
+            //rdoUserTypes_CheckChanged(null, null);
+        }
+
         private void btnCreateAdmin_Click(object sender, EventArgs e)
         {
             Form createUserForm = new frmCreateUserAccount();
@@ -149,18 +172,7 @@ namespace MathWiz
             //TODO Delete a user
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            if (!backgroundWorkerFormDataLoad.IsBusy)
-            {
-                backgroundWorkerFormDataLoad.RunWorkerAsync();
-            }
-            else
-            {
-                backgroundWorkerFormDataLoad.CancelAsync();
-                backgroundWorkerFormDataLoad.RunWorkerAsync();
-            }
-        }
+        
         //END Button Event Handlers
 
         private void rdoUserTypes_CheckChanged(object sender, EventArgs e)
@@ -205,11 +217,16 @@ namespace MathWiz
         {
             if(lstClasses.SelectedItem != null)
             {
+                lstStudentsInKlass.Enabled = true;
                 lstStudentsInKlass.Items.Clear();
                 foreach(Student s in allKlasses[lstClasses.SelectedIndex].Students)
                 {
                     lstStudentsInKlass.Items.Add(s.ToString());
                 }
+            }
+            else
+            {
+                lstStudentsInKlass.Enabled = false;
             }
         }
         
@@ -253,17 +270,12 @@ namespace MathWiz
             }
             catch (System.Exception ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
         //event handlers to save data when someone edits a cell in the users table
         private void dgvUsers_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            SaveDataInCellSheet();
-        }
-        
-        private void dgvUsers_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             SaveDataInCellSheet();
         }

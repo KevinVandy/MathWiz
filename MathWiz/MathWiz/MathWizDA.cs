@@ -1046,7 +1046,7 @@ namespace MathWiz
         {
             List<Klass> klasses = new List<Klass>();
 
-            //make the query the safe way by binding values to prevent SQL injection
+            //This is not safe!!!
             string query = $"SELECT * FROM klasses where TeacherID = {teacherID}";
             SqlCommand selectCommand = new SqlCommand(query, conn);
 
