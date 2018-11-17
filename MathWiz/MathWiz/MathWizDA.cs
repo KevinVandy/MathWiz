@@ -40,11 +40,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -56,9 +56,14 @@ namespace MathWiz
             return false;
         }
 
-        public static bool FindAdmin(string username)
+        public static string FindUserType(string username)
         {
-            string query = "SELECT Username FROM admins WHERE Username = @username";
+            string userType = "";
+
+            string query = "SELECT 'admin' FROM admins WHERE Username = @username " +
+                     "UNION SELECT 'teacher' FROM teachers WHERE Username = @username " +
+                     "UNION SELECT 'parent' FROM parents WHERE Username = @username " +
+                     "UNION SELECT 'student' FROM students WHERE Username = @username ";
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@Username", username);
 
@@ -68,59 +73,23 @@ namespace MathWiz
 
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read() && reader.HasRows) //if true, this means that it found a record with the username
+                if (reader.Read() && reader.HasRows)
                 {
-                    reader.Close();
-                    conn.Close();
-                    return true;
+                    userType = Convert.ToString(reader[""]);
                 }
-                reader.Close();
-            }
-            catch(SqlException ex)
-            { 
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                else //could not find that username in any of the 4 tables
                 {
-                    conn.Close();
-                }
-            }
-            return false;
-        }
-
-        public static bool FindTeacher(string username)
-        {
-            string query = "SELECT Username FROM teachers WHERE Username = @username";
-            SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@Username", username);
-
-            try
-            {
-                conn.Open();
-
-                SqlDataReader reader = selectCommand.ExecuteReader();
-
-                if (reader.Read() && reader.HasRows) //if true, this means that it found a record with the username
-                {
-                    reader.Close();
-                    conn.Close();
-                    return true;
+                    userType = "none";
                 }
                 reader.Close();
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -129,84 +98,8 @@ namespace MathWiz
                     conn.Close();
                 }
             }
-            return false;
+            return userType;
         }
-
-        public static bool FindParent(string username)
-        {
-            string query = "SELECT Username FROM parents WHERE Username = @username";
-            SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@Username", username);
-
-            try
-            {
-                conn.Open();
-
-                SqlDataReader reader = selectCommand.ExecuteReader();
-
-                if (reader.Read() && reader.HasRows) //if true, this means that it found a record with the username
-                {
-                    reader.Close();
-                    return true;
-                }
-                reader.Close();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
-                {
-                    conn.Close();
-                }
-            }
-            return false;
-        }
-
-        public static bool FindStudent(string username)
-        {
-            string query = "SELECT Username FROM students WHERE Username = @username";
-            SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@Username", username);
-
-            try
-            {
-                conn.Open();
-
-                SqlDataReader reader = selectCommand.ExecuteReader();
-
-                if (reader.Read() && reader.HasRows) //if true, this means that it found a record with the username
-                {
-                    reader.Close();
-                    conn.Close();
-                    return true;
-                }
-                reader.Close();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
-                {
-                    conn.Close();
-                }
-            }
-            return false;
-        }
-        //End Find Users Methods
 
         //SELECT Password - still untested
         public static string SelectPasswordHash(string username)
@@ -234,11 +127,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -279,11 +172,11 @@ namespace MathWiz
             }
             catch(SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -324,11 +217,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -369,11 +262,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -415,11 +308,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -461,11 +354,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -506,11 +399,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -549,11 +442,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -593,11 +486,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -637,11 +530,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -684,11 +577,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -729,11 +622,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -774,11 +667,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -819,11 +712,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -864,11 +757,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -909,11 +802,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -954,11 +847,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -998,11 +891,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -1041,11 +934,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -1089,11 +982,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -1133,11 +1026,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -1181,11 +1074,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {

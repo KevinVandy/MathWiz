@@ -164,7 +164,7 @@ namespace MathWiz
 
         private void btnClassQuestion_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("You can add the teacher to a class later");
+            MessageBox.Show("You can add the teacher to a class in the 'Manage Classes' section");
         }
 
         private void backgroundWorkerLoadData_DoWork(object sender, DoWorkEventArgs e)

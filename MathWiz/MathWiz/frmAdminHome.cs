@@ -96,7 +96,8 @@ namespace MathWiz
             dgvUsers.DataSource = studentsBindingSource;
             dgvUsers.Update();
             dgvUsers.Refresh();
-            rdoStudents.Checked = true;
+            rdoAdmins.Checked = true;
+            rdoStudents.Checked = true; //just a hack to get the table to refresh
 
             lstClasses.Items.Clear();
             foreach (Klass k in allKlasses)
@@ -143,7 +144,7 @@ namespace MathWiz
 
         private void btnDeleteSelectedUser_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Are you sure you want to delete this user?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            MessageBox.Show("Are you sure you want to delete this user?", "Confirm Delete?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             //TODO Delete a user
         }

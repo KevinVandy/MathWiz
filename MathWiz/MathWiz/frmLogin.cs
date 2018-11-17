@@ -61,8 +61,10 @@ namespace MathWiz
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
+            string userType = MathWizDA.FindUserType(username);
 
-            if (MathWizDA.FindAdmin(username))
+
+            if (userType == "admin")
             {
                 user = new Admin();
                 if (user.VerifyPassword(username, password))
@@ -74,7 +76,7 @@ namespace MathWiz
                     errorFlag = "password";
                 }
             }
-            else if (MathWizDA.FindTeacher(username))
+            else if (userType == "teacher")
             {
                 user = new Teacher();
                 if (user.VerifyPassword(username, password))
@@ -86,7 +88,7 @@ namespace MathWiz
                     errorFlag = "password";
                 }
             }
-            else if (MathWizDA.FindParent(username))
+            else if (userType == "parent")
             {
                 user = new Parent();
                 if (user.VerifyPassword(username, password))
@@ -98,7 +100,7 @@ namespace MathWiz
                     errorFlag = "password";
                 }
             }
-            else if (MathWizDA.FindStudent(username))
+            else if (userType == "student")
             {
                 user = new Student();
                 if (user.VerifyPassword(username, password))
@@ -110,9 +112,13 @@ namespace MathWiz
                     errorFlag = "password";
                 }
             }
-            else //could not find username
+            else if (userType == "none") //could not find username
             {
                 errorFlag = "username";
+            }
+            else //the sql statement must have had an error
+            {
+                MessageBox.Show("Login Error. We could not verify your username, but this may be due to a slow connection", "Connection Error");
             }
         }
 
@@ -120,6 +126,7 @@ namespace MathWiz
         {
             if (e.Error == null && errorFlag == "")
             {
+                loginAttempts = 0;
                 txtPassword.Text = null;//get rid of password text for security so that the next user who uses the computer doesn't have it
                 this.Hide();            //hide login form
                 homeForm.ShowDialog();  //only show the home form (of the type that was passed)
@@ -136,7 +143,7 @@ namespace MathWiz
             {
                 lblPasswordError.Show();
             }
-            else if(loginAttempts < 3)
+            else if(loginAttempts < 3) //This is so that if there is a bad connection, it will try 3 times to  connect to db and login
             {
                 loginAttempts++;
                 backgroundWorkerLogin.RunWorkerAsync();
@@ -145,7 +152,7 @@ namespace MathWiz
             {
                 MessageBox.Show("Could Not log in. This could be due to a slow internet connection. Try again.");
             }
-            btnLogin.Enabled = true; //re-enable login button for the next user
+            btnLogin.Enabled = true; //re-enable login button for the next user or person who had login error
         }
 
         //menu item actions

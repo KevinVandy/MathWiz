@@ -30,9 +30,9 @@ namespace MathWiz
             //takes pic from folder to set as profile pic
             string fileName = "teacher.jpg";
             string filePath = Path.Combine(Environment.CurrentDirectory, @"Images\", fileName);
-            Image image = Image.FromFile(filePath);
-            picBoxTeacher.Image = (Image)image;
-            picBoxTeacher.SizeMode = PictureBoxSizeMode.StretchImage;
+            //Image image = Image.FromFile(filePath);
+            //picBoxTeacher.Image = (Image)image;
+            //picBoxTeacher.SizeMode = PictureBoxSizeMode.StretchImage;
 
             lblTeacherName.Text = teacher.FirstName;
 
