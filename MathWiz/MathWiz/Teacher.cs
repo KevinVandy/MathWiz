@@ -8,7 +8,7 @@ namespace MathWiz
 {
     public class Teacher : User
     {
-        List<Klass> Klasses { get; set; }
+        public List<Klass> Klasses { get; set; }
 
         //empty constructor
         public Teacher() : base() { }

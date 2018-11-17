@@ -57,8 +57,10 @@ namespace MathWiz
 
         private void backgroundWorkerLogin_DoWork(object sender, DoWorkEventArgs e)
         {
+            
             string username = txtUsername.Text;
             string password = txtPassword.Text;
+
 
             if (MathWizDA.FindAdmin(username))
             {

@@ -112,6 +112,9 @@
     <Compile Include="GradedQuestion.cs" />
     <Compile Include="Klass.cs" />
     <Compile Include="MathWizConn.cs" />
+    <Compile Include="MathWizGroup3DataSet.cs">
+      <DependentUpon>MathWizGroup3DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MathWizGroup3DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -175,6 +178,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="MathWizGroup3DataSet.xsc">
       <DependentUpon>MathWizGroup3DataSet.xsd</DependentUpon>
@@ -203,6 +207,8 @@
   <ItemGroup>
     <Content Include="Images\teacher.jpg" />
     <Content Include="MathWiz.ico" />
+    <None Include="Resources\symbols.png" />
+    <None Include="Resources\numbers.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

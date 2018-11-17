@@ -314,7 +314,7 @@ namespace MathWiz
 
                 if (reader.Read()) 
                 {
-                    
+                    teacher.Id = Convert.ToInt16(reader["Id"]);
                     teacher.Username = Convert.ToString(reader["Username"]);
                     teacher.FirstName = Convert.ToString(reader["FirstName"]);
                     teacher.LastName = Convert.ToString(reader["LastName"]);
@@ -1148,5 +1148,54 @@ namespace MathWiz
             }
             return klasses;
         }
+
+        public static List<Klass> SelectAllKlassesByTeacher(int teacherID)
+        {
+            List<Klass> klasses = new List<Klass>();
+
+            //make the query the safe way by binding values to prevent SQL injection
+            string query = $"SELECT * FROM klasses where TeacherID = {teacherID}";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                Klass klass = new Klass();
+
+                while (reader.Read())
+                {
+                    klass = new Klass();
+                    klass.Id = Convert.ToInt16(reader["Id"]);
+                    klass.KlassName = Convert.ToString(reader["KlassName"]);
+                    klasses.Add(klass);
+                }
+                reader.Close();
+
+                foreach(var k in klasses)
+                {
+                    k.Students = SelectAllStudentsInKlass(klass.Id);
+                }
+                
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString(), "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString(), "Unknown Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                {
+                    conn.Close();
+                }
+            }
+            return klasses;
+        }
+
     }
 }
