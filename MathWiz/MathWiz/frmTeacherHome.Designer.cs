@@ -29,23 +29,40 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTeacherHome));
+            this.picBoxTeacher = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxTeacher)).BeginInit();
             this.SuspendLayout();
+            // 
+            // picBoxTeacher
+            // 
+            this.picBoxTeacher.InitialImage = null;
+            this.picBoxTeacher.Location = new System.Drawing.Point(31, 57);
+            this.picBoxTeacher.Name = "picBoxTeacher";
+            this.picBoxTeacher.Size = new System.Drawing.Size(160, 191);
+            this.picBoxTeacher.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.picBoxTeacher.TabIndex = 0;
+            this.picBoxTeacher.TabStop = false;
             // 
             // frmTeacherHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.picBoxTeacher);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmTeacherHome";
             this.Text = "MathWiz - Teacher Portal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTeacherHome_FormClosing);
             this.Load += new System.EventHandler(this.frmTeacherHome_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxTeacher)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox picBoxTeacher;
     }
 }
