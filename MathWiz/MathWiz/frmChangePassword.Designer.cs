@@ -136,9 +136,9 @@
             // 
             this.btnShowHide.BackgroundImage = global::MathWiz.Properties.Resources.show_password;
             this.btnShowHide.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnShowHide.Location = new System.Drawing.Point(419, 53);
+            this.btnShowHide.Location = new System.Drawing.Point(419, 44);
             this.btnShowHide.Name = "btnShowHide";
-            this.btnShowHide.Size = new System.Drawing.Size(50, 45);
+            this.btnShowHide.Size = new System.Drawing.Size(59, 58);
             this.btnShowHide.TabIndex = 8;
             this.btnShowHide.UseVisualStyleBackColor = true;
             this.btnShowHide.Click += new System.EventHandler(this.btnShowHide_Click);
@@ -149,7 +149,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(490, 258);
+            this.ClientSize = new System.Drawing.Size(502, 258);
             this.Controls.Add(this.btnShowHide);
             this.Controls.Add(this.lblChanged);
             this.Controls.Add(this.lblError);

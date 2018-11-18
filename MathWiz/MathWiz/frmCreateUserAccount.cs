@@ -14,6 +14,12 @@ namespace MathWiz
     {
         List<Parent> parentChoices;
         List<Klass> klassChoices;
+        string firstName;
+        string lastName;
+        string username;
+        string password;
+        int parentID;
+        int klassID;
 
         public frmCreateUserAccount()
         {
@@ -26,6 +32,8 @@ namespace MathWiz
             {
                 case "Admin":
 
+                    lblParentRequired.Hide();
+                    lblClassRequired.Hide();
                     lblParent.Enabled = false;
                     cmbParent.Enabled = false;
                     lblClass.Enabled = false;
@@ -39,6 +47,8 @@ namespace MathWiz
 
                 case "Teacher":
 
+                    lblParentRequired.Hide();
+                    lblClassRequired.Hide();
                     lblParent.Enabled = false;
                     cmbParent.Enabled = false;
                     lblClass.Enabled = false;
@@ -54,6 +64,8 @@ namespace MathWiz
 
                 case "Parent":
 
+                    lblParentRequired.Hide();
+                    lblClassRequired.Hide();
                     lblParent.Enabled = false;
                     cmbParent.Enabled = false;
                     lblClass.Enabled = false;
@@ -98,9 +110,51 @@ namespace MathWiz
         private void btnCreateUser_Click(object sender, EventArgs e)
         {
             btnCreateUser.Enabled = false;
-            if (!backgroundWorkerInsertData.IsBusy)
+            if (txtFirstName.Text == "")
             {
-                backgroundWorkerInsertData.RunWorkerAsync();
+                MessageBox.Show("First Name is Required");
+            }
+            else if (txtLastName.Text == "")
+            {
+                MessageBox.Show("Last Name is Required");
+            }
+            else if (txtUsername.Text == "")
+            {
+                MessageBox.Show("Username is Required");
+            }
+            else if (txtPassword.Text == "")
+            {
+                lblPasswordError.Show();
+            }
+            else if (cmbParent.SelectedIndex == -1 && this.Tag.ToString() == "Student")
+            {
+                MessageBox.Show("A student must have a parent. If a the parent is not listed here, make their account first.");
+            }
+            else if (cmbClass.SelectedIndex == -1 && this.Tag.ToString() == "Student")
+            {
+                MessageBox.Show("A student must be added to class.");
+            }
+            else if (MathWizDA.FindUsername(username))
+            {
+                lblUsernameError.Text = "That username has already been taken";
+                lblUsernameError.Show();
+            }
+            else //info is valid
+            {
+                firstName = txtFirstName.Text;
+                lastName = txtLastName.Text;
+                username = txtUsername.Text;
+                password = txtPassword.Text;
+                if (this.Tag.ToString() == "Student")
+                {
+                    parentID = parentChoices[cmbParent.SelectedIndex].Id;
+                    klassID = klassChoices[cmbClass.SelectedIndex].Id;
+                }
+                
+                if (!backgroundWorkerInsertData.IsBusy)
+                {
+                    backgroundWorkerInsertData.RunWorkerAsync();
+                }
             }
         }
 
@@ -134,68 +188,51 @@ namespace MathWiz
 
         private void backgroundWorkerInsertData_DoWork(object sender, DoWorkEventArgs e)
         {
-            string firstName = txtFirstName.Text;
-            string lastName = txtLastName.Text;
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
-
-            if (MathWizDA.FindUsername(username))
+            switch (this.Tag.ToString())
             {
-                lblUsernameError.Text = "That username has already been taken";
-                lblUsernameError.Show();
-            }
-            else
-            {
-                switch (this.Tag.ToString())
-                {
-                    case "Admin":
+                case "Admin":
 
-                        Admin newAdmin = new Admin(username, firstName, lastName, password);
-                        MathWizDB.InsertAdmin(newAdmin);
+                    Admin newAdmin = new Admin(username, firstName, lastName, password);
+                    MathWizDB.InsertAdmin(newAdmin);
 
-                        break;
+                    break;
 
-                    case "Teacher":
+                case "Teacher":
 
-                        Teacher newTeacher = new Teacher(username, firstName, lastName, password);
-                        MathWizDB.InsertTeacher(newTeacher);
+                    Teacher newTeacher = new Teacher(username, firstName, lastName, password);
+                    MathWizDB.InsertTeacher(newTeacher);
 
-                        break;
+                    break;
 
-                    case "Parent":
+                case "Parent":
 
-                        Parent newParent = new Parent(username, firstName, lastName, password);
-                        MathWizDB.InsertParent(newParent);
+                    Parent newParent = new Parent(username, firstName, lastName, password);
+                    MathWizDB.InsertParent(newParent);
 
-                        break;
+                    break;
 
-                    case "Student":
+                case "Student":
 
-                        Student newStudent = new Student(username, firstName, lastName, password);
-                        int parentID = Convert.ToInt16(cmbParent.SelectedItem.ToString().Substring(0, 4));
-                        int klassID = Convert.ToInt16(cmbClass.SelectedItem.ToString().Substring(0, 4));
-                        MathWizDB.InsertStudent(newStudent, parentID, klassID);
+                    Student newStudent = new Student(username, firstName, lastName, password);
+                    MathWizDB.InsertStudent(newStudent, parentID, klassID);
 
-                        break;
-                }
+                    break;
             }
         }
 
         private void backgroundWorkerInsertData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            string firstName = txtFirstName.Text;
-            string lastName = txtLastName.Text;
-
             lblAdded.Text = firstName + " " + lastName + " was successfully added";
             lblAdded.Show();
+            lblPasswordError.Hide();
 
             txtFirstName.Clear();
             txtLastName.Clear();
             txtID.Clear();
             txtUsername.Clear();
-            txtPassword.Clear();
             cmbParent.SelectedItem = null;
             cmbClass.SelectedItem = null;
+            txtPassword.Clear();
             btnCreateUser.Enabled = true;
         }
     }

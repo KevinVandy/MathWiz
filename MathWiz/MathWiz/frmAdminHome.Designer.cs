@@ -75,6 +75,7 @@
             this.backgroundWorkerFormDataLoad = new System.ComponentModel.BackgroundWorker();
             this.pgbLoadData = new System.Windows.Forms.ProgressBar();
             this.lblProgress = new System.Windows.Forms.Label();
+            this.lblDeleted = new System.Windows.Forms.Label();
             this.gbxManageAccounts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
@@ -90,6 +91,7 @@
             // 
             // gbxManageAccounts
             // 
+            this.gbxManageAccounts.Controls.Add(this.lblDeleted);
             this.gbxManageAccounts.Controls.Add(this.btnChangePassword);
             this.gbxManageAccounts.Controls.Add(this.dgvUsers);
             this.gbxManageAccounts.Controls.Add(this.pnlUserTypes);
@@ -508,6 +510,18 @@
             this.lblProgress.TabIndex = 13;
             this.lblProgress.Text = "Loading Students";
             // 
+            // lblDeleted
+            // 
+            this.lblDeleted.AutoSize = true;
+            this.lblDeleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeleted.ForeColor = System.Drawing.Color.Green;
+            this.lblDeleted.Location = new System.Drawing.Point(403, 239);
+            this.lblDeleted.Name = "lblDeleted";
+            this.lblDeleted.Size = new System.Drawing.Size(154, 17);
+            this.lblDeleted.TabIndex = 14;
+            this.lblDeleted.Text = "Username was Deleted";
+            this.lblDeleted.Visible = false;
+            // 
             // frmAdminHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -528,6 +542,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmAdminHome_Load);
             this.gbxManageAccounts.ResumeLayout(false);
+            this.gbxManageAccounts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).EndInit();
@@ -593,5 +608,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerFormDataLoad;
         private System.Windows.Forms.ProgressBar pgbLoadData;
         private System.Windows.Forms.Label lblProgress;
+        private System.Windows.Forms.Label lblDeleted;
     }
 }

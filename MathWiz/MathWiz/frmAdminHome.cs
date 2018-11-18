@@ -13,7 +13,7 @@ namespace MathWiz
     public partial class frmAdminHome : Form
     {
         Admin admin;
-        List<Klass> allKlasses = new List<Klass>();
+        List<Klass> allKlasses = new List<Klass>(); //this will be depreciated
         
         public frmAdminHome(string username)
         {
@@ -92,7 +92,7 @@ namespace MathWiz
             dgvUsers.Update();
             dgvUsers.Refresh();
             rdoAdmins.Checked = true;
-            rdoStudents.Checked = true; //just a hack to get the table to refresh
+            rdoStudents.Checked = true; //just a hack to get the table to refresh and show new info
 
             lstClasses.Items.Clear();
             foreach (Klass k in allKlasses)
@@ -168,9 +168,38 @@ namespace MathWiz
 
         private void btnDeleteSelectedUser_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Are you sure you want to delete this user?", "Confirm Delete?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            int id = Convert.ToInt16(dgvUsers.Rows[dgvUsers.CurrentCell.RowIndex].Cells[0].Value);
+            string username = dgvUsers.Rows[dgvUsers.CurrentCell.RowIndex].Cells[1].Value.ToString();
 
-            //TODO Delete a user
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this user?", "Confirm Delete?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if(dialogResult == DialogResult.Yes) //delete the user if they confirm yes
+            {
+                if (rdoAdmins.Checked) //check for the type of user (admin,teacher,parent,student)
+                {
+                    MathWizDB.DeleteUser("admin", id, username);
+                }
+                else if (rdoTeachers.Checked)
+                {
+                    MathWizDB.DeleteUser("teacher", id, username);
+                }
+                else if (rdoParents.Checked)
+                {
+                    MathWizDB.DeleteUser("parent", id, username);
+                }
+                else if (rdoStudents.Checked)
+                {
+                    MathWizDB.DeleteUser("student", id, username);
+                }
+                lblDeleted.Text = username + " was deleted";
+                lblDeleted.Show();
+                btnRefresh_Click(null,null);
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                lblDeleted.Text = "Delete cancelled";
+                lblDeleted.Show();
+            }
         }
 
         

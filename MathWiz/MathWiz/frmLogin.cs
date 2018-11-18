@@ -15,6 +15,10 @@ namespace MathWiz
     {
         User user;
         Form homeForm;
+
+        string username;
+        string password;
+
         string errorFlag = "";
         int loginAttempts = 0;
 
@@ -50,6 +54,9 @@ namespace MathWiz
             }
             else
             {
+                username = txtUsername.Text;
+                password = txtPassword.Text;
+                btnLogin.Text = "Logging In";
                 btnLogin.Enabled = false;
                 backgroundWorkerLogin.RunWorkerAsync();
             }
@@ -57,13 +64,8 @@ namespace MathWiz
 
         private void backgroundWorkerLogin_DoWork(object sender, DoWorkEventArgs e)
         {
-            
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
-
             string userType = MathWizDA.FindUserType(username);
-
-
+            
             if (userType == "admin")
             {
                 user = new Admin();
@@ -156,6 +158,7 @@ namespace MathWiz
                 MessageBox.Show("Could Not log in. This could be due to a slow internet connection. Try again.");
             }
             btnLogin.Enabled = true; //re-enable login button for the next user or person who had login error
+            btnLogin.Text = "Log In";
         }
 
         //menu item actions
@@ -180,7 +183,5 @@ namespace MathWiz
             backgroundWorkerLogin.CancelAsync();
             this.Close();
         }
-
-        
     }
 }

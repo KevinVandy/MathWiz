@@ -367,37 +367,78 @@ namespace MathWiz
             switch (userType) //need this case structure because you can't bind values to a table name, and I want to do it the safe way without {}
             {
                 case "admin":
-                    insertStatement = "UPDATE admins " +
-                                     "SET PasswordHash = @passwordHash " +
-                                     "WHERE Username = @username";
+                    insertStatement = "UPDATE admins ";
                     break;
 
                 case "teacher":
-                    insertStatement = "UPDATE teachers " +
-                                     "SET PasswordHash = @passwordHash " +
-                                     "WHERE Username = @username";
+                    insertStatement = "UPDATE teachers ";
                     break;
 
                 case "parent":
-                    insertStatement = "UPDATE parents " +
-                                     "SET PasswordHash = @passwordHash " +
-                                     "WHERE Username = @username";
+                    insertStatement = "UPDATE parents ";
                     break;
 
                 case "student":
-                    insertStatement = "UPDATE students " +
-                                     "SET PasswordHash = @passwordHash " +
-                                     "WHERE Username = @username";
+                    insertStatement = "UPDATE students ";
                     break;
 
             }
 
+            insertStatement += "SET PasswordHash = @passwordHash WHERE Username = @username";
+
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand(insertStatement, conn);
-            Cmd.Parameters.AddWithValue("@userType", userType);
             Cmd.Parameters.AddWithValue("@username", username);
             Cmd.Parameters.AddWithValue("@passwordHash", passwordHash);
             
+            try
+            {
+                conn.Open();
+                Cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static void DeleteUser(string userType, int id, string username) //very important to get this command and security right
+        {
+            string insertStatement = "";
+
+            switch (userType) //need this case structure because you can't bind values to a table name, and I want to do it the safe way without {}
+            {
+                case "admin":
+                    insertStatement = "DELETE FROM admins ";
+                    break;
+
+                case "teacher":
+                    insertStatement = "DELETE FROM teachers ";
+                    break;
+
+                case "parent":
+                    insertStatement = "DELETE FROM parents ";
+                    break;
+
+                case "student":
+                    insertStatement = "DELETE FROM students ";
+                    break;
+            }
+
+            insertStatement += "Where Id = @id AND Username = @username"; //Keep this WHERE statement here at all costs!!!
+            
+            SqlCommand Cmd = new SqlCommand(insertStatement, conn);
+            Cmd.Parameters.AddWithValue("@id", id);
+            Cmd.Parameters.AddWithValue("@username", username);
+
             try
             {
                 conn.Open();

@@ -14,8 +14,7 @@ namespace MathWiz
     public partial class frmChangePassword : Form
     {
         User user;
-        string userType;
-        string username_G;
+        string username_G; //global variable for this form of username
 
         public frmChangePassword(string username)
         {

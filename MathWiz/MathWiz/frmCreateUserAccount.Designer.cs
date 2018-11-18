@@ -50,6 +50,12 @@
             this.btnClassQuestion = new System.Windows.Forms.Button();
             this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerInsertData = new System.ComponentModel.BackgroundWorker();
+            this.lblFirstNameRequired = new System.Windows.Forms.Label();
+            this.lblLastNameRequired = new System.Windows.Forms.Label();
+            this.lblUsernameRequired = new System.Windows.Forms.Label();
+            this.lblPasswordRequired = new System.Windows.Forms.Label();
+            this.lblClassRequired = new System.Windows.Forms.Label();
+            this.lblParentRequired = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtFirstName
@@ -226,7 +232,7 @@
             this.lblUsernameError.AutoSize = true;
             this.lblUsernameError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsernameError.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblUsernameError.Location = new System.Drawing.Point(282, 168);
+            this.lblUsernameError.Location = new System.Drawing.Point(281, 166);
             this.lblUsernameError.Name = "lblUsernameError";
             this.lblUsernameError.Size = new System.Drawing.Size(222, 15);
             this.lblUsernameError.TabIndex = 17;
@@ -238,7 +244,7 @@
             this.lblPasswordError.AutoSize = true;
             this.lblPasswordError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPasswordError.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblPasswordError.Location = new System.Drawing.Point(282, 213);
+            this.lblPasswordError.Location = new System.Drawing.Point(281, 207);
             this.lblPasswordError.Name = "lblPasswordError";
             this.lblPasswordError.Size = new System.Drawing.Size(132, 15);
             this.lblPasswordError.TabIndex = 18;
@@ -247,7 +253,8 @@
             // 
             // btnClassQuestion
             // 
-            this.btnClassQuestion.Location = new System.Drawing.Point(545, 82);
+            this.btnClassQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClassQuestion.Location = new System.Drawing.Point(545, 81);
             this.btnClassQuestion.Name = "btnClassQuestion";
             this.btnClassQuestion.Size = new System.Drawing.Size(30, 26);
             this.btnClassQuestion.TabIndex = 19;
@@ -266,6 +273,66 @@
             this.backgroundWorkerInsertData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerInsertData_DoWork);
             this.backgroundWorkerInsertData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerInsertData_RunWorkerCompleted);
             // 
+            // lblFirstNameRequired
+            // 
+            this.lblFirstNameRequired.AutoSize = true;
+            this.lblFirstNameRequired.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblFirstNameRequired.Location = new System.Drawing.Point(264, 47);
+            this.lblFirstNameRequired.Name = "lblFirstNameRequired";
+            this.lblFirstNameRequired.Size = new System.Drawing.Size(11, 13);
+            this.lblFirstNameRequired.TabIndex = 21;
+            this.lblFirstNameRequired.Text = "*";
+            // 
+            // lblLastNameRequired
+            // 
+            this.lblLastNameRequired.AutoSize = true;
+            this.lblLastNameRequired.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblLastNameRequired.Location = new System.Drawing.Point(264, 87);
+            this.lblLastNameRequired.Name = "lblLastNameRequired";
+            this.lblLastNameRequired.Size = new System.Drawing.Size(11, 13);
+            this.lblLastNameRequired.TabIndex = 22;
+            this.lblLastNameRequired.Text = "*";
+            // 
+            // lblUsernameRequired
+            // 
+            this.lblUsernameRequired.AutoSize = true;
+            this.lblUsernameRequired.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblUsernameRequired.Location = new System.Drawing.Point(264, 168);
+            this.lblUsernameRequired.Name = "lblUsernameRequired";
+            this.lblUsernameRequired.Size = new System.Drawing.Size(11, 13);
+            this.lblUsernameRequired.TabIndex = 23;
+            this.lblUsernameRequired.Text = "*";
+            // 
+            // lblPasswordRequired
+            // 
+            this.lblPasswordRequired.AutoSize = true;
+            this.lblPasswordRequired.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblPasswordRequired.Location = new System.Drawing.Point(264, 209);
+            this.lblPasswordRequired.Name = "lblPasswordRequired";
+            this.lblPasswordRequired.Size = new System.Drawing.Size(11, 13);
+            this.lblPasswordRequired.TabIndex = 24;
+            this.lblPasswordRequired.Text = "*";
+            // 
+            // lblClassRequired
+            // 
+            this.lblClassRequired.AutoSize = true;
+            this.lblClassRequired.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblClassRequired.Location = new System.Drawing.Point(545, 89);
+            this.lblClassRequired.Name = "lblClassRequired";
+            this.lblClassRequired.Size = new System.Drawing.Size(11, 13);
+            this.lblClassRequired.TabIndex = 25;
+            this.lblClassRequired.Text = "*";
+            // 
+            // lblParentRequired
+            // 
+            this.lblParentRequired.AutoSize = true;
+            this.lblParentRequired.ForeColor = System.Drawing.Color.Firebrick;
+            this.lblParentRequired.Location = new System.Drawing.Point(545, 44);
+            this.lblParentRequired.Name = "lblParentRequired";
+            this.lblParentRequired.Size = new System.Drawing.Size(11, 13);
+            this.lblParentRequired.TabIndex = 26;
+            this.lblParentRequired.Text = "*";
+            // 
             // frmCreateUserAccount
             // 
             this.AcceptButton = this.btnCreateUser;
@@ -273,6 +340,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(587, 354);
+            this.Controls.Add(this.lblParentRequired);
+            this.Controls.Add(this.lblPasswordRequired);
+            this.Controls.Add(this.lblUsernameRequired);
+            this.Controls.Add(this.lblLastNameRequired);
+            this.Controls.Add(this.lblFirstNameRequired);
             this.Controls.Add(this.btnClassQuestion);
             this.Controls.Add(this.lblPasswordError);
             this.Controls.Add(this.lblUsernameError);
@@ -293,6 +365,7 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtFirstName);
+            this.Controls.Add(this.lblClassRequired);
             this.Name = "frmCreateUserAccount";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -327,5 +400,11 @@
         private System.Windows.Forms.Button btnClassQuestion;
         private System.ComponentModel.BackgroundWorker backgroundWorkerLoadData;
         private System.ComponentModel.BackgroundWorker backgroundWorkerInsertData;
+        private System.Windows.Forms.Label lblFirstNameRequired;
+        private System.Windows.Forms.Label lblLastNameRequired;
+        private System.Windows.Forms.Label lblUsernameRequired;
+        private System.Windows.Forms.Label lblPasswordRequired;
+        private System.Windows.Forms.Label lblClassRequired;
+        private System.Windows.Forms.Label lblParentRequired;
     }
 }
