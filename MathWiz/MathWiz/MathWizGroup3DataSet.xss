@@ -12,7 +12,7 @@
     <Shape ID="DesignTable:klasses" ZOrder="14" X="878" Y="649" Height="134" Width="184" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
     <Shape ID="DesignTable:parents" ZOrder="13" X="878" Y="891" Height="191" Width="217" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
     <Shape ID="DesignTable:questions" ZOrder="12" X="931" Y="70" Height="229" Width="200" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="178" />
-    <Shape ID="DesignTable:students" ZOrder="11" X="614" Y="649" Height="267" Width="224" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="178" />
+    <Shape ID="DesignTable:students" ZOrder="11" X="614" Y="649" Height="286" Width="224" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="178" />
     <Shape ID="DesignTable:teachers" ZOrder="10" X="1132" Y="649" Height="191" Width="224" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
     <Shape ID="DesignTable:tests" ZOrder="9" X="614" Y="369" Height="210" Width="172" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
   </Shapes>
@@ -117,15 +117,15 @@
       <RoutePoints>
         <Point>
           <X>878</X>
-          <Y>924</Y>
+          <Y>943</Y>
         </Point>
         <Point>
           <X>791</X>
-          <Y>924</Y>
+          <Y>943</Y>
         </Point>
         <Point>
           <X>791</X>
-          <Y>916</Y>
+          <Y>935</Y>
         </Point>
       </RoutePoints>
     </Connector>

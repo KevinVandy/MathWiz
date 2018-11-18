@@ -28,13 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTeacherHome));
             this.picBoxTeacher = new System.Windows.Forms.PictureBox();
             this.lblTeacherName = new System.Windows.Forms.Label();
-            this.lstBoxKlass = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.lstBoxStudents = new System.Windows.Forms.ListBox();
+            this.cmbKlasses = new System.Windows.Forms.ComboBox();
+            this.studentTable = new System.Windows.Forms.DataGridView();
+            this.mathWizGroup3DataSet = new MathWiz.MathWizGroup3DataSet();
+            this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.studentsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.studentsTableAdapter();
+            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KlassID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.masteryLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxTeacher)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // picBoxTeacher
@@ -59,15 +73,6 @@
             this.lblTeacherName.TabIndex = 1;
             this.lblTeacherName.Text = "label1";
             // 
-            // lstBoxKlass
-            // 
-            this.lstBoxKlass.FormattingEnabled = true;
-            this.lstBoxKlass.Location = new System.Drawing.Point(52, 346);
-            this.lstBoxKlass.Name = "lstBoxKlass";
-            this.lstBoxKlass.Size = new System.Drawing.Size(120, 69);
-            this.lstBoxKlass.TabIndex = 2;
-            this.lstBoxKlass.SelectedIndexChanged += new System.EventHandler(this.lstBoxKlass_SelectedIndexChanged);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -79,13 +84,94 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Your Classes";
             // 
-            // lstBoxStudents
+            // cmbKlasses
             // 
-            this.lstBoxStudents.FormattingEnabled = true;
-            this.lstBoxStudents.Location = new System.Drawing.Point(387, 157);
-            this.lstBoxStudents.Name = "lstBoxStudents";
-            this.lstBoxStudents.Size = new System.Drawing.Size(120, 95);
-            this.lstBoxStudents.TabIndex = 4;
+            this.cmbKlasses.FormattingEnabled = true;
+            this.cmbKlasses.Location = new System.Drawing.Point(51, 346);
+            this.cmbKlasses.Name = "cmbKlasses";
+            this.cmbKlasses.Size = new System.Drawing.Size(121, 21);
+            this.cmbKlasses.TabIndex = 5;
+            this.cmbKlasses.SelectedIndexChanged += new System.EventHandler(this.cmbKlasses_SelectedIndexChanged);
+            // 
+            // studentTable
+            // 
+            this.studentTable.AutoGenerateColumns = false;
+            this.studentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.studentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.usernameDataGridViewTextBoxColumn,
+            this.Id,
+            this.ParentID,
+            this.KlassID,
+            this.firstNameDataGridViewTextBoxColumn,
+            this.lastNameDataGridViewTextBoxColumn,
+            this.masteryLevelDataGridViewTextBoxColumn});
+            this.studentTable.DataSource = this.studentsBindingSource;
+            this.studentTable.Location = new System.Drawing.Point(225, 12);
+            this.studentTable.Name = "studentTable";
+            this.studentTable.Size = new System.Drawing.Size(443, 236);
+            this.studentTable.TabIndex = 6;
+            // 
+            // mathWizGroup3DataSet
+            // 
+            this.mathWizGroup3DataSet.DataSetName = "MathWizGroup3DataSet";
+            this.mathWizGroup3DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // studentsBindingSource
+            // 
+            this.studentsBindingSource.DataMember = "students";
+            this.studentsBindingSource.DataSource = this.mathWizGroup3DataSet;
+            // 
+            // studentsTableAdapter
+            // 
+            this.studentsTableAdapter.ClearBeforeFill = true;
+            // 
+            // usernameDataGridViewTextBoxColumn
+            // 
+            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
+            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
+            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // ParentID
+            // 
+            this.ParentID.DataPropertyName = "ParentID";
+            this.ParentID.HeaderText = "ParentID";
+            this.ParentID.Name = "ParentID";
+            this.ParentID.ReadOnly = true;
+            this.ParentID.Visible = false;
+            // 
+            // KlassID
+            // 
+            this.KlassID.DataPropertyName = "KlassID";
+            this.KlassID.HeaderText = "KlassID";
+            this.KlassID.Name = "KlassID";
+            this.KlassID.ReadOnly = true;
+            this.KlassID.Visible = false;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            // 
+            // masteryLevelDataGridViewTextBoxColumn
+            // 
+            this.masteryLevelDataGridViewTextBoxColumn.DataPropertyName = "MasteryLevel";
+            this.masteryLevelDataGridViewTextBoxColumn.HeaderText = "MasteryLevel";
+            this.masteryLevelDataGridViewTextBoxColumn.Name = "masteryLevelDataGridViewTextBoxColumn";
             // 
             // frmTeacherHome
             // 
@@ -93,10 +179,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MathWiz.Properties.Resources.numbers;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lstBoxStudents);
+            this.ClientSize = new System.Drawing.Size(800, 461);
+            this.Controls.Add(this.studentTable);
+            this.Controls.Add(this.cmbKlasses);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lstBoxKlass);
             this.Controls.Add(this.lblTeacherName);
             this.Controls.Add(this.picBoxTeacher);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -105,6 +191,9 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmTeacherHome_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxTeacher)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,8 +203,18 @@
 
         private System.Windows.Forms.PictureBox picBoxTeacher;
         private System.Windows.Forms.Label lblTeacherName;
-        private System.Windows.Forms.ListBox lstBoxKlass;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox lstBoxStudents;
+        private System.Windows.Forms.ComboBox cmbKlasses;
+        private System.Windows.Forms.DataGridView studentTable;
+        private MathWizGroup3DataSet mathWizGroup3DataSet;
+        private System.Windows.Forms.BindingSource studentsBindingSource;
+        private MathWizGroup3DataSetTableAdapters.studentsTableAdapter studentsTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParentID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KlassID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn masteryLevelDataGridViewTextBoxColumn;
     }
 }

@@ -25,7 +25,12 @@ namespace MathWiz
 
         private void frmTeacherHome_Load(object sender, EventArgs e)
         {
-            //currently local folder in debug folder containing images
+            // TODO: This line of code loads data into the 'mathWizGroup3DataSet.students' table. You can move, or remove it, as needed.
+            this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet.students);
+            // TODO: This line of code loads data into the 'mathWizGroup3DataSet.students' table. You can move, or remove it, as needed.
+            this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet.students);
+           
+            //put Images folder in debug folder 
             //images folder should be moved to directory the final exe is located
             //takes pic from folder to set as profile pic
             string fileName = "teacher.jpg";
@@ -36,8 +41,11 @@ namespace MathWiz
 
             lblTeacherName.Text = teacher.FirstName;
 
-            lstBoxKlass.DataSource = teacher.Klasses;
-            lstBoxKlass.DisplayMember = "KlassName";
+            
+
+            cmbKlasses.DataSource = teacher.Klasses;
+            cmbKlasses.DisplayMember = "KlassName";
+            
 
 
         }
@@ -47,13 +55,18 @@ namespace MathWiz
             
         }
 
-        private void lstBoxKlass_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void cmbKlasses_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-                Klass selectedItem = lstBoxKlass.SelectedItem as Klass;
-                lstBoxStudents.DataSource = MathWizDA.SelectAllStudentsInKlass(selectedItem.Id);
+                Klass selectedItem = cmbKlasses.SelectedItem as Klass;
+
+            this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, selectedItem.Id);
+
             
-            
+
         }
+
+
     }
 }
