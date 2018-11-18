@@ -426,9 +426,10 @@
             // usernameToolStripLabel
             // 
             this.usernameToolStripLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.usernameToolStripLabel.Margin = new System.Windows.Forms.Padding(10, 1, 5, 2);
             this.usernameToolStripLabel.Name = "usernameToolStripLabel";
-            this.usernameToolStripLabel.Size = new System.Drawing.Size(150, 38);
-            this.usernameToolStripLabel.Text = "Search for a Student";
+            this.usernameToolStripLabel.Size = new System.Drawing.Size(153, 38);
+            this.usernameToolStripLabel.Text = "Search for a Student:";
             // 
             // usernameToolStripTextBox
             // 
@@ -492,9 +493,9 @@
             // 
             // pgbLoadData
             // 
-            this.pgbLoadData.Location = new System.Drawing.Point(456, 27);
+            this.pgbLoadData.Location = new System.Drawing.Point(481, 27);
             this.pgbLoadData.Name = "pgbLoadData";
-            this.pgbLoadData.Size = new System.Drawing.Size(449, 34);
+            this.pgbLoadData.Size = new System.Drawing.Size(424, 34);
             this.pgbLoadData.TabIndex = 12;
             // 
             // lblProgress

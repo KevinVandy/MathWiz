@@ -360,21 +360,47 @@ namespace MathWiz
                 conn.Close();
             }
         }
-        public static void UpdatePassword(string username, string passwordHash)
+        public static void UpdatePassword(string userType, string username, string passwordHash)
         {
-            string insertStatement = "UPDATE PasswordHash i"; //need subquery?
+            string insertStatement = "";
+
+            switch (userType) //need this case structure because you can't bind values to a table name, and I want to do it the safe way without {}
+            {
+                case "admin":
+                    insertStatement = "UPDATE admins " +
+                                     "SET PasswordHash = @passwordHash " +
+                                     "WHERE Username = @username";
+                    break;
+
+                case "teacher":
+                    insertStatement = "UPDATE teachers " +
+                                     "SET PasswordHash = @passwordHash " +
+                                     "WHERE Username = @username";
+                    break;
+
+                case "parent":
+                    insertStatement = "UPDATE parents " +
+                                     "SET PasswordHash = @passwordHash " +
+                                     "WHERE Username = @username";
+                    break;
+
+                case "student":
+                    insertStatement = "UPDATE students " +
+                                     "SET PasswordHash = @passwordHash " +
+                                     "WHERE Username = @username";
+                    break;
+
+            }
 
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand(insertStatement, conn);
-
-            // create your parameters and add values from object
-            //Cmd.Parameters.AddWithValue("@Username", newParent.Username);
+            Cmd.Parameters.AddWithValue("@userType", userType);
+            Cmd.Parameters.AddWithValue("@username", username);
+            Cmd.Parameters.AddWithValue("@passwordHash", passwordHash);
+            
             try
             {
-                // Open the connection
                 conn.Open();
-
-                // execute the query
                 Cmd.ExecuteNonQuery();
             }
             catch (SqlException ex)
@@ -387,7 +413,6 @@ namespace MathWiz
             }
             finally
             {
-                // always close the connection
                 conn.Close();
             }
         }

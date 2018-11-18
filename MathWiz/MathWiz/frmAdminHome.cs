@@ -161,7 +161,8 @@ namespace MathWiz
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
-            Form changePasswordForm = new frmChangePassword();
+            string username = dgvUsers.Rows[dgvUsers.CurrentCell.RowIndex].Cells[1].Value.ToString();
+            Form changePasswordForm = new frmChangePassword(username);
             changePasswordForm.ShowDialog();
         }
 

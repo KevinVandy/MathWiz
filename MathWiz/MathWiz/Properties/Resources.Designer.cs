@@ -63,9 +63,29 @@ namespace MathWiz.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hide_password {
+            get {
+                object obj = ResourceManager.GetObject("hide-password", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap numbers {
             get {
                 object obj = ResourceManager.GetObject("numbers", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap show_password {
+            get {
+                object obj = ResourceManager.GetObject("show-password", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

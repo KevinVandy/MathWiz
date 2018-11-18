@@ -78,13 +78,11 @@ namespace MathWiz
         private void txtFirstName_TextChanged(object sender, EventArgs e)
         {
             txtUsername.Text = txtFirstName.Text + txtLastName.Text + txtID.Text;
-            lblAdded.Hide();
         }
 
         private void txtLastName_TextChanged(object sender, EventArgs e)
         {
             txtUsername.Text = txtFirstName.Text + txtLastName.Text + txtID.Text;
-            lblAdded.Hide();
         }
 
         private void txtID_TextChanged(object sender, EventArgs e)
@@ -98,6 +96,43 @@ namespace MathWiz
         }
 
         private void btnCreateUser_Click(object sender, EventArgs e)
+        {
+            btnCreateUser.Enabled = false;
+            if (!backgroundWorkerInsertData.IsBusy)
+            {
+                backgroundWorkerInsertData.RunWorkerAsync();
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnClassQuestion_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("You can add the teacher to a class in the 'Manage Classes' section");
+        }
+
+        private void backgroundWorkerLoadData_DoWork(object sender, DoWorkEventArgs e)
+        {
+            parentChoices = MathWizDA.SelectAllParents();
+            klassChoices = MathWizDA.SelectAllKlasses();
+        }
+
+        private void backgroundWorkerLoadData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            foreach (Parent p in parentChoices)
+            {
+                cmbParent.Items.Add(p.ToString());
+            }
+            foreach (Klass k in klassChoices)
+            {
+                cmbClass.Items.Add(k.ToString());
+            }
+        }
+
+        private void backgroundWorkerInsertData_DoWork(object sender, DoWorkEventArgs e)
         {
             string firstName = txtFirstName.Text;
             string lastName = txtLastName.Text;
@@ -144,7 +179,13 @@ namespace MathWiz
                         break;
                 }
             }
-            
+        }
+
+        private void backgroundWorkerInsertData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            string firstName = txtFirstName.Text;
+            string lastName = txtLastName.Text;
+
             lblAdded.Text = firstName + " " + lastName + " was successfully added";
             lblAdded.Show();
 
@@ -155,34 +196,7 @@ namespace MathWiz
             txtPassword.Clear();
             cmbParent.SelectedItem = null;
             cmbClass.SelectedItem = null;
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnClassQuestion_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("You can add the teacher to a class in the 'Manage Classes' section");
-        }
-
-        private void backgroundWorkerLoadData_DoWork(object sender, DoWorkEventArgs e)
-        {
-            parentChoices = MathWizDA.SelectAllParents();
-            klassChoices = MathWizDA.SelectAllKlasses();
-        }
-
-        private void backgroundWorkerLoadData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            foreach (Parent p in parentChoices)
-            {
-                cmbParent.Items.Add(p.ToString());
-            }
-            foreach (Klass k in klassChoices)
-            {
-                cmbClass.Items.Add(k.ToString());
-            }
+            btnCreateUser.Enabled = true;
         }
     }
 }

@@ -207,6 +207,8 @@
   <ItemGroup>
     <Content Include="Images\teacher.jpg" />
     <Content Include="MathWiz.ico" />
+    <None Include="Resources\hide-password.png" />
+    <None Include="Resources\show-password.png" />
     <None Include="Resources\symbols.png" />
     <None Include="Resources\numbers.jpg" />
   </ItemGroup>

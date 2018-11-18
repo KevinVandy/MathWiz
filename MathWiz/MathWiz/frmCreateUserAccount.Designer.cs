@@ -49,6 +49,7 @@
             this.lblPasswordError = new System.Windows.Forms.Label();
             this.btnClassQuestion = new System.Windows.Forms.Button();
             this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorkerInsertData = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // txtFirstName
@@ -260,6 +261,11 @@
             this.backgroundWorkerLoadData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerLoadData_DoWork);
             this.backgroundWorkerLoadData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerLoadData_RunWorkerCompleted);
             // 
+            // backgroundWorkerInsertData
+            // 
+            this.backgroundWorkerInsertData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerInsertData_DoWork);
+            this.backgroundWorkerInsertData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerInsertData_RunWorkerCompleted);
+            // 
             // frmCreateUserAccount
             // 
             this.AcceptButton = this.btnCreateUser;
@@ -320,5 +326,6 @@
         private System.Windows.Forms.Label lblPasswordError;
         private System.Windows.Forms.Button btnClassQuestion;
         private System.ComponentModel.BackgroundWorker backgroundWorkerLoadData;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerInsertData;
     }
 }
