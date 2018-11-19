@@ -48,7 +48,19 @@ namespace MathWiz
 
         private void btnCreateClass_Click(object sender, EventArgs e)
         {
+            if(txtClassName.Text != "" && cmbTeacher.SelectedIndex != -1)
+            {
+                string klassName = txtClassName.Text;
+                int teacherID = allTeachers[cmbTeacher.SelectedIndex].Id;
 
+                Klass newKlass = new Klass(klassName);
+
+                MathWizDB.InsertKlass(newKlass, teacherID);
+            }
+            else
+            {
+                MessageBox.Show("Class Name and Teacher are required");
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

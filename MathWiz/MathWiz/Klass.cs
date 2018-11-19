@@ -19,7 +19,7 @@ namespace MathWiz
         public Klass() { }
 
         //normal constructor
-        public Klass(string klassName, List<Student> students)
+        public Klass(string klassName, List<Student> students = null)
         {
             this.KlassName = klassName;
             this.Students = students;
