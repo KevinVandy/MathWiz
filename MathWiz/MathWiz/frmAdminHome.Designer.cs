@@ -65,6 +65,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lsvStudents = new System.Windows.Forms.ListView();
+            this.StudentID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.StudentName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.MasteryLevel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lsvKlasses = new System.Windows.Forms.ListView();
             this.ClassID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ClassName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -91,9 +94,6 @@
             this.adminsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.adminsTableAdapter();
             this.klassesTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.klassesTableAdapter();
             this.grbStatisticalAnalysis = new System.Windows.Forms.GroupBox();
-            this.StudentID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.StudentName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.MasteryLevel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gbxManageAccounts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -132,7 +132,7 @@
             this.lblDeleted.AutoSize = true;
             this.lblDeleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDeleted.ForeColor = System.Drawing.Color.Green;
-            this.lblDeleted.Location = new System.Drawing.Point(403, 239);
+            this.lblDeleted.Location = new System.Drawing.Point(416, 239);
             this.lblDeleted.Name = "lblDeleted";
             this.lblDeleted.Size = new System.Drawing.Size(154, 17);
             this.lblDeleted.TabIndex = 14;
@@ -376,7 +376,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1180, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1169, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -444,17 +444,17 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(680, 26);
+            this.label3.Location = new System.Drawing.Point(602, 26);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 17);
+            this.label3.Size = new System.Drawing.Size(150, 17);
             this.label3.TabIndex = 12;
-            this.label3.Text = "View Students";
+            this.label3.Text = "View Students In Class";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(355, 26);
+            this.label2.Location = new System.Drawing.Point(329, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 17);
             this.label2.TabIndex = 11;
@@ -468,13 +468,28 @@
             this.MasteryLevel});
             this.lsvStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvStudents.FullRowSelect = true;
-            this.lsvStudents.Location = new System.Drawing.Point(558, 52);
+            this.lsvStudents.Location = new System.Drawing.Point(512, 46);
             this.lsvStudents.Name = "lsvStudents";
-            this.lsvStudents.Size = new System.Drawing.Size(323, 141);
+            this.lsvStudents.Size = new System.Drawing.Size(323, 202);
             this.lsvStudents.TabIndex = 10;
             this.lsvStudents.UseCompatibleStateImageBehavior = false;
             this.lsvStudents.View = System.Windows.Forms.View.Details;
             this.lsvStudents.SelectedIndexChanged += new System.EventHandler(this.lsvStudents_SelectedIndexChanged);
+            // 
+            // StudentID
+            // 
+            this.StudentID.Text = "Id";
+            this.StudentID.Width = 32;
+            // 
+            // StudentName
+            // 
+            this.StudentName.Text = "Name";
+            this.StudentName.Width = 155;
+            // 
+            // MasteryLevel
+            // 
+            this.MasteryLevel.Text = "Mastery Level";
+            this.MasteryLevel.Width = 98;
             // 
             // lsvKlasses
             // 
@@ -483,9 +498,9 @@
             this.ClassName});
             this.lsvKlasses.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvKlasses.FullRowSelect = true;
-            this.lsvKlasses.Location = new System.Drawing.Point(287, 52);
+            this.lsvKlasses.Location = new System.Drawing.Point(264, 46);
             this.lsvKlasses.Name = "lsvKlasses";
-            this.lsvKlasses.Size = new System.Drawing.Size(227, 141);
+            this.lsvKlasses.Size = new System.Drawing.Size(217, 141);
             this.lsvKlasses.TabIndex = 9;
             this.lsvKlasses.UseCompatibleStateImageBehavior = false;
             this.lsvKlasses.View = System.Windows.Forms.View.Details;
@@ -499,7 +514,7 @@
             // ClassName
             // 
             this.ClassName.Text = "ClassName";
-            this.ClassName.Width = 189;
+            this.ClassName.Width = 162;
             // 
             // lsvTeachers
             // 
@@ -508,10 +523,10 @@
             this.TeacherName});
             this.lsvTeachers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvTeachers.FullRowSelect = true;
-            this.lsvTeachers.Location = new System.Drawing.Point(16, 52);
+            this.lsvTeachers.Location = new System.Drawing.Point(16, 46);
             this.lsvTeachers.MultiSelect = false;
             this.lsvTeachers.Name = "lsvTeachers";
-            this.lsvTeachers.Size = new System.Drawing.Size(227, 141);
+            this.lsvTeachers.Size = new System.Drawing.Size(217, 202);
             this.lsvTeachers.TabIndex = 8;
             this.lsvTeachers.UseCompatibleStateImageBehavior = false;
             this.lsvTeachers.View = System.Windows.Forms.View.Details;
@@ -520,12 +535,12 @@
             // TeacherID
             // 
             this.TeacherID.Text = "Id";
-            this.TeacherID.Width = 39;
+            this.TeacherID.Width = 49;
             // 
             // TeacherName
             // 
             this.TeacherName.Text = "Name";
-            this.TeacherName.Width = 182;
+            this.TeacherName.Width = 159;
             // 
             // label1
             // 
@@ -540,9 +555,9 @@
             // btnCreateClass
             // 
             this.btnCreateClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateClass.Location = new System.Drawing.Point(287, 209);
+            this.btnCreateClass.Location = new System.Drawing.Point(265, 209);
             this.btnCreateClass.Name = "btnCreateClass";
-            this.btnCreateClass.Size = new System.Drawing.Size(227, 39);
+            this.btnCreateClass.Size = new System.Drawing.Size(217, 39);
             this.btnCreateClass.TabIndex = 5;
             this.btnCreateClass.Text = "Create New Class";
             this.btnCreateClass.UseVisualStyleBackColor = true;
@@ -557,7 +572,7 @@
             this.btnClearSearch});
             this.fillBySearchToolStrip.Location = new System.Drawing.Point(0, 24);
             this.fillBySearchToolStrip.Name = "fillBySearchToolStrip";
-            this.fillBySearchToolStrip.Size = new System.Drawing.Size(1180, 41);
+            this.fillBySearchToolStrip.Size = new System.Drawing.Size(1169, 41);
             this.fillBySearchToolStrip.TabIndex = 3;
             this.fillBySearchToolStrip.Text = "fillByAdminSearchToolStrip";
             // 
@@ -676,27 +691,12 @@
             this.grbStatisticalAnalysis.TabStop = false;
             this.grbStatisticalAnalysis.Text = "Statistical Analysis";
             // 
-            // StudentID
-            // 
-            this.StudentID.Text = "Id";
-            this.StudentID.Width = 32;
-            // 
-            // StudentName
-            // 
-            this.StudentName.Text = "Name";
-            this.StudentName.Width = 146;
-            // 
-            // MasteryLevel
-            // 
-            this.MasteryLevel.Text = "Mastery Level";
-            this.MasteryLevel.Width = 98;
-            // 
             // frmAdminHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1197, 688);
+            this.ClientSize = new System.Drawing.Size(1186, 598);
             this.Controls.Add(this.grbStatisticalAnalysis);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.lblProgress);

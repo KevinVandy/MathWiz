@@ -178,6 +178,8 @@ namespace MathWiz
 
         }
 
+        
+
         private void btnCreateAdmin_Click(object sender, EventArgs e)
         {
             Form createUserForm = new frmCreateUserAccount();
@@ -249,9 +251,20 @@ namespace MathWiz
             }
         }
 
+        private void btnCreateTeacher2_Click(object sender, EventArgs e)
+        {
+            btnCreateTeacher_Click(sender, e);
+        }
+
         private void btnCreateClass_Click(object sender, EventArgs e)
         {
+            Form createClassForm = new frmCreateClass();
+            createClassForm.ShowDialog();
+        }
 
+        private void btnCreateStudent2_Click(object sender, EventArgs e)
+        {
+            btnCreateStudent_Click(sender, e);
         }
         //END Button Event Handlers
 
@@ -415,5 +428,7 @@ namespace MathWiz
         {
 
         }
+
+        
     }
 }
