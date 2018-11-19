@@ -34,7 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblMaxMaster = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.mskTime = new System.Windows.Forms.MaskedTextBox();
             this.mskThreshold = new System.Windows.Forms.MaskedTextBox();
@@ -58,19 +58,15 @@
             // 
             this.cboType.FormattingEnabled = true;
             this.cboType.Items.AddRange(new object[] {
-            "Test",
             "Practice Test",
             "Placement Test",
-            "Mastery Test",
-            "Graded Test",
-            "Graded Practice Test",
-            "Graded Placement Test",
-            "Graded Mastery Test"});
+            "Mastery Test"});
             this.cboType.Location = new System.Drawing.Point(156, 34);
             this.cboType.Name = "cboType";
             this.cboType.Size = new System.Drawing.Size(121, 21);
             this.cboType.TabIndex = 1;
             this.cboType.Tag = "Test Type";
+            this.cboType.SelectedIndexChanged += new System.EventHandler(this.cboType_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -108,14 +104,14 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Minimum Level:";
             // 
-            // label5
+            // lblMaxMaster
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(27, 233);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Maximum Level";
+            this.lblMaxMaster.AutoSize = true;
+            this.lblMaxMaster.Location = new System.Drawing.Point(27, 233);
+            this.lblMaxMaster.Name = "lblMaxMaster";
+            this.lblMaxMaster.Size = new System.Drawing.Size(80, 13);
+            this.lblMaxMaster.TabIndex = 6;
+            this.lblMaxMaster.Text = "Maximum Level";
             // 
             // label6
             // 
@@ -224,7 +220,7 @@
             this.Controls.Add(this.mskThreshold);
             this.Controls.Add(this.mskTime);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblMaxMaster);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -246,7 +242,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblMaxMaster;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MaskedTextBox mskTime;
         private System.Windows.Forms.MaskedTextBox mskThreshold;

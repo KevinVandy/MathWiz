@@ -50,6 +50,8 @@ namespace MathWiz
             }
         }
 
+        //public static void InsertTest()
+
         public static void InsertStudent(Student newStudent, int parentID, int klassID)
         {
             string insertStatement = "INSERT INTO students (ParentID, KlassID, Username, FirstName, LastName, PasswordHash) " +
