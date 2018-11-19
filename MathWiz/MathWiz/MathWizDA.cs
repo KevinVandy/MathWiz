@@ -1047,8 +1047,9 @@ namespace MathWiz
             List<Klass> klasses = new List<Klass>();
 
             //This is not safe!!!
-            string query = $"SELECT * FROM klasses where TeacherID = {teacherID}";
+            string query = $"SELECT * FROM klasses where TeacherID = @teacherID";
             SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@teacherID", teacherID);
 
             try
             {
