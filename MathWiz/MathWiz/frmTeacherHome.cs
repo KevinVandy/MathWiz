@@ -50,11 +50,6 @@ namespace MathWiz
 
         }
 
-        private void frmTeacherHome_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
-        }
-
 
         private void cmbKlasses_SelectedIndexChanged(object sender, EventArgs e)
         {

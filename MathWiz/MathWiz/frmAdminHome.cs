@@ -13,7 +13,6 @@ namespace MathWiz
     public partial class frmAdminHome : Form
     {
         Admin admin;
-        List<Klass> allKlasses = new List<Klass>(); //this will be depreciated
         
         public frmAdminHome(string username)
         {
@@ -23,10 +22,47 @@ namespace MathWiz
 
         private void frmAdminHome_Load(object sender, EventArgs e)
         {
-            backgroundWorkerFormDataLoad.RunWorkerAsync(); //load data, but as a background job so the form does not freeze
+            backgroundWorkerFormDataLoad.RunWorkerAsync();
         }
 
+        private void rdoUserTypes_CheckChanged(object sender, EventArgs e)
+        {
+            //check which radio button is selected and display the correct users in the  datagridview
+            if (rdoAdmins.Checked)
+            {
+                dgvUsers.DataSource = adminsBindingSource;
+                usernameToolStripLabel.Text = "Search for an Admin";
+            }
+            else if (rdoTeachers.Checked)
+            {
+                dgvUsers.DataSource = teachersBindingSource;
+                usernameToolStripLabel.Text = "Search for a Teacher";
+            }
+            else if (rdoParents.Checked)
+            {
+                dgvUsers.DataSource = parentsBindingSource;
+                usernameToolStripLabel.Text = "Search for a Parent";
+            }
+            else if (rdoStudents.Checked)
+            {
+                dgvUsers.DataSource = studentsBindingSource;
+                usernameToolStripLabel.Text = "Search for a Student";
+            }
 
+            //only enable the delete user button if someone is selected
+            if (dgvUsers.SelectedRows != null)
+            {
+                btnChangePassword.Enabled = true;
+                btnDeleteSelectedUser.Enabled = true;
+                contextMenuStrip.Enabled = true;
+            }
+            else
+            {
+                btnChangePassword.Enabled = false;
+                btnDeleteSelectedUser.Enabled = false;
+                contextMenuStrip.Enabled = true;
+            }
+        }
 
         //Begin Background Worker event handlers for loading data
         private void backgroundWorkerFormDataLoad_DoWork(object sender, DoWorkEventArgs e)//load data in the background so form remains responsive
@@ -45,8 +81,8 @@ namespace MathWiz
                 backgroundWorkerFormDataLoad.ReportProgress(60);
                 this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet.students);
 
+                this.klassesTableAdapter.Fill(this.mathWizGroup3DataSet.klasses);
                 backgroundWorkerFormDataLoad.ReportProgress(80);
-                allKlasses = MathWizDA.SelectAllKlasses();
 
                 backgroundWorkerFormDataLoad.ReportProgress(100); //done
             }
@@ -93,11 +129,17 @@ namespace MathWiz
             dgvUsers.Refresh();
             rdoAdmins.Checked = true;
             rdoStudents.Checked = true; //just a hack to get the table to refresh and show new info
-
-            lstClasses.Items.Clear();
-            foreach (Klass k in allKlasses)
+            
+            //manage classes section
+            for(int i = 0; i < mathWizGroup3DataSet.teachers.Rows.Count; i++)
             {
-                lstClasses.Items.Add(k.ToString());
+                DataRow drow = mathWizGroup3DataSet.teachers.Rows[i];
+                if(drow.RowState != DataRowState.Deleted)
+                {
+                    ListViewItem lvi = new ListViewItem(drow["Id"].ToString());
+                    lvi.SubItems.Add(drow["FirstName"].ToString() + " " + drow["LastName"].ToString());
+                    lsvTeachers.Items.Add(lvi);
+                }
             }
         }
         //End Background Worker event handlers for loading data
@@ -123,12 +165,17 @@ namespace MathWiz
                 this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet.students);
             }
 
-            allKlasses = MathWizDA.SelectAllKlasses();
-
             dgvUsers.Update();
             dgvUsers.Refresh();
 
-            //rdoUserTypes_CheckChanged(null, null);
+            lsvTeachers.Items.Clear();
+            //TODO manage klasses update data too
+            
+        }
+
+        private void RefreshData()
+        {
+
         }
 
         private void btnCreateAdmin_Click(object sender, EventArgs e)
@@ -202,63 +249,24 @@ namespace MathWiz
             }
         }
 
-        
+        private void btnCreateClass_Click(object sender, EventArgs e)
+        {
+
+        }
         //END Button Event Handlers
 
-        private void rdoUserTypes_CheckChanged(object sender, EventArgs e)
+        //BEGIN Context Menu Event Handlers
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            //check which radio button is selected and display the correct users in the  datagridview
-            if (rdoAdmins.Checked)
-            {
-                dgvUsers.DataSource = adminsBindingSource;
-                usernameToolStripLabel.Text = "Search for an Admin";
-            }
-            else if (rdoTeachers.Checked)
-            {
-                dgvUsers.DataSource = teachersBindingSource;
-                usernameToolStripLabel.Text = "Search for a Teacher";
-            }
-            else if (rdoParents.Checked)
-            {
-                dgvUsers.DataSource = parentsBindingSource;
-                usernameToolStripLabel.Text = "Search for a Parent";
-            }
-            else if (rdoStudents.Checked)
-            {
-                dgvUsers.DataSource = studentsBindingSource;
-                usernameToolStripLabel.Text = "Search for a Student";
-            }
-
-            //only enable the delete user button if someone is selected
-            if (dgvUsers.SelectedRows != null)
-            {
-                btnChangePassword.Enabled = true;
-                btnDeleteSelectedUser.Enabled = true;
-            }
-            else
-            {
-                btnChangePassword.Enabled = false;
-                btnDeleteSelectedUser.Enabled = false;
-            }
+            btnChangePassword_Click(null, null);
         }
 
-        private void lstClasses_SelectedIndexChanged(object sender, EventArgs e)
+        private void deleteUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(lstClasses.SelectedItem != null)
-            {
-                lstStudentsInKlass.Enabled = true;
-                lstStudentsInKlass.Items.Clear();
-                foreach(Student s in allKlasses[lstClasses.SelectedIndex].Students)
-                {
-                    lstStudentsInKlass.Items.Add(s.ToString());
-                }
-            }
-            else
-            {
-                lstStudentsInKlass.Enabled = false;
-            }
+            btnDeleteSelectedUser_Click(null, null);
         }
+        //END Context Menu Event Handlers
+        
         
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -277,7 +285,7 @@ namespace MathWiz
         }
         
         //button to search for a user at the top of the form
-        private void fillByUsernameSearchToolStripButton_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             try
             {
@@ -298,10 +306,39 @@ namespace MathWiz
                     this.studentsTableAdapter.FillByStudentSearch(this.mathWizGroup3DataSet.students, "%" + usernameToolStripTextBox.Text.Trim() + "%");
                 }
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnClearSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                usernameToolStripTextBox.Text = "";
+                if (rdoAdmins.Checked)
+                {
+                    this.adminsTableAdapter.Fill(this.mathWizGroup3DataSet.admins);
+                }
+                else if (rdoTeachers.Checked)
+                {
+                    this.teachersTableAdapter.Fill(this.mathWizGroup3DataSet.teachers);
+                }
+                else if (rdoParents.Checked)
+                {
+                    this.parentsTableAdapter.Fill(this.mathWizGroup3DataSet.parents);
+                }
+                else if (rdoStudents.Checked)
+                {
+                    this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet.students);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         //event handlers to save data when someone edits a cell in the users table
@@ -328,6 +365,55 @@ namespace MathWiz
             {
                 studentsTableAdapter.Update(mathWizGroup3DataSet.students);
             }
+        }
+
+        private void lsvTeachers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lsvStudents.Items.Clear();
+            lsvKlasses.Items.Clear();
+            if (lsvTeachers.SelectedItems.Count > 0)
+            {
+                for (int i = 0; i < mathWizGroup3DataSet.klasses.Rows.Count; i++)
+                {
+                    DataRow drow = mathWizGroup3DataSet.klasses.Rows[i];
+                    if (drow.RowState != DataRowState.Deleted)
+                    {
+                        ListViewItem lvi = new ListViewItem(drow["Id"].ToString());
+                        lvi.SubItems.Add(drow["KlassName"].ToString());
+                        if (Convert.ToInt16(drow["TeacherID"]) == Convert.ToInt16(lsvTeachers.SelectedItems[0].SubItems[0].Text))
+                        {
+                            lsvKlasses.Items.Add(lvi);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void lsvKlasses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lsvStudents.Items.Clear();
+            if (lsvKlasses.SelectedItems.Count > 0)
+            {
+                for (int i = 0; i < mathWizGroup3DataSet.students.Rows.Count; i++)
+                {
+                    DataRow drow = mathWizGroup3DataSet.students.Rows[i];
+                    if (drow.RowState != DataRowState.Deleted)
+                    {
+                        ListViewItem lvi = new ListViewItem(drow["Id"].ToString());
+                        lvi.SubItems.Add(drow["FirstName"].ToString() + " " + drow["LastName"].ToString());
+                        lvi.SubItems.Add(drow["MasteryLevel"].ToString());
+                        if (Convert.ToInt16(drow["KlassID"]) == Convert.ToInt16(lsvKlasses.SelectedItems[0].SubItems[0].Text))
+                        {
+                            lsvStudents.Items.Add(lvi);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void lsvStudents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
