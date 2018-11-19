@@ -35,9 +35,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmbKlasses = new System.Windows.Forms.ComboBox();
             this.studentTable = new System.Windows.Forms.DataGridView();
-            this.mathWizGroup3DataSet = new MathWiz.MathWizGroup3DataSet();
-            this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.studentsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.studentsTableAdapter();
             this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ParentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,10 +42,14 @@
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.masteryLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mathWizGroup3DataSet = new MathWiz.MathWizGroup3DataSet();
+            this.studentsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.studentsTableAdapter();
+            this.btnTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxTeacher)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // picBoxTeacher
@@ -111,20 +112,6 @@
             this.studentTable.Size = new System.Drawing.Size(443, 236);
             this.studentTable.TabIndex = 6;
             // 
-            // mathWizGroup3DataSet
-            // 
-            this.mathWizGroup3DataSet.DataSetName = "MathWizGroup3DataSet";
-            this.mathWizGroup3DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // studentsBindingSource
-            // 
-            this.studentsBindingSource.DataMember = "students";
-            this.studentsBindingSource.DataSource = this.mathWizGroup3DataSet;
-            // 
-            // studentsTableAdapter
-            // 
-            this.studentsTableAdapter.ClearBeforeFill = true;
-            // 
             // usernameDataGridViewTextBoxColumn
             // 
             this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
@@ -173,6 +160,30 @@
             this.masteryLevelDataGridViewTextBoxColumn.HeaderText = "MasteryLevel";
             this.masteryLevelDataGridViewTextBoxColumn.Name = "masteryLevelDataGridViewTextBoxColumn";
             // 
+            // studentsBindingSource
+            // 
+            this.studentsBindingSource.DataMember = "students";
+            this.studentsBindingSource.DataSource = this.mathWizGroup3DataSet;
+            // 
+            // mathWizGroup3DataSet
+            // 
+            this.mathWizGroup3DataSet.DataSetName = "MathWizGroup3DataSet";
+            this.mathWizGroup3DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // studentsTableAdapter
+            // 
+            this.studentsTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(268, 288);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(240, 110);
+            this.btnTest.TabIndex = 7;
+            this.btnTest.Text = "Test";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // frmTeacherHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,6 +191,7 @@
             this.BackgroundImage = global::MathWiz.Properties.Resources.numbers;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 461);
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.studentTable);
             this.Controls.Add(this.cmbKlasses);
             this.Controls.Add(this.label1);
@@ -192,8 +204,8 @@
             this.Load += new System.EventHandler(this.frmTeacherHome_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBoxTeacher)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,5 +228,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn masteryLevelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnTest;
     }
 }
