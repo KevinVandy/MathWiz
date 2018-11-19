@@ -37,16 +37,17 @@ namespace MathWiz
         public int MasteryLevel { get; set; }
         public string QuestionText { get; set; }
         public List<RadioButton> Choices { get; set; }
-        public string CorrectAnswer { get; set; }
+        public int CorrectAnswer { get; set; }
         public TimeSpan TimeLimit { get; set; }
         public int Weight { get; set; }
         public bool RandomlyGenerated { get; set; }
 
 
         //declare a list of question objects that will later be fed back  to the test
+        private static Random rnd = new Random();
         private static List<int> easyRandoms = new List<int>();
         private static List<int> hardRandoms = new List<int>();
-        private List<Question> testQuestions = new List<Question>();
+        private static List<Question> testQuestions = new List<Question>();
         //empty constructor
         public Question() { }
 
@@ -56,7 +57,7 @@ namespace MathWiz
             this.MasteryLevel = masteryLevel;
             this.QuestionText = null; //TODO call method to generate question based on masterylevel
             this.Choices = null;
-            this.CorrectAnswer = null; //TODO call method to generate answer based on question (or it will also be set during generation of question)
+            this.CorrectAnswer = CorrectAnswer; //TODO call method to generate answer based on question (or it will also be set during generation of question)
             this.TimeLimit = timeLimit;
             this.Weight = weight;
             this.RandomlyGenerated = true;
@@ -68,7 +69,7 @@ namespace MathWiz
             this.MasteryLevel = 0; //TODO calculate the mastery level based on the question that was submitted by the teacher
             this.QuestionText = questionText;
             this.Choices = null;
-            this.CorrectAnswer = correctAnswer;
+            this.CorrectAnswer = CorrectAnswer;
             this.TimeLimit = timeLimit;
             this.Weight = weight;
             this.RandomlyGenerated = false;
@@ -80,7 +81,7 @@ namespace MathWiz
             this.MasteryLevel = 0; //TODO calculate the mastery level based on the question that was submitted by the teacher
             this.QuestionText = questionText;
             this.Choices = choices;
-            this.CorrectAnswer = correctAnswer;
+            this.CorrectAnswer = CorrectAnswer;
             this.TimeLimit = timeLimit;
             this.Weight = weight;
             this.RandomlyGenerated = false;
@@ -92,7 +93,7 @@ namespace MathWiz
             this.MasteryLevel = masteryLevel;
             this.QuestionText = questionText;
             this.Choices = choices;
-            this.CorrectAnswer = correctAnswer;
+            this.CorrectAnswer = CorrectAnswer;
             this.TimeLimit = timeLimit;
             this.Weight = weight;
             this.RandomlyGenerated = randomlyGenerated;
@@ -105,7 +106,7 @@ namespace MathWiz
 
         public static List<int> GenerateEasyRandomNumbers()
         {
-            Random rnd = new Random();
+
             easyRandoms = Enumerable.Range(0, 10).OrderBy(x => rnd.Next()).Take(10).ToList();
             return easyRandoms;
         }
@@ -117,6 +118,20 @@ namespace MathWiz
             return hardRandoms;
         }
 
+        /*I was looking at 12 mastery levels
+ * 1. simple addition
+ * 2. simple subtraction
+ * 3. simple mixed add, sub
+ * 4. complex addition
+ * 5. complex sub
+ * 6. complex mixed add, sub
+ * 7. simple multiplication
+ * 8. simple division
+ * 9. mixed mult, div
+ * 10. advanced mult
+ * 11. advanced div
+ * 13. advanced mixed mult, div*/
+
         public static List<Question> GenerateRandomQuestions(int masteryLevel, TimeSpan timeLimit)
         {
             List<Question> qL = new List<Question>();
@@ -126,13 +141,13 @@ namespace MathWiz
             switch(masteryLevel)
             {
                 case 1:
-                    Console.WriteLine("Case1");
+                    qL = GenerateSimpleAddtionQuestions();
                     break;
                 case 2:
-                    Console.WriteLine("Case2");
+                    //qL = GenerateSimpleSubtractionQuestions();
                     break;
                 case 3:
-                    Console.WriteLine("Case3");
+                    //qL = GenerateMixed
                     break;
                 case 4:
                     Console.WriteLine("Case4");
@@ -174,7 +189,43 @@ namespace MathWiz
 
         }
 
-        
 
+        public static List<Question> GenerateSimpleAddtionQuestions()
+        {
+            TimeSpan Standard = new TimeSpan(0, 1, 0);
+            string questionText;
+            List<int> firstEasy = GenerateEasyRandomNumbers();
+            List<int> secondEasy = GenerateEasyRandomNumbers();
+            var firstEasyEnumerator = firstEasy.GetEnumerator();
+            int[] answer = new int[10];
+            var secondEasyEnumerator = secondEasy.GetEnumerator();
+            var answerEnumerator = answer.GetEnumerator();
+            //enumerate through the lists
+            while(firstEasyEnumerator.MoveNext())
+            {
+                int counter = 0;
+                secondEasyEnumerator.MoveNext();
+                answerEnumerator.MoveNext();
+                answer[counter] = ((firstEasyEnumerator.Current) + (secondEasyEnumerator.Current));
+                questionText = firstEasyEnumerator.Current.ToString() + " + " + secondEasyEnumerator.Current.ToString() + " = ";
+                //MessageBox.Show("FirstNumber: " + firstEasyEnumerator.Current.ToString() + "\n" +
+                //                "SecondNumber: " + secondEasyEnumerator.Current.ToString() + "\n" +
+                //                "Answer: " + answer[counter].ToString() + "\n" +
+                //                "theText: " + questionText);
+                Question question = new Question();
+                question.QuestionText = questionText;
+                question.CorrectAnswer = answer[counter];
+                question.TimeLimit = Standard;
+                counter++;
+                testQuestions.Add(question);
+            }
+
+            foreach(Question q in testQuestions)
+            {
+                MessageBox.Show(q.QuestionText + q.CorrectAnswer.ToString());
+            }
+            return testQuestions;
+
+        }
     }
 }

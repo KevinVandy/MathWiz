@@ -14,9 +14,12 @@ namespace MathWiz
         [STAThread]
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new frmTeacherHome("TylerPerry"));
             Application.Run(new frmLogin());
+
         }
     }
 }
