@@ -63,6 +63,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbxManageClasses = new System.Windows.Forms.GroupBox();
+            this.chtMasterLevelDistribution = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lsvStudents = new System.Windows.Forms.ListView();
@@ -95,7 +96,6 @@
             this.adminsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.adminsTableAdapter();
             this.klassesTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.klassesTableAdapter();
             this.grbStatisticalAnalysis = new System.Windows.Forms.GroupBox();
-            this.chtMasterLevelDistribution = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gbxManageAccounts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -104,12 +104,12 @@
             this.pnlUserTypes.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.gbxManageClasses.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chtMasterLevelDistribution)).BeginInit();
             this.fillBySearchToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.parentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.klassesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teachersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.adminsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chtMasterLevelDistribution)).BeginInit();
             this.SuspendLayout();
             // 
             // gbxManageAccounts
@@ -395,14 +395,14 @@
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -423,7 +423,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -443,6 +443,15 @@
             this.gbxManageClasses.TabIndex = 2;
             this.gbxManageClasses.TabStop = false;
             this.gbxManageClasses.Text = "Manage Classes";
+            // 
+            // chtMasterLevelDistribution
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chtMasterLevelDistribution.ChartAreas.Add(chartArea1);
+            this.chtMasterLevelDistribution.Location = new System.Drawing.Point(864, 46);
+            this.chtMasterLevelDistribution.Name = "chtMasterLevelDistribution";
+            this.chtMasterLevelDistribution.Size = new System.Drawing.Size(204, 202);
+            this.chtMasterLevelDistribution.TabIndex = 14;
             // 
             // label3
             // 
@@ -695,15 +704,6 @@
             this.grbStatisticalAnalysis.TabStop = false;
             this.grbStatisticalAnalysis.Text = "Statistical Analysis";
             // 
-            // chtMasterLevelDistribution
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chtMasterLevelDistribution.ChartAreas.Add(chartArea1);
-            this.chtMasterLevelDistribution.Location = new System.Drawing.Point(864, 46);
-            this.chtMasterLevelDistribution.Name = "chtMasterLevelDistribution";
-            this.chtMasterLevelDistribution.Size = new System.Drawing.Size(204, 202);
-            this.chtMasterLevelDistribution.TabIndex = 14;
-            // 
             // frmAdminHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -736,13 +736,13 @@
             this.menuStrip1.PerformLayout();
             this.gbxManageClasses.ResumeLayout(false);
             this.gbxManageClasses.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chtMasterLevelDistribution)).EndInit();
             this.fillBySearchToolStrip.ResumeLayout(false);
             this.fillBySearchToolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.parentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.klassesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teachersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.adminsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chtMasterLevelDistribution)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
