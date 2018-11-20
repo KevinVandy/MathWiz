@@ -19,7 +19,6 @@ namespace MathWiz
             InitializeComponent();
             teacher = MathWizDA.SelectTeacher(username);
             teacher.Klasses = MathWizDA.SelectAllKlassesByTeacher(teacher.Id);
-
             
         }
 
@@ -78,7 +77,13 @@ namespace MathWiz
 
         private void studentTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("This Works");
+            
+            DataGridViewRow row = studentTable.SelectedRows[0];
+            string studentName = row.Cells["FirstName"] .Value.ToString() + " " + row.Cells[5].Value.ToString();
+            grpBxStudentInfo.Text = studentName;
+            
+            grpBxStudentInfo.Visible = true;
+
         }
     }
 }
