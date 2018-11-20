@@ -14,8 +14,42 @@ namespace MathWiz
     {
         readonly static SqlConnection conn = MathWizConn.GetMathWizConnection();
 
-        //Begin Find Users Methods - used for finding out which type of user is logging in
-        public static bool FindUsername(string username) //Find out if a username has already been taken in any of the user tables
+
+        public static Int64 GetLastInsertedRecord(string tablename, string fieldname)
+        {  Int64 aNumber = 0;
+
+            string query = "Select @fieldname from @tablename where @fieldname =(select max@fieldname) from @tablename)";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@tablename", tablename);
+            selectCommand.Parameters.AddWithValue("@fieldname", fieldname);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                if(reader.Read() && reader.HasRows)
+                {
+                    aNumber = Convert.ToInt64(reader[""]);
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+            }
+            return aNumber;
+
+        }
+           
+            
+        
+    //Begin Find Users Methods - used for finding out which type of user is logging in
+    public static bool FindUsername(string username) //Find out if a username has already been taken in any of the user tables
         {
             string query = "SELECT Username FROM admins WHERE Username = @username " +
                      "UNION SELECT Username FROM teachers WHERE Username = @username " +
@@ -1091,5 +1125,8 @@ namespace MathWiz
             return klasses;
         }
 
+
+
     }
+
 }
