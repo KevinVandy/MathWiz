@@ -21,15 +21,19 @@ namespace MathWiz
         {
             if(ValidateForm())
             {
-               
-                if(cboMinimum.Visible == true)
+                int min = 0;
+                int max = 0;
+                decimal threshold = 0.0m;
+                int masteryLevel = 0;
+                if (cboMinimum.Enabled == true)
                 {
-                    int min = cboMinimum.SelectedIndex + 1;
-                    int max = cboMaximum.SelectedIndex + 1;
+                    min = cboMinimum.SelectedIndex + 1;
+                    max = cboMaximum.SelectedIndex + 1;
                 }
                 else
                 {
-                    decimal threshhold = Convert.ToDecimal(mskThreshold.Text);
+                    threshold = Convert.ToDecimal(mskThreshold.Text);
+                    masteryLevel = cboMaximum.SelectedIndex + 1;
                 }
                 List<Question> qL = new List<Question>();
                 TimeSpan time = TimeSpan.Parse(mskTime.Text);
@@ -41,24 +45,22 @@ namespace MathWiz
                 switch (caseswitch)
                 {
                     case 0:
-                        //PracticeTest practiceTest = new PracticeTest(qL, time, isTrue, min, max);
-                        MessageBox.Show("Case 1");
+                        PracticeTest practiceTest = new PracticeTest(qL, time, isTrue, min, max);
+                        MathWizDB.InsertPracticeTest(practiceTest);
                         break;
                     case 1:
                         MessageBox.Show("Case 2");
-                        //PlacementTest PlacementTest = new PlacementTest(qL, time, isTrue, min, max);
+                        PlacementTest PlacementTest = new PlacementTest(qL, time, isTrue, min, max);
+                        MathWizDB.InsertPlacementTest(PlacementTest);
                         break;
                     case 2:
-                        MessageBox.Show("Case 3");
-                        //MasteryTest masteryTest = new MasteryTest(qL, time, isTrue, max, threshhold);
+                        MasteryTest masteryTest = new MasteryTest(qL, time, isTrue, masteryLevel, threshold);
+                        MathWizDB.InsertMasteryTest(masteryTest);
                         break;
 
 
                 }
-                if (cboRandom.SelectedIndex == 0)
-                {
-                    //Question.
-                }
+
             }
         }
 
@@ -73,7 +75,6 @@ namespace MathWiz
                Validation.IsComboSelected(cboRandom) &&
                Validation.secondIndexNotLower(cboMinimum, cboMaximum) == true)
                {
-                    MessageBox.Show("Validated practice / placement");
                     return true;
                 }
 
@@ -88,7 +89,6 @@ namespace MathWiz
                Validation.IsComboSelected(cboRandom) &&
                Validation.secondIndexNotLower(cboMinimum, cboMaximum) == true)
                 {
-                    MessageBox.Show("Validated Mastery");
                     return true;
                 }
 
@@ -118,6 +118,11 @@ namespace MathWiz
                     mskThreshold.Enabled = true;
                     break;
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
