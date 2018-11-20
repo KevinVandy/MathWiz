@@ -57,6 +57,7 @@ namespace MathWiz
 
         private void backgroundWorkerLogin_DoWork(object sender, DoWorkEventArgs e)
         {
+            MessageBox.Show(txtUsername.Text + "\n" + txtPassword.Text);
             string userType = MathWizDA.FindUserType(txtUsername.Text);
             
             if (userType == "admin")
