@@ -127,10 +127,10 @@ namespace MathWiz
  * 6. complex mixed add, sub
  * 7. simple multiplication
  * 8. simple division
- * 9. mixed mult, div
+ * 9. simple mixed mult, div
  * 10. advanced mult
  * 11. advanced div
- * 13. advanced mixed mult, div*/
+ * 12. advanced mixed mult, div*/
 
         public static List<Question> GenerateRandomQuestions(int masteryLevel, TimeSpan timeLimit)
         {
@@ -141,46 +141,43 @@ namespace MathWiz
             switch(masteryLevel)
             {
                 case 1:
-                    qL = GenerateSimpleAddtionQuestions();
+                    qL = GenerateSimpleAddtionQuestions(timeLimit);
                     break;
                 case 2:
-                    //qL = GenerateSimpleSubtractionQuestions();
+                    qL = GenerateSimpleSubtractionQuestions(timeLimit);
                     break;
                 case 3:
-                    //qL = GenerateMixed
+                    qL = GenerateMixedSimpleAdditionSubtraction(timeLimit);
                     break;
                 case 4:
-                    Console.WriteLine("Case4");
+                    qL = GenerateComplexAddition(timeLimit);
                     break;
                 case 5:
-                    Console.WriteLine("Case5");
+                    qL = GenerateComplexSubtraction(timeLimit);
                     break;
                 case 6:
-                    Console.WriteLine("Case6");
+                    qL = GenerateMixedComplexAdditionSubtraction(timeLimit);
                     break;
                 case 7:
-                    Console.WriteLine("Case7");
+                    qL = GenerateSimpleMultiplication(timeLimit);
                     break;
                 case 8:
-                    Console.WriteLine("Case8");
+                    qL = GenerateSimpleDivision(timeLimit);
                     break;
                 case 9:
-                    Console.WriteLine("Case9");
+                    qL = GenerateSimpleMultiplicationDivision(timeLimit);
                     break;
                 case 10:
-                    Console.WriteLine("Case10");
+                    qL = GenerateAdvancedMultiplication(timeLimit);
                     break;
                 case 11:
-                    Console.WriteLine("Case11");
+                    qL = GenerateAdvancedDivision(timeLimit);
                     break;
                 case 12:
-                    Console.WriteLine("Case12");
-                    break;
-                case 13:
-                    Console.WriteLine("Case13");
+                    qL = GenerateAdvnacedMultiplicationDivison(timeLimit);
                     break;
                 default:
-                    Console.WriteLine("Default");
+                    MessageBox.Show("No known case check that what you passed is within range");
                     break;
                     
 
@@ -189,10 +186,63 @@ namespace MathWiz
 
         }
 
-
-        public static List<Question> GenerateSimpleAddtionQuestions()
+        private static List<Question> GenerateAdvnacedMultiplicationDivison(TimeSpan timelimit)
         {
-            TimeSpan Standard = new TimeSpan(0, 1, 0);
+            throw new NotImplementedException();
+        }
+
+        private static List<Question> GenerateAdvancedDivision(TimeSpan timelimit)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static List<Question> GenerateAdvancedMultiplication(TimeSpan timelimit)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static List<Question> GenerateSimpleMultiplicationDivision(TimeSpan timelimit)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static List<Question> GenerateSimpleDivision(TimeSpan timelimit)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static List<Question> GenerateSimpleMultiplication(TimeSpan timelimit)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static List<Question> GenerateMixedComplexAdditionSubtraction(TimeSpan timelimit)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static List<Question> GenerateComplexSubtraction(TimeSpan timelimit)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static List<Question> GenerateComplexAddition(TimeSpan timelimit)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static List<Question> GenerateMixedSimpleAdditionSubtraction(TimeSpan timelimit)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static List<Question> GenerateSimpleSubtractionQuestions(TimeSpan timelimit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static List<Question> GenerateSimpleAddtionQuestions(TimeSpan timelimit)
+        {
             string questionText;
             List<int> firstEasy = GenerateEasyRandomNumbers();
             List<int> secondEasy = GenerateEasyRandomNumbers();
@@ -215,7 +265,7 @@ namespace MathWiz
                 Question question = new Question();
                 question.QuestionText = questionText;
                 question.CorrectAnswer = answer[counter];
-                question.TimeLimit = Standard;
+                question.TimeLimit = timelimit;
                 counter++;
                 testQuestions.Add(question);
             }
