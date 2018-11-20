@@ -47,7 +47,7 @@ namespace MathWiz
             theTruth = true;
             if(!mask.MaskFull)
             {
-                MessageBox.Show(mask.Tag.ToString() + " must be completly filled out", "Input Error");
+                MessageBox.Show(mask.Tag.ToString() + " must be completely filled out", "Input Error");
                 mask.Focus();
                 return false;
 

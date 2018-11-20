@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MathWiz
@@ -23,9 +17,12 @@ namespace MathWiz
         {
             InitializeComponent();
         }
-        
 
-        
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
         //button actions
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -52,7 +49,6 @@ namespace MathWiz
                 btnLogin.Enabled = false;
                 backgroundWorkerLogin.RunWorkerAsync();
             }
-            
         }
 
         private void backgroundWorkerLogin_DoWork(object sender, DoWorkEventArgs e)
@@ -64,6 +60,7 @@ namespace MathWiz
                 user = new Admin();
                 if (user.VerifyPassword(txtUsername.Text, txtPassword.Text))
                 {
+                    errorFlag = "";
                     homeForm = new frmAdminHome(txtUsername.Text);
                 }
                 else
@@ -76,6 +73,7 @@ namespace MathWiz
                 user = new Teacher();
                 if (user.VerifyPassword(txtUsername.Text, txtPassword.Text))
                 {
+                    errorFlag = "";
                     homeForm = new frmTeacherHome(txtUsername.Text);
                 }
                 else
@@ -88,6 +86,7 @@ namespace MathWiz
                 user = new Parent();
                 if (user.VerifyPassword(txtUsername.Text, txtPassword.Text))
                 {
+                    errorFlag = "";
                     homeForm = new frmParentHome(txtUsername.Text);
                 }
                 else
@@ -100,6 +99,7 @@ namespace MathWiz
                 user = new Student();
                 if (user.VerifyPassword(txtUsername.Text, txtPassword.Text))
                 {
+                    errorFlag = "";
                     homeForm = new frmStudentHome(txtUsername.Text);
                 }
                 else

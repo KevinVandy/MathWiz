@@ -17,7 +17,7 @@ namespace MathWiz
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTeacherHome("TylerPerry"));
+            //Application.Run(new frmTeacherHome("TylerPerry"));
             Application.Run(new frmLogin());
 
         }
