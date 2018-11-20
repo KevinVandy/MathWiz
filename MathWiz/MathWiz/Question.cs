@@ -238,7 +238,36 @@ namespace MathWiz
 
         private static List<Question> GenerateSimpleSubtractionQuestions(TimeSpan timelimit)
         {
-            throw new NotImplementedException();
+            string questionText;
+            List <Question> qL = new List<Question>();
+            List<int> easy = GenerateEasyRandomNumbers();
+            List<int> takefrom = new List<int>();
+            int[] answer = new int[10];
+            
+            var easyEnumerator = easy.GetEnumerator();
+            //enumerate through the list
+            while(easyEnumerator.MoveNext())
+            {
+                int counter = 0;
+                int lower = GetRandomNumberLowerThan(easyEnumerator.Current);
+                answer[counter] = easyEnumerator.Current - lower;
+                questionText = easyEnumerator.Current.ToString() + " - " + lower.ToString() + " = ";
+                Question aQuestion = new Question();
+                aQuestion.QuestionText = questionText;
+                aQuestion.CorrectAnswer = answer[counter];
+                aQuestion.TimeLimit = timelimit;
+                
+                testQuestions.Add(aQuestion);
+                //MessageBox.Show("First Number = " + easyEnumerator.Current.ToString() + "\n" +
+                //                "Second Number =" + lower.ToString() + "\n" + 
+                //                "Equals = " + answer[counter].ToString() + "\n" +
+                //                "Text = " + questionText);
+
+                counter++;
+            }
+            
+
+            return qL;
         }
 
         public static List<Question> GenerateSimpleAddtionQuestions(TimeSpan timelimit)
@@ -276,6 +305,14 @@ namespace MathWiz
             //}
             return testQuestions;
 
+        }
+
+        private static int GetRandomNumberLowerThan(int upperbound)
+        {
+            int aNumber = 0;
+            aNumber = rnd.Next(upperbound + 1);
+            return aNumber;
+            
         }
     }
 }
