@@ -21,6 +21,7 @@ namespace MathWiz
 
         private void frmParentHome_Load(object sender, EventArgs e)
         {
+            //Parent's name to form
             grpManageChildren.Text = parent.FirstName + "'s children";
 
             // Grab students that are assigned to the parent
@@ -45,6 +46,36 @@ namespace MathWiz
         {
             Form aboutBox = new frmAboutBox();
             aboutBox.ShowDialog();
+        }
+
+        private void graded_testsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.graded_testsBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.mathWizGroup3DataSet);
+
+        }
+
+        private void fillByGradedTestsToolStripButton_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void lstChildren_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(lstChildren.SelectedIndex != -1 && lstChildren.Items.Count != 0)
+            {
+                Student currentStudent = (Student)lstChildren.SelectedItem;
+                try
+                {
+                    this.graded_testsTableAdapter.FillByGradedTests(this.mathWizGroup3DataSet.graded_tests, currentStudent.Id);
+                }
+                catch (System.Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }

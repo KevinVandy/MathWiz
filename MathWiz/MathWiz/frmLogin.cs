@@ -16,9 +16,6 @@ namespace MathWiz
         User user;
         Form homeForm;
 
-        string username;
-        string password;
-
         string errorFlag = "";
         int loginAttempts = 0;
 
@@ -27,10 +24,7 @@ namespace MathWiz
             InitializeComponent();
         }
         
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
+
         
         //button actions
         private void btnLogin_Click(object sender, EventArgs e)
@@ -54,24 +48,23 @@ namespace MathWiz
             }
             else
             {
-                username = txtUsername.Text;
-                password = txtPassword.Text;
                 btnLogin.Text = "Logging In";
                 btnLogin.Enabled = false;
                 backgroundWorkerLogin.RunWorkerAsync();
             }
+            
         }
 
         private void backgroundWorkerLogin_DoWork(object sender, DoWorkEventArgs e)
         {
-            string userType = MathWizDA.FindUserType(username);
+            string userType = MathWizDA.FindUserType(txtUsername.Text);
             
             if (userType == "admin")
             {
                 user = new Admin();
-                if (user.VerifyPassword(username, password))
+                if (user.VerifyPassword(txtUsername.Text, txtPassword.Text))
                 {
-                    homeForm = new frmAdminHome(username);
+                    homeForm = new frmAdminHome(txtUsername.Text);
                 }
                 else
                 {
@@ -81,9 +74,9 @@ namespace MathWiz
             else if (userType == "teacher")
             {
                 user = new Teacher();
-                if (user.VerifyPassword(username, password))
+                if (user.VerifyPassword(txtUsername.Text, txtPassword.Text))
                 {
-                    homeForm = new frmTeacherHome(username);
+                    homeForm = new frmTeacherHome(txtUsername.Text);
                 }
                 else
                 {
@@ -93,9 +86,9 @@ namespace MathWiz
             else if (userType == "parent")
             {
                 user = new Parent();
-                if (user.VerifyPassword(username, password))
+                if (user.VerifyPassword(txtUsername.Text, txtPassword.Text))
                 {
-                    homeForm = new frmParentHome(username);
+                    homeForm = new frmParentHome(txtUsername.Text);
                 }
                 else
                 {
@@ -105,9 +98,9 @@ namespace MathWiz
             else if (userType == "student")
             {
                 user = new Student();
-                if (user.VerifyPassword(username, password))
+                if (user.VerifyPassword(txtUsername.Text, txtPassword.Text))
                 {
-                    homeForm = new frmStudentHome(username);
+                    homeForm = new frmStudentHome(txtUsername.Text);
                 }
                 else
                 {

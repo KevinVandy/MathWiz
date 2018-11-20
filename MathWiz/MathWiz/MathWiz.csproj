@@ -94,11 +94,11 @@
     <Compile Include="frmCreateUserAccount.Designer.cs">
       <DependentUpon>frmCreateUserAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNewTest.cs">
+    <Compile Include="frmCreateTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNewTest.Designer.cs">
-      <DependentUpon>frmNewTest.cs</DependentUpon>
+    <Compile Include="frmCreateTest.Designer.cs">
+      <DependentUpon>frmCreateTest.cs</DependentUpon>
     </Compile>
     <Compile Include="frmParentHome.cs">
       <SubType>Form</SubType>
@@ -111,6 +111,12 @@
     </Compile>
     <Compile Include="frmStudentHome.Designer.cs">
       <DependentUpon>frmStudentHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTakeTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTakeTest.Designer.cs">
+      <DependentUpon>frmTakeTest.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTeacherHome.cs">
       <SubType>Form</SubType>
@@ -177,14 +183,17 @@
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNewTest.resx">
-      <DependentUpon>frmNewTest.cs</DependentUpon>
+    <EmbeddedResource Include="frmCreateTest.resx">
+      <DependentUpon>frmCreateTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmParentHome.resx">
       <DependentUpon>frmParentHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStudentHome.resx">
       <DependentUpon>frmStudentHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTakeTest.resx">
+      <DependentUpon>frmTakeTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTeacherHome.resx">
       <DependentUpon>frmTeacherHome.cs</DependentUpon>
