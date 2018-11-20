@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MathWiz
 {
-    public partial class frmNewTest : Form
+    public partial class frmCreateTest : Form
     {
-        public frmNewTest()
+        public frmCreateTest()
         {
             InitializeComponent();
         }

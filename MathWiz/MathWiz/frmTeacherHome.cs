@@ -65,7 +65,7 @@ namespace MathWiz
         private void btnTest_Click(object sender, EventArgs e)
         {
 
-            frmNewTest createTest = new frmNewTest();
+            frmCreateTest createTest = new frmCreateTest();
             createTest.Show();
             //List<Question> qL = new List<Question>();
             //TimeSpan aTime = new TimeSpan(0, 1, 0);
