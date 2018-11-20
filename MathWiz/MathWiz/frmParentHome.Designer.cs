@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmParentHome));
             this.grpManageChildren = new System.Windows.Forms.GroupBox();
+            this.graded_testsDataGridView = new System.Windows.Forms.DataGridView();
+            this.graded_testsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mathWizGroup3DataSet = new MathWiz.MathWizGroup3DataSet();
             this.lstChildren = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,20 +41,18 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mathWizGroup3DataSet = new MathWiz.MathWizGroup3DataSet();
-            this.graded_testsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.graded_testsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.graded_testsTableAdapter();
             this.tableAdapterManager = new MathWiz.MathWizGroup3DataSetTableAdapters.TableAdapterManager();
-            this.graded_testsDataGridView = new System.Windows.Forms.DataGridView();
+            this.StudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpManageChildren.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.graded_testsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.graded_testsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.graded_testsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpManageChildren
@@ -67,12 +68,42 @@
             this.grpManageChildren.TabStop = false;
             this.grpManageChildren.Text = "Your Children";
             // 
+            // graded_testsDataGridView
+            // 
+            this.graded_testsDataGridView.AllowUserToAddRows = false;
+            this.graded_testsDataGridView.AllowUserToDeleteRows = false;
+            this.graded_testsDataGridView.AutoGenerateColumns = false;
+            this.graded_testsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.graded_testsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.StudentID,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewCheckBoxColumn1,
+            this.dataGridViewTextBoxColumn7});
+            this.graded_testsDataGridView.DataSource = this.graded_testsBindingSource;
+            this.graded_testsDataGridView.Location = new System.Drawing.Point(367, 22);
+            this.graded_testsDataGridView.Name = "graded_testsDataGridView";
+            this.graded_testsDataGridView.ReadOnly = true;
+            this.graded_testsDataGridView.RowTemplate.Height = 24;
+            this.graded_testsDataGridView.Size = new System.Drawing.Size(560, 324);
+            this.graded_testsDataGridView.TabIndex = 1;
+            // 
+            // graded_testsBindingSource
+            // 
+            this.graded_testsBindingSource.DataMember = "graded_tests";
+            this.graded_testsBindingSource.DataSource = this.mathWizGroup3DataSet;
+            // 
+            // mathWizGroup3DataSet
+            // 
+            this.mathWizGroup3DataSet.DataSetName = "MathWizGroup3DataSet";
+            this.mathWizGroup3DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // lstChildren
             // 
             this.lstChildren.FormattingEnabled = true;
             this.lstChildren.ItemHeight = 16;
             this.lstChildren.Location = new System.Drawing.Point(7, 22);
-            this.lstChildren.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstChildren.Margin = new System.Windows.Forms.Padding(4);
             this.lstChildren.Name = "lstChildren";
             this.lstChildren.Size = new System.Drawing.Size(284, 324);
             this.lstChildren.TabIndex = 0;
@@ -128,16 +159,6 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // mathWizGroup3DataSet
-            // 
-            this.mathWizGroup3DataSet.DataSetName = "MathWizGroup3DataSet";
-            this.mathWizGroup3DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // graded_testsBindingSource
-            // 
-            this.graded_testsBindingSource.DataMember = "graded_tests";
-            this.graded_testsBindingSource.DataSource = this.mathWizGroup3DataSet;
-            // 
             // graded_testsTableAdapter
             // 
             this.graded_testsTableAdapter.ClearBeforeFill = true;
@@ -156,24 +177,14 @@
             this.tableAdapterManager.testsTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = MathWiz.MathWizGroup3DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // graded_testsDataGridView
+            // StudentID
             // 
-            this.graded_testsDataGridView.AllowUserToAddRows = false;
-            this.graded_testsDataGridView.AllowUserToDeleteRows = false;
-            this.graded_testsDataGridView.AutoGenerateColumns = false;
-            this.graded_testsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.graded_testsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewCheckBoxColumn1,
-            this.dataGridViewTextBoxColumn7});
-            this.graded_testsDataGridView.DataSource = this.graded_testsBindingSource;
-            this.graded_testsDataGridView.Location = new System.Drawing.Point(367, 22);
-            this.graded_testsDataGridView.Name = "graded_testsDataGridView";
-            this.graded_testsDataGridView.ReadOnly = true;
-            this.graded_testsDataGridView.RowTemplate.Height = 24;
-            this.graded_testsDataGridView.Size = new System.Drawing.Size(560, 324);
-            this.graded_testsDataGridView.TabIndex = 1;
+            this.StudentID.DataPropertyName = "StudentID";
+            this.StudentID.HeaderText = "StudentID";
+            this.StudentID.Name = "StudentID";
+            this.StudentID.ReadOnly = true;
+            this.StudentID.Visible = false;
+            this.StudentID.Width = 5;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -181,6 +192,7 @@
             this.dataGridViewTextBoxColumn3.HeaderText = "TestID";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 75;
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -188,6 +200,7 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "Score";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 75;
             // 
             // dataGridViewCheckBoxColumn1
             // 
@@ -195,6 +208,7 @@
             this.dataGridViewCheckBoxColumn1.HeaderText = "Passed";
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
             this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.Width = 75;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -213,18 +227,18 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmParentHome";
             this.Text = "MathWiz - Parent Portal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmParentHome_FormClosing);
             this.Load += new System.EventHandler(this.frmParentHome_Load);
             this.grpManageChildren.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.graded_testsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.graded_testsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.graded_testsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.graded_testsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -245,6 +259,7 @@
         private MathWizGroup3DataSetTableAdapters.graded_testsTableAdapter graded_testsTableAdapter;
         private MathWizGroup3DataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.DataGridView graded_testsDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StudentID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
