@@ -124,5 +124,11 @@ namespace MathWiz
         {
             this.Close();
         }
+
+        private void frmNewTest_Load(object sender, EventArgs e)
+        {
+            Int64 aNumber = MathWizDA.GetLastInsertedRecord("tests", "id");
+            MessageBox.Show(aNumber.ToString());
+        }
     }
 }

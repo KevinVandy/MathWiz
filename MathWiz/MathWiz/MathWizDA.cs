@@ -18,7 +18,7 @@ namespace MathWiz
         public static Int64 GetLastInsertedRecord(string tablename, string fieldname)
         {  Int64 aNumber = 0;
 
-            string query = "Select @fieldname from @tablename where @fieldname =(select max@fieldname) from @tablename)";
+            string query = "Select id from tests where id = (select max(id) from tests)"; //"Select @fieldname from @tablename where @fieldname =(select max(@fieldname) from @tablename)"; 
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@tablename", tablename);
             selectCommand.Parameters.AddWithValue("@fieldname", fieldname);
@@ -30,7 +30,7 @@ namespace MathWiz
 
                 if(reader.Read() && reader.HasRows)
                 {
-                    aNumber = Convert.ToInt64(reader[""]);
+                    aNumber = reader.GetInt32(0); //Convert.ToInt64(reader[""]);
                 }
                 reader.Close();
             }
