@@ -56,7 +56,8 @@
             // 
             this.picBoxTeacher.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.picBoxTeacher.InitialImage = null;
-            this.picBoxTeacher.Location = new System.Drawing.Point(31, 57);
+            this.picBoxTeacher.Location = new System.Drawing.Point(41, 70);
+            this.picBoxTeacher.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.picBoxTeacher.Name = "picBoxTeacher";
             this.picBoxTeacher.Size = new System.Drawing.Size(160, 191);
             this.picBoxTeacher.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -68,9 +69,10 @@
             this.lblTeacherName.AutoSize = true;
             this.lblTeacherName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeacherName.ForeColor = System.Drawing.Color.Blue;
-            this.lblTeacherName.Location = new System.Drawing.Point(88, 251);
+            this.lblTeacherName.Location = new System.Drawing.Point(117, 309);
+            this.lblTeacherName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTeacherName.Name = "lblTeacherName";
-            this.lblTeacherName.Size = new System.Drawing.Size(64, 22);
+            this.lblTeacherName.Size = new System.Drawing.Size(76, 26);
             this.lblTeacherName.TabIndex = 1;
             this.lblTeacherName.Text = "label1";
             // 
@@ -79,23 +81,27 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(55, 321);
+            this.label1.Location = new System.Drawing.Point(73, 395);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 22);
+            this.label1.Size = new System.Drawing.Size(143, 26);
             this.label1.TabIndex = 3;
             this.label1.Text = "Your Classes";
             // 
             // cmbKlasses
             // 
             this.cmbKlasses.FormattingEnabled = true;
-            this.cmbKlasses.Location = new System.Drawing.Point(51, 346);
+            this.cmbKlasses.Location = new System.Drawing.Point(68, 426);
+            this.cmbKlasses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbKlasses.Name = "cmbKlasses";
-            this.cmbKlasses.Size = new System.Drawing.Size(121, 21);
+            this.cmbKlasses.Size = new System.Drawing.Size(160, 24);
             this.cmbKlasses.TabIndex = 5;
             this.cmbKlasses.SelectedIndexChanged += new System.EventHandler(this.cmbKlasses_SelectedIndexChanged);
             // 
             // studentTable
             // 
+            this.studentTable.AllowUserToAddRows = false;
+            this.studentTable.AllowUserToDeleteRows = false;
             this.studentTable.AutoGenerateColumns = false;
             this.studentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.studentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -107,9 +113,11 @@
             this.lastNameDataGridViewTextBoxColumn,
             this.masteryLevelDataGridViewTextBoxColumn});
             this.studentTable.DataSource = this.studentsBindingSource;
-            this.studentTable.Location = new System.Drawing.Point(225, 12);
+            this.studentTable.Location = new System.Drawing.Point(300, 15);
+            this.studentTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.studentTable.Name = "studentTable";
-            this.studentTable.Size = new System.Drawing.Size(443, 236);
+            this.studentTable.ReadOnly = true;
+            this.studentTable.Size = new System.Drawing.Size(591, 290);
             this.studentTable.TabIndex = 6;
             // 
             // usernameDataGridViewTextBoxColumn
@@ -117,6 +125,7 @@
             this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
             this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
             this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
+            this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Id
             // 
@@ -147,18 +156,21 @@
             this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
             this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
             this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // lastNameDataGridViewTextBoxColumn
             // 
             this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
             this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
             this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // masteryLevelDataGridViewTextBoxColumn
             // 
             this.masteryLevelDataGridViewTextBoxColumn.DataPropertyName = "MasteryLevel";
             this.masteryLevelDataGridViewTextBoxColumn.HeaderText = "MasteryLevel";
             this.masteryLevelDataGridViewTextBoxColumn.Name = "masteryLevelDataGridViewTextBoxColumn";
+            this.masteryLevelDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // studentsBindingSource
             // 
@@ -176,9 +188,10 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(268, 288);
+            this.btnTest.Location = new System.Drawing.Point(357, 354);
+            this.btnTest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(240, 110);
+            this.btnTest.Size = new System.Drawing.Size(320, 135);
             this.btnTest.TabIndex = 7;
             this.btnTest.Text = "Test";
             this.btnTest.UseVisualStyleBackColor = true;
@@ -186,11 +199,11 @@
             // 
             // frmTeacherHome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MathWiz.Properties.Resources.numbers;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 461);
+            this.ClientSize = new System.Drawing.Size(1067, 567);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.studentTable);
             this.Controls.Add(this.cmbKlasses);
@@ -198,6 +211,7 @@
             this.Controls.Add(this.lblTeacherName);
             this.Controls.Add(this.picBoxTeacher);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmTeacherHome";
             this.Text = "MathWiz - Teacher Portal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

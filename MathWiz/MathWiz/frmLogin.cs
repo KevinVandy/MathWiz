@@ -60,6 +60,7 @@ namespace MathWiz
                 btnLogin.Enabled = false;
                 backgroundWorkerLogin.RunWorkerAsync();
             }
+            
         }
 
         private void backgroundWorkerLogin_DoWork(object sender, DoWorkEventArgs e)
@@ -182,6 +183,16 @@ namespace MathWiz
         {
             backgroundWorkerLogin.CancelAsync();
             this.Close();
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+            username = txtUsername.Text;
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            password = txtPassword.Text;
         }
     }
 }
