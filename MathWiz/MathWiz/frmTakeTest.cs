@@ -12,7 +12,9 @@ namespace MathWiz
 {
     public partial class frmTakeTest : Form
     {
-        public frmTakeTest()
+        Test thisTest;
+
+        public frmTakeTest(int? testID = null)
         {
             InitializeComponent();
         }
