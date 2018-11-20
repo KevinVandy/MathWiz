@@ -14,30 +14,61 @@ namespace MathWiz
      //testing ability to commit to repo BJP
     public class Validation
     {
-        bool theTruth;
-        public bool IsPresent(TextBox txtBox)
+
+        public static bool theTruth;
+
+    
+        public static bool IsPresent(TextBox txtBox)
         {
             if (txtBox.Text == "")
             {
                 MessageBox.Show(txtBox.Tag.ToString() + " must be present.", "Input Error");
+                txtBox.Focus();
+                txtBox.SelectAll();
                 return false;
             }
 
             return true;
         }
 
-        public bool IsWithinRangeInclusive(TextBox txtBox, int high, int low)
+        internal static bool secondIndexNotLower(ComboBox cboMinimum, ComboBox cboMaximum)
+        {
+            theTruth = true;
+            if (cboMaximum.SelectedIndex < cboMinimum.SelectedIndex)
+            {
+                MessageBox.Show("The maximum level cannot be lower than the minimum level");
+                return false;
+            }
+                return theTruth;
+        }
+
+        public static bool IsMaskPresent(MaskedTextBox mask)
+        {
+            theTruth = true;
+            if(!mask.MaskFull)
+            {
+                MessageBox.Show(mask.Tag.ToString() + " must be completly filled out", "Input Error");
+                mask.Focus();
+                return false;
+
+            }
+            return theTruth;
+        }
+
+        public static bool IsWithinRangeInclusive(TextBox txtBox, int high, int low)
         {
             decimal Number = Convert.ToInt32(txtBox.Text);
 
             if (Number > high || Number < low)
             {
                 MessageBox.Show(txtBox.Tag.ToString() + " must be between the valid ranges of " + low.ToString() + " and " + high.ToString() + " inclusive.", "Input Error");
+                txtBox.Focus();
+                txtBox.SelectAll();
                 return false;
             }
             return true;
         }
-        public bool IsBoxChecked(GroupBox grpBox)
+        public static bool IsBoxChecked(GroupBox grpBox)
         {
             theTruth = false;
             List<CheckBox> checkList = new List<CheckBox>();
@@ -51,12 +82,13 @@ namespace MathWiz
             }
             if(theTruth == false)
             {
+                grpBox.Focus();
                 MessageBox.Show("Please check at least one box", "Input Error");
             }
             return theTruth;
         }
 
-        public bool IsRadioSelected(GroupBox grpBox)
+        public static bool IsRadioSelected(GroupBox grpBox)
         {
             theTruth = false;
             List<RadioButton> radioList = new List<RadioButton>();
@@ -71,40 +103,46 @@ namespace MathWiz
 
             if (theTruth == false)
             {
+                grpBox.Focus();
                 MessageBox.Show("Please select a radio button", "Input Error");
             }
             return theTruth;
         }
 
 
-        public bool IsInteger(TextBox txtBox)
+        public static bool IsInteger(TextBox txtBox)
         {
             int n;
             bool isNumeric = int.TryParse(txtBox.Text, out n);
             if(isNumeric == false)
             {
                 MessageBox.Show(txtBox.Tag.ToString() + " must be an integer.", "Input Error");
+                txtBox.Focus();
+                txtBox.SelectAll();
             }
             return isNumeric;
             
         }
 
-        public bool IsComboSelected(ComboBox cboBox)
+        public static bool  IsComboSelected(ComboBox cboBox)
         {
             if(cboBox.SelectedIndex == -1)
             {
                 MessageBox.Show(cboBox.Tag.ToString() + " must have an item selected.", "Input Error");
+                cboBox.Focus();
                 return false;
             }
             return true;
         }
 
-        public bool IsStringMaxLengthInclusive(TextBox txtBox, int maxLength)
+        public static bool IsStringMaxLengthInclusive(TextBox txtBox, int maxLength)
         {
             int stringLength = txtBox.Text.Length;
             if(stringLength > maxLength)
             {
                 MessageBox.Show(txtBox.Tag.ToString() + " has a character limit of " + maxLength.ToString(), "Input Error");
+                txtBox.Focus();
+                txtBox.SelectAll();
                 return false;
             }
 

@@ -7,13 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace MathWiz
 {
     public partial class frmAdminHome : Form
     {
         Admin admin;
-        
+        Series masteryLevelSeries;
+
+
         public frmAdminHome(string username)
         {
             InitializeComponent();
@@ -23,6 +26,7 @@ namespace MathWiz
         private void frmAdminHome_Load(object sender, EventArgs e)
         {
             backgroundWorkerFormDataLoad.RunWorkerAsync();
+            masteryLevelSeries = this.chtMasterLevelDistribution.Series.Add("masteryLevels");
         }
 
         private void rdoUserTypes_CheckChanged(object sender, EventArgs e)
@@ -172,13 +176,6 @@ namespace MathWiz
             //TODO manage klasses update data too
             
         }
-
-        private void RefreshData()
-        {
-
-        }
-
-        
 
         private void btnCreateAdmin_Click(object sender, EventArgs e)
         {
@@ -422,13 +419,21 @@ namespace MathWiz
                     }
                 }
             }
+
+            //populate mastery level chart
+            chtMasterLevelDistribution.Series[0].Points.Clear();
+            int[] masteryLevels = new int[lsvStudents.Items.Count];
+            for(int i = 0; i < lsvStudents.Items.Count; i++)
+            {
+                masteryLevels[i] = Convert.ToInt16(lsvStudents.Items[i].SubItems[2].Text);
+                masteryLevelSeries.Points.Add(masteryLevels[i]);
+            }
+            
         }
 
         private void lsvStudents_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-
-        
     }
 }

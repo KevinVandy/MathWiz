@@ -220,10 +220,10 @@ namespace MathWiz
                 testQuestions.Add(question);
             }
 
-            foreach(Question q in testQuestions)
-            {
-                MessageBox.Show(q.QuestionText + q.CorrectAnswer.ToString());
-            }
+            //foreach(Question q in testQuestions)
+            //{
+            //    MessageBox.Show(q.QuestionText + q.CorrectAnswer.ToString());
+            //}
             return testQuestions;
 
         }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminHome));
             this.gbxManageAccounts = new System.Windows.Forms.GroupBox();
             this.lblDeleted = new System.Windows.Forms.Label();
@@ -94,6 +95,7 @@
             this.adminsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.adminsTableAdapter();
             this.klassesTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.klassesTableAdapter();
             this.grbStatisticalAnalysis = new System.Windows.Forms.GroupBox();
+            this.chtMasterLevelDistribution = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gbxManageAccounts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -107,6 +109,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.klassesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teachersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.adminsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chtMasterLevelDistribution)).BeginInit();
             this.SuspendLayout();
             // 
             // gbxManageAccounts
@@ -426,6 +429,7 @@
             // 
             // gbxManageClasses
             // 
+            this.gbxManageClasses.Controls.Add(this.chtMasterLevelDistribution);
             this.gbxManageClasses.Controls.Add(this.label3);
             this.gbxManageClasses.Controls.Add(this.label2);
             this.gbxManageClasses.Controls.Add(this.lsvStudents);
@@ -691,6 +695,15 @@
             this.grbStatisticalAnalysis.TabStop = false;
             this.grbStatisticalAnalysis.Text = "Statistical Analysis";
             // 
+            // chtMasterLevelDistribution
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chtMasterLevelDistribution.ChartAreas.Add(chartArea1);
+            this.chtMasterLevelDistribution.Location = new System.Drawing.Point(864, 46);
+            this.chtMasterLevelDistribution.Name = "chtMasterLevelDistribution";
+            this.chtMasterLevelDistribution.Size = new System.Drawing.Size(204, 202);
+            this.chtMasterLevelDistribution.TabIndex = 14;
+            // 
             // frmAdminHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -729,6 +742,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.klassesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teachersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.adminsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chtMasterLevelDistribution)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -800,5 +814,6 @@
         private System.Windows.Forms.ColumnHeader StudentID;
         private System.Windows.Forms.ColumnHeader StudentName;
         private System.Windows.Forms.ColumnHeader MasteryLevel;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chtMasterLevelDistribution;
     }
 }

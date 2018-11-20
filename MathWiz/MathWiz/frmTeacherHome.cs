@@ -62,6 +62,18 @@ namespace MathWiz
 
         }
 
+        private void btnTest_Click(object sender, EventArgs e)
+        {
 
+            frmNewTest createTest = new frmNewTest();
+            createTest.Show();
+            //List<Question> qL = new List<Question>();
+            //TimeSpan aTime = new TimeSpan(0, 1, 0);
+            //qL = Question.GenerateRandomQuestions(1, aTime);
+            //foreach(Question q in qL)
+            //{
+            //    MessageBox.Show(q.QuestionText + q.CorrectAnswer.ToString());
+            //}
+        }
     }
 }
