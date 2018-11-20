@@ -60,7 +60,7 @@ namespace MathWiz
 
         private void btnPractice_Click(object sender, EventArgs e)
         {
-            Form practiceForm = new frmTakeTest(); //? Maybe does not need practice test because it is temporary??
+            Form practiceForm = new frmTakeTest();
             practiceForm.Tag = "practice";
             practiceForm.ShowDialog();
         }

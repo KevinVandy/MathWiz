@@ -41,6 +41,7 @@
             this.btnPlacement = new System.Windows.Forms.Button();
             this.gbxTakeTests = new System.Windows.Forms.GroupBox();
             this.gbxViewProgress = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.gbxTakeTests.SuspendLayout();
             this.SuspendLayout();
@@ -141,24 +142,33 @@
             // 
             // gbxTakeTests
             // 
+            this.gbxTakeTests.Controls.Add(this.comboBox1);
             this.gbxTakeTests.Controls.Add(this.btnMastery);
             this.gbxTakeTests.Controls.Add(this.btnPractice);
             this.gbxTakeTests.Controls.Add(this.btnPlacement);
             this.gbxTakeTests.Location = new System.Drawing.Point(23, 40);
             this.gbxTakeTests.Name = "gbxTakeTests";
-            this.gbxTakeTests.Size = new System.Drawing.Size(710, 116);
+            this.gbxTakeTests.Size = new System.Drawing.Size(710, 214);
             this.gbxTakeTests.TabIndex = 6;
             this.gbxTakeTests.TabStop = false;
             this.gbxTakeTests.Text = "Take Tests";
             // 
             // gbxViewProgress
             // 
-            this.gbxViewProgress.Location = new System.Drawing.Point(23, 188);
+            this.gbxViewProgress.Location = new System.Drawing.Point(23, 277);
             this.gbxViewProgress.Name = "gbxViewProgress";
             this.gbxViewProgress.Size = new System.Drawing.Size(710, 116);
             this.gbxViewProgress.TabIndex = 7;
             this.gbxViewProgress.TabStop = false;
             this.gbxViewProgress.Text = "View Progress";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(287, 105);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 6;
             // 
             // frmStudentHome
             // 
@@ -196,5 +206,6 @@
         private System.Windows.Forms.Button btnPlacement;
         private System.Windows.Forms.GroupBox gbxTakeTests;
         private System.Windows.Forms.GroupBox gbxViewProgress;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
