@@ -21,6 +21,10 @@ namespace MathWiz
 
         private void frmParentHome_Load(object sender, EventArgs e)
         {
+            grpManageChildren.Text = parent.FirstName + "'s children";
+
+            // Grab students that are assigned to the parent
+            // And output them to the listbox on the form
             List<Student> myChildren = MathWizDA.SelectStudentsViaParent(parent.Id);
             foreach (Student child in myChildren) {
                 lstChildren.Items.Add(child);
@@ -42,6 +46,5 @@ namespace MathWiz
             Form aboutBox = new frmAboutBox();
             aboutBox.ShowDialog();
         }
-        
     }
 }

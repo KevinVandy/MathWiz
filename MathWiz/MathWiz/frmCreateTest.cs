@@ -48,43 +48,53 @@ namespace MathWiz
                 int caseswitch = cboType.SelectedIndex;
                 switch (caseswitch)
                 {
+                    //Case Practice test
                     case 0:
                         PracticeTest practiceTest = new PracticeTest(qL, time, isTrue, min, max);
                         MathWizDB.InsertPracticeTest(practiceTest);
                         aNumber = MathWizDA.GetLastInsertedRecord("test", "id");
                         //need to resovle how we want to generate questions
+                        this.Close();
                         practiceTest.Questions = Question.GenerateRandomQuestions(practiceTest.MaxLevel, practiceTest.TimeLimit);
                         foreach(Question q in practiceTest.Questions)
                         {
                             MathWizDB.InsertTestQuestionsPractice(practiceTest, q, aNumber);
                         }
-                        //MathWizDB.InsertTestQuestionsPractice(practiceTest, practiceTest.Questions, aNumber);
-                        foreach(Question q in practiceTest.Questions)
-                        {
-                            Console.WriteLine(q.QuestionText + q.CorrectAnswer);
-                        }
+                        MessageBox.Show("Your new randomly generated Practice test has been created");
                         break;
+
+
+
+                    //case Placement Test
                     case 1:
                         PlacementTest PlacementTest = new PlacementTest(qL, time, isTrue, min, max);
                         MathWizDB.InsertPlacementTest(PlacementTest);
                         aNumber = MathWizDA.GetLastInsertedRecord("test", "id");
                         //need to resolve the how to create questions
+                        this.Close();
                         PlacementTest.Questions = Question.GenerateRandomQuestions(PlacementTest.MaxLevel, PlacementTest.TimeLimit);
                         foreach (Question q in PlacementTest.Questions)
                         {
-                            Console.WriteLine(q.QuestionText + q.CorrectAnswer);
+                            MathWizDB.InsertTestQuestionPlacement(PlacementTest, q, aNumber);
                         }
+                        MessageBox.Show("Your new randomly generated Placement test has been created");
                         break;
+
+
+
+                    //case Mastery Test
                     case 2:
                         MasteryTest masteryTest = new MasteryTest(qL, time, isTrue, masteryLevel, threshold);
                         MathWizDB.InsertMasteryTest(masteryTest);
                         aNumber = MathWizDA.GetLastInsertedRecord("test", "id");
                         //need to resolve the how on creatign questions
+                        this.Close();
                         masteryTest.Questions = Question.GenerateRandomQuestions(masteryTest.MasteryLevel, masteryTest.TimeLimit);
                         foreach (Question q in masteryTest.Questions)
                         {
-                           Console.WriteLine(q.QuestionText + q.CorrectAnswer);
+                            MathWizDB.InsertTestQuestionMastery(masteryTest, q, aNumber);
                         }
+                        MessageBox.Show("Your new randomly generated mastery test has been created");
                         break;
 
 

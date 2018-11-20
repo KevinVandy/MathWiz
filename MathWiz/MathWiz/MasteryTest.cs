@@ -18,6 +18,7 @@ namespace MathWiz
         public MasteryTest(List<Question> questions, TimeSpan timeLimit, bool randomlyGenerated, int masteryLevel, decimal passThreshhold) : base(questions, timeLimit, randomlyGenerated)
         {
             this.PassThreshhold = passThreshhold;
+            this.MasteryLevel = masteryLevel;
         }
     }
 }

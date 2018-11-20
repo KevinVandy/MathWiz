@@ -50,6 +50,73 @@ namespace MathWiz
                 conn.Close();
             }
         }
+        public static void InsertTestQuestionMastery(MasteryTest test, Question q, Int64 testID)
+        {
+            string insertStatement = "Insert into questions (testID, MasteryLevel, QuestionText, CorrectAnswer, TimeLimit, RandomlyGenerated) " +
+                "Values(@testID, @masteryLevel, @QuestionText, @CorrectAnswer, @TimeLimit, @RandomlyGenerated)";
+
+            SqlCommand cmd = new SqlCommand(insertStatement, conn);
+            cmd.Parameters.AddWithValue("@masteryLevel", test.MasteryLevel);
+            cmd.Parameters.AddWithValue("@testID", testID);
+            cmd.Parameters.AddWithValue("@timeLimit", test.TimeLimit);
+            cmd.Parameters.AddWithValue("@RandomlyGenerated", test.RandomlyGenerated);
+            cmd.Parameters.AddWithValue("@QuestionText", q.QuestionText);
+            cmd.Parameters.AddWithValue("@CorrectAnswer", q.CorrectAnswer.ToString());
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // execute the query
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // always close the connection
+                conn.Close();
+            }
+        }
+        public static void InsertTestQuestionPlacement(PlacementTest test, Question q, Int64 testID)
+        {
+            string insertStatement = "Insert into questions (testID, QuestionText, CorrectAnswer, TimeLimit, RandomlyGenerated) " +
+                "Values(@testID, @QuestionText, @CorrectAnswer, @TimeLimit, @RandomlyGenerated)";
+
+            SqlCommand cmd = new SqlCommand(insertStatement, conn);
+            cmd.Parameters.AddWithValue("@testID", testID);
+            cmd.Parameters.AddWithValue("@timeLimit", test.TimeLimit);
+            cmd.Parameters.AddWithValue("@RandomlyGenerated", test.RandomlyGenerated);
+            cmd.Parameters.AddWithValue("@QuestionText", q.QuestionText);
+            cmd.Parameters.AddWithValue("@CorrectAnswer", q.CorrectAnswer.ToString());
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // execute the query
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // always close the connection
+                conn.Close();
+            }
+        }
         public static void InsertTestQuestionsPractice(PracticeTest test, Question q, Int64 testID)
         {
             string insertStatement = "Insert into questions (testID, QuestionText, CorrectAnswer, TimeLimit, RandomlyGenerated) " +

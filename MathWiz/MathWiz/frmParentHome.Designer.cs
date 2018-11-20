@@ -45,20 +45,20 @@
             // 
             this.grpManageChildren.Controls.Add(this.lstChildren);
             this.grpManageChildren.Location = new System.Drawing.Point(9, 32);
-            this.grpManageChildren.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpManageChildren.Margin = new System.Windows.Forms.Padding(2);
             this.grpManageChildren.Name = "grpManageChildren";
-            this.grpManageChildren.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpManageChildren.Padding = new System.Windows.Forms.Padding(2);
             this.grpManageChildren.Size = new System.Drawing.Size(782, 292);
             this.grpManageChildren.TabIndex = 0;
             this.grpManageChildren.TabStop = false;
             this.grpManageChildren.Text = "Your Children";
+            // 
             // lstChildren
             // 
             this.lstChildren.FormattingEnabled = true;
-            this.lstChildren.ItemHeight = 16;
-            this.lstChildren.Location = new System.Drawing.Point(6, 35);
+            this.lstChildren.Location = new System.Drawing.Point(5, 18);
             this.lstChildren.Name = "lstChildren";
-            this.lstChildren.Size = new System.Drawing.Size(214, 308);
+            this.lstChildren.Size = new System.Drawing.Size(214, 264);
             this.lstChildren.TabIndex = 0;
             // 
             // menuStrip1
