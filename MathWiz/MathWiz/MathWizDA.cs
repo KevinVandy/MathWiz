@@ -290,6 +290,7 @@ namespace MathWiz
                     student.Username = Convert.ToString(reader["Username"]);
                     student.FirstName = Convert.ToString(reader["FirstName"]);
                     student.LastName = Convert.ToString(reader["LastName"]);
+                    student.MasteryLevel = Convert.ToInt16(reader["MasteryLevel"]);
                     
                 }
                 reader.Close();

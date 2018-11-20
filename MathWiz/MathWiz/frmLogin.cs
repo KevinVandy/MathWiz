@@ -27,10 +27,7 @@ namespace MathWiz
             InitializeComponent();
         }
         
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
+
         
         //button actions
         private void btnLogin_Click(object sender, EventArgs e)
