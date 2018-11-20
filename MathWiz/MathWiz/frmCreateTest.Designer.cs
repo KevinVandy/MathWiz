@@ -57,6 +57,7 @@
             // 
             // cboType
             // 
+            this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboType.FormattingEnabled = true;
             this.cboType.Items.AddRange(new object[] {
             "Practice Test",
@@ -143,6 +144,7 @@
             // 
             // cboMinimum
             // 
+            this.cboMinimum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMinimum.FormattingEnabled = true;
             this.cboMinimum.Items.AddRange(new object[] {
             "1",
@@ -165,6 +167,7 @@
             // 
             // cboMaximum
             // 
+            this.cboMaximum.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMaximum.FormattingEnabled = true;
             this.cboMaximum.Items.AddRange(new object[] {
             "1",
@@ -187,6 +190,7 @@
             // 
             // cboRandom
             // 
+            this.cboRandom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRandom.FormattingEnabled = true;
             this.cboRandom.Items.AddRange(new object[] {
             "False",
@@ -209,7 +213,7 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // frmNewTest
+            // frmCreateTest
             // 
             this.AcceptButton = this.btnAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,7 +234,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cboType);
             this.Controls.Add(this.btnAccept);
-            this.Name = "frmNewTest";
+            this.Name = "frmCreateTest";
             this.Text = "Create New Test";
             this.Load += new System.EventHandler(this.frmNewTest_Load);
             this.ResumeLayout(false);
