@@ -33,8 +33,8 @@ namespace MathWiz
             //put Images folder in debug folder 
             //images folder should be moved to directory the final exe is located
             //takes pic from folder to set as profile pic
-            string fileName = "teacher.jpg";
-            string filePath = Path.Combine(Environment.CurrentDirectory, @"Images\", fileName);
+            //string fileName = "teacher.jpg";
+            //string filePath = Path.Combine(Environment.CurrentDirectory, @"Images\", fileName);
             //Image image = Image.FromFile(filePath);
             //picBoxTeacher.Image = (Image)image;
             //picBoxTeacher.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -74,6 +74,11 @@ namespace MathWiz
             //{
             //    MessageBox.Show(q.QuestionText + q.CorrectAnswer.ToString());
             //}
+        }
+
+        private void studentTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show("This Works");
         }
     }
 }

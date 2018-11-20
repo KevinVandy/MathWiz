@@ -46,6 +46,7 @@
             this.mathWizGroup3DataSet = new MathWiz.MathWizGroup3DataSet();
             this.studentsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.studentsTableAdapter();
             this.btnTest = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxTeacher)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
@@ -54,6 +55,8 @@
             // 
             // picBoxTeacher
             // 
+            this.picBoxTeacher.BackgroundImage = global::MathWiz.Properties.Resources.teacher;
+            this.picBoxTeacher.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picBoxTeacher.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.picBoxTeacher.InitialImage = null;
             this.picBoxTeacher.Location = new System.Drawing.Point(31, 57);
@@ -96,6 +99,10 @@
             // 
             // studentTable
             // 
+            this.studentTable.AllowUserToAddRows = false;
+            this.studentTable.AllowUserToDeleteRows = false;
+            this.studentTable.AllowUserToResizeColumns = false;
+            this.studentTable.AllowUserToResizeRows = false;
             this.studentTable.AutoGenerateColumns = false;
             this.studentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.studentTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -108,9 +115,11 @@
             this.masteryLevelDataGridViewTextBoxColumn});
             this.studentTable.DataSource = this.studentsBindingSource;
             this.studentTable.Location = new System.Drawing.Point(225, 12);
+            this.studentTable.MultiSelect = false;
             this.studentTable.Name = "studentTable";
             this.studentTable.Size = new System.Drawing.Size(443, 236);
             this.studentTable.TabIndex = 6;
+            this.studentTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.studentTable_CellContentClick);
             // 
             // usernameDataGridViewTextBoxColumn
             // 
@@ -176,9 +185,9 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(268, 288);
+            this.btnTest.Location = new System.Drawing.Point(683, 28);
             this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(240, 110);
+            this.btnTest.Size = new System.Drawing.Size(116, 36);
             this.btnTest.TabIndex = 7;
             this.btnTest.Text = "Test";
             this.btnTest.UseVisualStyleBackColor = true;
@@ -229,5 +238,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn masteryLevelDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnTest;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
