@@ -50,7 +50,114 @@ namespace MathWiz
             }
         }
 
-        //public static void InsertTest()
+        public static void InsertPracticeTest(PracticeTest test)
+        {
+            string insertStatment = "INSERT INTO TESTS (testtype, timelimit, randomlygenerated, minlevel, maxlevel) " +
+                "VAlUES(@testtype, @timeLimit, @randomlygenerated, @minlevel, @maxlevel)";
+
+            SqlCommand cmd = new SqlCommand(insertStatment, conn);
+
+            cmd.Parameters.AddWithValue("@testtype", "Practice Test");
+            cmd.Parameters.AddWithValue("@timelimit", test.TimeLimit);
+            cmd.Parameters.AddWithValue("@randomlygenerated", test.RandomlyGenerated);
+            cmd.Parameters.AddWithValue("@minlevel", test.MinLevel);
+            cmd.Parameters.AddWithValue("@maxlevel", test.MaxLevel);
+
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // execute the query
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // always close the connection
+                conn.Close();
+            }
+
+        }
+
+        internal static void InsertMasteryTest(MasteryTest test)
+        {
+            string insertStatment = "INSERT INTO TESTS (testtype, timelimit, randomlygenerated, passthreshhold, masterylevel) " +
+                "VAlUES(@testtype, @timeLimit, @randomlygenerated, @passthreshhold, @masterylevel)";
+
+            SqlCommand cmd = new SqlCommand(insertStatment, conn);
+
+            cmd.Parameters.AddWithValue("@testtype", "Mastery Test");
+            cmd.Parameters.AddWithValue("@timelimit", test.TimeLimit);
+            cmd.Parameters.AddWithValue("@randomlygenerated", test.RandomlyGenerated);
+            cmd.Parameters.AddWithValue("@passthreshhold", test.PassThreshhold);
+            cmd.Parameters.AddWithValue("@masterylevel", value:test.MasteryLevel);
+
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // execute the query
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // always close the connection
+                conn.Close();
+            }
+        }
+
+        internal static void InsertPlacementTest(PlacementTest test)
+        {
+            string insertStatment = "INSERT INTO TESTS (testtype, timelimit, randomlygenerated, minlevel, maxlevel) " +
+                "VAlUES(@testtype, @timeLimit, @randomlygenerated, @minlevel, @maxlevel)";
+
+            SqlCommand cmd = new SqlCommand(insertStatment, conn);
+
+            cmd.Parameters.AddWithValue("@testtype", "Placement Test");
+            cmd.Parameters.AddWithValue("@timelimit", test.TimeLimit);
+            cmd.Parameters.AddWithValue("@randomlygenerated", test.RandomlyGenerated);
+            cmd.Parameters.AddWithValue("@minlevel", test.MinLevel);
+            cmd.Parameters.AddWithValue("@maxlevel", test.MaxLevel);
+
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // execute the query
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // always close the connection
+                conn.Close();
+            }
+        }
 
         public static void InsertStudent(Student newStudent, int parentID, int klassID)
         {

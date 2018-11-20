@@ -188,8 +188,8 @@
             // 
             this.cboRandom.FormattingEnabled = true;
             this.cboRandom.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
+            "False",
+            "True"});
             this.cboRandom.Location = new System.Drawing.Point(156, 282);
             this.cboRandom.Name = "cboRandom";
             this.cboRandom.Size = new System.Drawing.Size(121, 21);
@@ -205,6 +205,7 @@
             this.btnCancel.TabIndex = 14;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // frmNewTest
             // 
