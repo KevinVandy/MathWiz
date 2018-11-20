@@ -66,7 +66,16 @@ namespace MathWiz
         {
             if(lstChildren.SelectedIndex != -1 && lstChildren.Items.Count != 0)
             {
+                //Grab the student from the listbox
                 Student currentStudent = (Student)lstChildren.SelectedItem;
+
+                //Output Mastery Level
+                txtStudentMastery.Text = currentStudent.MasteryLevel.ToString();
+
+                //Update label
+                lblStudentMastery.Text = currentStudent.FirstName + "'s Mastery Level";
+
+                //Output relevant graded test info to the data set on the form
                 try
                 {
                     this.graded_testsTableAdapter.FillByGradedTests(this.mathWizGroup3DataSet.graded_tests, currentStudent.Id);
