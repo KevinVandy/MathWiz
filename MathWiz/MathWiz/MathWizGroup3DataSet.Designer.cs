@@ -6400,8 +6400,8 @@ SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, N
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        TestID, Score, Passed, Feedback\r\nFROM            graded_tests\r\nWHER" +
-                "E        (StudentID = @StudentID)\r\nORDER BY Score";
+            this._commandCollection[1].CommandText = "SELECT StudentID, TestID, Score, Passed, Feedback\r\nFROM     graded_tests\r\nWHERE  " +
+                "(StudentID = @StudentID)\r\nORDER BY Score";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "StudentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
