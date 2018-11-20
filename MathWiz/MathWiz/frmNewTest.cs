@@ -19,8 +19,12 @@ namespace MathWiz
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
+            Int64 aNumber = 0;
+
+            //if form validation is good then
             if(ValidateForm())
             {
+                //set values to build the test object based on which test is selected
                 int min = 0;
                 int max = 0;
                 decimal threshold = 0.0m;
@@ -40,30 +44,66 @@ namespace MathWiz
                 bool isTrue = Convert.ToBoolean(cboRandom.SelectedIndex);
                 
                 
-                
+                //insert the test in to the DB get a number back with the primary key ID so we can generate questions for the test
                 int caseswitch = cboType.SelectedIndex;
                 switch (caseswitch)
                 {
+                    //Case Practice test
                     case 0:
                         PracticeTest practiceTest = new PracticeTest(qL, time, isTrue, min, max);
                         MathWizDB.InsertPracticeTest(practiceTest);
+                        aNumber = MathWizDA.GetLastInsertedRecord("test", "id");
+                        //need to resovle how we want to generate questions
+                        this.Close();
+                        practiceTest.Questions = Question.GenerateRandomQuestions(practiceTest.MaxLevel, practiceTest.TimeLimit);
+                        foreach(Question q in practiceTest.Questions)
+                        {
+                            MathWizDB.InsertTestQuestionsPractice(practiceTest, q, aNumber);
+                        }
+                        MessageBox.Show("Your new randomly generated Practice test has been created");
                         break;
+
+
+
+                    //case Placement Test
                     case 1:
-                        MessageBox.Show("Case 2");
                         PlacementTest PlacementTest = new PlacementTest(qL, time, isTrue, min, max);
                         MathWizDB.InsertPlacementTest(PlacementTest);
+                        aNumber = MathWizDA.GetLastInsertedRecord("test", "id");
+                        //need to resolve the how to create questions
+                        this.Close();
+                        PlacementTest.Questions = Question.GenerateRandomQuestions(PlacementTest.MaxLevel, PlacementTest.TimeLimit);
+                        foreach (Question q in PlacementTest.Questions)
+                        {
+                            MathWizDB.InsertTestQuestionPlacement(PlacementTest, q, aNumber);
+                        }
+                        MessageBox.Show("Your new randomly generated Placement test has been created");
                         break;
+
+
+
+                    //case Mastery Test
                     case 2:
                         MasteryTest masteryTest = new MasteryTest(qL, time, isTrue, masteryLevel, threshold);
                         MathWizDB.InsertMasteryTest(masteryTest);
+                        aNumber = MathWizDA.GetLastInsertedRecord("test", "id");
+                        //need to resolve the how on creatign questions
+                        this.Close();
+                        masteryTest.Questions = Question.GenerateRandomQuestions(masteryTest.MasteryLevel, masteryTest.TimeLimit);
+                        foreach (Question q in masteryTest.Questions)
+                        {
+                            MathWizDB.InsertTestQuestionMastery(masteryTest, q, aNumber);
+                        }
+                        MessageBox.Show("Your new randomly generated mastery test has been created");
                         break;
 
 
                 }
 
+
             }
         }
-
+        //validation methods for the form based on which test is selected
         private bool ValidateForm()
         {
             if(cboMinimum.Enabled == true)
@@ -96,7 +136,7 @@ namespace MathWiz
             }
 
         }
-
+        //dynamically updates the controls on the form based on which test is selected
         private void cboType_SelectedIndexChanged(object sender, EventArgs e)
         {
             int caseswtich = cboType.SelectedIndex;
@@ -123,6 +163,11 @@ namespace MathWiz
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmNewTest_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

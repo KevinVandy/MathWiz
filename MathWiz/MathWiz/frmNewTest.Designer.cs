@@ -232,6 +232,7 @@
             this.Controls.Add(this.btnAccept);
             this.Name = "frmNewTest";
             this.Text = "Create New Test";
+            this.Load += new System.EventHandler(this.frmNewTest_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,0 +1,1 @@
+﻿Select id from tests where id =(select max(id) from tests)
