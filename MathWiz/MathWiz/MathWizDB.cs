@@ -50,7 +50,39 @@ namespace MathWiz
                 conn.Close();
             }
         }
+        public static void InsertTestQuestionsPractice(PracticeTest test, Question q, Int64 testID)
+        {
+            string insertStatement = "Insert into questions (testID, QuestionText, CorrectAnswer, TimeLimit, RandomlyGenerated) " +
+                "Values(@testID, @QuestionText, @CorrectAnswer, @TimeLimit, @RandomlyGenerated)";
 
+            SqlCommand cmd = new SqlCommand(insertStatement, conn);
+            cmd.Parameters.AddWithValue("@testID", testID);
+            cmd.Parameters.AddWithValue("@timeLimit", test.TimeLimit);
+            cmd.Parameters.AddWithValue("@RandomlyGenerated", test.RandomlyGenerated);
+            cmd.Parameters.AddWithValue("@QuestionText", q.QuestionText);
+            cmd.Parameters.AddWithValue("@CorrectAnswer", q.CorrectAnswer.ToString());
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // execute the query
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // always close the connection
+                conn.Close();
+            }
+        }
         public static void InsertPracticeTest(PracticeTest test)
         {
             string insertStatment = "INSERT INTO TESTS (testtype, timelimit, randomlygenerated, minlevel, maxlevel) " +

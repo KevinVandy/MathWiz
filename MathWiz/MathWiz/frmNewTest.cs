@@ -56,7 +56,12 @@ namespace MathWiz
                         practiceTest.Questions = Question.GenerateRandomQuestions(practiceTest.MaxLevel, practiceTest.TimeLimit);
                         foreach(Question q in practiceTest.Questions)
                         {
-                            MessageBox.Show(q.QuestionText + q.CorrectAnswer);
+                            MathWizDB.InsertTestQuestionsPractice(practiceTest, q, aNumber);
+                        }
+                        //MathWizDB.InsertTestQuestionsPractice(practiceTest, practiceTest.Questions, aNumber);
+                        foreach(Question q in practiceTest.Questions)
+                        {
+                            Console.WriteLine(q.QuestionText + q.CorrectAnswer);
                         }
                         break;
                     case 1:
@@ -67,7 +72,7 @@ namespace MathWiz
                         PlacementTest.Questions = Question.GenerateRandomQuestions(PlacementTest.MaxLevel, PlacementTest.TimeLimit);
                         foreach (Question q in PlacementTest.Questions)
                         {
-                            MessageBox.Show(q.QuestionText + q.CorrectAnswer);
+                            Console.WriteLine(q.QuestionText + q.CorrectAnswer);
                         }
                         break;
                     case 2:
@@ -78,7 +83,7 @@ namespace MathWiz
                         masteryTest.Questions = Question.GenerateRandomQuestions(masteryTest.MasteryLevel, masteryTest.TimeLimit);
                         foreach (Question q in masteryTest.Questions)
                         {
-                            MessageBox.Show(q.QuestionText + q.CorrectAnswer);
+                           Console.WriteLine(q.QuestionText + q.CorrectAnswer);
                         }
                         break;
 
