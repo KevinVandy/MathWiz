@@ -29,16 +29,19 @@ namespace MathWiz
             switch (this.Tag.ToString())
             {
                 case "placement":
+
                     gbxQuestion.Text = "Placement Test";
                     this.Text = "Placement Test";
                     break;
+
                 case "practice":
+
                     this.Text = "Practice Test";
                     gbxQuestion.Text = "Practice Test";
-                    lblTimerQuestion.Visible = false;
-                    lblTimerTest.Visible = false;
                     break;
+
                 case "mastery":
+
                     this.Text = "Mastery Test";
                     gbxQuestion.Text = "Mastery Test";
                     break;
@@ -55,12 +58,17 @@ namespace MathWiz
             switch (this.Tag.ToString())
             {
                 case "placement":
+
                     test = MathWizDA.SelectPlaceTest(testID);
                     break;
+
                 case "practice":
+
                     //TODO call a method to generate a test -- OR I guess load one from the database
                     break;
+
                 case "mastery":
+
                     test = MathWizDA.SelectMastTest(testID);
                     break;
             }
@@ -106,10 +114,20 @@ namespace MathWiz
         {
             if(btnStartFinish.Text == "Start Test")
             {
+                currentQuestionNum = 1;
                 btnStartFinish.Text = "Finish Test";
-                btnStartFinish.Visible = false;
-                currentQuestionNum++;
                 gbxQuestion.Text = "Question " + currentQuestionNum.ToString() + " of " + test.Questions.Count;
+                btnStartFinish.Hide();
+                btnSubmitAnswer.Show();
+                txtStudentAnswer.Show();
+
+                if (true) //is multiple choice
+                {
+                    pnlChoices.Show();
+                }
+
+                
+                
             }
             else if(btnStartFinish.Text == "Finish Test")
             {

@@ -14,6 +14,7 @@ namespace MathWiz
     public partial class frmTeacherHome : Form
     {
         Teacher teacher;
+
         public frmTeacherHome(string username)
         {
             InitializeComponent();
@@ -24,11 +25,6 @@ namespace MathWiz
 
         private void frmTeacherHome_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'mathWizGroup3DataSet.students' table. You can move, or remove it, as needed.
-            this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet.students);
-            // TODO: This line of code loads data into the 'mathWizGroup3DataSet.students' table. You can move, or remove it, as needed.
-            this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet.students);
-           
             //put Images folder in debug folder 
             //images folder should be moved to directory the final exe is located
             //takes pic from folder to set as profile pic
@@ -39,14 +35,26 @@ namespace MathWiz
             //picBoxTeacher.SizeMode = PictureBoxSizeMode.StretchImage;
 
             lblTeacherName.Text = teacher.FirstName;
-
-            
-
             cmbKlasses.DataSource = teacher.Klasses;
             cmbKlasses.DisplayMember = "KlassName";
             
 
 
+        }
+
+        private void backgroundWorkerLoadData_DoWork(object sender, DoWorkEventArgs e)
+        {
+            this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet.students);
+            this.testsTableAdapter.Fill(this.mathWizGroup3DataSet.tests);
+        }
+
+        private void backgroundWorkerLoadData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            dgvStudents.Update();
+            dgvStudents.Refresh();
+
+            dgvTests.Update();
+            dgvTests.Refresh();
         }
 
 
@@ -75,14 +83,17 @@ namespace MathWiz
             //}
         }
 
-        private void studentTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            DataGridViewRow row = studentTable.SelectedRows[0];
-            string studentName = row.Cells["FirstName"] .Value.ToString() + " " + row.Cells[5].Value.ToString();
+            DataGridViewRow row = dgvStudents.SelectedRows[0];
+            string studentName = row.Cells["FirstName"].Value.ToString() + " " + row.Cells[5].Value.ToString();
             grpBxStudentInfo.Text = studentName;
-            
+
             grpBxStudentInfo.Visible = true;
+        }
+
+        private void dgvTests_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

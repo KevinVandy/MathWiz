@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.backgroundWorkerLoadTest = new System.ComponentModel.BackgroundWorker();
             this.gbxQuestion = new System.Windows.Forms.GroupBox();
+            this.lblTimerQuestion = new System.Windows.Forms.Label();
             this.btnSubmitAnswer = new System.Windows.Forms.Button();
             this.lblCorrectAnswer = new System.Windows.Forms.Label();
             this.txtStudentAnswer = new System.Windows.Forms.TextBox();
@@ -46,7 +47,6 @@
             this.timerTest = new System.Windows.Forms.Timer(this.components);
             this.lblTimerTest = new System.Windows.Forms.Label();
             this.timerQuestion = new System.Windows.Forms.Timer(this.components);
-            this.lblTimerQuestion = new System.Windows.Forms.Label();
             this.gbxQuestion.SuspendLayout();
             this.pnlChoices.SuspendLayout();
             this.SuspendLayout();
@@ -74,6 +74,17 @@
             this.gbxQuestion.TabStop = false;
             this.gbxQuestion.Text = "Question # of #";
             // 
+            // lblTimerQuestion
+            // 
+            this.lblTimerQuestion.AutoSize = true;
+            this.lblTimerQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimerQuestion.Location = new System.Drawing.Point(412, 30);
+            this.lblTimerQuestion.Name = "lblTimerQuestion";
+            this.lblTimerQuestion.Size = new System.Drawing.Size(36, 17);
+            this.lblTimerQuestion.TabIndex = 7;
+            this.lblTimerQuestion.Text = "1:00";
+            this.lblTimerQuestion.Visible = false;
+            // 
             // btnSubmitAnswer
             // 
             this.btnSubmitAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -83,6 +94,7 @@
             this.btnSubmitAnswer.TabIndex = 6;
             this.btnSubmitAnswer.Text = "Submit";
             this.btnSubmitAnswer.UseVisualStyleBackColor = true;
+            this.btnSubmitAnswer.Visible = false;
             // 
             // lblCorrectAnswer
             // 
@@ -105,6 +117,7 @@
             this.txtStudentAnswer.Size = new System.Drawing.Size(125, 44);
             this.txtStudentAnswer.TabIndex = 0;
             this.txtStudentAnswer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtStudentAnswer.Visible = false;
             // 
             // pnlChoices
             // 
@@ -175,6 +188,7 @@
             this.lblQuestionText.Size = new System.Drawing.Size(127, 37);
             this.lblQuestionText.TabIndex = 3;
             this.lblQuestionText.Text = "2 + 2 = ";
+            this.lblQuestionText.Visible = false;
             // 
             // btnNext
             // 
@@ -185,6 +199,7 @@
             this.btnNext.TabIndex = 0;
             this.btnNext.Text = "Next Question";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Visible = false;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnBack
@@ -196,6 +211,7 @@
             this.btnBack.TabIndex = 1;
             this.btnBack.Text = "Previous Question";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Visible = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnStartFinish
@@ -218,16 +234,6 @@
             this.lblTimerTest.Size = new System.Drawing.Size(44, 17);
             this.lblTimerTest.TabIndex = 3;
             this.lblTimerTest.Text = "10:00";
-            // 
-            // lblTimerQuestion
-            // 
-            this.lblTimerQuestion.AutoSize = true;
-            this.lblTimerQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimerQuestion.Location = new System.Drawing.Point(412, 30);
-            this.lblTimerQuestion.Name = "lblTimerQuestion";
-            this.lblTimerQuestion.Size = new System.Drawing.Size(36, 17);
-            this.lblTimerQuestion.TabIndex = 7;
-            this.lblTimerQuestion.Text = "1:00";
             // 
             // frmTakeTest
             // 
