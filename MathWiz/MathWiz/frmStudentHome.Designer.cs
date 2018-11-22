@@ -40,8 +40,8 @@
             this.btnPractice = new System.Windows.Forms.Button();
             this.btnPlacement = new System.Windows.Forms.Button();
             this.gbxTakeTests = new System.Windows.Forms.GroupBox();
+            this.cmbMasteryLevel = new System.Windows.Forms.ComboBox();
             this.gbxViewProgress = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.gbxTakeTests.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +56,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(798, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(770, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -108,7 +108,7 @@
             // 
             this.btnMastery.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMastery.Location = new System.Drawing.Point(477, 37);
-            this.btnMastery.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMastery.Margin = new System.Windows.Forms.Padding(2);
             this.btnMastery.Name = "btnMastery";
             this.btnMastery.Size = new System.Drawing.Size(204, 51);
             this.btnMastery.TabIndex = 3;
@@ -120,7 +120,7 @@
             // 
             this.btnPractice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPractice.Location = new System.Drawing.Point(250, 36);
-            this.btnPractice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPractice.Margin = new System.Windows.Forms.Padding(2);
             this.btnPractice.Name = "btnPractice";
             this.btnPractice.Size = new System.Drawing.Size(204, 51);
             this.btnPractice.TabIndex = 4;
@@ -132,7 +132,7 @@
             // 
             this.btnPlacement.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlacement.Location = new System.Drawing.Point(23, 37);
-            this.btnPlacement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPlacement.Margin = new System.Windows.Forms.Padding(2);
             this.btnPlacement.Name = "btnPlacement";
             this.btnPlacement.Size = new System.Drawing.Size(204, 51);
             this.btnPlacement.TabIndex = 5;
@@ -142,7 +142,7 @@
             // 
             // gbxTakeTests
             // 
-            this.gbxTakeTests.Controls.Add(this.comboBox1);
+            this.gbxTakeTests.Controls.Add(this.cmbMasteryLevel);
             this.gbxTakeTests.Controls.Add(this.btnMastery);
             this.gbxTakeTests.Controls.Add(this.btnPractice);
             this.gbxTakeTests.Controls.Add(this.btnPlacement);
@@ -153,6 +153,14 @@
             this.gbxTakeTests.TabStop = false;
             this.gbxTakeTests.Text = "Take Tests";
             // 
+            // cmbMasteryLevel
+            // 
+            this.cmbMasteryLevel.FormattingEnabled = true;
+            this.cmbMasteryLevel.Location = new System.Drawing.Point(287, 105);
+            this.cmbMasteryLevel.Name = "cmbMasteryLevel";
+            this.cmbMasteryLevel.Size = new System.Drawing.Size(121, 21);
+            this.cmbMasteryLevel.TabIndex = 6;
+            // 
             // gbxViewProgress
             // 
             this.gbxViewProgress.Location = new System.Drawing.Point(23, 277);
@@ -162,19 +170,11 @@
             this.gbxViewProgress.TabStop = false;
             this.gbxViewProgress.Text = "View Progress";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(287, 105);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 6;
-            // 
             // frmStudentHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(798, 550);
+            this.ClientSize = new System.Drawing.Size(770, 550);
             this.Controls.Add(this.gbxViewProgress);
             this.Controls.Add(this.gbxTakeTests);
             this.Controls.Add(this.menuStrip1);
@@ -206,6 +206,6 @@
         private System.Windows.Forms.Button btnPlacement;
         private System.Windows.Forms.GroupBox gbxTakeTests;
         private System.Windows.Forms.GroupBox gbxViewProgress;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbMasteryLevel;
     }
 }

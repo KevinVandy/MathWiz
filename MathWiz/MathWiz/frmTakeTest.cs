@@ -12,18 +12,41 @@ namespace MathWiz
 {
     public partial class frmTakeTest : Form
     {
-        Test thisTest;
+        Test test;
+        Student student;
         int testID;
-        int currentQuestionNum;
+        int currentQuestionNum = 0;
 
-        public frmTakeTest(int testId = 0) //default test ID of 0 if there is no ID passed
+        public frmTakeTest(Student s, int tID) //default test ID of 0 if there is no ID passed
         {
             InitializeComponent();
-            testID = testId;
+            student = s;
+            testID = tID;
         }
 
         private void frmTakeTest_Load(object sender, EventArgs e)
         {
+            switch (this.Tag.ToString())
+            {
+                case "placement":
+                    gbxQuestion.Text = "Placement Test";
+                    this.Text = "Placement Test";
+                    break;
+                case "practice":
+                    this.Text = "Practice Test";
+                    gbxQuestion.Text = "Practice Test";
+                    lblTimerQuestion.Visible = false;
+                    lblTimerTest.Visible = false;
+                    break;
+                case "mastery":
+                    this.Text = "Mastery Test";
+                    gbxQuestion.Text = "Mastery Test";
+                    break;
+            }
+
+            this.Text += " - " + student.FirstName + " " + student.LastName;
+            btnStartFinish.Text = "Start Test";
+            gbxQuestion.Text = "";
             backgroundWorkerLoadTest.RunWorkerAsync();
         }
 
@@ -32,20 +55,20 @@ namespace MathWiz
             switch (this.Tag.ToString())
             {
                 case "placement":
-                    thisTest = MathWizDA.SelectPlaceTest(testID);
+                    test = MathWizDA.SelectPlaceTest(testID);
                     break;
                 case "practice":
                     //TODO call a method to generate a test -- OR I guess load one from the database
                     break;
                 case "mastery":
-                    thisTest = MathWizDA.SelectMastTest(testID);
+                    test = MathWizDA.SelectMastTest(testID);
                     break;
             }
         }
 
         private void backgroundWorkerLoadTest_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
+            
         }
 
         private void ShowQuestion(Question q)
@@ -55,22 +78,43 @@ namespace MathWiz
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            if(currentQuestionNum > 1)
+            {
+                currentQuestionNum--;
+            }
 
+            if (btnStartFinish.Visible)
+            {
+                btnStartFinish.Hide();
+            }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            if(currentQuestionNum < test.Questions.Count)
+            {
+                currentQuestionNum++;
+            }
 
+            if(currentQuestionNum == test.Questions.Count)
+            {
+                btnStartFinish.Show();
+            }
         }
 
-        private void btnStart_Click(object sender, EventArgs e)
+        private void btnStartFinish_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnFinish_Click(object sender, EventArgs e)
-        {
-
+            if(btnStartFinish.Text == "Start Test")
+            {
+                btnStartFinish.Text = "Finish Test";
+                btnStartFinish.Visible = false;
+                currentQuestionNum++;
+                gbxQuestion.Text = "Question " + currentQuestionNum.ToString() + " of " + test.Questions.Count;
+            }
+            else if(btnStartFinish.Text == "Finish Test")
+            {
+                //TODO record score
+            }
         }
     }
 }

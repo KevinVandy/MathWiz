@@ -164,7 +164,7 @@
             this.Name = "frmAboutBox";
             this.Padding = new System.Windows.Forms.Padding(9);
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About MathWiz";
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();

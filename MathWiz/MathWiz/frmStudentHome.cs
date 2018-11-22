@@ -53,21 +53,21 @@ namespace MathWiz
 
         private void btnPlacement_Click(object sender, EventArgs e)
         {
-            Form placementForm = new frmTakeTest(1); //TODO Pass Correct Test ID
+            Form placementForm = new frmTakeTest(student, 1); //TODO Pass Correct Test ID
             placementForm.Tag = "placement";
             placementForm.ShowDialog();
         }
 
         private void btnPractice_Click(object sender, EventArgs e)
         {
-            Form practiceForm = new frmTakeTest();
+            Form practiceForm = new frmTakeTest(student, 1);
             practiceForm.Tag = "practice";
             practiceForm.ShowDialog();
         }
 
         private void btnMastery_Click(object sender, EventArgs e)
         {
-            Form masteryForm = new frmTakeTest(student.MasteryLevel); //Passes the students mastery level
+            Form masteryForm = new frmTakeTest(student, 1); //Passes the students mastery level
             masteryForm.Tag = "mastery";
             masteryForm.ShowDialog();
         }
