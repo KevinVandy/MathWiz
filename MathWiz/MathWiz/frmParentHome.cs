@@ -39,7 +39,7 @@ namespace MathWiz
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -85,6 +85,11 @@ namespace MathWiz
                     System.Windows.Forms.MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

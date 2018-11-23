@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmParentHome));
             this.grpManageChildren = new System.Windows.Forms.GroupBox();
+            this.txtStudentMastery = new System.Windows.Forms.TextBox();
+            this.lblStudentMastery = new System.Windows.Forms.Label();
             this.graded_testsDataGridView = new System.Windows.Forms.DataGridView();
             this.StudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,8 +50,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.graded_testsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.graded_testsTableAdapter();
             this.tableAdapterManager = new MathWiz.MathWizGroup3DataSetTableAdapters.TableAdapterManager();
-            this.lblStudentMastery = new System.Windows.Forms.Label();
-            this.txtStudentMastery = new System.Windows.Forms.TextBox();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grpManageChildren.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.graded_testsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.graded_testsBindingSource)).BeginInit();
@@ -64,13 +65,35 @@
             this.grpManageChildren.Controls.Add(this.graded_testsDataGridView);
             this.grpManageChildren.Controls.Add(this.lstChildren);
             this.grpManageChildren.Location = new System.Drawing.Point(9, 32);
-            this.grpManageChildren.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpManageChildren.Margin = new System.Windows.Forms.Padding(2);
             this.grpManageChildren.Name = "grpManageChildren";
-            this.grpManageChildren.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpManageChildren.Padding = new System.Windows.Forms.Padding(2);
             this.grpManageChildren.Size = new System.Drawing.Size(782, 297);
             this.grpManageChildren.TabIndex = 0;
             this.grpManageChildren.TabStop = false;
             this.grpManageChildren.Text = "Your Children";
+            // 
+            // txtStudentMastery
+            // 
+            this.txtStudentMastery.BackColor = System.Drawing.SystemColors.Control;
+            this.txtStudentMastery.Font = new System.Drawing.Font("Lucida Bright", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentMastery.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtStudentMastery.Location = new System.Drawing.Point(228, 35);
+            this.txtStudentMastery.Multiline = true;
+            this.txtStudentMastery.Name = "txtStudentMastery";
+            this.txtStudentMastery.ReadOnly = true;
+            this.txtStudentMastery.Size = new System.Drawing.Size(117, 55);
+            this.txtStudentMastery.TabIndex = 3;
+            this.txtStudentMastery.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblStudentMastery
+            // 
+            this.lblStudentMastery.AutoSize = true;
+            this.lblStudentMastery.Location = new System.Drawing.Point(225, 19);
+            this.lblStudentMastery.Name = "lblStudentMastery";
+            this.lblStudentMastery.Size = new System.Drawing.Size(120, 13);
+            this.lblStudentMastery.TabIndex = 2;
+            this.lblStudentMastery.Text = "Student\'s Mastery Level";
             // 
             // graded_testsDataGridView
             // 
@@ -86,7 +109,7 @@
             this.dataGridViewTextBoxColumn7});
             this.graded_testsDataGridView.DataSource = this.graded_testsBindingSource;
             this.graded_testsDataGridView.Location = new System.Drawing.Point(358, 19);
-            this.graded_testsDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.graded_testsDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.graded_testsDataGridView.Name = "graded_testsDataGridView";
             this.graded_testsDataGridView.ReadOnly = true;
             this.graded_testsDataGridView.RowTemplate.Height = 24;
@@ -170,6 +193,7 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logoutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -178,7 +202,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -221,27 +245,12 @@
             this.tableAdapterManager.testsTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = MathWiz.MathWizGroup3DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // lblStudentMastery
+            // logoutToolStripMenuItem
             // 
-            this.lblStudentMastery.AutoSize = true;
-            this.lblStudentMastery.Location = new System.Drawing.Point(225, 19);
-            this.lblStudentMastery.Name = "lblStudentMastery";
-            this.lblStudentMastery.Size = new System.Drawing.Size(120, 13);
-            this.lblStudentMastery.TabIndex = 2;
-            this.lblStudentMastery.Text = "Student\'s Mastery Level";
-            // 
-            // txtStudentMastery
-            // 
-            this.txtStudentMastery.BackColor = System.Drawing.SystemColors.Control;
-            this.txtStudentMastery.Font = new System.Drawing.Font("Lucida Bright", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudentMastery.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtStudentMastery.Location = new System.Drawing.Point(228, 35);
-            this.txtStudentMastery.Multiline = true;
-            this.txtStudentMastery.Name = "txtStudentMastery";
-            this.txtStudentMastery.ReadOnly = true;
-            this.txtStudentMastery.Size = new System.Drawing.Size(117, 55);
-            this.txtStudentMastery.TabIndex = 3;
-            this.txtStudentMastery.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // frmParentHome
             // 
@@ -291,5 +300,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.TextBox txtStudentMastery;
         private System.Windows.Forms.Label lblStudentMastery;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
     }
 }
