@@ -13,6 +13,7 @@ namespace MathWiz
     public partial class frmTakeTest : Form
     {
         Test test;
+        GradedTest gradedTest;
         Student student;
         int testID;
         int currentQuestionNum = 0;
@@ -30,18 +31,21 @@ namespace MathWiz
             {
                 case "placement":
 
+                    gradedTest = new GradedPlacementTest();
                     gbxQuestion.Text = "Placement Test";
                     this.Text = "Placement Test";
                     break;
 
                 case "practice":
 
+                    gradedTest = new GradedPracticeTest();
                     this.Text = "Practice Test";
                     gbxQuestion.Text = "Practice Test";
                     break;
 
                 case "mastery":
 
+                    gradedTest = new GradedMasteryTest();
                     this.Text = "Mastery Test";
                     gbxQuestion.Text = "Mastery Test";
                     break;
@@ -81,7 +85,35 @@ namespace MathWiz
 
         private void ShowQuestion(Question q)
         {
+            lblTimerQuestion.Text = q.TimeLimit.ToString();
+            timerQuestion.Start();
 
+            lblQuestionText.Text = q.QuestionText;
+
+            lblCorrectAnswer.Hide();
+            lblCorrectAnswer.Text = q.CorrectAnswer.ToString();
+        }
+
+        private void btnSubmitAnswer_Click(object sender, EventArgs e)
+        {
+            if (Validation.IsInteger(txtStudentAnswer))
+            {
+                if (Convert.ToInt16(txtStudentAnswer.Text.Trim()) == test.Questions[currentQuestionNum].CorrectAnswer)
+                {
+                    GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0,1,1));
+                    gradedTest.RightlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
+
+                    
+                }
+                else
+                {
+                    GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0, 1, 1));
+                    gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
+                }
+
+                lblCorrectAnswer.Show();
+            }
+            
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -134,5 +166,26 @@ namespace MathWiz
                 //TODO record score
             }
         }
+
+        private void timerTest_Tick(object sender, EventArgs e)
+        {
+            lblTimerTest.Text = timerTest.ToString();
+
+            
+        }
+
+        private void timerQuestion_Tick(object sender, EventArgs e)
+        {
+            lblTimerQuestion.Text = timerQuestion.ToString();
+
+            if (TimeSpan.Parse(lblTimerQuestion.Text) <= new TimeSpan(0,0,0)) //if time runs out
+            {
+                timerQuestion.Stop();
+                btnSubmitAnswer.Enabled = false;
+                lblCorrectAnswer.Show();
+            }
+        }
+
+        
     }
 }

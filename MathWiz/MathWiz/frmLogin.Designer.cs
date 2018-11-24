@@ -86,21 +86,21 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // iCantLogInToolStripMenuItem
             // 
             this.iCantLogInToolStripMenuItem.Name = "iCantLogInToolStripMenuItem";
-            this.iCantLogInToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.iCantLogInToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
             this.iCantLogInToolStripMenuItem.Text = "I Can\'t Log in!";
             this.iCantLogInToolStripMenuItem.Click += new System.EventHandler(this.iCantLogInToolStripMenuItem_Click);
             // 
             // txtUsername
             // 
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(144, 61);
+            this.txtUsername.Location = new System.Drawing.Point(150, 58);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(275, 29);
             this.txtUsername.TabIndex = 1;
@@ -109,7 +109,7 @@
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(31, 64);
+            this.lblUsername.Location = new System.Drawing.Point(37, 61);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(107, 24);
             this.lblUsername.TabIndex = 2;
@@ -119,7 +119,7 @@
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(36, 134);
+            this.lblPassword.Location = new System.Drawing.Point(42, 131);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(102, 24);
             this.lblPassword.TabIndex = 3;
@@ -128,7 +128,7 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(144, 131);
+            this.txtPassword.Location = new System.Drawing.Point(150, 128);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(275, 29);
             this.txtPassword.TabIndex = 4;
@@ -139,7 +139,7 @@
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft YaHei UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(235, 206);
+            this.btnLogin.Location = new System.Drawing.Point(241, 195);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(184, 53);
             this.btnLogin.TabIndex = 5;
@@ -152,7 +152,7 @@
             this.lblUsernameError.AutoSize = true;
             this.lblUsernameError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsernameError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblUsernameError.Location = new System.Drawing.Point(196, 93);
+            this.lblUsernameError.Location = new System.Drawing.Point(202, 90);
             this.lblUsernameError.Name = "lblUsernameError";
             this.lblUsernameError.Size = new System.Drawing.Size(155, 20);
             this.lblUsernameError.TabIndex = 6;
@@ -164,7 +164,7 @@
             this.lblPasswordError.AutoSize = true;
             this.lblPasswordError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPasswordError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblPasswordError.Location = new System.Drawing.Point(196, 163);
+            this.lblPasswordError.Location = new System.Drawing.Point(202, 160);
             this.lblPasswordError.Name = "lblPasswordError";
             this.lblPasswordError.Size = new System.Drawing.Size(158, 20);
             this.lblPasswordError.TabIndex = 7;
@@ -176,7 +176,7 @@
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft YaHei UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(35, 206);
+            this.btnCancel.Location = new System.Drawing.Point(41, 195);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(184, 53);
             this.btnCancel.TabIndex = 8;

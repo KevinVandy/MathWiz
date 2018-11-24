@@ -47,6 +47,8 @@
             this.timerTest = new System.Windows.Forms.Timer(this.components);
             this.lblTimerTest = new System.Windows.Forms.Label();
             this.timerQuestion = new System.Windows.Forms.Timer(this.components);
+            this.timerTimeTakenToAnswer = new System.Windows.Forms.Timer(this.components);
+            this.timeTotalTestTime = new System.Windows.Forms.Timer(this.components);
             this.gbxQuestion.SuspendLayout();
             this.pnlChoices.SuspendLayout();
             this.SuspendLayout();
@@ -95,6 +97,7 @@
             this.btnSubmitAnswer.Text = "Submit";
             this.btnSubmitAnswer.UseVisualStyleBackColor = true;
             this.btnSubmitAnswer.Visible = false;
+            this.btnSubmitAnswer.Click += new System.EventHandler(this.btnSubmitAnswer_Click);
             // 
             // lblCorrectAnswer
             // 
@@ -225,6 +228,10 @@
             this.btnStartFinish.UseVisualStyleBackColor = true;
             this.btnStartFinish.Click += new System.EventHandler(this.btnStartFinish_Click);
             // 
+            // timerTest
+            // 
+            this.timerTest.Tick += new System.EventHandler(this.timerTest_Tick);
+            // 
             // lblTimerTest
             // 
             this.lblTimerTest.AutoSize = true;
@@ -234,6 +241,10 @@
             this.lblTimerTest.Size = new System.Drawing.Size(44, 17);
             this.lblTimerTest.TabIndex = 3;
             this.lblTimerTest.Text = "10:00";
+            // 
+            // timerQuestion
+            // 
+            this.timerQuestion.Tick += new System.EventHandler(this.timerQuestion_Tick);
             // 
             // frmTakeTest
             // 
@@ -277,5 +288,7 @@
         private System.Windows.Forms.Label lblTimerTest;
         private System.Windows.Forms.Timer timerQuestion;
         private System.Windows.Forms.Label lblTimerQuestion;
+        private System.Windows.Forms.Timer timerTimeTakenToAnswer;
+        private System.Windows.Forms.Timer timeTotalTestTime;
     }
 }
