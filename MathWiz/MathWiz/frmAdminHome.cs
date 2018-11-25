@@ -214,7 +214,7 @@ namespace MathWiz
 
         private void btnDeleteSelectedUser_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt16(dgvUsers.Rows[dgvUsers.CurrentCell.RowIndex].Cells[0].Value);
+            int id = Convert.ToInt32(dgvUsers.Rows[dgvUsers.CurrentCell.RowIndex].Cells[0].Value);
             string username = dgvUsers.Rows[dgvUsers.CurrentCell.RowIndex].Cells[1].Value.ToString();
 
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this user?", "Confirm Delete?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -390,7 +390,7 @@ namespace MathWiz
                     {
                         ListViewItem lvi = new ListViewItem(drow["Id"].ToString());
                         lvi.SubItems.Add(drow["KlassName"].ToString());
-                        if (Convert.ToInt16(drow["TeacherID"]) == Convert.ToInt16(lsvTeachers.SelectedItems[0].SubItems[0].Text))
+                        if (Convert.ToInt32(drow["TeacherID"]) == Convert.ToInt32(lsvTeachers.SelectedItems[0].SubItems[0].Text))
                         {
                             lsvKlasses.Items.Add(lvi);
                         }
@@ -412,7 +412,7 @@ namespace MathWiz
                         ListViewItem lvi = new ListViewItem(drow["Id"].ToString());
                         lvi.SubItems.Add(drow["FirstName"].ToString() + " " + drow["LastName"].ToString());
                         lvi.SubItems.Add(drow["MasteryLevel"].ToString());
-                        if (Convert.ToInt16(drow["KlassID"]) == Convert.ToInt16(lsvKlasses.SelectedItems[0].SubItems[0].Text))
+                        if (Convert.ToInt32(drow["KlassID"]) == Convert.ToInt32(lsvKlasses.SelectedItems[0].SubItems[0].Text))
                         {
                             lsvStudents.Items.Add(lvi);
                         }
@@ -425,7 +425,7 @@ namespace MathWiz
             int[] masteryLevels = new int[lsvStudents.Items.Count];
             for(int i = 0; i < lsvStudents.Items.Count; i++)
             {
-                masteryLevels[i] = Convert.ToInt16(lsvStudents.Items[i].SubItems[2].Text);
+                masteryLevels[i] = Convert.ToInt32(lsvStudents.Items[i].SubItems[2].Text);
                 masteryLevelSeries.Points.Add(masteryLevels[i]);
             }
             

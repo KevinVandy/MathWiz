@@ -98,7 +98,7 @@ namespace MathWiz
         {
             if (Validation.IsInteger(txtStudentAnswer))
             {
-                if (Convert.ToInt16(txtStudentAnswer.Text.Trim()) == test.Questions[currentQuestionNum].CorrectAnswer)
+                if (Convert.ToInt32(txtStudentAnswer.Text.Trim()) == test.Questions[currentQuestionNum].CorrectAnswer)
                 {
                     GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0,1,1));
                     gradedTest.RightlyAnsweredQuestions.Add(correctlyAnsweredQuestion);

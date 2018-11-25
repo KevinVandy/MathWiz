@@ -13,10 +13,17 @@ namespace MathWiz
     public partial class frmStudentHome : Form
     {
         Student student;
+        int klassID;
+
+        PlacementTest availablePlacementTest;
+        List<PracticeTest> availablePracticeTests;
+        List<MasteryTest> availableMasteryTests;
+        
+
         public frmStudentHome(string username)
         {
             InitializeComponent();
-            student = MathWizDA.SelectStudent(username);
+            student = MathWizDA.SelectStudent(username); //this has to go here
         }
 
         private void frmStudentHome_Load(object sender, EventArgs e)
@@ -33,6 +40,26 @@ namespace MathWiz
                 btnMastery.Enabled = true;
                 btnPlacement.Enabled = false;
             }
+        }
+
+        private void backgroundWorkerLoadData_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if(student.MasteryLevel == 0) //if student has not taken placement test yet, only load that test
+            {
+                availablePlacementTest = MathWizDA.SelectKlassesPlacementTest(klassID);
+            }
+            else //load the tests that the student can take, but not the placement test since they already took it
+            {
+                klassID = MathWizDA.SelectStudentsKlassID(student.Id);
+                availablePracticeTests = MathWizDA.SelectKlassesPracticeTests(klassID);
+                availableMasteryTests = MathWizDA.SelectKlassesMasteryTests(klassID);
+            }
+            
+        }
+
+        private void backgroundWorkerLoadData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -71,5 +98,7 @@ namespace MathWiz
             masteryForm.Tag = "mastery";
             masteryForm.ShowDialog();
         }
+
+        
     }
 }

@@ -42,6 +42,7 @@
             this.gbxTakeTests = new System.Windows.Forms.GroupBox();
             this.cmbMasteryLevel = new System.Windows.Forms.ComboBox();
             this.gbxViewProgress = new System.Windows.Forms.GroupBox();
+            this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.gbxTakeTests.SuspendLayout();
             this.SuspendLayout();
@@ -72,14 +73,14 @@
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -100,7 +101,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -170,6 +171,11 @@
             this.gbxViewProgress.TabStop = false;
             this.gbxViewProgress.Text = "View Progress";
             // 
+            // backgroundWorkerLoadData
+            // 
+            this.backgroundWorkerLoadData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerLoadData_DoWork);
+            this.backgroundWorkerLoadData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerLoadData_RunWorkerCompleted);
+            // 
             // frmStudentHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,5 +213,6 @@
         private System.Windows.Forms.GroupBox gbxTakeTests;
         private System.Windows.Forms.GroupBox gbxViewProgress;
         private System.Windows.Forms.ComboBox cmbMasteryLevel;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerLoadData;
     }
 }

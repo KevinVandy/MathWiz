@@ -82,7 +82,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -127,7 +127,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -169,7 +169,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -198,6 +198,7 @@ namespace MathWiz
 
                 if (reader.Read()) 
                 {
+                    admin.Id = Convert.ToInt32(reader["Id"]);
                     admin.Username = Convert.ToString(reader["Username"]);
                     admin.FirstName = Convert.ToString(reader["FirstName"]);
                     admin.LastName = Convert.ToString(reader["LastName"]);
@@ -214,7 +215,7 @@ namespace MathWiz
             }
             finally
             {
-                if(conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if(conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -241,7 +242,7 @@ namespace MathWiz
 
                 if (reader.Read()) 
                 {
-                    teacher.Id = Convert.ToInt16(reader["Id"]);
+                    teacher.Id = Convert.ToInt32(reader["Id"]);
                     teacher.Username = Convert.ToString(reader["Username"]);
                     teacher.FirstName = Convert.ToString(reader["FirstName"]);
                     teacher.LastName = Convert.ToString(reader["LastName"]);
@@ -259,7 +260,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -286,12 +287,11 @@ namespace MathWiz
 
                 if (reader.Read()) 
                 {
-                    
+                    student.Id = Convert.ToInt32(reader["Id"]);
                     student.Username = Convert.ToString(reader["Username"]);
                     student.FirstName = Convert.ToString(reader["FirstName"]);
                     student.LastName = Convert.ToString(reader["LastName"]);
-                    student.MasteryLevel = Convert.ToInt16(reader["MasteryLevel"]);
-                    
+                    student.MasteryLevel = Convert.ToInt32(reader["MasteryLevel"]);
                 }
                 reader.Close();
             }
@@ -305,7 +305,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -332,12 +332,11 @@ namespace MathWiz
 
                 if (reader.Read()) 
                 {
-                    
+                    parent.Id = Convert.ToInt32(reader["Id"]);
                     parent.Username = Convert.ToString(reader["Username"]);
                     parent.FirstName = Convert.ToString(reader["FirstName"]);
                     parent.LastName = Convert.ToString(reader["LastName"]);
                     parent.Id = Convert.ToInt32(reader["Id"]);
-                    
                 }
                 reader.Close();
             }
@@ -351,7 +350,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -377,11 +376,11 @@ namespace MathWiz
                 while (reader.Read())
                 {
                     Student student = new Student();
-                    student.Id = Convert.ToInt16(reader["Id"]);
+                    student.Id = Convert.ToInt32(reader["Id"]);
                     student.Username = Convert.ToString(reader["Username"]);
                     student.FirstName = Convert.ToString(reader["FirstName"]);
                     student.LastName = Convert.ToString(reader["LastName"]);
-                    student.MasteryLevel = Convert.ToInt16(reader["MasteryLevel"]);
+                    student.MasteryLevel = Convert.ToInt32(reader["MasteryLevel"]);
 
                     students.Add(student);
                 }
@@ -397,12 +396,51 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
             }
             return students;
+        }
+
+        public static int SelectStudentsKlassID(int studentID)
+        {
+            int klassID = 0;
+
+            //make the query the safe way by binding values to prevent SQL injection
+            string query = "SELECT KlassID FROM students WHERE Id = @studentID";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@studentID", studentID);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    klassID = Convert.ToInt32(reader["KlassID"]);
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) 
+                {
+                    conn.Close();
+                }
+            }
+            return klassID;
         }
         //End SELECT Single Users Methods
 
@@ -423,7 +461,7 @@ namespace MathWiz
                 while (reader.Read())
                 {
                     Admin admin = new Admin();
-                    admin.Id = Convert.ToInt16(reader["Id"]);
+                    admin.Id = Convert.ToInt32(reader["Id"]);
                     admin.Username = Convert.ToString(reader["Username"]);
                     admin.FirstName = Convert.ToString(reader["FirstName"]);
                     admin.LastName = Convert.ToString(reader["LastName"]);
@@ -442,7 +480,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -466,7 +504,7 @@ namespace MathWiz
                 while (reader.Read())
                 {
                     Teacher teacher = new Teacher();
-                    teacher.Id = Convert.ToInt16(reader["Id"]);
+                    teacher.Id = Convert.ToInt32(reader["Id"]);
                     teacher.Username = Convert.ToString(reader["Username"]);
                     teacher.FirstName = Convert.ToString(reader["FirstName"]);
                     teacher.LastName = Convert.ToString(reader["LastName"]);
@@ -485,7 +523,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -510,7 +548,7 @@ namespace MathWiz
                 while (reader.Read()) 
                 {
                     Parent parent = new Parent();
-                    parent.Id = Convert.ToInt16(reader["Id"]);
+                    parent.Id = Convert.ToInt32(reader["Id"]);
                     parent.Username = Convert.ToString(reader["Username"]);
                     parent.FirstName = Convert.ToString(reader["FirstName"]);
                     parent.LastName = Convert.ToString(reader["LastName"]);
@@ -529,7 +567,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -553,11 +591,11 @@ namespace MathWiz
                 while (reader.Read())
                 {
                     Student student = new Student();
-                    student.Id = Convert.ToInt16(reader["Id"]);
+                    student.Id = Convert.ToInt32(reader["Id"]);
                     student.Username = Convert.ToString(reader["Username"]);
                     student.FirstName = Convert.ToString(reader["FirstName"]);
                     student.LastName = Convert.ToString(reader["LastName"]);
-                    student.MasteryLevel = Convert.ToInt16(reader["MasteryLevel"]);
+                    student.MasteryLevel = Convert.ToInt32(reader["MasteryLevel"]);
 
                     students.Add(student);
                 }
@@ -573,7 +611,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -600,11 +638,11 @@ namespace MathWiz
 
                 if (reader.Read()) 
                 {
-                    practiceTest.Id = Convert.ToInt16(reader["Id"]);
+                    practiceTest.Id = Convert.ToInt32(reader["Id"]);
                     practiceTest.TimeLimit = TimeSpan.Parse(reader["TimeLimit"].ToString());
                     practiceTest.RandomlyGenerated = Convert.ToBoolean(reader["RandomlyGenerated"]);
-                    practiceTest.MinLevel = Convert.ToInt16(reader["MinLevel"]);
-                    practiceTest.MaxLevel = Convert.ToInt16(reader["MaxLevel"]);
+                    practiceTest.MinLevel = Convert.ToInt32(reader["MinLevel"]);
+                    practiceTest.MaxLevel = Convert.ToInt32(reader["MaxLevel"]);
                 }
                 reader.Close();
             }
@@ -618,7 +656,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -644,11 +682,11 @@ namespace MathWiz
 
                 if (reader.Read()) 
                 {
-                    placementTest.Id = Convert.ToInt16(reader["Id"]);
+                    placementTest.Id = Convert.ToInt32(reader["Id"]);
                     placementTest.TimeLimit = TimeSpan.Parse(reader["TimeLimit"].ToString());
                     placementTest.RandomlyGenerated = Convert.ToBoolean(reader["RandomlyGenerated"]);
-                    placementTest.MinLevel = Convert.ToInt16(reader["MinLevel"]);
-                    placementTest.MaxLevel = Convert.ToInt16(reader["MaxLevel"]);
+                    placementTest.MinLevel = Convert.ToInt32(reader["MinLevel"]);
+                    placementTest.MaxLevel = Convert.ToInt32(reader["MaxLevel"]);
                 }
                 reader.Close();
             }
@@ -662,7 +700,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -689,10 +727,10 @@ namespace MathWiz
 
                 if (reader.Read()) 
                 {
-                    masteryTest.Id = Convert.ToInt16(reader["Id"]);
+                    masteryTest.Id = Convert.ToInt32(reader["Id"]);
                     masteryTest.TimeLimit = TimeSpan.Parse(reader["TimeLimit"].ToString());
                     masteryTest.RandomlyGenerated = Convert.ToBoolean(reader["RandomlyGenerated"]);
-                    masteryTest.MasteryLevel = Convert.ToInt16(reader["MasteryLevel"]);
+                    masteryTest.MasteryLevel = Convert.ToInt32(reader["MasteryLevel"]);
                 }
                 reader.Close();
             }
@@ -706,12 +744,140 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
             }
             return masteryTest;
+        }
+
+        public static PlacementTest SelectKlassesPlacementTest(int klassID)
+        {
+            PlacementTest placementTest = new PlacementTest(); ;
+
+            string query = "SELECT * FROM tests WHERE KlassID = @klassID AND TestType = 'Placement Test'";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@klassID", klassID);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    placementTest.Id = Convert.ToInt32(reader["Id"]);
+                    placementTest.TimeLimit = TimeSpan.Parse(reader["TimeLimit"].ToString());
+                    placementTest.RandomlyGenerated = Convert.ToBoolean(reader["RandomlyGenerated"]);
+                    placementTest.MinLevel = Convert.ToInt32(reader["MinLevel"]);
+                    placementTest.MaxLevel = Convert.ToInt32(reader["MaxLevel"]);
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return placementTest;
+        }
+
+        public static List<PracticeTest> SelectKlassesPracticeTests(int klassID)
+        {
+            List<PracticeTest> practiceTestsInKlass = new List<PracticeTest>();
+
+            string query = "SELECT * FROM MasteryTests WHERE KlassID = @klassID AND TestType = 'Practice Test'";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@klassID", klassID);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    PracticeTest practiceTest = new PracticeTest();
+                    practiceTest.Id = Convert.ToInt32(reader["Id"]);
+                    practiceTest.TimeLimit = TimeSpan.Parse(reader["TimeLimit"].ToString());
+                    practiceTest.RandomlyGenerated = Convert.ToBoolean(reader["RandomlyGenerated"]);
+                    practiceTest.MinLevel = Convert.ToInt32(reader["MinLevel"]);
+                    practiceTest.MaxLevel = Convert.ToInt32(reader["MaxLevel"]);
+
+                    practiceTestsInKlass.Add(practiceTest);
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) 
+                {
+                    conn.Close();
+                }
+            }
+            return practiceTestsInKlass;
+        }
+
+        public static List<MasteryTest> SelectKlassesMasteryTests(int klassID)
+        {
+            List<MasteryTest> masteryTestsInKlass = new List<MasteryTest>();
+            
+            string query = "SELECT * FROM MasteryTests WHERE KlassID = @klassID AND TestType = 'Mastery Test'";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@klassID", klassID);
+            
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    MasteryTest masteryTest = new MasteryTest();
+                    masteryTest.Id = Convert.ToInt32(reader["Id"]);
+                    masteryTest.TimeLimit = TimeSpan.Parse(reader["TimeLimit"].ToString());
+                    masteryTest.RandomlyGenerated = Convert.ToBoolean(reader["RandomlyGenerated"]);
+                    masteryTest.MasteryLevel = Convert.ToInt32(reader["MasteryLevel"]);
+
+                    masteryTestsInKlass.Add(masteryTest);
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open) 
+                {
+                    conn.Close();
+                }
+            }
+            return masteryTestsInKlass;
         }
 
         public static Question SelectQuestion(int id)
@@ -751,7 +917,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -796,7 +962,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -841,7 +1007,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -886,7 +1052,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -913,7 +1079,7 @@ namespace MathWiz
 
                 if (reader.Read()) 
                 {
-                    gradeQuestion.Id = Convert.ToInt16(reader["QuestionID"]);
+                    gradeQuestion.Id = Convert.ToInt32(reader["QuestionID"]);
                     gradeQuestion.StudentAnswer = Convert.ToString(reader["StudentAnswer"]);
                     gradeQuestion.Correct = Convert.ToBoolean(reader["Correct"]);
                     gradeQuestion.TimeTakenToAnswer = TimeSpan.Parse(reader["TimeTakenToAnswer"].ToString());
@@ -930,7 +1096,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -973,7 +1139,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -1001,11 +1167,11 @@ namespace MathWiz
                 while (reader.Read())
                 {
                     Student student = new Student();
-                    student.Id = Convert.ToInt16(reader["Id"]);
+                    student.Id = Convert.ToInt32(reader["Id"]);
                     student.Username = Convert.ToString(reader["Username"]);
                     student.FirstName = Convert.ToString(reader["FirstName"]);
                     student.LastName = Convert.ToString(reader["LastName"]);
-                    student.MasteryLevel = Convert.ToInt16(reader["MasteryLevel"]);
+                    student.MasteryLevel = Convert.ToInt32(reader["MasteryLevel"]);
 
                     students.Add(student);
                 }
@@ -1021,7 +1187,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -1047,7 +1213,7 @@ namespace MathWiz
                 while (reader.Read())
                 {
                     klass = new Klass();
-                    klass.Id = Convert.ToInt16(reader["Id"]);
+                    klass.Id = Convert.ToInt32(reader["Id"]);
                     klass.KlassName = Convert.ToString(reader["KlassName"]);
                     klasses.Add(klass);
                 }
@@ -1065,7 +1231,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -1092,7 +1258,7 @@ namespace MathWiz
                 while (reader.Read())
                 {
                     klass = new Klass();
-                    klass.Id = Convert.ToInt16(reader["Id"]);
+                    klass.Id = Convert.ToInt32(reader["Id"]);
                     klass.KlassName = Convert.ToString(reader["KlassName"]);
                     klasses.Add(klass);
                 }
@@ -1114,7 +1280,7 @@ namespace MathWiz
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open) //only close the connection if it exists and is open to prevent crash
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
