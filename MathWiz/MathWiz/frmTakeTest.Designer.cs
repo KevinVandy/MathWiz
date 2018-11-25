@@ -258,6 +258,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Test";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTakeTest_FormClosing);
             this.Load += new System.EventHandler(this.frmTakeTest_Load);
             this.gbxQuestion.ResumeLayout(false);
             this.gbxQuestion.PerformLayout();

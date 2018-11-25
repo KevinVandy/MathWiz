@@ -181,7 +181,7 @@ namespace MathWiz
         //Begin SELECT Single Users Methods
         public static Admin SelectAdmin(string username)
         {
-            //make the object that will eventually get returned
+            
             Admin admin = new Admin();
             
             //make the query the safe way by binding values to prevent SQL injection
@@ -224,7 +224,7 @@ namespace MathWiz
 
         public static Teacher SelectTeacher(string username)
         {
-            //make the object that will eventually get returned
+            
             Teacher teacher = new Teacher();
 
             //make the query the safe way by binding values to prevent SQL injection
@@ -269,7 +269,7 @@ namespace MathWiz
 
         public static Student SelectStudent(string username)
         {
-            //make the object that will eventually get returned
+            
             Student student = new Student();
 
             //make the query the safe way by binding values to prevent SQL injection
@@ -315,7 +315,7 @@ namespace MathWiz
 
         public static Parent SelectParent(string username)
         {
-            //make the object that will eventually get returned
+            
             Parent parent = new Parent();
 
             //make the query the safe way by binding values to prevent SQL injection
@@ -583,16 +583,14 @@ namespace MathWiz
 
         //End SELECT ALL Users Methods
 
-        public static PracticeTest SelectPracTest(int id)
+        public static PracticeTest SelectPracticeTest(int id)
         {
-            //make the object that will eventually get returned
-            PracticeTest pracTest = new PracticeTest();
+            PracticeTest practiceTest = new PracticeTest();
 
             //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT * FROM PracticeTest WHERE ID = @ID";
+            string query = "SELECT * FROM tests WHERE ID = @ID AND TestType = 'Practice Test'";
             SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@BranchName", id);
-
+            selectCommand.Parameters.AddWithValue("@Id", id);
             
             try
             {
@@ -602,11 +600,11 @@ namespace MathWiz
 
                 if (reader.Read()) 
                 {
-                    
-                    //pracTest.Username = Convert.ToString(reader["Username"]);
-                    //pracTest.FirstName = Convert.ToString(reader["FirstName"]);
-                    //pracTest.LastName = Convert.ToString(reader["LastName"]);
-                    
+                    practiceTest.Id = Convert.ToInt16(reader["Id"]);
+                    practiceTest.TimeLimit = TimeSpan.Parse(reader["TimeLimit"].ToString());
+                    practiceTest.RandomlyGenerated = Convert.ToBoolean(reader["RandomlyGenerated"]);
+                    practiceTest.MinLevel = Convert.ToInt16(reader["MinLevel"]);
+                    practiceTest.MaxLevel = Convert.ToInt16(reader["MaxLevel"]);
                 }
                 reader.Close();
             }
@@ -625,19 +623,18 @@ namespace MathWiz
                     conn.Close();
                 }
             }
-            return pracTest;
+            return practiceTest;
         }
 
-        public static PlacementTest SelectPlaceTest(int id)
+        public static PlacementTest SelectPlacementTest(int id)
         {
-            //make the object that will eventually get returned
-            PlacementTest placeTest = new PlacementTest();
+            
+            PlacementTest placementTest = new PlacementTest();
 
             //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT * FROM PlacementTests WHERE ID = @ID";
+            string query = "SELECT * FROM PlacementTests WHERE ID = @ID AND TestType = 'Placement Test'";
             SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@BranchName", id);
-
+            selectCommand.Parameters.AddWithValue("@Id", id);
             
             try
             {
@@ -647,11 +644,11 @@ namespace MathWiz
 
                 if (reader.Read()) 
                 {
-                    
-                    //placeTest.Username = Convert.ToString(reader["Username"]);
-                    //placeTest.FirstName = Convert.ToString(reader["FirstName"]);
-                    //placeTest.LastName = Convert.ToString(reader["LastName"]);
-                    
+                    placementTest.Id = Convert.ToInt16(reader["Id"]);
+                    placementTest.TimeLimit = TimeSpan.Parse(reader["TimeLimit"].ToString());
+                    placementTest.RandomlyGenerated = Convert.ToBoolean(reader["RandomlyGenerated"]);
+                    placementTest.MinLevel = Convert.ToInt16(reader["MinLevel"]);
+                    placementTest.MaxLevel = Convert.ToInt16(reader["MaxLevel"]);
                 }
                 reader.Close();
             }
@@ -670,18 +667,18 @@ namespace MathWiz
                     conn.Close();
                 }
             }
-            return placeTest;
+            return placementTest;
         }
 
-        public static MasteryTest SelectMastTest(int id)
+        public static MasteryTest SelectMasteryTest(int id)
         {
-            //make the object that will eventually get returned
-            MasteryTest mastTest = new MasteryTest();
+            
+            MasteryTest masteryTest = new MasteryTest();
 
             //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT * FROM MasteryTests WHERE ID = @ID";
+            string query = "SELECT * FROM MasteryTests WHERE ID = @ID AND TestType = 'Mastery Test'";
             SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@BranchName", id);
+            selectCommand.Parameters.AddWithValue("@Id", id);
 
             
             try
@@ -692,11 +689,10 @@ namespace MathWiz
 
                 if (reader.Read()) 
                 {
-                    
-                    //mastTest.Username = Convert.ToString(reader["Username"]);
-                    //mastTest.FirstName = Convert.ToString(reader["FirstName"]);
-                    //mastTest.LastName = Convert.ToString(reader["LastName"]);
-                    
+                    masteryTest.Id = Convert.ToInt16(reader["Id"]);
+                    masteryTest.TimeLimit = TimeSpan.Parse(reader["TimeLimit"].ToString());
+                    masteryTest.RandomlyGenerated = Convert.ToBoolean(reader["RandomlyGenerated"]);
+                    masteryTest.MasteryLevel = Convert.ToInt16(reader["MasteryLevel"]);
                 }
                 reader.Close();
             }
@@ -715,12 +711,12 @@ namespace MathWiz
                     conn.Close();
                 }
             }
-            return mastTest;
+            return masteryTest;
         }
 
         public static Question SelectQuestion(int id)
         {
-            //make the object that will eventually get returned
+            
             Question question = new Question();
 
             //make the query the safe way by binding values to prevent SQL injection
@@ -765,7 +761,7 @@ namespace MathWiz
 
         public static GradedPracticeTest SelectGradePrac(int id)
         {
-            //make the object that will eventually get returned
+            
             GradedPracticeTest gradePrac = new GradedPracticeTest();
 
             //make the query the safe way by binding values to prevent SQL injection
@@ -810,7 +806,7 @@ namespace MathWiz
 
         public static GradedPlacementTest SelectGradePlace(int id)
         {
-            //make the object that will eventually get returned
+            
             GradedPlacementTest gradePlace = new GradedPlacementTest();
 
             //make the query the safe way by binding values to prevent SQL injection
@@ -855,7 +851,7 @@ namespace MathWiz
 
         public static GradedMasteryTest SelectGradeMaster(int id)
         {
-            //make the object that will eventually get returned
+            
             GradedMasteryTest gradeMaster = new GradedMasteryTest();
 
             //make the query the safe way by binding values to prevent SQL injection
@@ -900,7 +896,7 @@ namespace MathWiz
 
         public static GradedQuestion SelectGradeQuestion(int id)
         {
-            //make the object that will eventually get returned
+            
             GradedQuestion gradeQuestion = new GradedQuestion();
 
             //make the query the safe way by binding values to prevent SQL injection
@@ -944,7 +940,7 @@ namespace MathWiz
 
         public static Klass SelectKlass(int id)
         {
-            //make the object that will eventually get returned
+            
             Klass klass = new Klass();
 
             //make the query the safe way by binding values to prevent SQL injection

@@ -63,7 +63,7 @@ namespace MathWiz
             {
                 case "placement":
 
-                    test = MathWizDA.SelectPlaceTest(testID);
+                    test = MathWizDA.SelectPlacementTest(testID);
                     break;
 
                 case "practice":
@@ -73,7 +73,7 @@ namespace MathWiz
 
                 case "mastery":
 
-                    test = MathWizDA.SelectMastTest(testID);
+                    test = MathWizDA.SelectMasteryTest(testID);
                     break;
             }
         }
@@ -153,17 +153,19 @@ namespace MathWiz
                 btnSubmitAnswer.Show();
                 txtStudentAnswer.Show();
 
-                if (true) //is multiple choice
+                if (true) //TODO is multiple choice
                 {
                     pnlChoices.Show();
                 }
-
-                
                 
             }
             else if(btnStartFinish.Text == "Finish Test")
             {
                 //TODO record score
+                gradedTest.Score = gradedTest.RightlyAnsweredQuestions.Count / gradedTest.RightlyAnsweredQuestions.Count + gradedTest.WronglyAnsweredQuestions.Count;
+                gradedTest.TimeTakenToComplete = test.TimeLimit - TimeSpan.Parse(lblTimerTest.Text);
+                gradedTest.DateTaken = DateTime.Now;
+                gradedTest.Feedback = "";//TODO calculate feedback
             }
         }
 
@@ -186,6 +188,13 @@ namespace MathWiz
             }
         }
 
-        
+        private void frmTakeTest_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to exit this test? This may result in a grade of 0", "Are you sure?", MessageBoxButtons.YesNoCancel);
+            if(dialogResult != DialogResult.Yes)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }
