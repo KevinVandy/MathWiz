@@ -12,9 +12,12 @@ namespace MathWiz
 {
     public partial class frmCreateTest : Form
     {
-        public frmCreateTest()
+        int klassID;
+
+        public frmCreateTest(int kID)
         {
             InitializeComponent();
+            klassID = kID;
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
@@ -51,7 +54,7 @@ namespace MathWiz
                     //Case Practice test
                     case 0:
                         PracticeTest practiceTest = new PracticeTest(qL, time, isTrue, min, max);
-                        MathWizDB.InsertPracticeTest(practiceTest);
+                        MathWizDB.InsertPracticeTest(practiceTest, klassID);
                         aNumber = MathWizDA.GetLastInsertedRecord("test", "id");
                         //need to resovle how we want to generate questions
                         this.Close();
@@ -68,7 +71,7 @@ namespace MathWiz
                     //case Placement Test
                     case 1:
                         PlacementTest PlacementTest = new PlacementTest(qL, time, isTrue, min, max);
-                        MathWizDB.InsertPlacementTest(PlacementTest);
+                        MathWizDB.InsertPlacementTest(PlacementTest, klassID);
                         aNumber = MathWizDA.GetLastInsertedRecord("test", "id");
                         //need to resolve the how to create questions
                         this.Close();
@@ -85,7 +88,7 @@ namespace MathWiz
                     //case Mastery Test
                     case 2:
                         MasteryTest masteryTest = new MasteryTest(qL, time, isTrue, masteryLevel, threshold);
-                        MathWizDB.InsertMasteryTest(masteryTest);
+                        MathWizDB.InsertMasteryTest(masteryTest, klassID);
                         aNumber = MathWizDA.GetLastInsertedRecord("test", "id");
                         //need to resolve the how on creatign questions
                         this.Close();
@@ -96,11 +99,7 @@ namespace MathWiz
                         }
                         MessageBox.Show("Your new randomly generated mastery test has been created");
                         break;
-
-
                 }
-
-
             }
         }
         //validation methods for the form based on which test is selected

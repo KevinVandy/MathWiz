@@ -36,7 +36,7 @@
             this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mathWizGroup3DataSet = new MathWiz.MathWizGroup3DataSet();
             this.studentsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.studentsTableAdapter();
-            this.btnTest = new System.Windows.Forms.Button();
+            this.btnCreateTest = new System.Windows.Forms.Button();
             this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
             this.grpBxStudentInfo = new System.Windows.Forms.GroupBox();
             this.dgvStudents = new System.Windows.Forms.DataGridView();
@@ -108,15 +108,15 @@
             // 
             this.studentsTableAdapter.ClearBeforeFill = true;
             // 
-            // btnTest
+            // btnCreateTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(41, 409);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(116, 36);
-            this.btnTest.TabIndex = 7;
-            this.btnTest.Text = "Create New Test";
-            this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            this.btnCreateTest.Location = new System.Drawing.Point(41, 409);
+            this.btnCreateTest.Name = "btnCreateTest";
+            this.btnCreateTest.Size = new System.Drawing.Size(116, 36);
+            this.btnCreateTest.TabIndex = 7;
+            this.btnCreateTest.Text = "Create New Test";
+            this.btnCreateTest.UseVisualStyleBackColor = true;
+            this.btnCreateTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // backgroundWorkerLoadData
             // 
@@ -129,7 +129,7 @@
             this.grpBxStudentInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.grpBxStudentInfo.Controls.Add(this.dgvStudents);
             this.grpBxStudentInfo.Controls.Add(this.dgvTests);
-            this.grpBxStudentInfo.Controls.Add(this.btnTest);
+            this.grpBxStudentInfo.Controls.Add(this.btnCreateTest);
             this.grpBxStudentInfo.Location = new System.Drawing.Point(26, 82);
             this.grpBxStudentInfo.Name = "grpBxStudentInfo";
             this.grpBxStudentInfo.Size = new System.Drawing.Size(837, 467);
@@ -300,7 +300,7 @@
         private MathWizGroup3DataSet mathWizGroup3DataSet;
         private System.Windows.Forms.BindingSource studentsBindingSource;
         private MathWizGroup3DataSetTableAdapters.studentsTableAdapter studentsTableAdapter;
-        private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.Button btnCreateTest;
         private System.ComponentModel.BackgroundWorker backgroundWorkerLoadData;
         private System.Windows.Forms.GroupBox grpBxStudentInfo;
         private System.Windows.Forms.DataGridView dgvTests;

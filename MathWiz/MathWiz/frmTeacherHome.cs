@@ -60,19 +60,14 @@ namespace MathWiz
 
         private void cmbKlasses_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-                Klass selectedItem = cmbKlasses.SelectedItem as Klass;
-
+            Klass selectedItem = cmbKlasses.SelectedItem as Klass;
             this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, selectedItem.Id);
-
-            
-
         }
 
         private void btnTest_Click(object sender, EventArgs e)
         {
 
-            frmCreateTest createTest = new frmCreateTest();
+            frmCreateTest createTest = new frmCreateTest(teacher.Klasses[cmbKlasses.SelectedIndex].Id); //passes the selected classID
             createTest.Show();
             //List<Question> qL = new List<Question>();
             //TimeSpan aTime = new TimeSpan(0, 1, 0);

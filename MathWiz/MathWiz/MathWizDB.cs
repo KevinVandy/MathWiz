@@ -150,13 +150,14 @@ namespace MathWiz
                 conn.Close();
             }
         }
-        public static void InsertPracticeTest(PracticeTest test)
+        public static void InsertPracticeTest(PracticeTest test, int klassID)
         {
-            string insertStatment = "INSERT INTO TESTS (testtype, timelimit, randomlygenerated, minlevel, maxlevel) " +
-                "VAlUES(@testtype, @timeLimit, @randomlygenerated, @minlevel, @maxlevel)";
+            string insertStatment = "INSERT INTO TESTS (KlassID, testtype, timelimit, randomlygenerated, minlevel, maxlevel) " +
+                "VAlUES(@klassID, @testtype, @timeLimit, @randomlygenerated, @minlevel, @maxlevel)";
 
             SqlCommand cmd = new SqlCommand(insertStatment, conn);
 
+            cmd.Parameters.AddWithValue("@klassID", klassID);
             cmd.Parameters.AddWithValue("@testtype", "Practice Test");
             cmd.Parameters.AddWithValue("@timelimit", test.TimeLimit);
             cmd.Parameters.AddWithValue("@randomlygenerated", test.RandomlyGenerated);
@@ -165,10 +166,7 @@ namespace MathWiz
 
             try
             {
-                // Open the connection
                 conn.Open();
-
-                // execute the query
                 cmd.ExecuteNonQuery();
             }
             catch (SqlException ex)
@@ -181,21 +179,18 @@ namespace MathWiz
             }
             finally
             {
-                // always close the connection
                 conn.Close();
             }
-
-            
-
         }
 
-        internal static void InsertMasteryTest(MasteryTest test)
+        internal static void InsertMasteryTest(MasteryTest test, int klassID)
         {
-            string insertStatment = "INSERT INTO TESTS (testtype, timelimit, randomlygenerated, passthreshhold, masterylevel) " +
-                "VAlUES(@testtype, @timeLimit, @randomlygenerated, @passthreshhold, @masterylevel)";
+            string insertStatment = "INSERT INTO TESTS (KlassID, testtype, timelimit, randomlygenerated, passthreshhold, masterylevel) " +
+                "VAlUES(@klassID, @testtype, @timeLimit, @randomlygenerated, @passthreshhold, @masterylevel)";
 
             SqlCommand cmd = new SqlCommand(insertStatment, conn);
 
+            cmd.Parameters.AddWithValue("@klassID", klassID);
             cmd.Parameters.AddWithValue("@testtype", "Mastery Test");
             cmd.Parameters.AddWithValue("@timelimit", test.TimeLimit);
             cmd.Parameters.AddWithValue("@randomlygenerated", test.RandomlyGenerated);
@@ -204,10 +199,7 @@ namespace MathWiz
 
             try
             {
-                // Open the connection
                 conn.Open();
-
-                // execute the query
                 cmd.ExecuteNonQuery();
             }
             catch (SqlException ex)
@@ -220,18 +212,18 @@ namespace MathWiz
             }
             finally
             {
-                // always close the connection
                 conn.Close();
             }
         }
 
-        internal static void InsertPlacementTest(PlacementTest test)
+        internal static void InsertPlacementTest(PlacementTest test, int klassID)
         {
-            string insertStatment = "INSERT INTO TESTS (testtype, timelimit, randomlygenerated, minlevel, maxlevel) " +
-                "VAlUES(@testtype, @timeLimit, @randomlygenerated, @minlevel, @maxlevel)";
+            string insertStatment = "INSERT INTO TESTS (KlassID, testtype, timelimit, randomlygenerated, minlevel, maxlevel) " +
+                "VAlUES(@klassID, @testtype, @timeLimit, @randomlygenerated, @minlevel, @maxlevel)";
 
             SqlCommand cmd = new SqlCommand(insertStatment, conn);
 
+            cmd.Parameters.AddWithValue("@klassID", klassID);
             cmd.Parameters.AddWithValue("@testtype", "Placement Test");
             cmd.Parameters.AddWithValue("@timelimit", test.TimeLimit);
             cmd.Parameters.AddWithValue("@randomlygenerated", test.RandomlyGenerated);
@@ -240,10 +232,7 @@ namespace MathWiz
 
             try
             {
-                // Open the connection
                 conn.Open();
-
-                // execute the query
                 cmd.ExecuteNonQuery();
             }
             catch (SqlException ex)
@@ -256,7 +245,6 @@ namespace MathWiz
             }
             finally
             {
-                // always close the connection
                 conn.Close();
             }
         }
@@ -316,10 +304,7 @@ namespace MathWiz
 
             try
             {
-                // Open the connection
                 conn.Open();
-
-                // execute the query
                 Cmd.ExecuteNonQuery();
             }
             catch (SqlException ex)
