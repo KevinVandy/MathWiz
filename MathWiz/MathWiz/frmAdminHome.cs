@@ -174,7 +174,16 @@ namespace MathWiz
 
             lsvTeachers.Items.Clear();
             //TODO manage klasses update data too
-            
+            for (int i = 0; i < mathWizGroup3DataSet.teachers.Rows.Count; i++)
+            {
+                DataRow drow = mathWizGroup3DataSet.teachers.Rows[i];
+                if (drow.RowState != DataRowState.Deleted)
+                {
+                    ListViewItem lvi = new ListViewItem(drow["Id"].ToString());
+                    lvi.SubItems.Add(drow["FirstName"].ToString() + " " + drow["LastName"].ToString());
+                    lsvTeachers.Items.Add(lvi);
+                }
+            }
         }
 
         private void btnCreateAdmin_Click(object sender, EventArgs e)
@@ -248,20 +257,10 @@ namespace MathWiz
             }
         }
 
-        private void btnCreateTeacher2_Click(object sender, EventArgs e)
-        {
-            btnCreateTeacher_Click(sender, e);
-        }
-
         private void btnCreateClass_Click(object sender, EventArgs e)
         {
             Form createClassForm = new frmCreateClass();
             createClassForm.ShowDialog();
-        }
-
-        private void btnCreateStudent2_Click(object sender, EventArgs e)
-        {
-            btnCreateStudent_Click(sender, e);
         }
         //END Button Event Handlers
 
@@ -422,13 +421,27 @@ namespace MathWiz
 
             //populate mastery level chart
             chtMasterLevelDistribution.Series[0].Points.Clear();
+
             int[] masteryLevels = new int[lsvStudents.Items.Count];
-            for(int i = 0; i < lsvStudents.Items.Count; i++)
+            int[] masteryLevelFrequency = new int[12];
+            
+            for (int i = 0; i < lsvStudents.Items.Count; i++)
             {
                 masteryLevels[i] = Convert.ToInt32(lsvStudents.Items[i].SubItems[2].Text);
-                masteryLevelSeries.Points.Add(masteryLevels[i]);
             }
-            
+
+            for (int i = 0; i < masteryLevelFrequency.GetUpperBound(0); i++)
+            {
+                for(int j = 0; j < lsvStudents.Items.Count; j++)
+                {
+                    if(masteryLevels[j] == i+1)
+                    {
+                        masteryLevelFrequency[i]++;
+                    }
+                }
+                masteryLevelSeries.Points.Add(masteryLevelFrequency[i]);
+            }
+
         }
 
         private void lsvStudents_SelectedIndexChanged(object sender, EventArgs e)

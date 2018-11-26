@@ -123,7 +123,7 @@
             this.gbxManageAccounts.Controls.Add(this.btnCreateParent);
             this.gbxManageAccounts.Controls.Add(this.btnCreateTeacher);
             this.gbxManageAccounts.Controls.Add(this.btnCreateAdmin);
-            this.gbxManageAccounts.Location = new System.Drawing.Point(24, 69);
+            this.gbxManageAccounts.Location = new System.Drawing.Point(24, 130);
             this.gbxManageAccounts.Name = "gbxManageAccounts";
             this.gbxManageAccounts.Size = new System.Drawing.Size(1097, 269);
             this.gbxManageAccounts.TabIndex = 0;
@@ -395,14 +395,14 @@
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -423,7 +423,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -437,7 +437,7 @@
             this.gbxManageClasses.Controls.Add(this.lsvTeachers);
             this.gbxManageClasses.Controls.Add(this.label1);
             this.gbxManageClasses.Controls.Add(this.btnCreateClass);
-            this.gbxManageClasses.Location = new System.Drawing.Point(24, 358);
+            this.gbxManageClasses.Location = new System.Drawing.Point(24, 419);
             this.gbxManageClasses.Name = "gbxManageClasses";
             this.gbxManageClasses.Size = new System.Drawing.Size(1097, 269);
             this.gbxManageClasses.TabIndex = 2;
@@ -697,7 +697,7 @@
             // 
             // grbStatisticalAnalysis
             // 
-            this.grbStatisticalAnalysis.Location = new System.Drawing.Point(24, 652);
+            this.grbStatisticalAnalysis.Location = new System.Drawing.Point(24, 713);
             this.grbStatisticalAnalysis.Name = "grbStatisticalAnalysis";
             this.grbStatisticalAnalysis.Size = new System.Drawing.Size(1097, 269);
             this.grbStatisticalAnalysis.TabIndex = 13;
