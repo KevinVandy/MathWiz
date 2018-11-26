@@ -30,15 +30,15 @@ namespace MathWiz
         {
             if(student.MasteryLevel == 0)
             {
-                btnPractice.Enabled = false;
-                btnMastery.Enabled = false;
-                btnPlacement.Enabled = true;
+                btnTakePracticeTest.Enabled = false;
+                btnTakeMasteryTest.Enabled = false;
+                btnTakePlacementTest.Enabled = true;
             }
             else
             {
-                btnPractice.Enabled = true;
-                btnMastery.Enabled = true;
-                btnPlacement.Enabled = false;
+                btnTakePracticeTest.Enabled = true;
+                btnTakeMasteryTest.Enabled = true;
+                btnTakePlacementTest.Enabled = false;
             }
         }
 
@@ -59,7 +59,8 @@ namespace MathWiz
 
         private void backgroundWorkerLoadData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
+            lblStudentName.Text = "Student: " + student.FirstName + " " + student.LastName;
+            lblMasteryLevel.Text = "Mastery Level: " + student.MasteryLevel.ToString();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -78,27 +79,36 @@ namespace MathWiz
             Application.Exit();
         }
 
-        private void btnPlacement_Click(object sender, EventArgs e)
+        private void btnTakePlacementTest_Click(object sender, EventArgs e)
         {
-            Form placementForm = new frmTakeTest(student, 1); //TODO Pass Correct Test ID
+            Form placementForm = new frmTakeTest(student, null); //TODO Pass Correct Test ID
             placementForm.Tag = "placement";
             placementForm.ShowDialog();
         }
 
-        private void btnPractice_Click(object sender, EventArgs e)
+        private void btnTakePracticeTest_Click(object sender, EventArgs e)
         {
-            Form practiceForm = new frmTakeTest(student, 1);
+            Form practiceForm = new frmTakeTest(student, null);
             practiceForm.Tag = "practice";
             practiceForm.ShowDialog();
         }
 
-        private void btnMastery_Click(object sender, EventArgs e)
+        private void btnTakeRandomPracticeTest_Click(object sender, EventArgs e)
         {
-            Form masteryForm = new frmTakeTest(student, 1); //Passes the students mastery level
+            int masteryLevel = Convert.ToInt16(cmbMasteryLevel.SelectedItem);
+            PracticeTest practiceTest = new PracticeTest(Question.GenerateRandomQuestions(masteryLevel, new TimeSpan(0, 1, 0)), new TimeSpan(1,0,0), true, masteryLevel, masteryLevel);
+            
+
+            Form practiceForm = new frmTakeTest(student, practiceTest);
+            practiceForm.Tag = "practice";
+            practiceForm.ShowDialog();
+        }
+
+        private void btnTakeMasteryTest_Click(object sender, EventArgs e)
+        {
+            Form masteryForm = new frmTakeTest(student, null); //Passes the students mastery level
             masteryForm.Tag = "mastery";
             masteryForm.ShowDialog();
         }
-
-        
     }
 }

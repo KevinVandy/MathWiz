@@ -20,7 +20,12 @@ namespace MathWiz
             klassID = kID;
         }
 
-        private void btnAccept_Click(object sender, EventArgs e)
+        private void frmNewTest_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCreateTest_Click(object sender, EventArgs e)
         {
             Int64 aNumber = 0;
 
@@ -164,9 +169,6 @@ namespace MathWiz
             this.Close();
         }
 
-        private void frmNewTest_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

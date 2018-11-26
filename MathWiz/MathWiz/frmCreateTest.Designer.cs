@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAccept = new System.Windows.Forms.Button();
+            this.btnCreateTest = new System.Windows.Forms.Button();
             this.cboType = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,16 +44,16 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnAccept
+            // btnCreateTest
             // 
-            this.btnAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccept.Location = new System.Drawing.Point(4, 319);
-            this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(130, 73);
-            this.btnAccept.TabIndex = 0;
-            this.btnAccept.Text = "Cre&ate Test";
-            this.btnAccept.UseVisualStyleBackColor = true;
-            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
+            this.btnCreateTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateTest.Location = new System.Drawing.Point(4, 319);
+            this.btnCreateTest.Name = "btnCreateTest";
+            this.btnCreateTest.Size = new System.Drawing.Size(130, 73);
+            this.btnCreateTest.TabIndex = 0;
+            this.btnCreateTest.Text = "Cre&ate Test";
+            this.btnCreateTest.UseVisualStyleBackColor = true;
+            this.btnCreateTest.Click += new System.EventHandler(this.btnCreateTest_Click);
             // 
             // cboType
             // 
@@ -193,8 +193,8 @@
             this.cboRandom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRandom.FormattingEnabled = true;
             this.cboRandom.Items.AddRange(new object[] {
-            "False",
-            "True"});
+            "Yes",
+            "No"});
             this.cboRandom.Location = new System.Drawing.Point(156, 282);
             this.cboRandom.Name = "cboRandom";
             this.cboRandom.Size = new System.Drawing.Size(121, 21);
@@ -215,7 +215,7 @@
             // 
             // frmCreateTest
             // 
-            this.AcceptButton = this.btnAccept;
+            this.AcceptButton = this.btnCreateTest;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
@@ -233,7 +233,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cboType);
-            this.Controls.Add(this.btnAccept);
+            this.Controls.Add(this.btnCreateTest);
             this.Name = "frmCreateTest";
             this.Text = "Create New Test";
             this.Load += new System.EventHandler(this.frmNewTest_Load);
@@ -244,7 +244,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnAccept;
+        private System.Windows.Forms.Button btnCreateTest;
         private System.Windows.Forms.ComboBox cboType;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

@@ -18,11 +18,11 @@ namespace MathWiz
         int testID;
         int currentQuestionNum = 0;
 
-        public frmTakeTest(Student s, int tID) //default test ID of 0 if there is no ID passed
+        public frmTakeTest(Student s, Test t) //default test ID of 0 if there is no ID passed
         {
             InitializeComponent();
             student = s;
-            testID = tID;
+            test = t;
         }
 
         private void frmTakeTest_Load(object sender, EventArgs e)
