@@ -16,10 +16,10 @@ namespace MathWiz
         {
             
             Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmTeacherHome("TylerPerry"));
-            //Application.Run(new frmLogin());
-            Question.GeneratesSubtractDivide(true, 1);
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new frmTeacherHome("TylerPerry"));
+            Application.Run(new frmLogin());
+            //Question.GeneratesSubtractDivide(true, 1);
             //Question.GeneratesAddMultiply(false);
 
 
