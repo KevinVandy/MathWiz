@@ -18,7 +18,7 @@ namespace MathWiz
         int testID;
         int currentQuestionNum = 0;
 
-        public frmTakeTest(Student s, Test t) //default test ID of 0 if there is no ID passed
+        public frmTakeTest(Student s, Test t) 
         {
             InitializeComponent();
             student = s;
@@ -48,6 +48,12 @@ namespace MathWiz
                     gradedTest = new GradedMasteryTest();
                     this.Text = "Mastery Test";
                     gbxQuestion.Text = "Mastery Test";
+                    break;
+
+                default:
+                    gradedTest = new GradedPracticeTest();
+                    this.Text = "Practice Test";
+                    gbxQuestion.Text = "Practice Test";
                     break;
             }
 
@@ -107,7 +113,7 @@ namespace MathWiz
                 }
                 else
                 {
-                    GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0, 1, 1));
+                    GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, false, new TimeSpan(0, 1, 1));
                     gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
                 }
 
@@ -195,6 +201,11 @@ namespace MathWiz
             {
                 e.Cancel = true;
             }
+        }
+
+        private void gbxQuestion_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

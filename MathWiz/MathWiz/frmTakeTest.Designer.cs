@@ -75,6 +75,7 @@
             this.gbxQuestion.TabIndex = 0;
             this.gbxQuestion.TabStop = false;
             this.gbxQuestion.Text = "Question # of #";
+            this.gbxQuestion.Enter += new System.EventHandler(this.gbxQuestion_Enter);
             // 
             // lblTimerQuestion
             // 

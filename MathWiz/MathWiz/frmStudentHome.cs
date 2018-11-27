@@ -81,7 +81,7 @@ namespace MathWiz
 
         private void btnTakePlacementTest_Click(object sender, EventArgs e)
         {
-            Form placementForm = new frmTakeTest(student, null); //TODO Pass Correct Test ID
+            Form placementForm = new frmTakeTest(student, availablePlacementTest); //TODO Pass Correct Test object
             placementForm.Tag = "placement";
             placementForm.ShowDialog();
         }
