@@ -91,13 +91,30 @@ namespace MathWiz
 
         private void ShowQuestion(Question q)
         {
+            //show timer stuff
             lblTimerQuestion.Text = q.TimeLimit.ToString();
             timerQuestion.Start();
 
-            lblQuestionText.Text = q.QuestionText;
+            //show the question number
+            gbxQuestion.Text = "Question " + (currentQuestionNum + 1).ToString() + " of " + test.Questions.Count;
 
+            //show the question text
+            lblQuestionText.Text = q.QuestionText;
+            lblQuestionText.Show();
+
+            //hide the answers, but set its text
             lblCorrectAnswer.Hide();
             lblCorrectAnswer.Text = q.CorrectAnswer.ToString();
+
+            //show the buttons
+            btnSubmitAnswer.Show();
+            txtStudentAnswer.Show();
+
+            if (false) //TODO is multiple choice
+            {
+                pnlChoices.Show();
+            }
+
         }
 
         private void btnSubmitAnswer_Click(object sender, EventArgs e)
@@ -107,7 +124,7 @@ namespace MathWiz
                 if (Convert.ToInt32(txtStudentAnswer.Text.Trim()) == test.Questions[currentQuestionNum].CorrectAnswer)
                 {
                     GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0,1,1));
-                    gradedTest.RightlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
+                    gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
 
                     
                 }
@@ -119,6 +136,19 @@ namespace MathWiz
 
                 lblCorrectAnswer.Show();
             }
+            currentQuestionNum++;
+
+            if (currentQuestionNum < test.Questions.Count)
+            {
+                ShowQuestion(test.Questions[currentQuestionNum]);
+            }
+            else //the test if finished
+            {
+                btnStartFinish.Show();
+            }
+
+           
+            
             
         }
 
@@ -152,32 +182,27 @@ namespace MathWiz
         {
             if(btnStartFinish.Text == "Start Test")
             {
-                currentQuestionNum = 1;
                 btnStartFinish.Text = "Finish Test";
-                gbxQuestion.Text = "Question " + currentQuestionNum.ToString() + " of " + test.Questions.Count;
+                
                 btnStartFinish.Hide();
-                btnSubmitAnswer.Show();
-                txtStudentAnswer.Show();
+                
 
-                if (true) //TODO is multiple choice
-                {
-                    pnlChoices.Show();
-                }
+                ShowQuestion(test.Questions[currentQuestionNum]);
                 
             }
             else if(btnStartFinish.Text == "Finish Test")
             {
                 //TODO record score
-                gradedTest.Score = gradedTest.RightlyAnsweredQuestions.Count / gradedTest.RightlyAnsweredQuestions.Count + gradedTest.WronglyAnsweredQuestions.Count;
+                gradedTest.Score = gradedTest.CorrectlyAnsweredQuestions.Count / gradedTest.CorrectlyAnsweredQuestions.Count + gradedTest.WronglyAnsweredQuestions.Count;
                 gradedTest.TimeTakenToComplete = test.TimeLimit - TimeSpan.Parse(lblTimerTest.Text);
                 gradedTest.DateTaken = DateTime.Now;
-                gradedTest.Feedback = "";//TODO calculate feedback
+                gradedTest.Feedback = gradedTest.Score.ToString();
             }
         }
 
         private void timerTest_Tick(object sender, EventArgs e)
         {
-            lblTimerTest.Text = timerTest.ToString();
+         //   lblTimerTest.Text = timerTest.ToString();
 
             
         }
@@ -186,12 +211,12 @@ namespace MathWiz
         {
             lblTimerQuestion.Text = timerQuestion.ToString();
 
-            if (TimeSpan.Parse(lblTimerQuestion.Text) <= new TimeSpan(0,0,0)) //if time runs out
-            {
-                timerQuestion.Stop();
-                btnSubmitAnswer.Enabled = false;
-                lblCorrectAnswer.Show();
-            }
+            //if (TimeSpan.Parse(lblTimerQuestion.Text) <= new TimeSpan(0,0,0)) //if time runs out
+            //{
+            //    timerQuestion.Stop();
+            //    btnSubmitAnswer.Enabled = false;
+            //    lblCorrectAnswer.Show();
+            //}
         }
 
         private void frmTakeTest_FormClosing(object sender, FormClosingEventArgs e)
