@@ -120,6 +120,7 @@
             this.txtStudentAnswer.Name = "txtStudentAnswer";
             this.txtStudentAnswer.Size = new System.Drawing.Size(125, 44);
             this.txtStudentAnswer.TabIndex = 0;
+            this.txtStudentAnswer.Tag = "Answer";
             this.txtStudentAnswer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStudentAnswer.Visible = false;
             // 
