@@ -653,5 +653,53 @@ namespace MathWiz
                 conn.Close();
             }
         }
+
+        public static void DeleteGradedTest(int studentID)
+        {
+            string deleteStatement = "DELETE FROM graded_tests WHERE StudentID = @studentID";
+            SqlCommand Cmd = new SqlCommand(deleteStatement, conn);
+            Cmd.Parameters.AddWithValue("@studentID", studentID);
+            try
+            {
+                conn.Open();
+                Cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public static void DeleteGradedQuestions(int gradedTestID)
+        {
+            string deleteStatement = "DELETE FROM graded_questions WHERE GradedTestID = @gradedTestID";
+            SqlCommand Cmd = new SqlCommand(deleteStatement, conn);
+            Cmd.Parameters.AddWithValue("@gradedTestID", gradedTestID);
+            try
+            {
+                conn.Open();
+                Cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }
