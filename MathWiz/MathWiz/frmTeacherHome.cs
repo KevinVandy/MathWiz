@@ -56,8 +56,7 @@ namespace MathWiz
             dgvTests.Update();
             dgvTests.Refresh();
         }
-
-
+        
         private void cmbKlasses_SelectedIndexChanged(object sender, EventArgs e)
         {
             Klass selectedItem = cmbKlasses.SelectedItem as Klass;

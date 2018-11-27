@@ -96,6 +96,7 @@
             this.adminsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.adminsTableAdapter();
             this.klassesTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.klassesTableAdapter();
             this.grbStatisticalAnalysis = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.gbxManageAccounts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -117,17 +118,20 @@
             this.gbxManageAccounts.Controls.Add(this.lblDeleted);
             this.gbxManageAccounts.Controls.Add(this.btnChangePassword);
             this.gbxManageAccounts.Controls.Add(this.dgvUsers);
+            this.gbxManageAccounts.Controls.Add(this.lblProgress);
+            this.gbxManageAccounts.Controls.Add(this.btnRefresh);
             this.gbxManageAccounts.Controls.Add(this.pnlUserTypes);
             this.gbxManageAccounts.Controls.Add(this.btnDeleteSelectedUser);
+            this.gbxManageAccounts.Controls.Add(this.pgbLoadData);
             this.gbxManageAccounts.Controls.Add(this.btnCreateStudent);
+            this.gbxManageAccounts.Controls.Add(this.fillBySearchToolStrip);
             this.gbxManageAccounts.Controls.Add(this.btnCreateParent);
             this.gbxManageAccounts.Controls.Add(this.btnCreateTeacher);
             this.gbxManageAccounts.Controls.Add(this.btnCreateAdmin);
-            this.gbxManageAccounts.Location = new System.Drawing.Point(32, 160);
-            this.gbxManageAccounts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxManageAccounts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxManageAccounts.Location = new System.Drawing.Point(24, 47);
             this.gbxManageAccounts.Name = "gbxManageAccounts";
-            this.gbxManageAccounts.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbxManageAccounts.Size = new System.Drawing.Size(1463, 331);
+            this.gbxManageAccounts.Size = new System.Drawing.Size(1097, 296);
             this.gbxManageAccounts.TabIndex = 0;
             this.gbxManageAccounts.TabStop = false;
             this.gbxManageAccounts.Text = "Manage Accounts";
@@ -137,10 +141,9 @@
             this.lblDeleted.AutoSize = true;
             this.lblDeleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDeleted.ForeColor = System.Drawing.Color.Green;
-            this.lblDeleted.Location = new System.Drawing.Point(555, 294);
-            this.lblDeleted.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDeleted.Location = new System.Drawing.Point(904, 213);
             this.lblDeleted.Name = "lblDeleted";
-            this.lblDeleted.Size = new System.Drawing.Size(184, 20);
+            this.lblDeleted.Size = new System.Drawing.Size(154, 17);
             this.lblDeleted.TabIndex = 14;
             this.lblDeleted.Text = "Username was Deleted";
             this.lblDeleted.Visible = false;
@@ -149,10 +152,9 @@
             // 
             this.btnChangePassword.Enabled = false;
             this.btnChangePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangePassword.Location = new System.Drawing.Point(1209, 54);
-            this.btnChangePassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChangePassword.Location = new System.Drawing.Point(907, 157);
             this.btnChangePassword.Name = "btnChangePassword";
-            this.btnChangePassword.Size = new System.Drawing.Size(215, 48);
+            this.btnChangePassword.Size = new System.Drawing.Size(161, 39);
             this.btnChangePassword.TabIndex = 10;
             this.btnChangePassword.Text = "Change Password";
             this.btnChangePassword.UseVisualStyleBackColor = true;
@@ -173,14 +175,13 @@
             this.lastNameDataGridViewTextBoxColumn});
             this.dgvUsers.ContextMenuStrip = this.contextMenuStrip;
             this.dgvUsers.DataSource = this.studentsBindingSource;
-            this.dgvUsers.Location = new System.Drawing.Point(541, 54);
-            this.dgvUsers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvUsers.Location = new System.Drawing.Point(407, 81);
             this.dgvUsers.MultiSelect = false;
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.RowHeadersWidth = 10;
             this.dgvUsers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsers.Size = new System.Drawing.Size(633, 236);
+            this.dgvUsers.Size = new System.Drawing.Size(475, 192);
             this.dgvUsers.TabIndex = 7;
             this.dgvUsers.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellValueChanged);
             // 
@@ -220,19 +221,19 @@
             this.changePasswordToolStripMenuItem,
             this.deleteUserToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(194, 52);
+            this.contextMenuStrip.Size = new System.Drawing.Size(169, 48);
             // 
             // changePasswordToolStripMenuItem
             // 
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(193, 24);
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.changePasswordToolStripMenuItem.Text = "Change Password";
             this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
             // deleteUserToolStripMenuItem
             // 
             this.deleteUserToolStripMenuItem.Name = "deleteUserToolStripMenuItem";
-            this.deleteUserToolStripMenuItem.Size = new System.Drawing.Size(193, 24);
+            this.deleteUserToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.deleteUserToolStripMenuItem.Text = "Delete User";
             this.deleteUserToolStripMenuItem.Click += new System.EventHandler(this.deleteUserToolStripMenuItem_Click);
             // 
@@ -252,20 +253,18 @@
             this.pnlUserTypes.Controls.Add(this.rdoParents);
             this.pnlUserTypes.Controls.Add(this.rdoTeachers);
             this.pnlUserTypes.Controls.Add(this.rdoAdmins);
-            this.pnlUserTypes.Location = new System.Drawing.Point(319, 57);
-            this.pnlUserTypes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlUserTypes.Location = new System.Drawing.Point(240, 83);
             this.pnlUserTypes.Name = "pnlUserTypes";
-            this.pnlUserTypes.Size = new System.Drawing.Size(215, 234);
+            this.pnlUserTypes.Size = new System.Drawing.Size(161, 190);
             this.pnlUserTypes.TabIndex = 8;
             // 
             // rdoStudents
             // 
             this.rdoStudents.AutoSize = true;
             this.rdoStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoStudents.Location = new System.Drawing.Point(21, 196);
-            this.rdoStudents.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoStudents.Location = new System.Drawing.Point(16, 159);
             this.rdoStudents.Name = "rdoStudents";
-            this.rdoStudents.Size = new System.Drawing.Size(142, 24);
+            this.rdoStudents.Size = new System.Drawing.Size(120, 21);
             this.rdoStudents.TabIndex = 3;
             this.rdoStudents.TabStop = true;
             this.rdoStudents.Text = "Show Students";
@@ -276,10 +275,9 @@
             // 
             this.rdoParents.AutoSize = true;
             this.rdoParents.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoParents.Location = new System.Drawing.Point(21, 134);
-            this.rdoParents.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoParents.Location = new System.Drawing.Point(16, 109);
             this.rdoParents.Name = "rdoParents";
-            this.rdoParents.Size = new System.Drawing.Size(134, 24);
+            this.rdoParents.Size = new System.Drawing.Size(113, 21);
             this.rdoParents.TabIndex = 2;
             this.rdoParents.TabStop = true;
             this.rdoParents.Text = "Show Parents";
@@ -290,10 +288,9 @@
             // 
             this.rdoTeachers.AutoSize = true;
             this.rdoTeachers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoTeachers.Location = new System.Drawing.Point(21, 73);
-            this.rdoTeachers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoTeachers.Location = new System.Drawing.Point(16, 59);
             this.rdoTeachers.Name = "rdoTeachers";
-            this.rdoTeachers.Size = new System.Drawing.Size(146, 24);
+            this.rdoTeachers.Size = new System.Drawing.Size(124, 21);
             this.rdoTeachers.TabIndex = 1;
             this.rdoTeachers.TabStop = true;
             this.rdoTeachers.Text = "Show Teachers";
@@ -304,10 +301,9 @@
             // 
             this.rdoAdmins.AutoSize = true;
             this.rdoAdmins.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoAdmins.Location = new System.Drawing.Point(21, 11);
-            this.rdoAdmins.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoAdmins.Location = new System.Drawing.Point(16, 9);
             this.rdoAdmins.Name = "rdoAdmins";
-            this.rdoAdmins.Size = new System.Drawing.Size(132, 24);
+            this.rdoAdmins.Size = new System.Drawing.Size(110, 21);
             this.rdoAdmins.TabIndex = 0;
             this.rdoAdmins.TabStop = true;
             this.rdoAdmins.Text = "Show Admins";
@@ -318,10 +314,9 @@
             // 
             this.btnDeleteSelectedUser.Enabled = false;
             this.btnDeleteSelectedUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteSelectedUser.Location = new System.Drawing.Point(1209, 242);
-            this.btnDeleteSelectedUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeleteSelectedUser.Location = new System.Drawing.Point(907, 233);
             this.btnDeleteSelectedUser.Name = "btnDeleteSelectedUser";
-            this.btnDeleteSelectedUser.Size = new System.Drawing.Size(215, 48);
+            this.btnDeleteSelectedUser.Size = new System.Drawing.Size(161, 39);
             this.btnDeleteSelectedUser.TabIndex = 1;
             this.btnDeleteSelectedUser.Text = "Delete Selected User";
             this.btnDeleteSelectedUser.UseVisualStyleBackColor = true;
@@ -330,10 +325,9 @@
             // btnCreateStudent
             // 
             this.btnCreateStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateStudent.Location = new System.Drawing.Point(21, 242);
-            this.btnCreateStudent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateStudent.Location = new System.Drawing.Point(17, 234);
             this.btnCreateStudent.Name = "btnCreateStudent";
-            this.btnCreateStudent.Size = new System.Drawing.Size(289, 48);
+            this.btnCreateStudent.Size = new System.Drawing.Size(217, 39);
             this.btnCreateStudent.TabIndex = 4;
             this.btnCreateStudent.Text = "Create New Student Account";
             this.btnCreateStudent.UseVisualStyleBackColor = true;
@@ -342,10 +336,9 @@
             // btnCreateParent
             // 
             this.btnCreateParent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateParent.Location = new System.Drawing.Point(21, 180);
-            this.btnCreateParent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateParent.Location = new System.Drawing.Point(17, 183);
             this.btnCreateParent.Name = "btnCreateParent";
-            this.btnCreateParent.Size = new System.Drawing.Size(289, 48);
+            this.btnCreateParent.Size = new System.Drawing.Size(217, 39);
             this.btnCreateParent.TabIndex = 3;
             this.btnCreateParent.Text = "Create New Parent Account";
             this.btnCreateParent.UseVisualStyleBackColor = true;
@@ -354,10 +347,9 @@
             // btnCreateTeacher
             // 
             this.btnCreateTeacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateTeacher.Location = new System.Drawing.Point(21, 117);
-            this.btnCreateTeacher.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateTeacher.Location = new System.Drawing.Point(17, 132);
             this.btnCreateTeacher.Name = "btnCreateTeacher";
-            this.btnCreateTeacher.Size = new System.Drawing.Size(289, 48);
+            this.btnCreateTeacher.Size = new System.Drawing.Size(217, 39);
             this.btnCreateTeacher.TabIndex = 2;
             this.btnCreateTeacher.Text = "Create New Teacher Account";
             this.btnCreateTeacher.UseVisualStyleBackColor = true;
@@ -366,10 +358,9 @@
             // btnCreateAdmin
             // 
             this.btnCreateAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateAdmin.Location = new System.Drawing.Point(21, 54);
-            this.btnCreateAdmin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateAdmin.Location = new System.Drawing.Point(17, 81);
             this.btnCreateAdmin.Name = "btnCreateAdmin";
-            this.btnCreateAdmin.Size = new System.Drawing.Size(289, 48);
+            this.btnCreateAdmin.Size = new System.Drawing.Size(217, 39);
             this.btnCreateAdmin.TabIndex = 1;
             this.btnCreateAdmin.Text = "Create New Admin Account";
             this.btnCreateAdmin.UseVisualStyleBackColor = true;
@@ -378,10 +369,9 @@
             // btnRefresh
             // 
             this.btnRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.Location = new System.Drawing.Point(1241, 30);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRefresh.Location = new System.Drawing.Point(907, 81);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(215, 48);
+            this.btnRefresh.Size = new System.Drawing.Size(161, 39);
             this.btnRefresh.TabIndex = 11;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -396,8 +386,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1560, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1169, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -407,27 +396,27 @@
             this.logoutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(131, 26);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(131, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // helpToolStripMenuItem
@@ -435,13 +424,13 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -455,11 +444,10 @@
             this.gbxManageClasses.Controls.Add(this.lsvTeachers);
             this.gbxManageClasses.Controls.Add(this.label1);
             this.gbxManageClasses.Controls.Add(this.btnCreateClass);
-            this.gbxManageClasses.Location = new System.Drawing.Point(32, 516);
-            this.gbxManageClasses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxManageClasses.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxManageClasses.Location = new System.Drawing.Point(24, 372);
             this.gbxManageClasses.Name = "gbxManageClasses";
-            this.gbxManageClasses.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbxManageClasses.Size = new System.Drawing.Size(1463, 331);
+            this.gbxManageClasses.Size = new System.Drawing.Size(1097, 284);
             this.gbxManageClasses.TabIndex = 2;
             this.gbxManageClasses.TabStop = false;
             this.gbxManageClasses.Text = "Manage Classes";
@@ -468,20 +456,18 @@
             // 
             chartArea1.Name = "ChartArea1";
             this.chtMasterLevelDistribution.ChartAreas.Add(chartArea1);
-            this.chtMasterLevelDistribution.Location = new System.Drawing.Point(1152, 57);
-            this.chtMasterLevelDistribution.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chtMasterLevelDistribution.Location = new System.Drawing.Point(776, 46);
             this.chtMasterLevelDistribution.Name = "chtMasterLevelDistribution";
-            this.chtMasterLevelDistribution.Size = new System.Drawing.Size(272, 249);
+            this.chtMasterLevelDistribution.Size = new System.Drawing.Size(292, 202);
             this.chtMasterLevelDistribution.TabIndex = 14;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(803, 32);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(530, 26);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(182, 20);
+            this.label3.Size = new System.Drawing.Size(150, 17);
             this.label3.TabIndex = 12;
             this.label3.Text = "View Students In Class";
             // 
@@ -489,10 +475,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(439, 32);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(306, 26);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 20);
+            this.label2.Size = new System.Drawing.Size(85, 17);
             this.label2.TabIndex = 11;
             this.label2.Text = "Select Class";
             // 
@@ -504,10 +489,9 @@
             this.MasteryLevel});
             this.lsvStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvStudents.FullRowSelect = true;
-            this.lsvStudents.Location = new System.Drawing.Point(683, 57);
-            this.lsvStudents.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lsvStudents.Location = new System.Drawing.Point(461, 46);
             this.lsvStudents.Name = "lsvStudents";
-            this.lsvStudents.Size = new System.Drawing.Size(429, 248);
+            this.lsvStudents.Size = new System.Drawing.Size(279, 202);
             this.lsvStudents.TabIndex = 10;
             this.lsvStudents.UseCompatibleStateImageBehavior = false;
             this.lsvStudents.View = System.Windows.Forms.View.Details;
@@ -521,12 +505,12 @@
             // StudentName
             // 
             this.StudentName.Text = "Name";
-            this.StudentName.Width = 155;
+            this.StudentName.Width = 128;
             // 
             // MasteryLevel
             // 
             this.MasteryLevel.Text = "Mastery Level";
-            this.MasteryLevel.Width = 98;
+            this.MasteryLevel.Width = 97;
             // 
             // lsvKlasses
             // 
@@ -535,10 +519,9 @@
             this.ClassName});
             this.lsvKlasses.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvKlasses.FullRowSelect = true;
-            this.lsvKlasses.Location = new System.Drawing.Point(352, 57);
-            this.lsvKlasses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lsvKlasses.Location = new System.Drawing.Point(240, 46);
             this.lsvKlasses.Name = "lsvKlasses";
-            this.lsvKlasses.Size = new System.Drawing.Size(288, 173);
+            this.lsvKlasses.Size = new System.Drawing.Size(191, 141);
             this.lsvKlasses.TabIndex = 9;
             this.lsvKlasses.UseCompatibleStateImageBehavior = false;
             this.lsvKlasses.View = System.Windows.Forms.View.Details;
@@ -552,7 +535,7 @@
             // ClassName
             // 
             this.ClassName.Text = "ClassName";
-            this.ClassName.Width = 162;
+            this.ClassName.Width = 131;
             // 
             // lsvTeachers
             // 
@@ -561,11 +544,10 @@
             this.TeacherName});
             this.lsvTeachers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvTeachers.FullRowSelect = true;
-            this.lsvTeachers.Location = new System.Drawing.Point(21, 57);
-            this.lsvTeachers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lsvTeachers.Location = new System.Drawing.Point(16, 46);
             this.lsvTeachers.MultiSelect = false;
             this.lsvTeachers.Name = "lsvTeachers";
-            this.lsvTeachers.Size = new System.Drawing.Size(288, 248);
+            this.lsvTeachers.Size = new System.Drawing.Size(196, 202);
             this.lsvTeachers.TabIndex = 8;
             this.lsvTeachers.UseCompatibleStateImageBehavior = false;
             this.lsvTeachers.View = System.Windows.Forms.View.Details;
@@ -574,31 +556,29 @@
             // TeacherID
             // 
             this.TeacherID.Text = "Id";
-            this.TeacherID.Width = 49;
+            this.TeacherID.Width = 40;
             // 
             // TeacherName
             // 
             this.TeacherName.Text = "Name";
-            this.TeacherName.Width = 159;
+            this.TeacherName.Width = 140;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(96, 32);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(72, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 20);
+            this.label1.Size = new System.Drawing.Size(104, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "Select Teacher";
             // 
             // btnCreateClass
             // 
             this.btnCreateClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateClass.Location = new System.Drawing.Point(353, 257);
-            this.btnCreateClass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateClass.Location = new System.Drawing.Point(240, 209);
             this.btnCreateClass.Name = "btnCreateClass";
-            this.btnCreateClass.Size = new System.Drawing.Size(289, 48);
+            this.btnCreateClass.Size = new System.Drawing.Size(191, 39);
             this.btnCreateClass.TabIndex = 5;
             this.btnCreateClass.Text = "Create New Class";
             this.btnCreateClass.UseVisualStyleBackColor = true;
@@ -612,9 +592,9 @@
             this.usernameToolStripTextBox,
             this.btnSearch,
             this.btnClearSearch});
-            this.fillBySearchToolStrip.Location = new System.Drawing.Point(0, 28);
+            this.fillBySearchToolStrip.Location = new System.Drawing.Point(3, 19);
             this.fillBySearchToolStrip.Name = "fillBySearchToolStrip";
-            this.fillBySearchToolStrip.Size = new System.Drawing.Size(1560, 48);
+            this.fillBySearchToolStrip.Size = new System.Drawing.Size(1091, 41);
             this.fillBySearchToolStrip.TabIndex = 3;
             this.fillBySearchToolStrip.Text = "fillByAdminSearchToolStrip";
             // 
@@ -623,7 +603,7 @@
             this.usernameToolStripLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.usernameToolStripLabel.Margin = new System.Windows.Forms.Padding(10, 1, 5, 2);
             this.usernameToolStripLabel.Name = "usernameToolStripLabel";
-            this.usernameToolStripLabel.Size = new System.Drawing.Size(192, 45);
+            this.usernameToolStripLabel.Size = new System.Drawing.Size(153, 38);
             this.usernameToolStripLabel.Text = "Search for a Student:";
             // 
             // usernameToolStripTextBox
@@ -633,7 +613,7 @@
             this.usernameToolStripTextBox.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.usernameToolStripTextBox.Margin = new System.Windows.Forms.Padding(1, 4, 1, 4);
             this.usernameToolStripTextBox.Name = "usernameToolStripTextBox";
-            this.usernameToolStripTextBox.Size = new System.Drawing.Size(266, 40);
+            this.usernameToolStripTextBox.Size = new System.Drawing.Size(200, 33);
             // 
             // btnSearch
             // 
@@ -643,7 +623,7 @@
             this.btnSearch.Margin = new System.Windows.Forms.Padding(10, 4, 0, 4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Padding = new System.Windows.Forms.Padding(4);
-            this.btnSearch.Size = new System.Drawing.Size(87, 40);
+            this.btnSearch.Size = new System.Drawing.Size(73, 33);
             this.btnSearch.Text = "Search";
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -655,7 +635,7 @@
             this.btnClearSearch.Margin = new System.Windows.Forms.Padding(10, 4, 0, 4);
             this.btnClearSearch.Name = "btnClearSearch";
             this.btnClearSearch.Padding = new System.Windows.Forms.Padding(4);
-            this.btnClearSearch.Size = new System.Drawing.Size(141, 40);
+            this.btnClearSearch.Size = new System.Drawing.Size(116, 33);
             this.btnClearSearch.Text = "Clear Search";
             this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
             // 
@@ -669,18 +649,16 @@
             // 
             // pgbLoadData
             // 
-            this.pgbLoadData.Location = new System.Drawing.Point(803, 33);
-            this.pgbLoadData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pgbLoadData.Location = new System.Drawing.Point(605, 23);
             this.pgbLoadData.Name = "pgbLoadData";
-            this.pgbLoadData.Size = new System.Drawing.Size(404, 42);
+            this.pgbLoadData.Size = new System.Drawing.Size(463, 29);
             this.pgbLoadData.TabIndex = 12;
             // 
             // lblProgress
             // 
             this.lblProgress.AutoSize = true;
             this.lblProgress.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lblProgress.Location = new System.Drawing.Point(948, 46);
-            this.lblProgress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProgress.Location = new System.Drawing.Point(773, 29);
             this.lblProgress.Name = "lblProgress";
             this.lblProgress.Size = new System.Drawing.Size(119, 17);
             this.lblProgress.TabIndex = 13;
@@ -728,32 +706,37 @@
             // 
             // grbStatisticalAnalysis
             // 
-            this.grbStatisticalAnalysis.Location = new System.Drawing.Point(32, 878);
-            this.grbStatisticalAnalysis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grbStatisticalAnalysis.Location = new System.Drawing.Point(24, 747);
             this.grbStatisticalAnalysis.Name = "grbStatisticalAnalysis";
-            this.grbStatisticalAnalysis.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grbStatisticalAnalysis.Size = new System.Drawing.Size(1463, 331);
+            this.grbStatisticalAnalysis.Size = new System.Drawing.Size(1097, 269);
             this.grbStatisticalAnalysis.TabIndex = 13;
             this.grbStatisticalAnalysis.TabStop = false;
             this.grbStatisticalAnalysis.Text = "Statistical Analysis";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.DarkBlue;
+            this.label4.Location = new System.Drawing.Point(132, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(134, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Logged in as: Admin Name";
+            // 
             // frmAdminHome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1581, 736);
+            this.ClientSize = new System.Drawing.Size(1186, 598);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.grbStatisticalAnalysis);
-            this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.lblProgress);
-            this.Controls.Add(this.pgbLoadData);
-            this.Controls.Add(this.fillBySearchToolStrip);
             this.Controls.Add(this.gbxManageClasses);
             this.Controls.Add(this.gbxManageAccounts);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmAdminHome";
             this.Text = "MathWiz - Admin Portal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -849,5 +832,6 @@
         private System.Windows.Forms.ColumnHeader StudentName;
         private System.Windows.Forms.ColumnHeader MasteryLevel;
         private System.Windows.Forms.DataVisualization.Charting.Chart chtMasterLevelDistribution;
+        private System.Windows.Forms.Label label4;
     }
 }

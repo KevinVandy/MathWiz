@@ -137,6 +137,7 @@ namespace MathWiz
                 //TODO: Correct answer doesn't show up
                 //We can use Thread.Sleep(amountofTimeHere) to delay the program from moving on for a period of time
                 lblCorrectAnswer.Show();
+
                 currentQuestionNum++;
 
                 if (currentQuestionNum < test.Questions.Count)
@@ -225,11 +226,6 @@ namespace MathWiz
             {
                 e.Cancel = true;
             }
-        }
-
-        private void gbxQuestion_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -26,7 +26,14 @@ namespace MathWiz
         private void frmAdminHome_Load(object sender, EventArgs e)
         {
             backgroundWorkerFormDataLoad.RunWorkerAsync();
+
             masteryLevelSeries = this.chtMasterLevelDistribution.Series.Add("masteryLevels");
+
+            chtMasterLevelDistribution.ChartAreas[0].AxisX.Title = "Mastery Levels";
+            chtMasterLevelDistribution.ChartAreas[0].AxisX.Interval = 2;
+
+            chtMasterLevelDistribution.ChartAreas[0].AxisY.Title = "Number of Students";
+            chtMasterLevelDistribution.ChartAreas[0].AxisY.Interval = 1;
         }
 
         private void rdoUserTypes_CheckChanged(object sender, EventArgs e)
@@ -186,6 +193,62 @@ namespace MathWiz
             }
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (rdoAdmins.Checked)
+                {
+                    this.adminsTableAdapter.FillByAdminSearch(this.mathWizGroup3DataSet.admins, "%" + usernameToolStripTextBox.Text.Trim() + "%");
+                }
+                else if (rdoTeachers.Checked)
+                {
+                    this.teachersTableAdapter.FillByTeacherSearch(this.mathWizGroup3DataSet.teachers, "%" + usernameToolStripTextBox.Text.Trim() + "%");
+                }
+                else if (rdoParents.Checked)
+                {
+                    this.parentsTableAdapter.FillByParentSearch(this.mathWizGroup3DataSet.parents, "%" + usernameToolStripTextBox.Text.Trim() + "%");
+                }
+                else if (rdoStudents.Checked)
+                {
+                    this.studentsTableAdapter.FillByStudentSearch(this.mathWizGroup3DataSet.students, "%" + usernameToolStripTextBox.Text.Trim() + "%");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnClearSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                usernameToolStripTextBox.Text = "";
+                if (rdoAdmins.Checked)
+                {
+                    this.adminsTableAdapter.Fill(this.mathWizGroup3DataSet.admins);
+                }
+                else if (rdoTeachers.Checked)
+                {
+                    this.teachersTableAdapter.Fill(this.mathWizGroup3DataSet.teachers);
+                }
+                else if (rdoParents.Checked)
+                {
+                    this.parentsTableAdapter.Fill(this.mathWizGroup3DataSet.parents);
+                }
+                else if (rdoStudents.Checked)
+                {
+                    this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet.students);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
         private void btnCreateAdmin_Click(object sender, EventArgs e)
         {
             Form createUserForm = new frmCreateUserAccount();
@@ -293,62 +356,7 @@ namespace MathWiz
             Application.Exit();
         }
         
-        //button to search for a user at the top of the form
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (rdoAdmins.Checked)
-                {
-                    this.adminsTableAdapter.FillByAdminSearch(this.mathWizGroup3DataSet.admins, "%" + usernameToolStripTextBox.Text.Trim() + "%");
-                }
-                else if (rdoTeachers.Checked)
-                {
-                    this.teachersTableAdapter.FillByTeacherSearch(this.mathWizGroup3DataSet.teachers, "%" + usernameToolStripTextBox.Text.Trim() + "%");
-                }
-                else if (rdoParents.Checked)
-                {
-                    this.parentsTableAdapter.FillByParentSearch(this.mathWizGroup3DataSet.parents, "%" + usernameToolStripTextBox.Text.Trim() + "%");
-                }
-                else if (rdoStudents.Checked)
-                {
-                    this.studentsTableAdapter.FillByStudentSearch(this.mathWizGroup3DataSet.students, "%" + usernameToolStripTextBox.Text.Trim() + "%");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnClearSearch_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                usernameToolStripTextBox.Text = "";
-                if (rdoAdmins.Checked)
-                {
-                    this.adminsTableAdapter.Fill(this.mathWizGroup3DataSet.admins);
-                }
-                else if (rdoTeachers.Checked)
-                {
-                    this.teachersTableAdapter.Fill(this.mathWizGroup3DataSet.teachers);
-                }
-                else if (rdoParents.Checked)
-                {
-                    this.parentsTableAdapter.Fill(this.mathWizGroup3DataSet.parents);
-                }
-                else if (rdoStudents.Checked)
-                {
-                    this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet.students);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            
-        }
+        
 
         //event handlers to save data when someone edits a cell in the users table
         private void dgvUsers_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -420,27 +428,7 @@ namespace MathWiz
             }
 
             //populate mastery level chart
-            chtMasterLevelDistribution.Series[0].Points.Clear();
-
-            int[] masteryLevels = new int[lsvStudents.Items.Count];
-            int[] masteryLevelFrequency = new int[12];
-            
-            for (int i = 0; i < lsvStudents.Items.Count; i++)
-            {
-                masteryLevels[i] = Convert.ToInt32(lsvStudents.Items[i].SubItems[2].Text);
-            }
-
-            for (int i = 0; i < masteryLevelFrequency.GetUpperBound(0); i++)
-            {
-                for(int j = 0; j < lsvStudents.Items.Count; j++)
-                {
-                    if(masteryLevels[j] == i+1)
-                    {
-                        masteryLevelFrequency[i]++;
-                    }
-                }
-                masteryLevelSeries.Points.Add(masteryLevelFrequency[i]);
-            }
+            ShowMasteryLevelChartData();
 
         }
 
@@ -449,5 +437,31 @@ namespace MathWiz
 
         }
 
+        //Show chart data
+        private void ShowMasteryLevelChartData()
+        {
+            chtMasterLevelDistribution.Series[0].Points.Clear();
+
+            int[] masteryLevels = new int[lsvStudents.Items.Count];
+            
+            for (int i = 0; i < lsvStudents.Items.Count; i++)
+            {
+                masteryLevels[i] = Convert.ToInt32(lsvStudents.Items[i].SubItems[2].Text);
+            }
+
+            int[] masteryLevelFrequency = new int[(masteryLevels).Max()]; //only make the size of the array the size of the max mastery level achieved in class
+
+            for (int i = 0; i <= masteryLevelFrequency.GetUpperBound(0); i++)
+            {
+                for (int j = 0; j < lsvStudents.Items.Count; j++)
+                {
+                    if (masteryLevels[j] == i + 1)
+                    {
+                        masteryLevelFrequency[i]++;
+                    }
+                }
+                masteryLevelSeries.Points.Add(masteryLevelFrequency[i]);
+            }
+        }
     }
 }
