@@ -104,14 +104,14 @@ namespace MathWiz
             return testQuestions;
         }
 
-        public static List<int> GenerateEasyRandomNumbers()
+        public static List<int> GenerateEasyRandomNumbers(int start, int count)
         {
 
             easyRandoms = Enumerable.Range(0, 10).OrderBy(x => rnd.Next()).Take(10).ToList();
             return easyRandoms;
         }
 
-        public static List<int> GenerateHardRandomNumbers()
+        public static List<int> GenerateHardRandomNumbers(int start, int count)
         {
             Random rnd = new Random();
             hardRandoms = Enumerable.Range(10, 10).OrderBy(x => rnd.Next()).Take(10).ToList();
@@ -141,7 +141,7 @@ namespace MathWiz
             switch(masteryLevel)
             {
                 case 1:
-                    qL = GenerateSimpleAddtionQuestions(timeLimit);
+                    qL = GenerateSimpleAddtionQuestions(timeLimit, 10);
                     break;
                 case 2:
                     qL = GenerateSimpleSubtractionQuestions(timeLimit);
@@ -233,14 +233,53 @@ namespace MathWiz
 
         private static List<Question> GenerateMixedSimpleAdditionSubtraction(TimeSpan timelimit)
         {
-            throw new NotImplementedException();
+            string questionText;
+            List<Question> qL = new List<Question>();
+            List<Question> add = new List<Question>();
+            List<Question> sub = new List<Question>();
+            add = GenerateSimpleAddtionQuestions(timelimit, 10);
+            sub = GenerateSimpleSubtractionQuestions(timelimit);
+
+            //List<int> easyAdd = new List<int>();
+            //List<int> easyAddSecond = new List<int>();
+            //List<int> easySub = new List<int>();
+            //List<int> easyTakeFrom = new List<int>();
+            //int[] answer = new int[10];
+            //easyAdd = GenerateEasyRandomNumbers();
+            //easyAddSecond = GenerateEasyRandomNumbers();
+            //easySub = GenerateEasyRandomNumbers();
+
+            //var easyEnumerator = easySub.GetEnumerator();
+            ////enumerate through the list
+            //while (easyEnumerator.MoveNext())
+            //{
+            //    int counter = 0;
+            //    int lower = GetRandomNumberLowerThan(easyEnumerator.Current);
+            //    answer[counter] = easyEnumerator.Current - lower;
+            //    questionText = easyEnumerator.Current.ToString() + " - " + lower.ToString() + " = ";
+            //    Question aQuestion = new Question();
+            //    aQuestion.QuestionText = questionText;
+            //    aQuestion.CorrectAnswer = answer[counter];
+            //    aQuestion.TimeLimit = timelimit;
+
+            //    testQuestions.Add(aQuestion);
+            //    //MessageBox.Show("First Number = " + easyEnumerator.Current.ToString() + "\n" +
+            //    //                "Second Number =" + lower.ToString() + "\n" + 
+            //    //                "Equals = " + answer[counter].ToString() + "\n" +
+            //    //                "Text = " + questionText);
+
+            //    counter++;
+            //}
+
+            return qL;
+
         }
 
         private static List<Question> GenerateSimpleSubtractionQuestions(TimeSpan timelimit)
         {
             string questionText;
             List <Question> qL = new List<Question>();
-            List<int> easy = GenerateEasyRandomNumbers();
+            List<int> easy = GenerateEasyRandomNumbers(0, 10);
             List<int> takefrom = new List<int>();
             int[] answer = new int[10];
             
@@ -270,11 +309,11 @@ namespace MathWiz
             return qL;
         }
 
-        public static List<Question> GenerateSimpleAddtionQuestions(TimeSpan timelimit)
+        public static List<Question> GenerateSimpleAddtionQuestions(TimeSpan timelimit, int NumberOfQuestions)
         {
             string questionText;
-            List<int> firstEasy = GenerateEasyRandomNumbers();
-            List<int> secondEasy = GenerateEasyRandomNumbers();
+            List<int> firstEasy = GenerateEasyRandomNumbers(0, 10);
+            List<int> secondEasy = GenerateEasyRandomNumbers(0, 10);
             var firstEasyEnumerator = firstEasy.GetEnumerator();
             int[] answer = new int[10];
             var secondEasyEnumerator = secondEasy.GetEnumerator();
@@ -314,5 +353,99 @@ namespace MathWiz
             return aNumber;
             
         }
+
+
+        //public static void GenerateAddition(bool isHard)
+        //{
+        //    List<Question> qL = new List<Question>();
+        //    List<int> first = new List<int>();
+        //    List<int> second = new List<int>();
+        //    string testString = "";
+
+
+        //    int limit = 10;
+        //    if (isHard == true)
+        //    {
+        //        limit = 20;
+        //    }
+        //    int i = 0;
+        //    int j = 0;
+        //    int control = 0;
+        //    for(i = 0; i < limit; i++)
+        //    {
+        //        for(j = control; j < limit; j++)
+        //        {
+        //            first.Add(i);
+        //            second.Add(j);
+        //            testString += i.ToString() + j.ToString() + ", ";
+        //        }
+        //        control++;
+        //    }
+
+        //    MessageBox.Show(testString);
+        //}
+
+        public static void GeneratesAddMultiply(bool isHard)
+        {
+            List<Question> qL = new List<Question>();
+            List<int> first = new List<int>();
+            List<int> second = new List<int>();
+            string testString = "";
+            int limit = 10;
+            if (isHard == true)
+            {
+                limit = 20;
+            }
+
+            int i = 0;
+            int j = 0;
+            int control = 0;
+            for (i = 0; i < limit; i++)
+            {
+                for (j = control; j < limit; j++)
+                {
+                    first.Add(i);
+                    second.Add(j);
+                    testString += i.ToString() + j.ToString() + ", ";
+                }
+                control++;
+            }
+
+            MessageBox.Show(testString);
+        }
+
+        public static void GeneratesSubtractDivide(bool isHard)
+        {
+            List<Question> qL = new List<Question>();
+            List<int> first = new List<int>();
+            List<int> second = new List<int>();
+            string testString = "";
+            int limit = 10;
+            if (isHard == true)
+            {
+                limit = 20;
+            }
+
+            int i = 0;
+            int j = 0;
+            int control = 0;
+            for (i = 0; i < limit; i++)
+            {
+                for (j = 0; j < limit; j++)
+                {
+                    if(i >= j)
+                    {
+                        first.Add(i);
+                        second.Add(j);
+                        testString += i.ToString() + j.ToString() + ", ";
+                    }
+                    
+                }
+                control++;
+            }
+
+            MessageBox.Show(testString);
+        }
     }
 }
+

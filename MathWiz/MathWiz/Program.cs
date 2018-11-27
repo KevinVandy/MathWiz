@@ -20,6 +20,7 @@ namespace MathWiz
             //Application.Run(new frmTeacherHome("TylerPerry"));
             Application.Run(new frmLogin());
 
+
         }
     }
 }
