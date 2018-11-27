@@ -33,7 +33,6 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnTakeMasteryTest = new System.Windows.Forms.Button();
@@ -55,12 +54,11 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.toolStripMenuItem2,
             this.toolStripMenuItem3});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(764, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1020, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -70,51 +68,45 @@
             this.logoutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(44, 24);
             this.toolStripMenuItem1.Text = "File";
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(131, 26);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(131, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(39, 20);
-            this.toolStripMenuItem2.Text = "Edit";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(44, 20);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(53, 24);
             this.toolStripMenuItem3.Text = "Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // btnTakeMasteryTest
             // 
             this.btnTakeMasteryTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTakeMasteryTest.Location = new System.Drawing.Point(21, 239);
-            this.btnTakeMasteryTest.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTakeMasteryTest.Location = new System.Drawing.Point(28, 294);
+            this.btnTakeMasteryTest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTakeMasteryTest.Name = "btnTakeMasteryTest";
-            this.btnTakeMasteryTest.Size = new System.Drawing.Size(238, 51);
+            this.btnTakeMasteryTest.Size = new System.Drawing.Size(317, 63);
             this.btnTakeMasteryTest.TabIndex = 3;
             this.btnTakeMasteryTest.Text = "Take Next Mastery Test";
             this.btnTakeMasteryTest.UseVisualStyleBackColor = true;
@@ -123,10 +115,10 @@
             // btnTakePracticeTest
             // 
             this.btnTakePracticeTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTakePracticeTest.Location = new System.Drawing.Point(21, 103);
-            this.btnTakePracticeTest.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTakePracticeTest.Location = new System.Drawing.Point(28, 127);
+            this.btnTakePracticeTest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTakePracticeTest.Name = "btnTakePracticeTest";
-            this.btnTakePracticeTest.Size = new System.Drawing.Size(238, 51);
+            this.btnTakePracticeTest.Size = new System.Drawing.Size(317, 63);
             this.btnTakePracticeTest.TabIndex = 4;
             this.btnTakePracticeTest.Text = "Take Teacher\'s Practice Test";
             this.btnTakePracticeTest.UseVisualStyleBackColor = true;
@@ -135,10 +127,10 @@
             // btnTakePlacementTest
             // 
             this.btnTakePlacementTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTakePlacementTest.Location = new System.Drawing.Point(21, 36);
-            this.btnTakePlacementTest.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTakePlacementTest.Location = new System.Drawing.Point(28, 44);
+            this.btnTakePlacementTest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTakePlacementTest.Name = "btnTakePlacementTest";
-            this.btnTakePlacementTest.Size = new System.Drawing.Size(238, 51);
+            this.btnTakePlacementTest.Size = new System.Drawing.Size(317, 63);
             this.btnTakePlacementTest.TabIndex = 5;
             this.btnTakePlacementTest.Text = "Take Placement Test";
             this.btnTakePlacementTest.UseVisualStyleBackColor = true;
@@ -151,9 +143,11 @@
             this.gbxTakeTests.Controls.Add(this.btnTakeMasteryTest);
             this.gbxTakeTests.Controls.Add(this.btnTakePracticeTest);
             this.gbxTakeTests.Controls.Add(this.btnTakePlacementTest);
-            this.gbxTakeTests.Location = new System.Drawing.Point(23, 86);
+            this.gbxTakeTests.Location = new System.Drawing.Point(31, 106);
+            this.gbxTakeTests.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbxTakeTests.Name = "gbxTakeTests";
-            this.gbxTakeTests.Size = new System.Drawing.Size(710, 314);
+            this.gbxTakeTests.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxTakeTests.Size = new System.Drawing.Size(947, 386);
             this.gbxTakeTests.TabIndex = 6;
             this.gbxTakeTests.TabStop = false;
             this.gbxTakeTests.Text = "Take Tests";
@@ -161,10 +155,10 @@
             // btnTakeRandomPracticeTest
             // 
             this.btnTakeRandomPracticeTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTakeRandomPracticeTest.Location = new System.Drawing.Point(21, 171);
-            this.btnTakeRandomPracticeTest.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTakeRandomPracticeTest.Location = new System.Drawing.Point(28, 210);
+            this.btnTakeRandomPracticeTest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTakeRandomPracticeTest.Name = "btnTakeRandomPracticeTest";
-            this.btnTakeRandomPracticeTest.Size = new System.Drawing.Size(238, 51);
+            this.btnTakeRandomPracticeTest.Size = new System.Drawing.Size(317, 63);
             this.btnTakeRandomPracticeTest.TabIndex = 7;
             this.btnTakeRandomPracticeTest.Text = "Take Random Practice Test";
             this.btnTakeRandomPracticeTest.UseVisualStyleBackColor = true;
@@ -189,16 +183,19 @@
             "11",
             "12",
             "13"});
-            this.cmbMasteryLevel.Location = new System.Drawing.Point(279, 179);
+            this.cmbMasteryLevel.Location = new System.Drawing.Point(372, 220);
+            this.cmbMasteryLevel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbMasteryLevel.Name = "cmbMasteryLevel";
-            this.cmbMasteryLevel.Size = new System.Drawing.Size(90, 33);
+            this.cmbMasteryLevel.Size = new System.Drawing.Size(119, 39);
             this.cmbMasteryLevel.TabIndex = 6;
             // 
             // gbxViewProgress
             // 
-            this.gbxViewProgress.Location = new System.Drawing.Point(23, 438);
+            this.gbxViewProgress.Location = new System.Drawing.Point(31, 539);
+            this.gbxViewProgress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbxViewProgress.Name = "gbxViewProgress";
-            this.gbxViewProgress.Size = new System.Drawing.Size(710, 166);
+            this.gbxViewProgress.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxViewProgress.Size = new System.Drawing.Size(947, 204);
             this.gbxViewProgress.TabIndex = 7;
             this.gbxViewProgress.TabStop = false;
             this.gbxViewProgress.Text = "View Progress";
@@ -212,9 +209,10 @@
             // 
             this.lblStudentName.AutoSize = true;
             this.lblStudentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentName.Location = new System.Drawing.Point(18, 40);
+            this.lblStudentName.Location = new System.Drawing.Point(24, 49);
+            this.lblStudentName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStudentName.Name = "lblStudentName";
-            this.lblStudentName.Size = new System.Drawing.Size(239, 26);
+            this.lblStudentName.Size = new System.Drawing.Size(296, 31);
             this.lblStudentName.TabIndex = 7;
             this.lblStudentName.Text = "Student: Student Name";
             // 
@@ -222,18 +220,19 @@
             // 
             this.lblMasteryLevel.AutoSize = true;
             this.lblMasteryLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMasteryLevel.Location = new System.Drawing.Point(521, 40);
+            this.lblMasteryLevel.Location = new System.Drawing.Point(695, 49);
+            this.lblMasteryLevel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMasteryLevel.Name = "lblMasteryLevel";
-            this.lblMasteryLevel.Size = new System.Drawing.Size(183, 26);
+            this.lblMasteryLevel.Size = new System.Drawing.Size(228, 31);
             this.lblMasteryLevel.TabIndex = 8;
             this.lblMasteryLevel.Text = "Mastery Level: 00";
             // 
             // frmStudentHome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(781, 550);
+            this.ClientSize = new System.Drawing.Size(1041, 677);
             this.Controls.Add(this.lblMasteryLevel);
             this.Controls.Add(this.lblStudentName);
             this.Controls.Add(this.gbxViewProgress);
@@ -241,6 +240,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmStudentHome";
             this.Text = "MathWiz - Student Portal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -257,7 +257,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;

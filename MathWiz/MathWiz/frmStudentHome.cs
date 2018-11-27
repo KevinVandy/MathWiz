@@ -40,6 +40,7 @@ namespace MathWiz
                 btnTakeMasteryTest.Enabled = true;
                 btnTakePlacementTest.Enabled = false;
             }
+            backgroundWorkerLoadData.RunWorkerAsync();
         }
 
         private void backgroundWorkerLoadData_DoWork(object sender, DoWorkEventArgs e)

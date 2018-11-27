@@ -91,5 +91,21 @@ namespace MathWiz
         {
 
         }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form aboutForm = new frmAboutBox();
+            aboutForm.Show();
+        }
     }
 }
