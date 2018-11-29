@@ -134,9 +134,9 @@
             // 
             this.grpBxStudentInfo.BackColor = System.Drawing.Color.Transparent;
             this.grpBxStudentInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.grpBxStudentInfo.Location = new System.Drawing.Point(26, 438);
+            this.grpBxStudentInfo.Location = new System.Drawing.Point(26, 422);
             this.grpBxStudentInfo.Name = "grpBxStudentInfo";
-            this.grpBxStudentInfo.Size = new System.Drawing.Size(834, 207);
+            this.grpBxStudentInfo.Size = new System.Drawing.Size(834, 223);
             this.grpBxStudentInfo.TabIndex = 8;
             this.grpBxStudentInfo.TabStop = false;
             this.grpBxStudentInfo.Text = "Class Info";
