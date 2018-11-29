@@ -106,7 +106,6 @@ namespace MathWiz
 
         public static List<int> GenerateEasyRandomNumbers(int start, int count)
         {
-
             easyRandoms = Enumerable.Range(0, 10).OrderBy(x => rnd.Next()).Take(10).ToList();
             return easyRandoms;
         }

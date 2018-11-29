@@ -112,10 +112,12 @@ namespace MathWiz
             btnSubmitAnswer.Show();
             txtStudentAnswer.Show();
 
-            if (false) //TODO is multiple choice
-            {
-                pnlChoices.Show();
-            }
+
+            // Multiple choice determined to be a stretch goal
+            //if (false) //TODO is multiple choice
+            //{
+            //    pnlChoices.Show();
+            //}
 
         }
 
@@ -144,6 +146,8 @@ namespace MathWiz
                 if (currentQuestionNum < test.Questions.Count)
                 {
                     ShowQuestion(test.Questions[currentQuestionNum]);
+                    // reset the timer if there is a next question
+                    lblTimerQuestion.Text = "01:00";
                 }
                 else //the test if finished
                 {
@@ -220,7 +224,13 @@ namespace MathWiz
             currentTime = currentTime.Subtract(new TimeSpan(0, 0, 1));
 
             lblTimerQuestion.Text = currentTime.Minutes.ToString("00") + ":" + currentTime.Seconds.ToString("00");
-            
+
+            if (lblTimerQuestion.Text == "00:00")
+            {
+                QuestionTimeEnded();
+            }
+
+
         }
 
         private void frmTakeTest_FormClosing(object sender, FormClosingEventArgs e)
@@ -230,6 +240,51 @@ namespace MathWiz
             {
                 e.Cancel = true;
             }
+        }
+
+        private void QuestionTimeEnded()
+        {
+                timerQuestion.Stop();
+                string studentAnswer = "";
+                int n;
+                bool isNumeric = int.TryParse(txtStudentAnswer.Text, out n);
+
+                if (txtStudentAnswer.Text == ""  || txtStudentAnswer.Text == null || isNumeric == false)
+                {
+                    studentAnswer = "0";
+                }
+                else
+                {
+                    studentAnswer = txtStudentAnswer.Text.Trim();
+                }
+
+                if (Convert.ToInt32(studentAnswer) == test.Questions[currentQuestionNum].CorrectAnswer)
+                {
+                    GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0, 1, 1));
+                    gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
+
+                }
+                else
+                {
+                    GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, false, new TimeSpan(0, 1, 1));
+                    gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
+                }
+
+                lblCorrectAnswer.Show();
+
+                currentQuestionNum++;
+
+                if (currentQuestionNum <= test.Questions.Count)
+                {
+                    ShowQuestion(test.Questions[currentQuestionNum]);
+                    // reset the timer if there is a next question
+                    lblTimerQuestion.Text = "01:00";
+                }
+                else //the test if finished
+                {
+                    btnStartFinish.Show();
+                    btnSubmitAnswer.Enabled = false;
+                }
         }
     }
 }
