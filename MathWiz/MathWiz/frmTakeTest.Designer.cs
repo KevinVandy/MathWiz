@@ -231,6 +231,7 @@
             // 
             // timerTest
             // 
+            this.timerTest.Interval = 1000;
             this.timerTest.Tick += new System.EventHandler(this.timerTest_Tick);
             // 
             // lblTimerTest

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -147,6 +148,7 @@ namespace MathWiz
                 else //the test if finished
                 {
                     btnStartFinish.Show();
+                    btnSubmitAnswer.Enabled = false;
                 }
 
             }
@@ -185,8 +187,10 @@ namespace MathWiz
                 btnStartFinish.Text = "Finish Test";
                 
                 btnStartFinish.Hide();
-                
 
+                timerTest.Start();
+                lblTimerTest.Show();
+                
                 ShowQuestion(test.Questions[currentQuestionNum]);
                 
             }
@@ -202,9 +206,11 @@ namespace MathWiz
 
         private void timerTest_Tick(object sender, EventArgs e)
         {
-         //   lblTimerTest.Text = timerTest.ToString();
+            TimeSpan currentTime = TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
 
-            
+            currentTime = currentTime.Subtract(new TimeSpan(0, 0, 1));
+
+            lblTimerTest.Text = currentTime.Minutes.ToString("00") + ":" + currentTime.Seconds.ToString("00");
         }
 
         private void timerQuestion_Tick(object sender, EventArgs e)
