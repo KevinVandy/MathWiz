@@ -356,9 +356,10 @@ namespace MathWiz
 
 
 
-        public static void GeneratesAddMultiply(bool isHard, bool AddFalse_SubtractTrue)
+        public static List<Question> GeneratesAddMultiply(bool isHard, bool AddFalse_MultiplyTrue)
         {
             TimeSpan timeLimit = new TimeSpan();
+            timeLimit = TimeSpan.FromTicks(5000);
             List<Question> qL = new List<Question>();
             List<int> first = new List<int>();
             List<int> second = new List<int>();
@@ -405,9 +406,55 @@ namespace MathWiz
                 }
             }
 
-            
+            string qT;
+            int[] answer = new int[500];
+            if (AddFalse_MultiplyTrue == false)
+            {
+                var firstEnumerator = first.GetEnumerator();
+                var secondEnumerator = second.GetEnumerator();
+                //enumerate through the list
+                while (firstEnumerator.MoveNext())
+                {
+                    int counter = 0;
+                    secondEnumerator.MoveNext();
+                    qT = firstEnumerator.Current.ToString() + " + " + secondEnumerator.Current.ToString() + " =";
+                    answer[counter] = firstEnumerator.Current + secondEnumerator.Current;
+                    Question aQuestion = new Question();
+                    aQuestion.CorrectAnswer = answer[counter];
+                    aQuestion.RandomlyGenerated = true;
+                    aQuestion.QuestionText = qT;
+                    aQuestion.TimeLimit = timeLimit;
+                    qL.Add(aQuestion);
+                }
 
-            MessageBox.Show(testString);
+
+            }
+            else
+            {
+                var firstEnumerator = first.GetEnumerator();
+                var secondEnumerator = second.GetEnumerator();
+                //enumerate through the list
+                while (firstEnumerator.MoveNext())
+                {
+                    int counter = 0;
+                    secondEnumerator.MoveNext();
+                    qT = firstEnumerator.Current.ToString() + " x " + secondEnumerator.Current.ToString() + " =";
+                    answer[counter] = firstEnumerator.Current * secondEnumerator.Current;
+
+                    Question aQuestion = new Question();
+                    aQuestion.CorrectAnswer = answer[counter];
+                    aQuestion.RandomlyGenerated = true;
+                    aQuestion.QuestionText = qT;
+                    aQuestion.TimeLimit = timeLimit;
+                    qL.Add(aQuestion);
+                }
+            }
+
+
+
+            return qL;
+
+
         }
 
         public static List<Question> GeneratesSubtractDivide(bool isHard, bool SubtractFalse_DivideTrue)
@@ -547,20 +594,3 @@ namespace MathWiz
     }
 }
 
-//var secondEasyEnumerator = secondEasy.GetEnumerator();
-//var answerEnumerator = answer.GetEnumerator();
-//            //enumerate through the lists
-//            while(firstEasyEnumerator.MoveNext())
-//            {
-//                int counter = 0;
-//secondEasyEnumerator.MoveNext();
-//                answerEnumerator.MoveNext();
-//                answer[counter] = ((firstEasyEnumerator.Current) + (secondEasyEnumerator.Current));
-//                questionText = firstEasyEnumerator.Current.ToString() + " + " + secondEasyEnumerator.Current.ToString() + " = ";
-                
-//                Question question = new Question();
-//question.QuestionText = questionText;
-//                question.CorrectAnswer = answer[counter];
-//                question.TimeLimit = timelimit;
-//                counter++;
-//                testQuestions.Add(question);
