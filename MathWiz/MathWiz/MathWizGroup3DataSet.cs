@@ -7,9 +7,12 @@
     }
 }
 
-namespace MathWiz.MathWizGroup3DataSetTableAdapters {
-    
-    
+namespace MathWiz.MathWizGroup3DataSetTableAdapters
+{
+    partial class studentsTableAdapter
+    {
+    }
+
     public partial class adminsTableAdapter {
     }
 }

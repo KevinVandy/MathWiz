@@ -6450,7 +6450,7 @@ SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, N
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, Nu" +
@@ -6458,10 +6458,15 @@ SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, N
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT StudentID, TestID, Score, Passed, Feedback\r\nFROM     graded_tests\r\nWHERE  " +
-                "(StudentID = @StudentID)\r\nORDER BY Score";
+            this._commandCollection[1].CommandText = "SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, Nu" +
+                "mberAttempts, Passed, RecommendedLevel FROM dbo.graded_tests";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "StudentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT StudentID, TestID, Score, Passed, Feedback\r\nFROM     graded_tests\r\nWHERE  " +
+                "(StudentID = @StudentID)\r\nORDER BY Score";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "StudentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6492,8 +6497,21 @@ SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, N
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByGradedTests(MathWizGroup3DataSet.graded_testsDataTable dataTable, int StudentID) {
+        public virtual int FillBy(MathWizGroup3DataSet.graded_testsDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByGradedTests(MathWizGroup3DataSet.graded_testsDataTable dataTable, int StudentID) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(StudentID));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6507,7 +6525,7 @@ SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, N
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual MathWizGroup3DataSet.graded_testsDataTable GetDataByGradedTests(int StudentID) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(StudentID));
             MathWizGroup3DataSet.graded_testsDataTable dataTable = new MathWizGroup3DataSet.graded_testsDataTable();
             this.Adapter.Fill(dataTable);
