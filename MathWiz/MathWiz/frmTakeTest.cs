@@ -94,8 +94,8 @@ namespace MathWiz
         private void ShowQuestion(Question q)
         {
             //show timer stuff
-            lblTimerQuestion.Text = q.TimeLimit.ToString();
             timerQuestion.Start();
+            lblTimerQuestion.Show();
 
             //show the question number
             gbxQuestion.Text = "Question " + (currentQuestionNum + 1).ToString() + " of " + test.Questions.Count;
@@ -215,14 +215,12 @@ namespace MathWiz
 
         private void timerQuestion_Tick(object sender, EventArgs e)
         {
-            lblTimerQuestion.Text = timerQuestion.ToString();
+            TimeSpan currentTime = TimeSpan.ParseExact(lblTimerQuestion.Text, "mm\\:ss", CultureInfo.InvariantCulture);
 
-            //if (TimeSpan.Parse(lblTimerQuestion.Text) <= new TimeSpan(0,0,0)) //if time runs out
-            //{
-            //    timerQuestion.Stop();
-            //    btnSubmitAnswer.Enabled = false;
-            //    lblCorrectAnswer.Show();
-            //}
+            currentTime = currentTime.Subtract(new TimeSpan(0, 0, 1));
+
+            lblTimerQuestion.Text = currentTime.Minutes.ToString("00") + ":" + currentTime.Seconds.ToString("00");
+            
         }
 
         private void frmTakeTest_FormClosing(object sender, FormClosingEventArgs e)

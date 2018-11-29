@@ -188,6 +188,7 @@ namespace MathWiz
 
         private static List<Question> GenerateAdvnacedMultiplicationDivison(TimeSpan timelimit)
         {
+            GeneratesAddMultiply(true, true);
             throw new NotImplementedException();
         }
 
@@ -198,11 +199,13 @@ namespace MathWiz
 
         private static List<Question> GenerateAdvancedMultiplication(TimeSpan timelimit)
         {
+            GeneratesAddMultiply(true, true);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateSimpleMultiplicationDivision(TimeSpan timelimit)
         {
+            GeneratesAddMultiply(false, true);
             throw new NotImplementedException();
         }
 
@@ -213,11 +216,13 @@ namespace MathWiz
 
         private static List<Question> GenerateSimpleMultiplication(TimeSpan timelimit)
         {
+            GeneratesAddMultiply(false, true);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateMixedComplexAdditionSubtraction(TimeSpan timelimit)
         {
+            GeneratesAddMultiply(true, false);
             throw new NotImplementedException();
         }
 
@@ -228,11 +233,13 @@ namespace MathWiz
 
         private static List<Question> GenerateComplexAddition(TimeSpan timelimit)
         {
+            GeneratesAddMultiply(true, false);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateMixedSimpleAdditionSubtraction(TimeSpan timelimit)
         {
+            GeneratesAddMultiply(false, false);
             string questionText;
             List<Question> qL = new List<Question>();
             List<Question> add = new List<Question>();
@@ -311,6 +318,7 @@ namespace MathWiz
 
         public static List<Question> GenerateSimpleAddtionQuestions(TimeSpan timelimit, int NumberOfQuestions)
         {
+            GeneratesAddMultiply(false, false);
             string questionText;
             List<int> firstEasy = GenerateEasyRandomNumbers(0, 10);
             List<int> secondEasy = GenerateEasyRandomNumbers(0, 10);

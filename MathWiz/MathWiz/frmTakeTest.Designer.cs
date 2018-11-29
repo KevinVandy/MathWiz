@@ -69,9 +69,11 @@
             this.gbxQuestion.Controls.Add(this.btnNext);
             this.gbxQuestion.Controls.Add(this.btnBack);
             this.gbxQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxQuestion.Location = new System.Drawing.Point(38, 36);
+            this.gbxQuestion.Location = new System.Drawing.Point(51, 44);
+            this.gbxQuestion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gbxQuestion.Name = "gbxQuestion";
-            this.gbxQuestion.Size = new System.Drawing.Size(498, 263);
+            this.gbxQuestion.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxQuestion.Size = new System.Drawing.Size(664, 324);
             this.gbxQuestion.TabIndex = 0;
             this.gbxQuestion.TabStop = false;
             this.gbxQuestion.Text = "Question # of #";
@@ -80,19 +82,21 @@
             // 
             this.lblTimerQuestion.AutoSize = true;
             this.lblTimerQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimerQuestion.Location = new System.Drawing.Point(412, 30);
+            this.lblTimerQuestion.Location = new System.Drawing.Point(549, 37);
+            this.lblTimerQuestion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTimerQuestion.Name = "lblTimerQuestion";
-            this.lblTimerQuestion.Size = new System.Drawing.Size(36, 17);
+            this.lblTimerQuestion.Size = new System.Drawing.Size(50, 20);
             this.lblTimerQuestion.TabIndex = 7;
-            this.lblTimerQuestion.Text = "1:00";
+            this.lblTimerQuestion.Text = "01:00";
             this.lblTimerQuestion.Visible = false;
             // 
             // btnSubmitAnswer
             // 
             this.btnSubmitAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmitAnswer.Location = new System.Drawing.Point(398, 59);
+            this.btnSubmitAnswer.Location = new System.Drawing.Point(531, 73);
+            this.btnSubmitAnswer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSubmitAnswer.Name = "btnSubmitAnswer";
-            this.btnSubmitAnswer.Size = new System.Drawing.Size(78, 46);
+            this.btnSubmitAnswer.Size = new System.Drawing.Size(104, 57);
             this.btnSubmitAnswer.TabIndex = 6;
             this.btnSubmitAnswer.Text = "Submit";
             this.btnSubmitAnswer.UseVisualStyleBackColor = true;
@@ -104,9 +108,10 @@
             this.lblCorrectAnswer.AutoSize = true;
             this.lblCorrectAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCorrectAnswer.ForeColor = System.Drawing.Color.Green;
-            this.lblCorrectAnswer.Location = new System.Drawing.Point(136, 64);
+            this.lblCorrectAnswer.Location = new System.Drawing.Point(181, 79);
+            this.lblCorrectAnswer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCorrectAnswer.Name = "lblCorrectAnswer";
-            this.lblCorrectAnswer.Size = new System.Drawing.Size(35, 37);
+            this.lblCorrectAnswer.Size = new System.Drawing.Size(42, 46);
             this.lblCorrectAnswer.TabIndex = 5;
             this.lblCorrectAnswer.Text = "4";
             this.lblCorrectAnswer.Visible = false;
@@ -114,10 +119,11 @@
             // txtStudentAnswer
             // 
             this.txtStudentAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudentAnswer.Location = new System.Drawing.Point(267, 59);
+            this.txtStudentAnswer.Location = new System.Drawing.Point(356, 73);
+            this.txtStudentAnswer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtStudentAnswer.MaxLength = 6;
             this.txtStudentAnswer.Name = "txtStudentAnswer";
-            this.txtStudentAnswer.Size = new System.Drawing.Size(125, 44);
+            this.txtStudentAnswer.Size = new System.Drawing.Size(165, 53);
             this.txtStudentAnswer.TabIndex = 0;
             this.txtStudentAnswer.Tag = "Answer";
             this.txtStudentAnswer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -129,9 +135,10 @@
             this.pnlChoices.Controls.Add(this.rdoChoice3);
             this.pnlChoices.Controls.Add(this.rdoChoice2);
             this.pnlChoices.Controls.Add(this.rdoChoice1);
-            this.pnlChoices.Location = new System.Drawing.Point(25, 124);
+            this.pnlChoices.Location = new System.Drawing.Point(33, 153);
+            this.pnlChoices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlChoices.Name = "pnlChoices";
-            this.pnlChoices.Size = new System.Drawing.Size(451, 63);
+            this.pnlChoices.Size = new System.Drawing.Size(601, 78);
             this.pnlChoices.TabIndex = 4;
             this.pnlChoices.Visible = false;
             // 
@@ -139,9 +146,10 @@
             // 
             this.rdoChoice4.AutoSize = true;
             this.rdoChoice4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoChoice4.Location = new System.Drawing.Point(372, 15);
+            this.rdoChoice4.Location = new System.Drawing.Point(496, 18);
+            this.rdoChoice4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoChoice4.Name = "rdoChoice4";
-            this.rdoChoice4.Size = new System.Drawing.Size(42, 30);
+            this.rdoChoice4.Size = new System.Drawing.Size(50, 35);
             this.rdoChoice4.TabIndex = 3;
             this.rdoChoice4.TabStop = true;
             this.rdoChoice4.Text = "4";
@@ -151,9 +159,10 @@
             // 
             this.rdoChoice3.AutoSize = true;
             this.rdoChoice3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoChoice3.Location = new System.Drawing.Point(254, 15);
+            this.rdoChoice3.Location = new System.Drawing.Point(339, 18);
+            this.rdoChoice3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoChoice3.Name = "rdoChoice3";
-            this.rdoChoice3.Size = new System.Drawing.Size(42, 30);
+            this.rdoChoice3.Size = new System.Drawing.Size(50, 35);
             this.rdoChoice3.TabIndex = 2;
             this.rdoChoice3.TabStop = true;
             this.rdoChoice3.Text = "3";
@@ -163,9 +172,10 @@
             // 
             this.rdoChoice2.AutoSize = true;
             this.rdoChoice2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoChoice2.Location = new System.Drawing.Point(136, 15);
+            this.rdoChoice2.Location = new System.Drawing.Point(181, 18);
+            this.rdoChoice2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoChoice2.Name = "rdoChoice2";
-            this.rdoChoice2.Size = new System.Drawing.Size(42, 30);
+            this.rdoChoice2.Size = new System.Drawing.Size(50, 35);
             this.rdoChoice2.TabIndex = 1;
             this.rdoChoice2.TabStop = true;
             this.rdoChoice2.Text = "2";
@@ -175,9 +185,10 @@
             // 
             this.rdoChoice1.AutoSize = true;
             this.rdoChoice1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoChoice1.Location = new System.Drawing.Point(18, 15);
+            this.rdoChoice1.Location = new System.Drawing.Point(24, 18);
+            this.rdoChoice1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoChoice1.Name = "rdoChoice1";
-            this.rdoChoice1.Size = new System.Drawing.Size(42, 30);
+            this.rdoChoice1.Size = new System.Drawing.Size(50, 35);
             this.rdoChoice1.TabIndex = 0;
             this.rdoChoice1.TabStop = true;
             this.rdoChoice1.Text = "1";
@@ -187,9 +198,10 @@
             // 
             this.lblQuestionText.AutoSize = true;
             this.lblQuestionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuestionText.Location = new System.Drawing.Point(18, 64);
+            this.lblQuestionText.Location = new System.Drawing.Point(24, 79);
+            this.lblQuestionText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblQuestionText.Name = "lblQuestionText";
-            this.lblQuestionText.Size = new System.Drawing.Size(127, 37);
+            this.lblQuestionText.Size = new System.Drawing.Size(154, 46);
             this.lblQuestionText.TabIndex = 3;
             this.lblQuestionText.Text = "2 + 2 = ";
             this.lblQuestionText.Visible = false;
@@ -197,9 +209,10 @@
             // btnNext
             // 
             this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(309, 202);
+            this.btnNext.Location = new System.Drawing.Point(412, 249);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(167, 37);
+            this.btnNext.Size = new System.Drawing.Size(223, 46);
             this.btnNext.TabIndex = 0;
             this.btnNext.Text = "Next Question";
             this.btnNext.UseVisualStyleBackColor = true;
@@ -209,9 +222,10 @@
             // btnBack
             // 
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(25, 202);
+            this.btnBack.Location = new System.Drawing.Point(33, 249);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(167, 37);
+            this.btnBack.Size = new System.Drawing.Size(223, 46);
             this.btnBack.TabIndex = 1;
             this.btnBack.Text = "Previous Question";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -221,9 +235,10 @@
             // btnStartFinish
             // 
             this.btnStartFinish.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartFinish.Location = new System.Drawing.Point(199, 329);
+            this.btnStartFinish.Location = new System.Drawing.Point(265, 405);
+            this.btnStartFinish.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStartFinish.Name = "btnStartFinish";
-            this.btnStartFinish.Size = new System.Drawing.Size(167, 37);
+            this.btnStartFinish.Size = new System.Drawing.Size(223, 46);
             this.btnStartFinish.TabIndex = 2;
             this.btnStartFinish.Text = "Start/Finish Test";
             this.btnStartFinish.UseVisualStyleBackColor = true;
@@ -238,24 +253,27 @@
             // 
             this.lblTimerTest.AutoSize = true;
             this.lblTimerTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimerTest.Location = new System.Drawing.Point(263, 384);
+            this.lblTimerTest.Location = new System.Drawing.Point(351, 473);
+            this.lblTimerTest.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTimerTest.Name = "lblTimerTest";
-            this.lblTimerTest.Size = new System.Drawing.Size(44, 17);
+            this.lblTimerTest.Size = new System.Drawing.Size(50, 20);
             this.lblTimerTest.TabIndex = 3;
             this.lblTimerTest.Text = "10:00";
             // 
             // timerQuestion
             // 
+            this.timerQuestion.Interval = 1000;
             this.timerQuestion.Tick += new System.EventHandler(this.timerQuestion_Tick);
             // 
             // frmTakeTest
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 434);
+            this.ClientSize = new System.Drawing.Size(791, 534);
             this.Controls.Add(this.lblTimerTest);
             this.Controls.Add(this.btnStartFinish);
             this.Controls.Add(this.gbxQuestion);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmTakeTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Test";
