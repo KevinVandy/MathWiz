@@ -385,7 +385,7 @@ namespace MathWiz
         //    MessageBox.Show(testString);
         //}
 
-        public static void GeneratesAddMultiply(bool isHard)
+        public static void GeneratesAddMultiply(bool isHard, int numberOfQuestions, bool isAddition)
         {
             List<Question> qL = new List<Question>();
             List<int> first = new List<int>();
@@ -410,7 +410,8 @@ namespace MathWiz
                 }
                 control++;
             }
-
+            Question question = new Question();
+            
             MessageBox.Show(testString);
         }
 
