@@ -355,95 +355,130 @@ namespace MathWiz
         }
 
 
-        //public static void GenerateAddition(bool isHard)
-        //{
-        //    List<Question> qL = new List<Question>();
-        //    List<int> first = new List<int>();
-        //    List<int> second = new List<int>();
-        //    string testString = "";
 
-
-        //    int limit = 10;
-        //    if (isHard == true)
-        //    {
-        //        limit = 20;
-        //    }
-        //    int i = 0;
-        //    int j = 0;
-        //    int control = 0;
-        //    for(i = 0; i < limit; i++)
-        //    {
-        //        for(j = control; j < limit; j++)
-        //        {
-        //            first.Add(i);
-        //            second.Add(j);
-        //            testString += i.ToString() + j.ToString() + ", ";
-        //        }
-        //        control++;
-        //    }
-
-        //    MessageBox.Show(testString);
-        //}
-
-        public static void GeneratesAddMultiply(bool isHard, int numberOfQuestions, bool isAddition)
+        public static void GeneratesAddMultiply(bool isHard)
         {
             List<Question> qL = new List<Question>();
             List<int> first = new List<int>();
             List<int> second = new List<int>();
             string testString = "";
             int limit = 10;
+            int i;
+            int j;
+            int lowerBound = 0;
+            int control = 0;
+            List<int> dontWrite = new List<int>();
             if (isHard == true)
             {
                 limit = 20;
-            }
-
-            int i = 0;
-            int j = 0;
-            int control = 0;
-            for (i = 0; i < limit; i++)
-            {
-                for (j = control; j < limit; j++)
+                lowerBound = 10;
+                int dontwriteint = 11;
+                for (i = lowerBound; i < limit; i++)
                 {
-                    first.Add(i);
-                    second.Add(j);
-                    testString += i.ToString() + j.ToString() + ", ";
+                    for (j = control; j < limit; j++)
+                    {
+
+                        if(j < dontwriteint)
+                        {
+                            first.Add(i);
+                            second.Add(j);
+                            testString += i.ToString() + " + " + j.ToString() + ", ";
+                        }
+
+                    }
+                    dontwriteint++;
+                    testString += "\n\n";
                 }
-                control++;
             }
-            Question question = new Question();
-            
-            MessageBox.Show(testString);
-        }
-
-        public static void GeneratesSubtractDivide(bool isHard)
-        {
-            List<Question> qL = new List<Question>();
-            List<int> first = new List<int>();
-            List<int> second = new List<int>();
-            string testString = "";
-            int limit = 10;
-            if (isHard == true)
+            else
             {
-                limit = 20;
-            }
-
-            int i = 0;
-            int j = 0;
-            int control = 0;
-            for (i = 0; i < limit; i++)
-            {
-                for (j = 0; j < limit; j++)
+                for (i = lowerBound; i < limit; i++)
                 {
-                    if(i >= j)
+                    for (j = control; j < limit; j++)
                     {
                         first.Add(i);
                         second.Add(j);
                         testString += i.ToString() + j.ToString() + ", ";
                     }
-                    
+                    control++;
+                }
+            }
+
+            
+
+            MessageBox.Show(testString);
+        }
+
+        public static void GeneratesSubtractDivide(bool isHard, int SubtractZero_DivideOne)
+        {
+            List<Question> qL = new List<Question>();
+            List<int> first = new List<int>();
+            List<int> second = new List<int>();
+            string testString = "";
+            int limit = 10;
+            int i;
+            int j;
+            int lowerBound = 0;
+            int control = 0;
+            if (isHard == true)
+            {
+                limit = 20;
+                lowerBound = 10;
+                int dontwriteint = 11;
+                for (i = lowerBound; i < limit; i++)
+                {
+                    for (j = control; j < limit; j++)
+                    {
+
+                        if (j < dontwriteint)
+                        {
+                            if( i >= j)
+                            {
+                                first.Add(i);
+                                second.Add(j);
+                                if (SubtractZero_DivideOne == 0)
+                                {
+                                    testString += i.ToString() + " - " + j.ToString() + ", ";
+                                }
+                                else
+                                {
+                                    testString += i.ToString() + " / " + j.ToString() + ", ";
+                                }
+                            }
+
+                        }
+
+                    }
+                    dontwriteint++;
+                    testString += "\n\n";
+                }
+            }
+            else
+            {
+                for (i = lowerBound; i < limit; i++)
+                {
+                    for (j = control; j < limit; j++)
+                    {
+                        if (i >= j)
+                        {
+                            first.Add(i);
+                            second.Add(j);
+                            if (SubtractZero_DivideOne == 0)
+                            {
+                                testString += i.ToString() + " - " + j.ToString() + ", ";
+                            }
+                            else
+                            {
+                                testString += i.ToString() + " / " + j.ToString() + ", ";
+                            }
+                        }
+
+                    }
+
                 }
                 control++;
             }
+            
 
             MessageBox.Show(testString);
         }

@@ -64,7 +64,6 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).BeginInit();
-            this.grpBxStudentInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource)).BeginInit();
@@ -76,10 +75,9 @@
             this.lblTeacherName.AutoSize = true;
             this.lblTeacherName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeacherName.ForeColor = System.Drawing.Color.Blue;
-            this.lblTeacherName.Location = new System.Drawing.Point(29, 41);
-            this.lblTeacherName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTeacherName.Location = new System.Drawing.Point(22, 33);
             this.lblTeacherName.Name = "lblTeacherName";
-            this.lblTeacherName.Size = new System.Drawing.Size(167, 26);
+            this.lblTeacherName.Size = new System.Drawing.Size(141, 22);
             this.lblTeacherName.TabIndex = 1;
             this.lblTeacherName.Text = "Teacher Name";
             // 
@@ -88,20 +86,18 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(256, 41);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(192, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 26);
+            this.label1.Size = new System.Drawing.Size(117, 22);
             this.label1.TabIndex = 3;
             this.label1.Text = "Your Classes";
             // 
             // cmbKlasses
             // 
             this.cmbKlasses.FormattingEnabled = true;
-            this.cmbKlasses.Location = new System.Drawing.Point(468, 43);
-            this.cmbKlasses.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbKlasses.Location = new System.Drawing.Point(351, 35);
             this.cmbKlasses.Name = "cmbKlasses";
-            this.cmbKlasses.Size = new System.Drawing.Size(160, 24);
+            this.cmbKlasses.Size = new System.Drawing.Size(121, 21);
             this.cmbKlasses.TabIndex = 5;
             this.cmbKlasses.SelectedIndexChanged += new System.EventHandler(this.cmbKlasses_SelectedIndexChanged);
             // 
@@ -121,10 +117,9 @@
             // 
             // btnCreateTest
             // 
-            this.btnCreateTest.Location = new System.Drawing.Point(55, 503);
-            this.btnCreateTest.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCreateTest.Location = new System.Drawing.Point(804, 35);
             this.btnCreateTest.Name = "btnCreateTest";
-            this.btnCreateTest.Size = new System.Drawing.Size(155, 44);
+            this.btnCreateTest.Size = new System.Drawing.Size(116, 36);
             this.btnCreateTest.TabIndex = 7;
             this.btnCreateTest.Text = "Create New Test";
             this.btnCreateTest.UseVisualStyleBackColor = true;
@@ -139,14 +134,9 @@
             // 
             this.grpBxStudentInfo.BackColor = System.Drawing.Color.Transparent;
             this.grpBxStudentInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.grpBxStudentInfo.Controls.Add(this.dgvStudents);
-            this.grpBxStudentInfo.Controls.Add(this.dgvTests);
-            this.grpBxStudentInfo.Controls.Add(this.btnCreateTest);
-            this.grpBxStudentInfo.Location = new System.Drawing.Point(35, 101);
-            this.grpBxStudentInfo.Margin = new System.Windows.Forms.Padding(4);
+            this.grpBxStudentInfo.Location = new System.Drawing.Point(26, 438);
             this.grpBxStudentInfo.Name = "grpBxStudentInfo";
-            this.grpBxStudentInfo.Padding = new System.Windows.Forms.Padding(4);
-            this.grpBxStudentInfo.Size = new System.Drawing.Size(1116, 575);
+            this.grpBxStudentInfo.Size = new System.Drawing.Size(834, 207);
             this.grpBxStudentInfo.TabIndex = 8;
             this.grpBxStudentInfo.TabStop = false;
             this.grpBxStudentInfo.Text = "Class Info";
@@ -165,11 +155,10 @@
             this.lastNameDataGridViewTextBoxColumn,
             this.masteryLevelDataGridViewTextBoxColumn});
             this.dgvStudents.DataSource = this.studentsBindingSource;
-            this.dgvStudents.Location = new System.Drawing.Point(39, 23);
-            this.dgvStudents.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvStudents.Location = new System.Drawing.Point(26, 82);
             this.dgvStudents.Name = "dgvStudents";
             this.dgvStudents.ReadOnly = true;
-            this.dgvStudents.Size = new System.Drawing.Size(1011, 185);
+            this.dgvStudents.Size = new System.Drawing.Size(758, 150);
             this.dgvStudents.TabIndex = 9;
             this.dgvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
             // 
@@ -224,10 +213,9 @@
             this.minLevelDataGridViewTextBoxColumn,
             this.maxLevelDataGridViewTextBoxColumn});
             this.dgvTests.DataSource = this.testsBindingSource;
-            this.dgvTests.Location = new System.Drawing.Point(55, 311);
-            this.dgvTests.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvTests.Location = new System.Drawing.Point(26, 266);
             this.dgvTests.Name = "dgvTests";
-            this.dgvTests.Size = new System.Drawing.Size(995, 185);
+            this.dgvTests.Size = new System.Drawing.Size(746, 150);
             this.dgvTests.TabIndex = 8;
             this.dgvTests.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTests_CellContentClick);
             // 
@@ -292,8 +280,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1227, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1290, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -303,27 +290,27 @@
             this.logoutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // helpToolStripMenuItem
@@ -331,36 +318,37 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // frmTeacherHome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1227, 732);
+            this.ClientSize = new System.Drawing.Size(1290, 670);
+            this.Controls.Add(this.dgvTests);
+            this.Controls.Add(this.dgvStudents);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.grpBxStudentInfo);
+            this.Controls.Add(this.btnCreateTest);
             this.Controls.Add(this.lblTeacherName);
             this.Controls.Add(this.cmbKlasses);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmTeacherHome";
             this.Text = "MathWiz - Teacher Portal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmTeacherHome_Load);
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).EndInit();
-            this.grpBxStudentInfo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTests)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource)).EndInit();

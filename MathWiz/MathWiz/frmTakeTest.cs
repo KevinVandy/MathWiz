@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -133,23 +134,22 @@ namespace MathWiz
                     GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, false, new TimeSpan(0, 1, 1));
                     gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
                 }
-
+                //TODO: Correct answer doesn't show up
+                //We can use Thread.Sleep(amountofTimeHere) to delay the program from moving on for a period of time
                 lblCorrectAnswer.Show();
-            }
-            currentQuestionNum++;
 
-            if (currentQuestionNum < test.Questions.Count)
-            {
-                ShowQuestion(test.Questions[currentQuestionNum]);
-            }
-            else //the test if finished
-            {
-                btnStartFinish.Show();
-            }
+                currentQuestionNum++;
 
-           
-            
-            
+                if (currentQuestionNum < test.Questions.Count)
+                {
+                    ShowQuestion(test.Questions[currentQuestionNum]);
+                }
+                else //the test if finished
+                {
+                    btnStartFinish.Show();
+                }
+
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -226,11 +226,6 @@ namespace MathWiz
             {
                 e.Cancel = true;
             }
-        }
-
-        private void gbxQuestion_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }
