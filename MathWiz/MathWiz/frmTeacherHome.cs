@@ -80,7 +80,7 @@ namespace MathWiz
         private void dgvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvStudents.SelectedRows[0];
-            string studentName = row.Cells["FirstName"].Value.ToString() + " " + row.Cells[5].Value.ToString();
+            string studentName = row.Cells["FirstName"].Value.ToString() + " " + row.Cells["LastName"].Value.ToString();
             grpBxStudentInfo.Text = studentName;
 
             grpBxStudentInfo.Visible = true;
