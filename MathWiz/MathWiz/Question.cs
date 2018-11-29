@@ -132,7 +132,7 @@ namespace MathWiz
  * 11. advanced div
  * 12. advanced mixed mult, div*/
 
-        public static List<Question> GenerateRandomQuestions(int masteryLevel, TimeSpan timeLimit)
+        public static List<Question> GenerateRandomQuestions(int masteryLevel, TimeSpan timeLimit, int numberofQuestions)
         {
             List<Question> qL = new List<Question>();
             
@@ -141,7 +141,7 @@ namespace MathWiz
             switch(masteryLevel)
             {
                 case 1:
-                    qL = GenerateSimpleAddtionQuestions(timeLimit, 10);
+                    qL = GenerateSimpleAddtionQuestions(timeLimit, numberofQuestions);
                     break;
                 case 2:
                     qL = GenerateSimpleSubtractionQuestions(timeLimit);
@@ -356,8 +356,9 @@ namespace MathWiz
 
 
 
-        public static void GeneratesAddMultiply(bool isHard)
+        public static void GeneratesAddMultiply(bool isHard, bool AddFalse_SubtractTrue)
         {
+            TimeSpan timeLimit = new TimeSpan();
             List<Question> qL = new List<Question>();
             List<int> first = new List<int>();
             List<int> second = new List<int>();

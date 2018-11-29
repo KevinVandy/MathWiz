@@ -63,7 +63,7 @@ namespace MathWiz
                         aNumber = MathWizDA.GetLastInsertedRecord("test", "id");
                         //need to resovle how we want to generate questions
                         this.Close();
-                        practiceTest.Questions = Question.GenerateRandomQuestions(practiceTest.MaxLevel, practiceTest.TimeLimit);
+                        practiceTest.Questions = Question.GenerateRandomQuestions(practiceTest.MaxLevel, practiceTest.TimeLimit,10);
                         foreach(Question q in practiceTest.Questions)
                         {
                             MathWizDB.InsertTestQuestionsPractice(practiceTest, q, aNumber);
@@ -80,7 +80,7 @@ namespace MathWiz
                         aNumber = MathWizDA.GetLastInsertedRecord("test", "id");
                         //need to resolve the how to create questions
                         this.Close();
-                        PlacementTest.Questions = Question.GenerateRandomQuestions(PlacementTest.MaxLevel, PlacementTest.TimeLimit);
+                        PlacementTest.Questions = Question.GenerateRandomQuestions(PlacementTest.MaxLevel, PlacementTest.TimeLimit, 10);
                         foreach (Question q in PlacementTest.Questions)
                         {
                             MathWizDB.InsertTestQuestionPlacement(PlacementTest, q, aNumber);
@@ -97,7 +97,7 @@ namespace MathWiz
                         aNumber = MathWizDA.GetLastInsertedRecord("test", "id");
                         //need to resolve the how on creatign questions
                         this.Close();
-                        masteryTest.Questions = Question.GenerateRandomQuestions(masteryTest.MasteryLevel, masteryTest.TimeLimit);
+                        masteryTest.Questions = Question.GenerateRandomQuestions(masteryTest.MasteryLevel, masteryTest.TimeLimit,10);
                         foreach (Question q in masteryTest.Questions)
                         {
                             MathWizDB.InsertTestQuestionMastery(masteryTest, q, aNumber);
