@@ -120,35 +120,37 @@ namespace MathWiz
 
         private void btnSubmitAnswer_Click(object sender, EventArgs e)
         {
-            if (Validation.IsInteger(txtStudentAnswer))
+            //This first if statement prevents the user from getting an error by pressing submit on the last question
+            if(currentQuestionNum != test.Questions.Count)
             {
-                if (Convert.ToInt32(txtStudentAnswer.Text.Trim()) == test.Questions[currentQuestionNum].CorrectAnswer)
+                if (Validation.IsInteger(txtStudentAnswer))
                 {
-                    GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0,1,1));
-                    gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
+                    if (Convert.ToInt32(txtStudentAnswer.Text.Trim()) == test.Questions[currentQuestionNum].CorrectAnswer)
+                    {
+                        GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0, 1, 1));
+                        gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
+                    }
+                    else
+                    {
+                        GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, false, new TimeSpan(0, 1, 1));
+                        gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
+                    }
+                    //TODO: Correct answer doesn't show up
+                    //We can use Thread.Sleep(amountofTimeHere) to delay the program from moving on for a period of time
+                    lblCorrectAnswer.Show();
 
-                    
-                }
-                else
-                {
-                    GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, false, new TimeSpan(0, 1, 1));
-                    gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
-                }
-                //TODO: Correct answer doesn't show up
-                //We can use Thread.Sleep(amountofTimeHere) to delay the program from moving on for a period of time
-                lblCorrectAnswer.Show();
+                    currentQuestionNum++;
 
-                currentQuestionNum++;
+                    if (currentQuestionNum < test.Questions.Count)
+                    {
+                        ShowQuestion(test.Questions[currentQuestionNum]);
+                    }
+                    else //the test if finished
+                    {
+                        btnStartFinish.Show();
+                    }
 
-                if (currentQuestionNum < test.Questions.Count)
-                {
-                    ShowQuestion(test.Questions[currentQuestionNum]);
                 }
-                else //the test if finished
-                {
-                    btnStartFinish.Show();
-                }
-
             }
         }
 
