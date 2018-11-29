@@ -443,13 +443,23 @@ namespace MathWiz
             chtMasterLevelDistribution.Series[0].Points.Clear();
 
             int[] masteryLevels = new int[lsvStudents.Items.Count];
-            
+            int[] masteryLevelFrequency;
+
+
             for (int i = 0; i < lsvStudents.Items.Count; i++)
             {
                 masteryLevels[i] = Convert.ToInt32(lsvStudents.Items[i].SubItems[2].Text);
             }
 
-            int[] masteryLevelFrequency = new int[(masteryLevels).Max()]; //only make the size of the array the size of the max mastery level achieved in class
+            if(masteryLevels.Count() > 0)
+            {
+                masteryLevelFrequency = new int[(masteryLevels).Max()]; //only make the size of the array the size of the max mastery level achieved in class
+            }
+            else
+            {
+                masteryLevelFrequency = new int[12]; //only make the size of the array the size of the max mastery level achieved in class
+            }
+            
 
             for (int i = 0; i <= masteryLevelFrequency.GetUpperBound(0); i++)
             {

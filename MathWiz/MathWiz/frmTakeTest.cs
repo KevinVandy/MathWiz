@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -93,8 +94,8 @@ namespace MathWiz
         private void ShowQuestion(Question q)
         {
             //show timer stuff
-            lblTimerQuestion.Text = q.TimeLimit.ToString();
             timerQuestion.Start();
+            lblTimerQuestion.Show();
 
             //show the question number
             gbxQuestion.Text = "Question " + (currentQuestionNum + 1).ToString() + " of " + test.Questions.Count;
@@ -120,37 +121,36 @@ namespace MathWiz
 
         private void btnSubmitAnswer_Click(object sender, EventArgs e)
         {
-            //This first if statement prevents the user from getting an error by pressing submit on the last question
-            if(currentQuestionNum != test.Questions.Count)
+            if (Validation.IsInteger(txtStudentAnswer))
             {
-                if (Validation.IsInteger(txtStudentAnswer))
+                if (Convert.ToInt32(txtStudentAnswer.Text.Trim()) == test.Questions[currentQuestionNum].CorrectAnswer)
                 {
-                    if (Convert.ToInt32(txtStudentAnswer.Text.Trim()) == test.Questions[currentQuestionNum].CorrectAnswer)
-                    {
-                        GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0, 1, 1));
-                        gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
-                    }
-                    else
-                    {
-                        GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, false, new TimeSpan(0, 1, 1));
-                        gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
-                    }
-                    //TODO: Correct answer doesn't show up
-                    //We can use Thread.Sleep(amountofTimeHere) to delay the program from moving on for a period of time
-                    lblCorrectAnswer.Show();
+                    GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0,1,1));
+                    gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
 
-                    currentQuestionNum++;
-
-                    if (currentQuestionNum < test.Questions.Count)
-                    {
-                        ShowQuestion(test.Questions[currentQuestionNum]);
-                    }
-                    else //the test if finished
-                    {
-                        btnStartFinish.Show();
-                    }
-
+                    
                 }
+                else
+                {
+                    GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, false, new TimeSpan(0, 1, 1));
+                    gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
+                }
+                //TODO: Correct answer doesn't show up
+                //We can use Thread.Sleep(amountofTimeHere) to delay the program from moving on for a period of time
+                lblCorrectAnswer.Show();
+
+                currentQuestionNum++;
+
+                if (currentQuestionNum < test.Questions.Count)
+                {
+                    ShowQuestion(test.Questions[currentQuestionNum]);
+                }
+                else //the test if finished
+                {
+                    btnStartFinish.Show();
+                    btnSubmitAnswer.Enabled = false;
+                }
+
             }
         }
 
@@ -187,8 +187,10 @@ namespace MathWiz
                 btnStartFinish.Text = "Finish Test";
                 
                 btnStartFinish.Hide();
-                
 
+                timerTest.Start();
+                lblTimerTest.Show();
+                
                 ShowQuestion(test.Questions[currentQuestionNum]);
                 
             }
@@ -204,21 +206,21 @@ namespace MathWiz
 
         private void timerTest_Tick(object sender, EventArgs e)
         {
-         //   lblTimerTest.Text = timerTest.ToString();
+            TimeSpan currentTime = TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
 
-            
+            currentTime = currentTime.Subtract(new TimeSpan(0, 0, 1));
+
+            lblTimerTest.Text = currentTime.Minutes.ToString("00") + ":" + currentTime.Seconds.ToString("00");
         }
 
         private void timerQuestion_Tick(object sender, EventArgs e)
         {
-            lblTimerQuestion.Text = timerQuestion.ToString();
+            TimeSpan currentTime = TimeSpan.ParseExact(lblTimerQuestion.Text, "mm\\:ss", CultureInfo.InvariantCulture);
 
-            //if (TimeSpan.Parse(lblTimerQuestion.Text) <= new TimeSpan(0,0,0)) //if time runs out
-            //{
-            //    timerQuestion.Stop();
-            //    btnSubmitAnswer.Enabled = false;
-            //    lblCorrectAnswer.Show();
-            //}
+            currentTime = currentTime.Subtract(new TimeSpan(0, 0, 1));
+
+            lblTimerQuestion.Text = currentTime.Minutes.ToString("00") + ":" + currentTime.Seconds.ToString("00");
+            
         }
 
         private void frmTakeTest_FormClosing(object sender, FormClosingEventArgs e)

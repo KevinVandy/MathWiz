@@ -46,6 +46,7 @@ namespace MathWiz
         {
             this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet.students);
             this.testsTableAdapter.Fill(this.mathWizGroup3DataSet.tests);
+            this.gradedTestsTableAdapter.Fill(this.mathWizGroup3DataSet.graded_tests);
         }
 
         private void backgroundWorkerLoadData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -80,10 +81,16 @@ namespace MathWiz
         private void dgvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvStudents.SelectedRows[0];
-            string studentName = row.Cells["FirstName"].Value.ToString() + " " + row.Cells[5].Value.ToString();
+            string studentName = row.Cells["FirstName"].Value.ToString() + " " + row.Cells["LastName"].Value.ToString();
             grpBxStudentInfo.Text = studentName;
 
             grpBxStudentInfo.Visible = true;
+
+            int studentId = Int32.Parse(row.Cells["Id"].Value.ToString());
+            //this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, selectedItem.Id);
+
+            this.gradedTestsTableAdapter.FillByGradedTests(this.mathWizGroup3DataSet.graded_tests, studentId);
+
         }
 
         private void dgvTests_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -105,6 +112,19 @@ namespace MathWiz
         {
             Form aboutForm = new frmAboutBox();
             aboutForm.Show();
+        }
+
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.gradedTestsTableAdapter.FillBy(this.mathWizGroup3DataSet.graded_tests);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }
