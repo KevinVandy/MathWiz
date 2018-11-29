@@ -18,10 +18,10 @@ namespace MathWiz
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLogin());
+            //List<Question> qL = new List<Question>();
+            //qL = Question.GeneratesSubtractDivide(true, true);
 
-            //Question.GeneratesSubtractDivide(true, 1);
-            //Question.GeneratesAddMultiply(false);
-
+            
 
         }
     }

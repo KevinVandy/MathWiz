@@ -409,8 +409,10 @@ namespace MathWiz
             MessageBox.Show(testString);
         }
 
-        public static void GeneratesSubtractDivide(bool isHard, int SubtractZero_DivideOne)
+        public static List<Question> GeneratesSubtractDivide(bool isHard, bool SubtractFalse_DivideTrue)
         {
+            TimeSpan timelimit = new TimeSpan();
+            timelimit = TimeSpan.FromTicks(5000);
             List<Question> qL = new List<Question>();
             List<int> first = new List<int>();
             List<int> second = new List<int>();
@@ -434,9 +436,17 @@ namespace MathWiz
                         {
                             if( i >= j)
                             {
-                                first.Add(i);
-                                second.Add(j);
-                                if (SubtractZero_DivideOne == 0)
+                                if(j == 0)
+                                {
+
+                                }
+                                else
+                                {
+                                    first.Add(i);
+                                    second.Add(j);
+                                }
+
+                                if (SubtractFalse_DivideTrue == false)
                                 {
                                     testString += i.ToString() + " - " + j.ToString() + ", ";
                                 }
@@ -461,9 +471,16 @@ namespace MathWiz
                     {
                         if (i >= j)
                         {
-                            first.Add(i);
-                            second.Add(j);
-                            if (SubtractZero_DivideOne == 0)
+                            if (j == 0)
+                            {
+
+                            }
+                            else
+                            {
+                                first.Add(i);
+                                second.Add(j);
+                            }
+                            if (SubtractFalse_DivideTrue == false)
                             {
                                 testString += i.ToString() + " - " + j.ToString() + ", ";
                             }
@@ -478,10 +495,71 @@ namespace MathWiz
                 }
                 control++;
             }
-            
+            string qT;
+            int[] answer = new int[500];
+            if(SubtractFalse_DivideTrue == false )
+            {
+                var firstEnumerator = first.GetEnumerator();
+                var secondEnumerator = second.GetEnumerator();
+                //enumerate through the list
+                while(firstEnumerator.MoveNext())
+                {
+                    int counter = 0;
+                    secondEnumerator.MoveNext();
+                    qT = firstEnumerator.Current.ToString() + " - " + secondEnumerator.Current.ToString() + " =";
+                    answer[counter] = firstEnumerator.Current - secondEnumerator.Current;
+                    Question aQuestion = new Question();
+                    aQuestion.CorrectAnswer = answer[counter];
+                    aQuestion.RandomlyGenerated = true;
+                    aQuestion.QuestionText = qT;
+                    aQuestion.TimeLimit = timelimit;
+                    qL.Add(aQuestion);
+                }
+                    
+                
+            }
+            else
+            {
+                var firstEnumerator = first.GetEnumerator();
+                var secondEnumerator = second.GetEnumerator();
+                //enumerate through the list
+                while (firstEnumerator.MoveNext())
+                {
+                    int counter = 0;
+                    secondEnumerator.MoveNext();
+                    qT = firstEnumerator.Current.ToString() + " / " + secondEnumerator.Current.ToString() + " =";
+                    answer[counter] = firstEnumerator.Current / secondEnumerator.Current;
 
-            MessageBox.Show(testString);
+                    Question aQuestion = new Question();
+                    aQuestion.CorrectAnswer = answer[counter];
+                    aQuestion.RandomlyGenerated = true;
+                    aQuestion.QuestionText = qT;
+                    aQuestion.TimeLimit = timelimit;
+                    qL.Add(aQuestion);
+                }
+            }
+
+
+
+            return qL;
         }
     }
 }
 
+//var secondEasyEnumerator = secondEasy.GetEnumerator();
+//var answerEnumerator = answer.GetEnumerator();
+//            //enumerate through the lists
+//            while(firstEasyEnumerator.MoveNext())
+//            {
+//                int counter = 0;
+//secondEasyEnumerator.MoveNext();
+//                answerEnumerator.MoveNext();
+//                answer[counter] = ((firstEasyEnumerator.Current) + (secondEasyEnumerator.Current));
+//                questionText = firstEasyEnumerator.Current.ToString() + " + " + secondEasyEnumerator.Current.ToString() + " = ";
+                
+//                Question question = new Question();
+//question.QuestionText = questionText;
+//                question.CorrectAnswer = answer[counter];
+//                question.TimeLimit = timelimit;
+//                counter++;
+//                testQuestions.Add(question);
