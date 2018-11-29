@@ -45,6 +45,9 @@
             this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
             this.lblStudentName = new System.Windows.Forms.Label();
             this.lblMasteryLevel = new System.Windows.Forms.Label();
+            this.cmbNumberOfQuestions = new System.Windows.Forms.ComboBox();
+            this.lblMasteryLevels = new System.Windows.Forms.Label();
+            this.lblNumberOfQuestions = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.gbxTakeTests.SuspendLayout();
             this.SuspendLayout();
@@ -58,7 +61,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1020, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1041, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -96,7 +99,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -138,15 +141,18 @@
             // 
             // gbxTakeTests
             // 
+            this.gbxTakeTests.Controls.Add(this.lblNumberOfQuestions);
+            this.gbxTakeTests.Controls.Add(this.lblMasteryLevels);
+            this.gbxTakeTests.Controls.Add(this.cmbNumberOfQuestions);
             this.gbxTakeTests.Controls.Add(this.btnTakeRandomPracticeTest);
             this.gbxTakeTests.Controls.Add(this.cmbMasteryLevel);
             this.gbxTakeTests.Controls.Add(this.btnTakeMasteryTest);
             this.gbxTakeTests.Controls.Add(this.btnTakePracticeTest);
             this.gbxTakeTests.Controls.Add(this.btnTakePlacementTest);
             this.gbxTakeTests.Location = new System.Drawing.Point(31, 106);
-            this.gbxTakeTests.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxTakeTests.Margin = new System.Windows.Forms.Padding(4);
             this.gbxTakeTests.Name = "gbxTakeTests";
-            this.gbxTakeTests.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxTakeTests.Padding = new System.Windows.Forms.Padding(4);
             this.gbxTakeTests.Size = new System.Drawing.Size(947, 386);
             this.gbxTakeTests.TabIndex = 6;
             this.gbxTakeTests.TabStop = false;
@@ -183,8 +189,8 @@
             "11",
             "12",
             "13"});
-            this.cmbMasteryLevel.Location = new System.Drawing.Point(372, 220);
-            this.cmbMasteryLevel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbMasteryLevel.Location = new System.Drawing.Point(375, 234);
+            this.cmbMasteryLevel.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMasteryLevel.Name = "cmbMasteryLevel";
             this.cmbMasteryLevel.Size = new System.Drawing.Size(119, 39);
             this.cmbMasteryLevel.TabIndex = 6;
@@ -192,9 +198,9 @@
             // gbxViewProgress
             // 
             this.gbxViewProgress.Location = new System.Drawing.Point(31, 539);
-            this.gbxViewProgress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxViewProgress.Margin = new System.Windows.Forms.Padding(4);
             this.gbxViewProgress.Name = "gbxViewProgress";
-            this.gbxViewProgress.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxViewProgress.Padding = new System.Windows.Forms.Padding(4);
             this.gbxViewProgress.Size = new System.Drawing.Size(947, 204);
             this.gbxViewProgress.TabIndex = 7;
             this.gbxViewProgress.TabStop = false;
@@ -227,12 +233,46 @@
             this.lblMasteryLevel.TabIndex = 8;
             this.lblMasteryLevel.Text = "Mastery Level: 00";
             // 
+            // cmbNumberOfQuestions
+            // 
+            this.cmbNumberOfQuestions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbNumberOfQuestions.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbNumberOfQuestions.FormattingEnabled = true;
+            this.cmbNumberOfQuestions.Items.AddRange(new object[] {
+            "5",
+            "10",
+            "15",
+            "20"});
+            this.cmbNumberOfQuestions.Location = new System.Drawing.Point(517, 234);
+            this.cmbNumberOfQuestions.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbNumberOfQuestions.Name = "cmbNumberOfQuestions";
+            this.cmbNumberOfQuestions.Size = new System.Drawing.Size(119, 39);
+            this.cmbNumberOfQuestions.TabIndex = 8;
+            // 
+            // lblMasteryLevels
+            // 
+            this.lblMasteryLevels.AutoSize = true;
+            this.lblMasteryLevels.Location = new System.Drawing.Point(372, 210);
+            this.lblMasteryLevels.Name = "lblMasteryLevels";
+            this.lblMasteryLevels.Size = new System.Drawing.Size(100, 17);
+            this.lblMasteryLevels.TabIndex = 9;
+            this.lblMasteryLevels.Text = "Mastery Level:";
+            // 
+            // lblNumberOfQuestions
+            // 
+            this.lblNumberOfQuestions.AutoSize = true;
+            this.lblNumberOfQuestions.Location = new System.Drawing.Point(514, 210);
+            this.lblNumberOfQuestions.Name = "lblNumberOfQuestions";
+            this.lblNumberOfQuestions.Size = new System.Drawing.Size(104, 17);
+            this.lblNumberOfQuestions.TabIndex = 10;
+            this.lblNumberOfQuestions.Text = "# of Questions:";
+            // 
             // frmStudentHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1041, 677);
+            this.ClientSize = new System.Drawing.Size(1062, 677);
             this.Controls.Add(this.lblMasteryLevel);
             this.Controls.Add(this.lblStudentName);
             this.Controls.Add(this.gbxViewProgress);
@@ -240,7 +280,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmStudentHome";
             this.Text = "MathWiz - Student Portal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -248,6 +288,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.gbxTakeTests.ResumeLayout(false);
+            this.gbxTakeTests.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,5 +312,8 @@
         private System.Windows.Forms.Label lblStudentName;
         private System.Windows.Forms.Label lblMasteryLevel;
         private System.Windows.Forms.Button btnTakeRandomPracticeTest;
+        private System.Windows.Forms.Label lblNumberOfQuestions;
+        private System.Windows.Forms.Label lblMasteryLevels;
+        private System.Windows.Forms.ComboBox cmbNumberOfQuestions;
     }
 }

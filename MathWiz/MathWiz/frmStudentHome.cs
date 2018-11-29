@@ -96,8 +96,10 @@ namespace MathWiz
 
         private void btnTakeRandomPracticeTest_Click(object sender, EventArgs e)
         {
+            //TODO: Hook up Number Of Questions, so that the variable number of questions reflects the test
             int masteryLevel = Convert.ToInt16(cmbMasteryLevel.SelectedItem);
-            PracticeTest practiceTest = new PracticeTest(Question.GenerateRandomQuestions(masteryLevel, new TimeSpan(0, 1, 0),10), new TimeSpan(1,0,0), true, masteryLevel, masteryLevel);
+            int numberOfQuestions = Convert.ToInt16(cmbNumberOfQuestions.SelectedItem);
+            PracticeTest practiceTest = new PracticeTest(Question.GenerateRandomQuestions(masteryLevel, new TimeSpan(0, 1, 0), numberOfQuestions), new TimeSpan(0, 10, 0), true, masteryLevel, masteryLevel);
             
 
             Form practiceForm = new frmTakeTest(student, practiceTest);
