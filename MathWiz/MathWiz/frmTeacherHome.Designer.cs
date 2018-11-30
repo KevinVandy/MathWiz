@@ -36,6 +36,19 @@
             this.btnCreateTest = new System.Windows.Forms.Button();
             this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
             this.grpBxStudentInfo = new System.Windows.Forms.GroupBox();
+            this.dgvGradedTests = new System.Windows.Forms.DataGridView();
+            this.gradedTest_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gradedTestStudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gradedTestTestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gradedTestScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gradedTestTimeTaken = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gradedTestDateTaken = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gradedTestFeedback = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gradedTestNumberAttempts = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gradedTestPast = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.recommendedLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gradedTestBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mathWizGroup3DataSet = new MathWiz.MathWizGroup3DataSet();
             this.dgvStudents = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,7 +56,6 @@
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MasteryLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mathWizGroup3DataSet = new MathWiz.MathWizGroup3DataSet();
             this.dgvTests = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.testTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,31 +75,17 @@
             this.studentsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.studentsTableAdapter();
             this.testsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.testsTableAdapter();
             this.gradedTestsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.graded_testsTableAdapter();
-            this.mathWizGroup3DataSet1 = new MathWiz.MathWizGroup3DataSet1();
-            this.gradedTestBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dgvGradedTests = new System.Windows.Forms.DataGridView();
-            this.gradedTest_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gradedTestStudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gradedTestTestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gradedTestScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gradedTestTimeTaken = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gradedTestDateTaken = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gradedTestFeedback = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gradedTestNumberAttempts = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gradedTestPast = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.recommendedLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
             this.grpBxStudentInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGradedTests)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gradedTestBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradedTestBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvGradedTests)).BeginInit();
             this.fillByToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -149,6 +147,115 @@
             this.grpBxStudentInfo.TabStop = false;
             this.grpBxStudentInfo.Text = "Class Info";
             this.grpBxStudentInfo.Visible = false;
+            // 
+            // dgvGradedTests
+            // 
+            this.dgvGradedTests.AllowUserToAddRows = false;
+            this.dgvGradedTests.AllowUserToDeleteRows = false;
+            this.dgvGradedTests.AutoGenerateColumns = false;
+            this.dgvGradedTests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGradedTests.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gradedTest_Id,
+            this.gradedTestStudentID,
+            this.gradedTestTestID,
+            this.gradedTestScore,
+            this.gradedTestTimeTaken,
+            this.gradedTestDateTaken,
+            this.gradedTestFeedback,
+            this.gradedTestNumberAttempts,
+            this.gradedTestPast,
+            this.recommendedLevelDataGridViewTextBoxColumn});
+            this.dgvGradedTests.DataSource = this.gradedTestBindingSource;
+            this.dgvGradedTests.Location = new System.Drawing.Point(6, 36);
+            this.dgvGradedTests.MultiSelect = false;
+            this.dgvGradedTests.Name = "dgvGradedTests";
+            this.dgvGradedTests.ReadOnly = true;
+            this.dgvGradedTests.RowHeadersVisible = false;
+            this.dgvGradedTests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvGradedTests.Size = new System.Drawing.Size(822, 150);
+            this.dgvGradedTests.TabIndex = 0;
+            // 
+            // gradedTest_Id
+            // 
+            this.gradedTest_Id.DataPropertyName = "Id";
+            this.gradedTest_Id.HeaderText = "Id";
+            this.gradedTest_Id.Name = "gradedTest_Id";
+            this.gradedTest_Id.ReadOnly = true;
+            this.gradedTest_Id.Visible = false;
+            // 
+            // gradedTestStudentID
+            // 
+            this.gradedTestStudentID.DataPropertyName = "StudentID";
+            this.gradedTestStudentID.HeaderText = "StudentID";
+            this.gradedTestStudentID.Name = "gradedTestStudentID";
+            this.gradedTestStudentID.ReadOnly = true;
+            this.gradedTestStudentID.Visible = false;
+            // 
+            // gradedTestTestID
+            // 
+            this.gradedTestTestID.DataPropertyName = "TestID";
+            this.gradedTestTestID.HeaderText = "TestID";
+            this.gradedTestTestID.Name = "gradedTestTestID";
+            this.gradedTestTestID.ReadOnly = true;
+            // 
+            // gradedTestScore
+            // 
+            this.gradedTestScore.DataPropertyName = "Score";
+            this.gradedTestScore.HeaderText = "Score";
+            this.gradedTestScore.Name = "gradedTestScore";
+            this.gradedTestScore.ReadOnly = true;
+            // 
+            // gradedTestTimeTaken
+            // 
+            this.gradedTestTimeTaken.DataPropertyName = "TimeTakenToComplete";
+            this.gradedTestTimeTaken.HeaderText = "TimeTakenToComplete";
+            this.gradedTestTimeTaken.Name = "gradedTestTimeTaken";
+            this.gradedTestTimeTaken.ReadOnly = true;
+            // 
+            // gradedTestDateTaken
+            // 
+            this.gradedTestDateTaken.DataPropertyName = "DateTaken";
+            this.gradedTestDateTaken.HeaderText = "DateTaken";
+            this.gradedTestDateTaken.Name = "gradedTestDateTaken";
+            this.gradedTestDateTaken.ReadOnly = true;
+            // 
+            // gradedTestFeedback
+            // 
+            this.gradedTestFeedback.DataPropertyName = "Feedback";
+            this.gradedTestFeedback.HeaderText = "Feedback";
+            this.gradedTestFeedback.Name = "gradedTestFeedback";
+            this.gradedTestFeedback.ReadOnly = true;
+            // 
+            // gradedTestNumberAttempts
+            // 
+            this.gradedTestNumberAttempts.DataPropertyName = "NumberAttempts";
+            this.gradedTestNumberAttempts.HeaderText = "NumberAttempts";
+            this.gradedTestNumberAttempts.Name = "gradedTestNumberAttempts";
+            this.gradedTestNumberAttempts.ReadOnly = true;
+            // 
+            // gradedTestPast
+            // 
+            this.gradedTestPast.DataPropertyName = "Passed";
+            this.gradedTestPast.HeaderText = "Passed";
+            this.gradedTestPast.Name = "gradedTestPast";
+            this.gradedTestPast.ReadOnly = true;
+            // 
+            // recommendedLevelDataGridViewTextBoxColumn
+            // 
+            this.recommendedLevelDataGridViewTextBoxColumn.DataPropertyName = "RecommendedLevel";
+            this.recommendedLevelDataGridViewTextBoxColumn.HeaderText = "RecommendedLevel";
+            this.recommendedLevelDataGridViewTextBoxColumn.Name = "recommendedLevelDataGridViewTextBoxColumn";
+            this.recommendedLevelDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // gradedTestBindingSource
+            // 
+            this.gradedTestBindingSource.DataMember = "graded_tests";
+            this.gradedTestBindingSource.DataSource = this.mathWizGroup3DataSet;
+            // 
+            // mathWizGroup3DataSet
+            // 
+            this.mathWizGroup3DataSet.DataSetName = "MathWizGroup3DataSet";
+            this.mathWizGroup3DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dgvStudents
             // 
@@ -214,11 +321,6 @@
             // 
             this.studentsBindingSource.DataMember = "students";
             this.studentsBindingSource.DataSource = this.mathWizGroup3DataSet;
-            // 
-            // mathWizGroup3DataSet
-            // 
-            this.mathWizGroup3DataSet.DataSetName = "MathWizGroup3DataSet";
-            this.mathWizGroup3DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dgvTests
             // 
@@ -366,115 +468,6 @@
             // 
             this.gradedTestsTableAdapter.ClearBeforeFill = true;
             // 
-            // mathWizGroup3DataSet1
-            // 
-            this.mathWizGroup3DataSet1.DataSetName = "MathWizGroup3DataSet1";
-            this.mathWizGroup3DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // gradedTestBindingSource
-            // 
-            this.gradedTestBindingSource.DataMember = "graded_tests";
-            this.gradedTestBindingSource.DataSource = this.mathWizGroup3DataSet;
-            // 
-            // dgvGradedTests
-            // 
-            this.dgvGradedTests.AllowUserToAddRows = false;
-            this.dgvGradedTests.AllowUserToDeleteRows = false;
-            this.dgvGradedTests.AutoGenerateColumns = false;
-            this.dgvGradedTests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvGradedTests.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.gradedTest_Id,
-            this.gradedTestStudentID,
-            this.gradedTestTestID,
-            this.gradedTestScore,
-            this.gradedTestTimeTaken,
-            this.gradedTestDateTaken,
-            this.gradedTestFeedback,
-            this.gradedTestNumberAttempts,
-            this.gradedTestPast,
-            this.recommendedLevelDataGridViewTextBoxColumn});
-            this.dgvGradedTests.DataSource = this.gradedTestBindingSource;
-            this.dgvGradedTests.Location = new System.Drawing.Point(6, 36);
-            this.dgvGradedTests.MultiSelect = false;
-            this.dgvGradedTests.Name = "dgvGradedTests";
-            this.dgvGradedTests.ReadOnly = true;
-            this.dgvGradedTests.RowHeadersVisible = false;
-            this.dgvGradedTests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvGradedTests.Size = new System.Drawing.Size(822, 150);
-            this.dgvGradedTests.TabIndex = 0;
-            // 
-            // gradedTest_Id
-            // 
-            this.gradedTest_Id.DataPropertyName = "Id";
-            this.gradedTest_Id.HeaderText = "Id";
-            this.gradedTest_Id.Name = "gradedTest_Id";
-            this.gradedTest_Id.ReadOnly = true;
-            this.gradedTest_Id.Visible = false;
-            // 
-            // gradedTestStudentID
-            // 
-            this.gradedTestStudentID.DataPropertyName = "StudentID";
-            this.gradedTestStudentID.HeaderText = "StudentID";
-            this.gradedTestStudentID.Name = "gradedTestStudentID";
-            this.gradedTestStudentID.ReadOnly = true;
-            this.gradedTestStudentID.Visible = false;
-            // 
-            // gradedTestTestID
-            // 
-            this.gradedTestTestID.DataPropertyName = "TestID";
-            this.gradedTestTestID.HeaderText = "TestID";
-            this.gradedTestTestID.Name = "gradedTestTestID";
-            this.gradedTestTestID.ReadOnly = true;
-            // 
-            // gradedTestScore
-            // 
-            this.gradedTestScore.DataPropertyName = "Score";
-            this.gradedTestScore.HeaderText = "Score";
-            this.gradedTestScore.Name = "gradedTestScore";
-            this.gradedTestScore.ReadOnly = true;
-            // 
-            // gradedTestTimeTaken
-            // 
-            this.gradedTestTimeTaken.DataPropertyName = "TimeTakenToComplete";
-            this.gradedTestTimeTaken.HeaderText = "TimeTakenToComplete";
-            this.gradedTestTimeTaken.Name = "gradedTestTimeTaken";
-            this.gradedTestTimeTaken.ReadOnly = true;
-            // 
-            // gradedTestDateTaken
-            // 
-            this.gradedTestDateTaken.DataPropertyName = "DateTaken";
-            this.gradedTestDateTaken.HeaderText = "DateTaken";
-            this.gradedTestDateTaken.Name = "gradedTestDateTaken";
-            this.gradedTestDateTaken.ReadOnly = true;
-            // 
-            // gradedTestFeedback
-            // 
-            this.gradedTestFeedback.DataPropertyName = "Feedback";
-            this.gradedTestFeedback.HeaderText = "Feedback";
-            this.gradedTestFeedback.Name = "gradedTestFeedback";
-            this.gradedTestFeedback.ReadOnly = true;
-            // 
-            // gradedTestNumberAttempts
-            // 
-            this.gradedTestNumberAttempts.DataPropertyName = "NumberAttempts";
-            this.gradedTestNumberAttempts.HeaderText = "NumberAttempts";
-            this.gradedTestNumberAttempts.Name = "gradedTestNumberAttempts";
-            this.gradedTestNumberAttempts.ReadOnly = true;
-            // 
-            // gradedTestPast
-            // 
-            this.gradedTestPast.DataPropertyName = "Passed";
-            this.gradedTestPast.HeaderText = "Passed";
-            this.gradedTestPast.Name = "gradedTestPast";
-            this.gradedTestPast.ReadOnly = true;
-            // 
-            // recommendedLevelDataGridViewTextBoxColumn
-            // 
-            this.recommendedLevelDataGridViewTextBoxColumn.DataPropertyName = "RecommendedLevel";
-            this.recommendedLevelDataGridViewTextBoxColumn.HeaderText = "RecommendedLevel";
-            this.recommendedLevelDataGridViewTextBoxColumn.Name = "recommendedLevelDataGridViewTextBoxColumn";
-            this.recommendedLevelDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // fillByToolStripButton
             // 
             this.fillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -514,16 +507,15 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmTeacherHome_Load);
             this.grpBxStudentInfo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGradedTests)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gradedTestBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTests)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradedTestBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvGradedTests)).EndInit();
             this.fillByToolStrip.ResumeLayout(false);
             this.fillByToolStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -565,7 +557,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn MasteryLevel;
         private MathWizGroup3DataSetTableAdapters.graded_testsTableAdapter gradedTestsTableAdapter;
-        private MathWizGroup3DataSet1 mathWizGroup3DataSet1;
         private System.Windows.Forms.BindingSource gradedTestBindingSource;
         private System.Windows.Forms.DataGridView dgvGradedTests;
         private System.Windows.Forms.DataGridViewTextBoxColumn gradedTest_Id;

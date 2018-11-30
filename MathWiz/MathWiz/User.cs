@@ -75,7 +75,7 @@ namespace MathWiz
             var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
             byte[] hash = pbkdf2.GetBytes(20);
 
-            //if the do not hashes match, then return false, otherwise return true to verify the password
+            //if the hashes do not match, then return false, otherwise return true to verify the password
             for (int i = 0; i < 20; i++)
             {
                 if (hashBytes[i + 16] != hash[i]) //for some reason it needs to check != or else there were false positives 10% of the time

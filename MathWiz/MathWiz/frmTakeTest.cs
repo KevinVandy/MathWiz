@@ -17,7 +17,6 @@ namespace MathWiz
         Test test;
         GradedTest gradedTest;
         Student student;
-        int testID;
         int currentQuestionNum = 0;
 
         public frmTakeTest(Student s, Test t) 
@@ -67,23 +66,23 @@ namespace MathWiz
 
         private void backgroundWorkerLoadTest_DoWork(object sender, DoWorkEventArgs e)
         {
-            switch (this.Tag.ToString())
-            {
-                case "placement":
+            //switch (this.Tag.ToString())
+            //{
+            //    case "placement":
 
-                    test = MathWizDA.SelectPlacementTest(testID);
-                    break;
+            //        test = MathWizDA.SelectPlacementTest(testID);
+            //        break;
 
-                case "practice":
+            //    case "practice":
 
-                    //TODO call a method to generate a test -- OR I guess load one from the database
-                    break;
+            //        //TODO call a method to generate a test -- OR I guess load one from the database
+            //        break;
 
-                case "mastery":
+            //    case "mastery":
 
-                    test = MathWizDA.SelectMasteryTest(testID);
-                    break;
-            }
+            //        test = MathWizDA.SelectMasteryTest(testID);
+            //        break;
+            //}
         }
 
         private void backgroundWorkerLoadTest_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -212,11 +211,11 @@ namespace MathWiz
         {
             TimeSpan currentTime = TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
 
-            currentTime = currentTime.Subtract(new TimeSpan(0, 1, 0));
+            currentTime = currentTime.Subtract(new TimeSpan(0, 0, 1)); //subtract 1 second every tick
 
             lblTimerTest.Text = currentTime.Minutes.ToString("00") + ":" + currentTime.Seconds.ToString("00");
 
-            if (lblTimerTest.Text == "00:00")
+            if (lblTimerTest.Text == "00:00") //if time runs out for the entire test
             {
                 TestTimeEnded();
             }
@@ -226,70 +225,62 @@ namespace MathWiz
         {
             TimeSpan currentTime = TimeSpan.ParseExact(lblTimerQuestion.Text, "mm\\:ss", CultureInfo.InvariantCulture);
 
-            currentTime = currentTime.Subtract(new TimeSpan(0, 0, 1));
+            currentTime = currentTime.Subtract(new TimeSpan(0, 0, 1)); //subtract 1 second every tick
 
             lblTimerQuestion.Text = currentTime.Minutes.ToString("00") + ":" + currentTime.Seconds.ToString("00");
 
-            if (lblTimerQuestion.Text == "00:00")
+            if (lblTimerQuestion.Text == "00:00") //if time runs out for the current question
             {
                 QuestionTimeEnded();
             }
-
-
+            
         }
 
-        private void frmTakeTest_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to exit this test? This may result in a grade of 0", "Are you sure?", MessageBoxButtons.YesNoCancel);
-            if(dialogResult != DialogResult.Yes)
-            {
-                e.Cancel = true;
-            }
-        }
-
+        
         private void QuestionTimeEnded()
         {
-                timerQuestion.Stop();
-                string studentAnswer = "";
-                int n;
-                bool isNumeric = int.TryParse(txtStudentAnswer.Text, out n);
+            timerQuestion.Stop();
+            string studentAnswer = "";
+            int n;
+            bool isNumeric = int.TryParse(txtStudentAnswer.Text, out n);
 
-                if (txtStudentAnswer.Text == ""  || txtStudentAnswer.Text == null || isNumeric == false)
-                {
-                    studentAnswer = "0";
-                }
-                else
-                {
-                    studentAnswer = txtStudentAnswer.Text.Trim();
-                }
+            // We still want this code to grab the student's answer if they have anything on the current question
+            if (txtStudentAnswer.Text == ""  || txtStudentAnswer.Text == null || isNumeric == false)
+            {
+                studentAnswer = "0";
+            }
+            else
+            {
+                studentAnswer = txtStudentAnswer.Text.Trim();
+            }
 
-                if (Convert.ToInt32(studentAnswer) == test.Questions[currentQuestionNum].CorrectAnswer)
-                {
-                    GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0, 1, 1));
-                    gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
+            if (Convert.ToInt32(studentAnswer) == test.Questions[currentQuestionNum].CorrectAnswer)
+            {
+                GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0, 1, 1));
+                gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
 
-                }
-                else
-                {
-                    GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, false, new TimeSpan(0, 1, 1));
-                    gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
-                }
+            }
+            else
+            {
+                GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, false, new TimeSpan(0, 1, 1));
+                gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
+            }
 
-                lblCorrectAnswer.Show();
+            lblCorrectAnswer.Show();
 
-                currentQuestionNum++;
+            currentQuestionNum++;
 
-                if (currentQuestionNum <= test.Questions.Count)
-                {
-                    ShowQuestion(test.Questions[currentQuestionNum]);
-                    // reset the timer if there is a next question
-                    lblTimerQuestion.Text = "01:00";
-                }
-                else //the test if finished
-                {
-                    btnStartFinish.Show();
-                    btnSubmitAnswer.Enabled = false;
-                }
+            if (currentQuestionNum <= test.Questions.Count)
+            {
+                ShowQuestion(test.Questions[currentQuestionNum]);
+                // reset the timer if there is a next question
+                lblTimerQuestion.Text = "01:00";
+            }
+            else //the test if finished
+            {
+                btnStartFinish.Show();
+                btnSubmitAnswer.Enabled = false;
+            }
         }
 
         private void TestTimeEnded()
@@ -332,7 +323,7 @@ namespace MathWiz
             if(currentQuestionNum != test.Questions.Count())
             {
                 // Have the rest of the unanswered questions end up as automatic wrongly answered questions
-                // and add them to the test
+                // and add them to the graded test
                 // Don't know if having student answer be null would be bad, so I threw a 0 in there which will
                 // result in the question being wrong 99% of the time.
                 for (int x = currentQuestionNum; x < test.Questions.Count(); x++)
@@ -346,6 +337,16 @@ namespace MathWiz
             btnStartFinish.Show();
             btnSubmitAnswer.Enabled = false;
             
+        }
+
+        //stop accidental closing of the test form
+        private void frmTakeTest_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to exit this test? This may result in a grade of 0", "Are you sure?", MessageBoxButtons.YesNoCancel);
+            if (dialogResult != DialogResult.Yes)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
