@@ -212,9 +212,14 @@ namespace MathWiz
         {
             TimeSpan currentTime = TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
 
-            currentTime = currentTime.Subtract(new TimeSpan(0, 0, 1));
+            currentTime = currentTime.Subtract(new TimeSpan(0, 1, 0));
 
             lblTimerTest.Text = currentTime.Minutes.ToString("00") + ":" + currentTime.Seconds.ToString("00");
+
+            if (lblTimerTest.Text == "00:00")
+            {
+                TestTimeEnded();
+            }
         }
 
         private void timerQuestion_Tick(object sender, EventArgs e)
@@ -285,6 +290,62 @@ namespace MathWiz
                     btnStartFinish.Show();
                     btnSubmitAnswer.Enabled = false;
                 }
+        }
+
+        private void TestTimeEnded()
+        {
+            // stop the times
+            timerTest.Stop();
+            timerQuestion.Stop();
+
+            // variables
+            string studentAnswer = "";
+            int n;
+            bool isNumeric = int.TryParse(txtStudentAnswer.Text, out n);
+
+            // We still want this code to grab the student's answer if they have anything on the current question
+            if (txtStudentAnswer.Text == "" || txtStudentAnswer.Text == null || isNumeric == false)
+            {
+                studentAnswer = "0";
+            }
+            else
+            {
+                studentAnswer = txtStudentAnswer.Text.Trim();
+            }
+
+            if (Convert.ToInt32(studentAnswer) == test.Questions[currentQuestionNum].CorrectAnswer)
+            {
+                GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0, 1, 1));
+                gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
+
+            }
+            else
+            {
+                GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, false, new TimeSpan(0, 1, 1));
+                gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
+            }
+
+            currentQuestionNum++;
+            lblCorrectAnswer.Show();
+            
+            //If the timer ends and the student isn't on the last question then..
+            if(currentQuestionNum != test.Questions.Count())
+            {
+                // Have the rest of the unanswered questions end up as automatic wrongly answered questions
+                // and add them to the test
+                // Don't know if having student answer be null would be bad, so I threw a 0 in there which will
+                // result in the question being wrong 99% of the time.
+                for (int x = currentQuestionNum; x < test.Questions.Count(); x++)
+                {
+                    GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[x], "0", false, new TimeSpan(0, 1, 1));
+                    gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
+                }
+            }
+
+            btnStartFinish.Text = "Finish Test";
+            btnStartFinish.Show();
+            btnSubmitAnswer.Enabled = false;
+            
         }
     }
 }
