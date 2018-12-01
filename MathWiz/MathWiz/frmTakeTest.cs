@@ -17,7 +17,7 @@ namespace MathWiz
         Test test;
         GradedTest gradedTest;
         Student student;
-        int currentQuestionNum = 0;
+        private int currentQuestionNum; //set to 0 when test starts
 
         public frmTakeTest(Student s, Test t) 
         {
@@ -185,11 +185,12 @@ namespace MathWiz
 
         private void btnStartFinish_Click(object sender, EventArgs e)
         {
-            if(btnStartFinish.Text == "Start Test")
+            if(btnStartFinish.Text == "Start Test") //start test, show the first question
             {
                 btnStartFinish.Text = "Finish Test";
-                
                 btnStartFinish.Hide();
+
+                currentQuestionNum = 0; //array starts at 0
 
                 timerTest.Start();
                 lblTimerTest.Show();
@@ -197,9 +198,8 @@ namespace MathWiz
                 ShowQuestion(test.Questions[currentQuestionNum]);
                 
             }
-            else if(btnStartFinish.Text == "Finish Test")
+            else if(btnStartFinish.Text == "Finish Test") //finish test, record score, write score to db
             {
-                //TODO record score
                 gradedTest.Score = gradedTest.CorrectlyAnsweredQuestions.Count / gradedTest.CorrectlyAnsweredQuestions.Count + gradedTest.WronglyAnsweredQuestions.Count;
                 gradedTest.TimeTakenToComplete = test.TimeLimit - TimeSpan.Parse(lblTimerTest.Text);
                 gradedTest.DateTaken = DateTime.Now;
