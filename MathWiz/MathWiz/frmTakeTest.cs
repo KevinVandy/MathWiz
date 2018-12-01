@@ -236,7 +236,7 @@ namespace MathWiz
             
         }
 
-        
+        // Could probably centralize code that's used both in QuestionTimeEnded + TestTimeEnded, but eh
         private void QuestionTimeEnded()
         {
             timerQuestion.Stop();
@@ -256,13 +256,13 @@ namespace MathWiz
 
             if (Convert.ToInt32(studentAnswer) == test.Questions[currentQuestionNum].CorrectAnswer)
             {
-                GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0, 1, 1));
+                GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], studentAnswer, true, new TimeSpan(0, 1, 1));
                 gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
 
             }
             else
             {
-                GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, false, new TimeSpan(0, 1, 1));
+                GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], studentAnswer, false, new TimeSpan(0, 1, 1));
                 gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
             }
 
@@ -306,13 +306,13 @@ namespace MathWiz
 
             if (Convert.ToInt32(studentAnswer) == test.Questions[currentQuestionNum].CorrectAnswer)
             {
-                GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0, 1, 1));
+                GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], studentAnswer, true, new TimeSpan(0, 1, 1));
                 gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
 
             }
             else
             {
-                GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, false, new TimeSpan(0, 1, 1));
+                GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], studentAnswer, false, new TimeSpan(0, 1, 1));
                 gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
             }
 
