@@ -29,33 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.backgroundWorkerLoadTest = new System.ComponentModel.BackgroundWorker();
             this.gbxQuestion = new System.Windows.Forms.GroupBox();
             this.lblTimerQuestion = new System.Windows.Forms.Label();
             this.btnSubmitAnswer = new System.Windows.Forms.Button();
             this.lblCorrectAnswer = new System.Windows.Forms.Label();
             this.txtStudentAnswer = new System.Windows.Forms.TextBox();
-            this.pnlChoices = new System.Windows.Forms.Panel();
-            this.rdoChoice4 = new System.Windows.Forms.RadioButton();
-            this.rdoChoice3 = new System.Windows.Forms.RadioButton();
-            this.rdoChoice2 = new System.Windows.Forms.RadioButton();
-            this.rdoChoice1 = new System.Windows.Forms.RadioButton();
             this.lblQuestionText = new System.Windows.Forms.Label();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
             this.btnStartFinish = new System.Windows.Forms.Button();
             this.timerTest = new System.Windows.Forms.Timer(this.components);
             this.lblTimerTest = new System.Windows.Forms.Label();
             this.timerQuestion = new System.Windows.Forms.Timer(this.components);
             this.timerTimeTakenToAnswer = new System.Windows.Forms.Timer(this.components);
             this.gbxQuestion.SuspendLayout();
-            this.pnlChoices.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // backgroundWorkerLoadTest
-            // 
-            this.backgroundWorkerLoadTest.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerLoadTest_DoWork);
-            this.backgroundWorkerLoadTest.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerLoadTest_RunWorkerCompleted);
             // 
             // gbxQuestion
             // 
@@ -63,10 +49,7 @@
             this.gbxQuestion.Controls.Add(this.btnSubmitAnswer);
             this.gbxQuestion.Controls.Add(this.lblCorrectAnswer);
             this.gbxQuestion.Controls.Add(this.txtStudentAnswer);
-            this.gbxQuestion.Controls.Add(this.pnlChoices);
             this.gbxQuestion.Controls.Add(this.lblQuestionText);
-            this.gbxQuestion.Controls.Add(this.btnNext);
-            this.gbxQuestion.Controls.Add(this.btnBack);
             this.gbxQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxQuestion.Location = new System.Drawing.Point(38, 36);
             this.gbxQuestion.Name = "gbxQuestion";
@@ -91,7 +74,7 @@
             this.btnSubmitAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmitAnswer.Location = new System.Drawing.Point(398, 59);
             this.btnSubmitAnswer.Name = "btnSubmitAnswer";
-            this.btnSubmitAnswer.Size = new System.Drawing.Size(78, 46);
+            this.btnSubmitAnswer.Size = new System.Drawing.Size(78, 44);
             this.btnSubmitAnswer.TabIndex = 6;
             this.btnSubmitAnswer.Text = "Submit";
             this.btnSubmitAnswer.UseVisualStyleBackColor = true;
@@ -121,66 +104,7 @@
             this.txtStudentAnswer.Tag = "Answer";
             this.txtStudentAnswer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStudentAnswer.Visible = false;
-            // 
-            // pnlChoices
-            // 
-            this.pnlChoices.Controls.Add(this.rdoChoice4);
-            this.pnlChoices.Controls.Add(this.rdoChoice3);
-            this.pnlChoices.Controls.Add(this.rdoChoice2);
-            this.pnlChoices.Controls.Add(this.rdoChoice1);
-            this.pnlChoices.Location = new System.Drawing.Point(25, 124);
-            this.pnlChoices.Name = "pnlChoices";
-            this.pnlChoices.Size = new System.Drawing.Size(451, 63);
-            this.pnlChoices.TabIndex = 4;
-            this.pnlChoices.Visible = false;
-            // 
-            // rdoChoice4
-            // 
-            this.rdoChoice4.AutoSize = true;
-            this.rdoChoice4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoChoice4.Location = new System.Drawing.Point(372, 15);
-            this.rdoChoice4.Name = "rdoChoice4";
-            this.rdoChoice4.Size = new System.Drawing.Size(42, 30);
-            this.rdoChoice4.TabIndex = 3;
-            this.rdoChoice4.TabStop = true;
-            this.rdoChoice4.Text = "4";
-            this.rdoChoice4.UseVisualStyleBackColor = true;
-            // 
-            // rdoChoice3
-            // 
-            this.rdoChoice3.AutoSize = true;
-            this.rdoChoice3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoChoice3.Location = new System.Drawing.Point(254, 15);
-            this.rdoChoice3.Name = "rdoChoice3";
-            this.rdoChoice3.Size = new System.Drawing.Size(42, 30);
-            this.rdoChoice3.TabIndex = 2;
-            this.rdoChoice3.TabStop = true;
-            this.rdoChoice3.Text = "3";
-            this.rdoChoice3.UseVisualStyleBackColor = true;
-            // 
-            // rdoChoice2
-            // 
-            this.rdoChoice2.AutoSize = true;
-            this.rdoChoice2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoChoice2.Location = new System.Drawing.Point(136, 15);
-            this.rdoChoice2.Name = "rdoChoice2";
-            this.rdoChoice2.Size = new System.Drawing.Size(42, 30);
-            this.rdoChoice2.TabIndex = 1;
-            this.rdoChoice2.TabStop = true;
-            this.rdoChoice2.Text = "2";
-            this.rdoChoice2.UseVisualStyleBackColor = true;
-            // 
-            // rdoChoice1
-            // 
-            this.rdoChoice1.AutoSize = true;
-            this.rdoChoice1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdoChoice1.Location = new System.Drawing.Point(18, 15);
-            this.rdoChoice1.Name = "rdoChoice1";
-            this.rdoChoice1.Size = new System.Drawing.Size(42, 30);
-            this.rdoChoice1.TabIndex = 0;
-            this.rdoChoice1.TabStop = true;
-            this.rdoChoice1.Text = "1";
-            this.rdoChoice1.UseVisualStyleBackColor = true;
+            this.txtStudentAnswer.TextChanged += new System.EventHandler(this.txtStudentAnswer_TextChanged);
             // 
             // lblQuestionText
             // 
@@ -192,30 +116,6 @@
             this.lblQuestionText.TabIndex = 3;
             this.lblQuestionText.Text = "2 + 2 = ";
             this.lblQuestionText.Visible = false;
-            // 
-            // btnNext
-            // 
-            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(309, 202);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(167, 37);
-            this.btnNext.TabIndex = 0;
-            this.btnNext.Text = "Next Question";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Visible = false;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnBack
-            // 
-            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(25, 202);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(167, 37);
-            this.btnBack.TabIndex = 1;
-            this.btnBack.Text = "Previous Question";
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Visible = false;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnStartFinish
             // 
@@ -250,6 +150,7 @@
             // 
             // frmTakeTest
             // 
+            this.AcceptButton = this.btnSubmitAnswer;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 434);
@@ -264,26 +165,15 @@
             this.Load += new System.EventHandler(this.frmTakeTest_Load);
             this.gbxQuestion.ResumeLayout(false);
             this.gbxQuestion.PerformLayout();
-            this.pnlChoices.ResumeLayout(false);
-            this.pnlChoices.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.ComponentModel.BackgroundWorker backgroundWorkerLoadTest;
         private System.Windows.Forms.GroupBox gbxQuestion;
         private System.Windows.Forms.Label lblQuestionText;
-        private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnStartFinish;
-        private System.Windows.Forms.Panel pnlChoices;
-        private System.Windows.Forms.RadioButton rdoChoice4;
-        private System.Windows.Forms.RadioButton rdoChoice3;
-        private System.Windows.Forms.RadioButton rdoChoice2;
-        private System.Windows.Forms.RadioButton rdoChoice1;
         private System.Windows.Forms.Label lblCorrectAnswer;
         private System.Windows.Forms.TextBox txtStudentAnswer;
         private System.Windows.Forms.Button btnSubmitAnswer;

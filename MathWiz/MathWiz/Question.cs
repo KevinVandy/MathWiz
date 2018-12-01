@@ -106,14 +106,14 @@ namespace MathWiz
 
         public static List<int> GenerateEasyRandomNumbers(int start, int count)
         {
-            easyRandoms = Enumerable.Range(0, 10).OrderBy(x => rnd.Next()).Take(10).ToList();
+            easyRandoms = Enumerable.Range(0, 10).OrderBy(x => rnd.Next()).Take(count).ToList();
             return easyRandoms;
         }
 
         public static List<int> GenerateHardRandomNumbers(int start, int count)
         {
             Random rnd = new Random();
-            hardRandoms = Enumerable.Range(10, 10).OrderBy(x => rnd.Next()).Take(10).ToList();
+            hardRandoms = Enumerable.Range(10, 99).OrderBy(x => rnd.Next()).Take(count).ToList();
             return hardRandoms;
         }
 
@@ -143,37 +143,37 @@ namespace MathWiz
                     qL = GenerateSimpleAddtionQuestions(timeLimit, numberofQuestions);
                     break;
                 case 2:
-                    qL = GenerateSimpleSubtractionQuestions(timeLimit);
+                    qL = GenerateSimpleSubtractionQuestions(timeLimit, numberofQuestions);
                     break;
                 case 3:
-                    qL = GenerateMixedSimpleAdditionSubtraction(timeLimit);
+                    qL = GenerateMixedSimpleAdditionSubtraction(timeLimit, numberofQuestions);
                     break;
                 case 4:
-                    qL = GenerateComplexAddition(timeLimit);
+                    qL = GenerateComplexAddition(timeLimit, numberofQuestions);
                     break;
                 case 5:
-                    qL = GenerateComplexSubtraction(timeLimit);
+                    qL = GenerateComplexSubtraction(timeLimit, numberofQuestions);
                     break;
                 case 6:
-                    qL = GenerateMixedComplexAdditionSubtraction(timeLimit);
+                    qL = GenerateMixedComplexAdditionSubtraction(timeLimit, numberofQuestions);
                     break;
                 case 7:
-                    qL = GenerateSimpleMultiplication(timeLimit);
+                    qL = GenerateSimpleMultiplication(timeLimit, numberofQuestions);
                     break;
                 case 8:
-                    qL = GenerateSimpleDivision(timeLimit);
+                    qL = GenerateSimpleDivision(timeLimit, numberofQuestions);
                     break;
                 case 9:
-                    qL = GenerateSimpleMultiplicationDivision(timeLimit);
+                    qL = GenerateSimpleMultiplicationDivision(timeLimit, numberofQuestions);
                     break;
                 case 10:
-                    qL = GenerateAdvancedMultiplication(timeLimit);
+                    qL = GenerateAdvancedMultiplication(timeLimit, numberofQuestions);
                     break;
                 case 11:
-                    qL = GenerateAdvancedDivision(timeLimit);
+                    qL = GenerateAdvancedDivision(timeLimit, numberofQuestions);
                     break;
                 case 12:
-                    qL = GenerateAdvnacedMultiplicationDivison(timeLimit);
+                    qL = GenerateAdvnacedMultiplicationDivison(timeLimit, numberofQuestions);
                     break;
                 default:
                     MessageBox.Show("No known case check that what you passed is within range");
@@ -185,58 +185,58 @@ namespace MathWiz
 
         }
 
-        private static List<Question> GenerateAdvnacedMultiplicationDivison(TimeSpan timelimit)
+        private static List<Question> GenerateAdvnacedMultiplicationDivison(TimeSpan timelimit, int numberofQuestions)
         {
             GeneratesAddMultiply(true, true);
             throw new NotImplementedException();
         }
 
-        private static List<Question> GenerateAdvancedDivision(TimeSpan timelimit)
+        private static List<Question> GenerateAdvancedDivision(TimeSpan timelimit, int numberofQuestions)
         {
             throw new NotImplementedException();
         }
 
-        private static List<Question> GenerateAdvancedMultiplication(TimeSpan timelimit)
+        private static List<Question> GenerateAdvancedMultiplication(TimeSpan timelimit, int numberofQuestions)
         {
             GeneratesAddMultiply(true, true);
             throw new NotImplementedException();
         }
 
-        private static List<Question> GenerateSimpleMultiplicationDivision(TimeSpan timelimit)
+        private static List<Question> GenerateSimpleMultiplicationDivision(TimeSpan timelimit, int numberofQuestions)
         {
             GeneratesAddMultiply(false, true);
             throw new NotImplementedException();
         }
 
-        private static List<Question> GenerateSimpleDivision(TimeSpan timelimit)
+        private static List<Question> GenerateSimpleDivision(TimeSpan timelimit, int numberofQuestions)
         {
             throw new NotImplementedException();
         }
 
-        private static List<Question> GenerateSimpleMultiplication(TimeSpan timelimit)
+        private static List<Question> GenerateSimpleMultiplication(TimeSpan timelimit, int numberofQuestions)
         {
             GeneratesAddMultiply(false, true);
             throw new NotImplementedException();
         }
 
-        private static List<Question> GenerateMixedComplexAdditionSubtraction(TimeSpan timelimit)
+        private static List<Question> GenerateMixedComplexAdditionSubtraction(TimeSpan timelimit, int numberofQuestions)
         {
             GeneratesAddMultiply(true, false);
             throw new NotImplementedException();
         }
 
-        private static List<Question> GenerateComplexSubtraction(TimeSpan timelimit)
+        private static List<Question> GenerateComplexSubtraction(TimeSpan timelimit, int numberofQuestions)
         {
             throw new NotImplementedException();
         }
 
-        private static List<Question> GenerateComplexAddition(TimeSpan timelimit)
+        private static List<Question> GenerateComplexAddition(TimeSpan timelimit, int numberofQuestions)
         {
             GeneratesAddMultiply(true, false);
             throw new NotImplementedException();
         }
 
-        private static List<Question> GenerateMixedSimpleAdditionSubtraction(TimeSpan timelimit)
+        private static List<Question> GenerateMixedSimpleAdditionSubtraction(TimeSpan timelimit, int numberofQuestions)
         {
             GeneratesAddMultiply(false, false);
             string questionText;
@@ -244,7 +244,7 @@ namespace MathWiz
             List<Question> add = new List<Question>();
             List<Question> sub = new List<Question>();
             add = GenerateSimpleAddtionQuestions(timelimit, 10);
-            sub = GenerateSimpleSubtractionQuestions(timelimit);
+            sub = GenerateSimpleSubtractionQuestions(timelimit, numberofQuestions);
 
             //List<int> easyAdd = new List<int>();
             //List<int> easyAddSecond = new List<int>();
@@ -281,7 +281,7 @@ namespace MathWiz
 
         }
 
-        private static List<Question> GenerateSimpleSubtractionQuestions(TimeSpan timelimit)
+        private static List<Question> GenerateSimpleSubtractionQuestions(TimeSpan timelimit, int numberofQuestions)
         {
             string questionText;
             List <Question> qL = new List<Question>();
@@ -319,10 +319,10 @@ namespace MathWiz
         {
             GeneratesAddMultiply(false, false);
             string questionText;
-            List<int> firstEasy = GenerateEasyRandomNumbers(0, 10);
-            List<int> secondEasy = GenerateEasyRandomNumbers(0, 10);
+            List<int> firstEasy = GenerateEasyRandomNumbers(0, NumberOfQuestions);
+            List<int> secondEasy = GenerateEasyRandomNumbers(0, NumberOfQuestions);
             var firstEasyEnumerator = firstEasy.GetEnumerator();
-            int[] answer = new int[10];
+            int[] answer = new int[NumberOfQuestions];
             var secondEasyEnumerator = secondEasy.GetEnumerator();
             var answerEnumerator = answer.GetEnumerator();
             //enumerate through the lists

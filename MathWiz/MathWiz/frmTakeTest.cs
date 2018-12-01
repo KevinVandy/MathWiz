@@ -17,7 +17,7 @@ namespace MathWiz
         Test test;
         GradedTest gradedTest;
         Student student;
-        private int currentQuestionNum; //set to 0 when test starts
+        int currentQuestionNum; //set to 0 when test starts
 
         public frmTakeTest(Student s, Test t) 
         {
@@ -61,33 +61,7 @@ namespace MathWiz
             this.Text += " - " + student.FirstName + " " + student.LastName;
             btnStartFinish.Text = "Start Test";
             gbxQuestion.Text = "";
-            backgroundWorkerLoadTest.RunWorkerAsync();
-        }
-
-        private void backgroundWorkerLoadTest_DoWork(object sender, DoWorkEventArgs e)
-        {
-            //switch (this.Tag.ToString())
-            //{
-            //    case "placement":
-
-            //        test = MathWizDA.SelectPlacementTest(testID);
-            //        break;
-
-            //    case "practice":
-
-            //        //TODO call a method to generate a test -- OR I guess load one from the database
-            //        break;
-
-            //    case "mastery":
-
-            //        test = MathWizDA.SelectMasteryTest(testID);
-            //        break;
-            //}
-        }
-
-        private void backgroundWorkerLoadTest_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            
+            lblTimerTest.Text = test.TimeLimit.Minutes.ToString("00") + ":" + test.TimeLimit.Seconds.ToString("00");
         }
 
         private void ShowQuestion(Question q)
@@ -95,6 +69,7 @@ namespace MathWiz
             //show timer stuff
             timerQuestion.Start();
             lblTimerQuestion.Show();
+            lblTimerQuestion.Text = test.Questions[currentQuestionNum].TimeLimit.Minutes.ToString("00") + ":" + test.Questions[currentQuestionNum].TimeLimit.Seconds.ToString("00");
 
             //show the question number
             gbxQuestion.Text = "Question " + (currentQuestionNum + 1).ToString() + " of " + test.Questions.Count;
@@ -111,16 +86,11 @@ namespace MathWiz
             btnSubmitAnswer.Show();
             txtStudentAnswer.Show();
 
-
-            // Multiple choice determined to be a stretch goal
-            //if (false) //TODO is multiple choice
-            //{
-            //    pnlChoices.Show();
-            //}
+            
 
         }
 
-        private void btnSubmitAnswer_Click(object sender, EventArgs e)
+        private async void btnSubmitAnswer_Click(object sender, EventArgs e)
         {
             if (Validation.IsInteger(txtStudentAnswer))
             {
@@ -129,16 +99,19 @@ namespace MathWiz
                     GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0,1,1));
                     gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
 
-                    
+                    txtStudentAnswer.ForeColor = Color.FromArgb(0, 255, 0);
                 }
                 else
                 {
                     GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, false, new TimeSpan(0, 1, 1));
                     gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
+
+                    txtStudentAnswer.ForeColor = Color.FromArgb(255, 0, 0);
                 }
-                //TODO: Correct answer doesn't show up
-                //We can use Thread.Sleep(amountofTimeHere) to delay the program from moving on for a period of time
+
                 lblCorrectAnswer.Show();
+
+                await Task.Delay(1000);
 
                 currentQuestionNum++;
 
@@ -154,32 +127,11 @@ namespace MathWiz
                     btnSubmitAnswer.Enabled = false;
                 }
 
+                txtStudentAnswer.Text = "";
             }
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            if(currentQuestionNum > 1)
+            else
             {
-                currentQuestionNum--;
-            }
-
-            if (btnStartFinish.Visible)
-            {
-                btnStartFinish.Hide();
-            }
-        }
-
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            if(currentQuestionNum < test.Questions.Count)
-            {
-                currentQuestionNum++;
-            }
-
-            if(currentQuestionNum == test.Questions.Count)
-            {
-                btnStartFinish.Show();
+                MessageBox.Show("Your answer must be a number");
             }
         }
 
@@ -200,11 +152,16 @@ namespace MathWiz
             }
             else if(btnStartFinish.Text == "Finish Test") //finish test, record score, write score to db
             {
-                //TODO record score
-                gradedTest.Score = gradedTest.CorrectlyAnsweredQuestions.Count / gradedTest.CorrectlyAnsweredQuestions.Count + gradedTest.WronglyAnsweredQuestions.Count;
-                gradedTest.TimeTakenToComplete = test.TimeLimit - TimeSpan.Parse(lblTimerTest.Text);
+                gradedTest.Score = gradedTest.CorrectlyAnsweredQuestions.Count / (gradedTest.CorrectlyAnsweredQuestions.Count + gradedTest.WronglyAnsweredQuestions.Count) * 100;
+                gradedTest.TimeTakenToComplete = test.TimeLimit - TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
                 gradedTest.DateTaken = DateTime.Now;
                 gradedTest.Feedback = gradedTest.Score.ToString();
+
+                //write to database
+
+                MessageBox.Show("Score: " + gradedTest.Score.ToString() + "\n\n" + gradedTest.Feedback);
+
+                this.Close();
             }
         }
 
@@ -357,6 +314,11 @@ namespace MathWiz
             {
                 e.Cancel = true;
             }
+        }
+
+        private void txtStudentAnswer_TextChanged(object sender, EventArgs e)
+        {
+            txtStudentAnswer.ForeColor = Color.FromArgb(0, 0, 0);
         }
     }
 }
