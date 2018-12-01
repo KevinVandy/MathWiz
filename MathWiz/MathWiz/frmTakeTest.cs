@@ -200,7 +200,7 @@ namespace MathWiz
             else if(btnStartFinish.Text == "Finish Test")
             {
                 //TODO record score
-                gradedTest.Score = gradedTest.CorrectlyAnsweredQuestions.Count / gradedTest.CorrectlyAnsweredQuestions.Count + gradedTest.WronglyAnsweredQuestions.Count;
+                gradedTest.Score = gradedTest.CorrectlyAnsweredQuestions.Count / (gradedTest.CorrectlyAnsweredQuestions.Count + gradedTest.WronglyAnsweredQuestions.Count);
                 gradedTest.TimeTakenToComplete = test.TimeLimit - TimeSpan.Parse(lblTimerTest.Text);
                 gradedTest.DateTaken = DateTime.Now;
                 gradedTest.Feedback = gradedTest.Score.ToString();
@@ -244,26 +244,29 @@ namespace MathWiz
             int n;
             bool isNumeric = int.TryParse(txtStudentAnswer.Text, out n);
 
-            // We still want this code to grab the student's answer if they have anything on the current question
-            if (txtStudentAnswer.Text == ""  || txtStudentAnswer.Text == null || isNumeric == false)
+            if (currentQuestionNum < test.Questions.Count())
             {
-                studentAnswer = "0";
-            }
-            else
-            {
-                studentAnswer = txtStudentAnswer.Text.Trim();
-            }
+                // We still want this code to grab the student's answer if they have anything on the current question
+                if (txtStudentAnswer.Text == "" || txtStudentAnswer.Text == null || isNumeric == false)
+                {
+                    studentAnswer = "0";
+                }
+                else
+                {
+                    studentAnswer = txtStudentAnswer.Text.Trim();
+                }
 
-            if (Convert.ToInt32(studentAnswer) == test.Questions[currentQuestionNum].CorrectAnswer)
-            {
-                GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], studentAnswer, true, new TimeSpan(0, 1, 1));
-                gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
+                if (Convert.ToInt32(studentAnswer) == test.Questions[currentQuestionNum].CorrectAnswer)
+                {
+                    GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], studentAnswer, true, new TimeSpan(0, 1, 1));
+                    gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
 
-            }
-            else
-            {
-                GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], studentAnswer, false, new TimeSpan(0, 1, 1));
-                gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
+                }
+                else
+                {
+                    GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], studentAnswer, false, new TimeSpan(0, 1, 1));
+                    gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
+                }
             }
 
             lblCorrectAnswer.Show();
@@ -294,33 +297,39 @@ namespace MathWiz
             int n;
             bool isNumeric = int.TryParse(txtStudentAnswer.Text, out n);
 
-            // We still want this code to grab the student's answer if they have anything on the current question
-            if (txtStudentAnswer.Text == "" || txtStudentAnswer.Text == null || isNumeric == false)
+            // Because if the user clicks submit on the very last problem, and waits out the time
+            // it'll throw an errow if we don't check for this.
+            if(currentQuestionNum < test.Questions.Count())
             {
-                studentAnswer = "0";
-            }
-            else
-            {
-                studentAnswer = txtStudentAnswer.Text.Trim();
+                // We still want this code to grab the student's answer if they have anything on the current question
+                if (txtStudentAnswer.Text == "" || txtStudentAnswer.Text == null || isNumeric == false)
+                {
+                    studentAnswer = "0";
+                }
+                else
+                {
+                    studentAnswer = txtStudentAnswer.Text.Trim();
+                }
+
+                if (Convert.ToInt32(studentAnswer) == test.Questions[currentQuestionNum].CorrectAnswer)
+                {
+                    GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], studentAnswer, true, new TimeSpan(0, 1, 1));
+                    gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
+
+                }
+                else
+                {
+                    GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], studentAnswer, false, new TimeSpan(0, 1, 1));
+                    gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
+                }
             }
 
-            if (Convert.ToInt32(studentAnswer) == test.Questions[currentQuestionNum].CorrectAnswer)
-            {
-                GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], studentAnswer, true, new TimeSpan(0, 1, 1));
-                gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
-
-            }
-            else
-            {
-                GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], studentAnswer, false, new TimeSpan(0, 1, 1));
-                gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
-            }
 
             currentQuestionNum++;
             lblCorrectAnswer.Show();
             
             //If the timer ends and the student isn't on the last question then..
-            if(currentQuestionNum != test.Questions.Count())
+            if(currentQuestionNum < test.Questions.Count())
             {
                 // Have the rest of the unanswered questions end up as automatic wrongly answered questions
                 // and add them to the graded test
