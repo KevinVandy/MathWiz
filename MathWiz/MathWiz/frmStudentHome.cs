@@ -96,16 +96,19 @@ namespace MathWiz
 
         private void btnTakeRandomPracticeTest_Click(object sender, EventArgs e)
         {
-            //TODO: Hook up Number Of Questions, so that the variable number of questions reflects the test
-            //When a user quits out of a test, and starts up another one, they start with 10+ more questions than prior
-            int masteryLevel = Convert.ToInt16(cmbMasteryLevel.SelectedItem);
-            int numberOfQuestions = Convert.ToInt16(cmbNumberOfQuestions.SelectedItem);
-            PracticeTest practiceTest = new PracticeTest(Question.GenerateRandomQuestions(masteryLevel, new TimeSpan(0, 0, 30), numberOfQuestions), new TimeSpan(0, 10, 0), true, masteryLevel, masteryLevel);
-            
+            if(Validation.IsComboSelected(cmbMasteryLevel) && Validation.IsComboSelected(cmbNumberOfQuestions))
+            {
+                // Number of Questions is getting kind of screwy if you make a test, but quit out of it, and then
+                // make another test
+                int masteryLevel = Convert.ToInt16(cmbMasteryLevel.SelectedItem);
+                int numberOfQuestions = Convert.ToInt16(cmbNumberOfQuestions.SelectedItem);
+                PracticeTest practiceTest = new PracticeTest(Question.GenerateRandomQuestions(masteryLevel, new TimeSpan(0, 0, 30), numberOfQuestions), new TimeSpan(0, 10, 0), true, masteryLevel, masteryLevel);
 
-            Form practiceForm = new frmTakeTest(student, practiceTest);
-            practiceForm.Tag = "practice";
-            practiceForm.ShowDialog();
+
+                Form practiceForm = new frmTakeTest(student, practiceTest);
+                practiceForm.Tag = "practice";
+                practiceForm.ShowDialog();
+            }
         }
 
         private void btnTakeMasteryTest_Click(object sender, EventArgs e)
