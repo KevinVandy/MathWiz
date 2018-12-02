@@ -147,10 +147,6 @@ namespace MathWiz
 
                 txtStudentAnswer.Text = "";
             }
-            else
-            {
-                MessageBox.Show("Your answer must be a number");
-            }
         }
         //End Button Handlers
 

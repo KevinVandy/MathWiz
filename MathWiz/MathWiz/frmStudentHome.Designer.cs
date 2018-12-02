@@ -190,6 +190,7 @@
             this.cmbNumberOfQuestions.Name = "cmbNumberOfQuestions";
             this.cmbNumberOfQuestions.Size = new System.Drawing.Size(90, 33);
             this.cmbNumberOfQuestions.TabIndex = 8;
+            this.cmbNumberOfQuestions.Tag = "Number of Questions";
             // 
             // btnTakeRandomPracticeTest
             // 
@@ -226,6 +227,7 @@
             this.cmbMasteryLevel.Name = "cmbMasteryLevel";
             this.cmbMasteryLevel.Size = new System.Drawing.Size(90, 33);
             this.cmbMasteryLevel.TabIndex = 6;
+            this.cmbMasteryLevel.Tag = "Mastery Level";
             // 
             // gbxViewProgress
             // 
