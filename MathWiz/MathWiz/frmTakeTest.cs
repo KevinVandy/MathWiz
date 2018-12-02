@@ -106,16 +106,19 @@ namespace MathWiz
         {
             if (Validation.IsInteger(txtStudentAnswer))
             {
+                string studentAnswer = txtStudentAnswer.Text;
+                TimeSpan timeTakenToAnswer = test.Questions[currentQuestionNum].TimeLimit - TimeSpan.ParseExact(lblTimerQuestion.Text, "mm\\:ss", CultureInfo.InvariantCulture);
+
                 if (Convert.ToInt32(txtStudentAnswer.Text.Trim()) == test.Questions[currentQuestionNum].CorrectAnswer)
                 {
-                    GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0, 1, 1));
+                    GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], studentAnswer, true, timeTakenToAnswer);
                     gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
 
                     txtStudentAnswer.ForeColor = Color.FromArgb(0, 255, 0);
                 }
                 else
                 {
-                    GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, false, new TimeSpan(0, 1, 1));
+                    GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], studentAnswer, false, timeTakenToAnswer);
                     gradedTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
 
                     txtStudentAnswer.ForeColor = Color.FromArgb(255, 0, 0);

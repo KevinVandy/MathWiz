@@ -61,7 +61,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(779, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(796, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -107,7 +107,7 @@
             // 
             this.btnTakeMasteryTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTakeMasteryTest.Location = new System.Drawing.Point(21, 239);
-            this.btnTakeMasteryTest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTakeMasteryTest.Margin = new System.Windows.Forms.Padding(2);
             this.btnTakeMasteryTest.Name = "btnTakeMasteryTest";
             this.btnTakeMasteryTest.Size = new System.Drawing.Size(238, 51);
             this.btnTakeMasteryTest.TabIndex = 3;
@@ -119,7 +119,7 @@
             // 
             this.btnTakePracticeTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTakePracticeTest.Location = new System.Drawing.Point(21, 103);
-            this.btnTakePracticeTest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTakePracticeTest.Margin = new System.Windows.Forms.Padding(2);
             this.btnTakePracticeTest.Name = "btnTakePracticeTest";
             this.btnTakePracticeTest.Size = new System.Drawing.Size(238, 51);
             this.btnTakePracticeTest.TabIndex = 4;
@@ -131,7 +131,7 @@
             // 
             this.btnTakePlacementTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTakePlacementTest.Location = new System.Drawing.Point(21, 36);
-            this.btnTakePlacementTest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTakePlacementTest.Margin = new System.Windows.Forms.Padding(2);
             this.btnTakePlacementTest.Name = "btnTakePlacementTest";
             this.btnTakePlacementTest.Size = new System.Drawing.Size(238, 51);
             this.btnTakePlacementTest.TabIndex = 5;
@@ -186,7 +186,7 @@
             "10",
             "15",
             "20"});
-            this.cmbNumberOfQuestions.Location = new System.Drawing.Point(381, 190);
+            this.cmbNumberOfQuestions.Location = new System.Drawing.Point(382, 187);
             this.cmbNumberOfQuestions.Name = "cmbNumberOfQuestions";
             this.cmbNumberOfQuestions.Size = new System.Drawing.Size(90, 33);
             this.cmbNumberOfQuestions.TabIndex = 8;
@@ -195,7 +195,7 @@
             // 
             this.btnTakeRandomPracticeTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTakeRandomPracticeTest.Location = new System.Drawing.Point(21, 171);
-            this.btnTakeRandomPracticeTest.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTakeRandomPracticeTest.Margin = new System.Windows.Forms.Padding(2);
             this.btnTakeRandomPracticeTest.Name = "btnTakeRandomPracticeTest";
             this.btnTakeRandomPracticeTest.Size = new System.Drawing.Size(238, 51);
             this.btnTakeRandomPracticeTest.TabIndex = 7;
@@ -222,7 +222,7 @@
             "11",
             "12",
             "13"});
-            this.cmbMasteryLevel.Location = new System.Drawing.Point(274, 190);
+            this.cmbMasteryLevel.Location = new System.Drawing.Point(275, 187);
             this.cmbMasteryLevel.Name = "cmbMasteryLevel";
             this.cmbMasteryLevel.Size = new System.Drawing.Size(90, 33);
             this.cmbMasteryLevel.TabIndex = 6;
@@ -266,7 +266,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(796, 550);
+            this.ClientSize = new System.Drawing.Size(813, 550);
             this.Controls.Add(this.lblMasteryLevel);
             this.Controls.Add(this.lblStudentName);
             this.Controls.Add(this.gbxViewProgress);

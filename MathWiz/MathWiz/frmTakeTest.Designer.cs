@@ -39,7 +39,6 @@
             this.timerTest = new System.Windows.Forms.Timer(this.components);
             this.lblTimerTest = new System.Windows.Forms.Label();
             this.timerQuestion = new System.Windows.Forms.Timer(this.components);
-            this.timerTimeTakenToAnswer = new System.Windows.Forms.Timer(this.components);
             this.gbxQuestion.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,9 +50,9 @@
             this.gbxQuestion.Controls.Add(this.txtStudentAnswer);
             this.gbxQuestion.Controls.Add(this.lblQuestionText);
             this.gbxQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxQuestion.Location = new System.Drawing.Point(38, 36);
+            this.gbxQuestion.Location = new System.Drawing.Point(38, 31);
             this.gbxQuestion.Name = "gbxQuestion";
-            this.gbxQuestion.Size = new System.Drawing.Size(498, 263);
+            this.gbxQuestion.Size = new System.Drawing.Size(498, 144);
             this.gbxQuestion.TabIndex = 0;
             this.gbxQuestion.TabStop = false;
             this.gbxQuestion.Text = "Question # of #";
@@ -115,7 +114,7 @@
             // btnStartFinish
             // 
             this.btnStartFinish.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartFinish.Location = new System.Drawing.Point(199, 329);
+            this.btnStartFinish.Location = new System.Drawing.Point(201, 200);
             this.btnStartFinish.Name = "btnStartFinish";
             this.btnStartFinish.Size = new System.Drawing.Size(167, 37);
             this.btnStartFinish.TabIndex = 2;
@@ -132,7 +131,7 @@
             // 
             this.lblTimerTest.AutoSize = true;
             this.lblTimerTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimerTest.Location = new System.Drawing.Point(263, 384);
+            this.lblTimerTest.Location = new System.Drawing.Point(262, 257);
             this.lblTimerTest.Name = "lblTimerTest";
             this.lblTimerTest.Size = new System.Drawing.Size(44, 17);
             this.lblTimerTest.TabIndex = 3;
@@ -148,9 +147,9 @@
             this.AcceptButton = this.btnSubmitAnswer;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 434);
-            this.Controls.Add(this.lblTimerTest);
+            this.ClientSize = new System.Drawing.Size(581, 313);
             this.Controls.Add(this.btnStartFinish);
+            this.Controls.Add(this.lblTimerTest);
             this.Controls.Add(this.gbxQuestion);
             this.Name = "frmTakeTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -176,6 +175,5 @@
         private System.Windows.Forms.Label lblTimerTest;
         private System.Windows.Forms.Timer timerQuestion;
         private System.Windows.Forms.Label lblTimerQuestion;
-        private System.Windows.Forms.Timer timerTimeTakenToAnswer;
     }
 }
