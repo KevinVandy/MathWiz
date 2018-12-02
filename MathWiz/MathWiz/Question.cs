@@ -7,30 +7,6 @@ using System.Windows.Forms;
 
 namespace MathWiz
 {
-    /*  Kevin's note:
-     *  I thought about this for a while. Should we split questions into multiple classes?
-     *  Such as multiple choice questions exending off of the base question class, 
-     *  and having randomly generated questions and customized questions be their own classes?
-     *  However, I decided against it because it was going to make the Test and Grade classes a lot more complicated
-     *  Instead, I have just provided multiple different constructors that will make it act like their own unique objects.
-     *  This is an important decision, and if we get it wrong, it could cost a lot of time, so we need to talk it over.
-     */
-
-    /*I was looking at 12 mastery levels
-     * 1. simple addition
-     * 2. simple subtraction
-     * 3. simple mixed add, sub
-     * 7. simple multiplication
-     * 8. simple division
-     * 9. mixed mult, div
-     * 4. complex addition
-     * 5. complex sub
-     * 6. complex mixed add, sub
-     * 10. advanced mult
-     * 11. advanced div
-     * 13. advanced mixed mult, div*/
-
-
     public class Question
     {
         public int Id { get; set; }
@@ -118,24 +94,23 @@ namespace MathWiz
         }
 
         /*I was looking at 12 mastery levels
- * 1. simple addition
- * 2. simple subtraction
- * 3. simple mixed add, sub
- * 4. complex addition
- * 5. complex sub
- * 6. complex mixed add, sub
- * 7. simple multiplication
- * 8. simple division
- * 9. simple mixed mult, div
- * 10. advanced mult
- * 11. advanced div
- * 12. advanced mixed mult, div*/
+         * 1. simple addition
+         * 2. simple subtraction
+         * 3. simple mixed add, sub
+         * 4. complex addition
+         * 5. complex sub
+         * 6. complex mixed add, sub
+         * 7. simple multiplication
+         * 8. simple division
+         * 9. simple mixed mult, div
+         * 10. advanced mult
+         * 11. advanced div
+         * 12. advanced mixed mult, div*/
 
         public static List<Question> GenerateRandomQuestions(int masteryLevel, TimeSpan timeLimit, int numberofQuestions)
         {
             List<Question> qL = new List<Question>();
             
-
             int caseswitch = masteryLevel;
             switch(masteryLevel)
             {
@@ -544,9 +519,7 @@ namespace MathWiz
                                 testString += i.ToString() + " / " + j.ToString() + ", ";
                             }
                         }
-
                     }
-
                 }
                 control++;
             }

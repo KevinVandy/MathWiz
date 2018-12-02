@@ -18,6 +18,7 @@ namespace MathWiz
         GradedTest gradedTest;
         Student student;
         int currentQuestionNum; //set to 0 when test starts
+        bool testFinished;
 
         public frmTakeTest(Student s, Test t) 
         {
@@ -62,32 +63,43 @@ namespace MathWiz
             btnStartFinish.Text = "Start Test";
             gbxQuestion.Text = "";
             lblTimerTest.Text = test.TimeLimit.Minutes.ToString("00") + ":" + test.TimeLimit.Seconds.ToString("00");
+
+            gbxQuestion.Hide();
         }
 
-        private void ShowQuestion(Question q)
+        //MARK Button Handlers
+        private void btnStartFinish_Click(object sender, EventArgs e)
         {
-            //show timer stuff
-            timerQuestion.Start();
-            lblTimerQuestion.Show();
-            lblTimerQuestion.Text = test.Questions[currentQuestionNum].TimeLimit.Minutes.ToString("00") + ":" + test.Questions[currentQuestionNum].TimeLimit.Seconds.ToString("00");
+            if (btnStartFinish.Text == "Start Test") //start test, show the first question
+            {
+                btnStartFinish.Text = "Finish Test";
+                btnStartFinish.Hide();
 
-            //show the question number
-            gbxQuestion.Text = "Question " + (currentQuestionNum + 1).ToString() + " of " + test.Questions.Count;
+                gbxQuestion.Show();
 
-            //show the question text
-            lblQuestionText.Text = q.QuestionText;
-            lblQuestionText.Show();
+                currentQuestionNum = 0; //array starts at 0
 
-            //hide the answers, but set its text
-            lblCorrectAnswer.Hide();
-            lblCorrectAnswer.Text = q.CorrectAnswer.ToString();
+                timerTest.Start();
 
-            //show the buttons
-            btnSubmitAnswer.Show();
-            txtStudentAnswer.Show();
+                ShowQuestion(test.Questions[currentQuestionNum]);
 
-            
+                testFinished = false;
 
+            }
+            else if (btnStartFinish.Text == "Finish Test") //finish test, record score, write score to db
+            {
+                gradedTest.Score = (decimal)gradedTest.CorrectlyAnsweredQuestions.Count / (decimal)(gradedTest.CorrectlyAnsweredQuestions.Count + (decimal)gradedTest.WronglyAnsweredQuestions.Count) * 100;
+                gradedTest.TimeTakenToComplete = test.TimeLimit - TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
+                gradedTest.DateTaken = DateTime.Now;
+                gradedTest.Feedback = gradedTest.Score.ToString();
+
+                //write to database
+
+                MessageBox.Show("Score: " + gradedTest.Score.ToString() + "%\n\n" + gradedTest.Feedback);
+
+                testFinished = true;
+                this.Close();
+            }
         }
 
         private async void btnSubmitAnswer_Click(object sender, EventArgs e)
@@ -96,7 +108,7 @@ namespace MathWiz
             {
                 if (Convert.ToInt32(txtStudentAnswer.Text.Trim()) == test.Questions[currentQuestionNum].CorrectAnswer)
                 {
-                    GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0,1,1));
+                    GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(test.Questions[currentQuestionNum], txtStudentAnswer.Text, true, new TimeSpan(0, 1, 1));
                     gradedTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
 
                     txtStudentAnswer.ForeColor = Color.FromArgb(0, 255, 0);
@@ -111,20 +123,23 @@ namespace MathWiz
 
                 lblCorrectAnswer.Show();
 
-                await Task.Delay(1000);
+                await Task.Delay(1500); //show the answer for a bit
 
                 currentQuestionNum++;
 
                 if (currentQuestionNum < test.Questions.Count)
                 {
                     ShowQuestion(test.Questions[currentQuestionNum]);
-                    // reset the timer if there is a next question
-                    lblTimerQuestion.Text = "01:00";
                 }
                 else //the test if finished
                 {
                     btnStartFinish.Show();
+                    btnStartFinish.Focus();
+                    txtStudentAnswer.Enabled = false;
                     btnSubmitAnswer.Enabled = false;
+
+                    timerQuestion.Stop();
+                    timerTest.Stop();
                 }
 
                 txtStudentAnswer.Text = "";
@@ -134,37 +149,9 @@ namespace MathWiz
                 MessageBox.Show("Your answer must be a number");
             }
         }
+        //End Button Handlers
 
-        private void btnStartFinish_Click(object sender, EventArgs e)
-        {
-            if(btnStartFinish.Text == "Start Test") //start test, show the first question
-            {
-                btnStartFinish.Text = "Finish Test";
-                btnStartFinish.Hide();
-
-                currentQuestionNum = 0; //array starts at 0
-
-                timerTest.Start();
-                lblTimerTest.Show();
-                
-                ShowQuestion(test.Questions[currentQuestionNum]);
-                
-            }
-            else if(btnStartFinish.Text == "Finish Test") //finish test, record score, write score to db
-            {
-                gradedTest.Score = gradedTest.CorrectlyAnsweredQuestions.Count / (gradedTest.CorrectlyAnsweredQuestions.Count + gradedTest.WronglyAnsweredQuestions.Count) * 100;
-                gradedTest.TimeTakenToComplete = test.TimeLimit - TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
-                gradedTest.DateTaken = DateTime.Now;
-                gradedTest.Feedback = gradedTest.Score.ToString();
-
-                //write to database
-
-                MessageBox.Show("Score: " + gradedTest.Score.ToString() + "\n\n" + gradedTest.Feedback);
-
-                this.Close();
-            }
-        }
-
+        //MARK Timer Tick Handlers
         private void timerTest_Tick(object sender, EventArgs e)
         {
             TimeSpan currentTime = TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
@@ -175,7 +162,7 @@ namespace MathWiz
 
             if (lblTimerTest.Text == "00:00") //if time runs out for the entire test
             {
-                TestTimeEnded();
+                EndTest();
             }
         }
 
@@ -189,13 +176,33 @@ namespace MathWiz
 
             if (lblTimerQuestion.Text == "00:00") //if time runs out for the current question
             {
-                QuestionTimeEnded();
+                EndQuestion();
             }
-            
         }
+        //End Timer Tick Handlers
 
-        // Could probably centralize code that's used both in QuestionTimeEnded + TestTimeEnded, but eh
-        private void QuestionTimeEnded()
+        //MARK Methods
+        private void ShowQuestion(Question q)
+        {
+            //show timer stuff
+            timerQuestion.Start();
+            lblTimerQuestion.Text = test.Questions[currentQuestionNum].TimeLimit.Minutes.ToString("00") + ":" + test.Questions[currentQuestionNum].TimeLimit.Seconds.ToString("00");
+
+            //show the question number
+            gbxQuestion.Text = "Question " + (currentQuestionNum + 1).ToString() + " of " + test.Questions.Count;
+
+            //show the question text
+            lblQuestionText.Text = q.QuestionText;
+
+            //hide the answers, but set its text
+            lblCorrectAnswer.Hide();
+            lblCorrectAnswer.Text = q.CorrectAnswer.ToString();
+
+            //show the buttons and textbox
+            txtStudentAnswer.Focus();
+        }
+        
+        private void EndQuestion()
         {
             timerQuestion.Stop();
             string studentAnswer = "";
@@ -244,7 +251,7 @@ namespace MathWiz
             }
         }
 
-        private void TestTimeEnded()
+        private void EndTest()
         {
             // stop the times
             timerTest.Stop();
@@ -305,20 +312,23 @@ namespace MathWiz
             btnSubmitAnswer.Enabled = false;
             
         }
+        
+        private void txtStudentAnswer_TextChanged(object sender, EventArgs e)
+        {
+            txtStudentAnswer.ForeColor = Color.FromArgb(0, 0, 0); //makes the text normal when typing the next answer
+        }
 
         //stop accidental closing of the test form
         private void frmTakeTest_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to exit this test? This may result in a grade of 0", "Are you sure?", MessageBoxButtons.YesNoCancel);
-            if (dialogResult != DialogResult.Yes)
+            if (!testFinished) //only ask if they have not finished the test yet
             {
-                e.Cancel = true;
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to exit this test? This may result in a grade of 0", "Are you sure?", MessageBoxButtons.YesNoCancel);
+                if (dialogResult != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                }
             }
-        }
-
-        private void txtStudentAnswer_TextChanged(object sender, EventArgs e)
-        {
-            txtStudentAnswer.ForeColor = Color.FromArgb(0, 0, 0);
         }
     }
 }

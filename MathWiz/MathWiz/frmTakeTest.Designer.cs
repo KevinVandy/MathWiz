@@ -67,7 +67,6 @@
             this.lblTimerQuestion.Size = new System.Drawing.Size(44, 17);
             this.lblTimerQuestion.TabIndex = 7;
             this.lblTimerQuestion.Text = "01:00";
-            this.lblTimerQuestion.Visible = false;
             // 
             // btnSubmitAnswer
             // 
@@ -78,7 +77,6 @@
             this.btnSubmitAnswer.TabIndex = 6;
             this.btnSubmitAnswer.Text = "Submit";
             this.btnSubmitAnswer.UseVisualStyleBackColor = true;
-            this.btnSubmitAnswer.Visible = false;
             this.btnSubmitAnswer.Click += new System.EventHandler(this.btnSubmitAnswer_Click);
             // 
             // lblCorrectAnswer
@@ -91,7 +89,6 @@
             this.lblCorrectAnswer.Size = new System.Drawing.Size(35, 37);
             this.lblCorrectAnswer.TabIndex = 5;
             this.lblCorrectAnswer.Text = "4";
-            this.lblCorrectAnswer.Visible = false;
             // 
             // txtStudentAnswer
             // 
@@ -103,7 +100,6 @@
             this.txtStudentAnswer.TabIndex = 0;
             this.txtStudentAnswer.Tag = "Answer";
             this.txtStudentAnswer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtStudentAnswer.Visible = false;
             this.txtStudentAnswer.TextChanged += new System.EventHandler(this.txtStudentAnswer_TextChanged);
             // 
             // lblQuestionText
@@ -115,7 +111,6 @@
             this.lblQuestionText.Size = new System.Drawing.Size(127, 37);
             this.lblQuestionText.TabIndex = 3;
             this.lblQuestionText.Text = "2 + 2 = ";
-            this.lblQuestionText.Visible = false;
             // 
             // btnStartFinish
             // 

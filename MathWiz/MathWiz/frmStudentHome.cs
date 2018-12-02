@@ -100,7 +100,7 @@ namespace MathWiz
             //When a user quits out of a test, and starts up another one, they start with 10+ more questions than prior
             int masteryLevel = Convert.ToInt16(cmbMasteryLevel.SelectedItem);
             int numberOfQuestions = Convert.ToInt16(cmbNumberOfQuestions.SelectedItem);
-            PracticeTest practiceTest = new PracticeTest(Question.GenerateRandomQuestions(masteryLevel, new TimeSpan(0, 1, 0), numberOfQuestions), new TimeSpan(0, 10, 0), true, masteryLevel, masteryLevel);
+            PracticeTest practiceTest = new PracticeTest(Question.GenerateRandomQuestions(masteryLevel, new TimeSpan(0, 0, 30), numberOfQuestions), new TimeSpan(0, 10, 0), true, masteryLevel, masteryLevel);
             
 
             Form practiceForm = new frmTakeTest(student, practiceTest);
