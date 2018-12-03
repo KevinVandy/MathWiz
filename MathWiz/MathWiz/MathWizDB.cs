@@ -434,16 +434,20 @@ namespace MathWiz
             }
         }
 
-        public static void InsertTest(Test newTest, string testType, decimal passThreshold, int minLevel, int maxLevel)
+        public static int InsertTest(int klassID, Test newTest, string testType, decimal passThreshold, int minLevel, int maxLevel)
         {
+            int testId = 0;
+
             //Everything besides TestType can be null
-            string insertStatement = "INSERT INTO tests (TestType, TimeLimit, RandomlyGenerated, PassThreshHold, MinLevel, MaxLevel) " +
-                "VALUES(@Type, @TimeLimit, @RNG, @PassThreshold, @MinLevel, @MaxLevel)";
+            string insertStatement = "INSERT INTO tests (KlassID, TestType, TimeLimit, RandomlyGenerated, PassThreshHold, MinLevel, MaxLevel)"
+                                   + " OUTPUT INSERTED.ID" //get the last inserted ID
+                                   + " VALUES(@KlassID, @Type, @TimeLimit, @RNG, @PassThreshold, @MinLevel, @MaxLevel)";
 
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand(insertStatement, conn);
 
             // create your parameters and add values from object
+            Cmd.Parameters.AddWithValue("@KlassID", klassID);
             Cmd.Parameters.AddWithValue("@Type", testType);
             Cmd.Parameters.AddWithValue("@TimeLimit", newTest.TimeLimit);
             Cmd.Parameters.AddWithValue("@RNG", newTest.RandomlyGenerated);
@@ -457,7 +461,7 @@ namespace MathWiz
                 conn.Open();
 
                 // execute the query
-                Cmd.ExecuteNonQuery();
+                testId = Cmd.ExecuteNonQuery();
             }
             catch (SqlException ex)
             {
@@ -472,6 +476,7 @@ namespace MathWiz
                 // always close the connection
                 conn.Close();
             }
+            return testId;
         }
         
         public static void InsertGradedTest(GradedTest gradedTest, int studentID, int testID, string testType, int? recommendedLevel = 1, int? attempts = 1, bool? passed = true)

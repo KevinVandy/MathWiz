@@ -17,14 +17,16 @@ namespace MathWiz
         Test test;
         GradedTest gradedTest;
         Student student;
+        int klassID;
         int currentQuestionNum; //set to 0 when test starts
         bool testFinished;
 
-        public frmTakeTest(Student s, Test t) 
+        public frmTakeTest(Student s, Test t, int kID) 
         {
             InitializeComponent();
             student = s;
             test = t;
+            klassID = kID;
         }
 
         private void frmTakeTest_Load(object sender, EventArgs e)
@@ -105,7 +107,8 @@ namespace MathWiz
                         break;
 
                     case "practice":
-                        
+
+                        test.Id = MathWizDB.InsertTest(klassID, test, "practice", 0, 1, 1);
                         MathWizDB.InsertGradedTest(gradedTest, student.Id, test.Id, "placement");
 
                         break;
