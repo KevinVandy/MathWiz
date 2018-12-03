@@ -473,8 +473,62 @@ namespace MathWiz
                 conn.Close();
             }
         }
+        
+        public static void InsertGradedTest(GradedTest gradedTest, int studentID, int testID, string testType, int? recommendedLevel = 1, int? attempts = 1, bool? passed = true)
+        {
+            string insertStatement = "INSERT INTO graded_tests"
+                                   + " (StudentID, TestID, TestType, Score, TimeTakenToComplete, DateTaken, Feedback, NumberAttempts, Passed, RecommendedLevel)"
+                                   + " OUTPUT INSERTED.ID" //get the last inserted ID
+                                   + " VALUES(@StudentID, @TestID, @TestType, @Score, @Time, @DateTaken, @Feedback, @Attempts, @Passed, @RecommendLevel)";
 
-        public static void InsertGradedQuestion(GradedQuestion newQuestion, int questionID, int gradedTestID)
+            SqlCommand Cmd = new SqlCommand(insertStatement, conn);
+
+            Cmd.Parameters.AddWithValue("@StudentID", studentID);
+            Cmd.Parameters.AddWithValue("@TestID", testID);
+            Cmd.Parameters.AddWithValue("@TestType", testType);
+            Cmd.Parameters.AddWithValue("@Score", gradedTest.Score);
+            Cmd.Parameters.AddWithValue("@Time", gradedTest.TimeTakenToComplete);
+            Cmd.Parameters.AddWithValue("@DateTaken", gradedTest.DateTaken);
+            Cmd.Parameters.AddWithValue("@Feedback", gradedTest.Feedback);
+            Cmd.Parameters.AddWithValue("@Attempts", attempts);
+            Cmd.Parameters.AddWithValue("@Passed", passed);
+            Cmd.Parameters.AddWithValue("@RecommendLevel", recommendedLevel);
+            
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // execute the query
+                int gradedTestID = Cmd.ExecuteNonQuery();
+
+                //after inserting the graded test, insert the graded questions too
+                foreach (GradedQuestion gq in gradedTest.CorrectlyAnsweredQuestions)
+                {
+                    InsertGradedQuestion(gq, gradedTestID);
+                }
+
+                foreach (GradedQuestion gq in gradedTest.WronglyAnsweredQuestions)
+                {
+                    InsertGradedQuestion(gq, gradedTestID);
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // always close the connection
+                conn.Close();
+            }
+        }
+
+        public static void InsertGradedQuestion(GradedQuestion gradedQuestion, int gradedTestID)
         {
             string insertStatement = "INSERT INTO graded_questions (GradedTestID, QuestionID, StudentAnswer, Correct, TimeTakenToAnswer) " +
                 "VALUES(@TestID, @QuestionID, @StudentAnswer, @Correct, @Time)";
@@ -484,10 +538,10 @@ namespace MathWiz
 
             // create your parameters and add values from object
             Cmd.Parameters.AddWithValue("@TestID", gradedTestID);
-            Cmd.Parameters.AddWithValue("@QuestionID", questionID);
-            Cmd.Parameters.AddWithValue("@StudentAnswer", newQuestion.StudentAnswer);
-            Cmd.Parameters.AddWithValue("@Correct", newQuestion.Correct);
-            Cmd.Parameters.AddWithValue("@Time", newQuestion.TimeTakenToAnswer);
+            Cmd.Parameters.AddWithValue("@QuestionID", gradedQuestion.Question.Id);
+            Cmd.Parameters.AddWithValue("@StudentAnswer", gradedQuestion.StudentAnswer);
+            Cmd.Parameters.AddWithValue("@Correct", gradedQuestion.Correct);
+            Cmd.Parameters.AddWithValue("@Time", gradedQuestion.TimeTakenToAnswer);
 
             try
             {
@@ -512,70 +566,26 @@ namespace MathWiz
             }
         }
 
-        //Kevin - I think that this one can be much simpler. First off it needs specific kind of graded test I think. All the other ones I perfect!
-        public static void InsertGradedTest(GradedTest newTest, int studentID, int testID, int attempts, byte passed, int recommendedLevel)
-        {
-            // StudentID, TestID, and Score must be present
-            // Everything else can be null
-            string insertStatement = "INSERT INTO graded_tests (StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, NumberAttempts, Passed, RecommendedLevel) " +
-                "VALUES(@StudentID, @TestID, @Score, @Time, @DateTaken, @Feedback, @Attempts, @Passed, @RecommendLevel)";
-
-            // create command object with SQL query and link to connection object
-            SqlCommand Cmd = new SqlCommand(insertStatement, conn);
-
-            // create your parameters and add values from object
-            Cmd.Parameters.AddWithValue("@StudentID", studentID);
-            Cmd.Parameters.AddWithValue("@TestID", testID);
-            Cmd.Parameters.AddWithValue("@Score", newTest.Score);
-            Cmd.Parameters.AddWithValue("@Time", newTest.TimeTakenToComplete);
-            Cmd.Parameters.AddWithValue("@DateTaken", newTest.DateTaken);
-            Cmd.Parameters.AddWithValue("@Feedback", newTest.Feedback);
-            Cmd.Parameters.AddWithValue("@Attempts", attempts);
-            Cmd.Parameters.AddWithValue("@Passed", passed);
-            Cmd.Parameters.AddWithValue("@RecommendLevel", recommendedLevel);
-
-            try
-            {
-                // Open the connection
-                conn.Open();
-
-                // execute the query
-                Cmd.ExecuteNonQuery();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                // always close the connection
-                conn.Close();
-            }
-        }
         public static void UpdatePassword(string userType, string username, string passwordHash)
         {
-            string insertStatement = "";
+            string insertStatement = "UPDATE";
 
             switch (userType) //need this case structure because you can't bind values to a table name, and I want to do it the safe way without {}
             {
                 case "admin":
-                    insertStatement = "UPDATE admins ";
+                    insertStatement = " admins ";
                     break;
 
                 case "teacher":
-                    insertStatement = "UPDATE teachers ";
+                    insertStatement = " teachers ";
                     break;
 
                 case "parent":
-                    insertStatement = "UPDATE parents ";
+                    insertStatement = " parents ";
                     break;
 
                 case "student":
-                    insertStatement = "UPDATE students ";
+                    insertStatement = " students ";
                     break;
 
             }

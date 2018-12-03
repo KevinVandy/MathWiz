@@ -94,10 +94,35 @@ namespace MathWiz
                 gradedTest.Feedback = gradedTest.Score.ToString();
 
                 //write to database
+                switch (this.Tag.ToString())
+                {
+                    case "placement":
 
+                        int recommendedLevel = 1; //TODO calculate recommended level
+
+                        MathWizDB.InsertGradedTest(gradedTest, student.Id, test.Id, "placement", recommendedLevel);
+
+                        break;
+
+                    case "practice":
+                        
+                        MathWizDB.InsertGradedTest(gradedTest, student.Id, test.Id, "placement");
+
+                        break;
+
+                    case "mastery":
+
+                        bool passed = true; //TODO calculate weather the student passed the test
+                        //TODO keep track of the number of attempts that it has taken the student to pass
+                        
+                        MathWizDB.InsertGradedTest(gradedTest, student.Id, test.Id, "placement", null, 1, passed);
+
+                        break;
+                }
+                
                 MessageBox.Show("Score: " + gradedTest.Score.ToString() + "%\n\n" + gradedTest.Feedback);
 
-                testFinished = true;
+                testFinished = true; //now it this should close with no warning message
                 this.Close();
             }
         }
