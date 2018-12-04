@@ -163,11 +163,13 @@ namespace MathWiz
         private static List<Question> GenerateAdvnacedMultiplicationDivison(TimeSpan timelimit, int numberofQuestions)
         {
             GeneratesAddMultiply(true, true);
+            GeneratesSubtractDivide(true, true);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateAdvancedDivision(TimeSpan timelimit, int numberofQuestions)
         {
+            GeneratesSubtractDivide(true, true);
             throw new NotImplementedException();
         }
 
@@ -180,11 +182,13 @@ namespace MathWiz
         private static List<Question> GenerateSimpleMultiplicationDivision(TimeSpan timelimit, int numberofQuestions)
         {
             GeneratesAddMultiply(false, true);
+            GeneratesSubtractDivide(false, true);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateSimpleDivision(TimeSpan timelimit, int numberofQuestions)
         {
+            GeneratesSubtractDivide(false, true);
             throw new NotImplementedException();
         }
 
@@ -197,11 +201,13 @@ namespace MathWiz
         private static List<Question> GenerateMixedComplexAdditionSubtraction(TimeSpan timelimit, int numberofQuestions)
         {
             GeneratesAddMultiply(true, false);
+            GeneratesSubtractDivide(true, false);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateComplexSubtraction(TimeSpan timelimit, int numberofQuestions)
         {
+            GeneratesSubtractDivide(true, false);
             throw new NotImplementedException();
         }
 
@@ -214,6 +220,7 @@ namespace MathWiz
         private static List<Question> GenerateMixedSimpleAdditionSubtraction(TimeSpan timelimit, int numberofQuestions)
         {
             GeneratesAddMultiply(false, false);
+            GeneratesSubtractDivide(false, false);
             string questionText;
             List<Question> qL = new List<Question>();
             List<Question> add = new List<Question>();
@@ -258,6 +265,7 @@ namespace MathWiz
 
         private static List<Question> GenerateSimpleSubtractionQuestions(TimeSpan timelimit, int numberofQuestions)
         {
+            GeneratesSubtractDivide(false, false);
             string questionText;
             List <Question> qL = new List<Question>();
             List<int> easy = GenerateEasyRandomNumbers(0, 10);
