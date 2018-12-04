@@ -110,7 +110,10 @@ namespace MathWiz
         public static List<Question> GenerateRandomQuestions(int masteryLevel, TimeSpan timeLimit, int numberofQuestions)
         {
             List<Question> qL = new List<Question>();
-            
+            if(timeLimit == null)
+            {
+                timeLimit = new TimeSpan(0, 0, 30);
+            }
             int caseswitch = masteryLevel;
             switch(masteryLevel)
             {
@@ -162,65 +165,65 @@ namespace MathWiz
 
         private static List<Question> GenerateAdvnacedMultiplicationDivison(TimeSpan timelimit, int numberofQuestions)
         {
-            GeneratesAddMultiply(true, true);
-            GeneratesSubtractDivide(true, true);
+            GeneratesAddMultiply(true, true, timelimit);
+            GeneratesSubtractDivide(true, true, timelimit);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateAdvancedDivision(TimeSpan timelimit, int numberofQuestions)
         {
-            GeneratesSubtractDivide(true, true);
+            GeneratesSubtractDivide(true, true, timelimit);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateAdvancedMultiplication(TimeSpan timelimit, int numberofQuestions)
         {
-            GeneratesAddMultiply(true, true);
+            GeneratesAddMultiply(true, true, timelimit);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateSimpleMultiplicationDivision(TimeSpan timelimit, int numberofQuestions)
         {
-            GeneratesAddMultiply(false, true);
-            GeneratesSubtractDivide(false, true);
+            GeneratesAddMultiply(false, true, timelimit);
+            GeneratesSubtractDivide(false, true, timelimit);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateSimpleDivision(TimeSpan timelimit, int numberofQuestions)
         {
-            GeneratesSubtractDivide(false, true);
+            GeneratesSubtractDivide(false, true, timelimit);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateSimpleMultiplication(TimeSpan timelimit, int numberofQuestions)
         {
-            GeneratesAddMultiply(false, true);
+            GeneratesAddMultiply(false, true, timelimit);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateMixedComplexAdditionSubtraction(TimeSpan timelimit, int numberofQuestions)
         {
-            GeneratesAddMultiply(true, false);
-            GeneratesSubtractDivide(true, false);
+            GeneratesAddMultiply(true, false, timelimit);
+            GeneratesSubtractDivide(true, false, timelimit);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateComplexSubtraction(TimeSpan timelimit, int numberofQuestions)
         {
-            GeneratesSubtractDivide(true, false);
+            GeneratesSubtractDivide(true, false, timelimit);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateComplexAddition(TimeSpan timelimit, int numberofQuestions)
         {
-            GeneratesAddMultiply(true, false);
+            GeneratesAddMultiply(true, false, timelimit);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateMixedSimpleAdditionSubtraction(TimeSpan timelimit, int numberofQuestions)
         {
-            GeneratesAddMultiply(false, false);
-            GeneratesSubtractDivide(false, false);
+            GeneratesAddMultiply(false, false, timelimit);
+            GeneratesSubtractDivide(false, false, timelimit);
             string questionText;
             List<Question> qL = new List<Question>();
             List<Question> add = new List<Question>();
@@ -266,7 +269,7 @@ namespace MathWiz
         private static List<Question> GenerateSimpleSubtractionQuestions(TimeSpan timelimit, int NumberOfQuestions)
         {
             List<Question> qL = new List<Question>();
-            List<Question> pullfrom = GeneratesSubtractDivide(false, false);
+            List<Question> pullfrom = GeneratesSubtractDivide(false, false, timelimit);
             int[] anArray = new int[NumberOfQuestions];
             for (int i = 0; i < NumberOfQuestions; i++)
             {
@@ -314,7 +317,7 @@ namespace MathWiz
         public static List<Question> GenerateSimpleAddtionQuestions(TimeSpan timelimit, int NumberOfQuestions)
         {
             List<Question> qL = new List<Question>();
-            List<Question> pullfrom = GeneratesAddMultiply(false, false);
+            List<Question> pullfrom = GeneratesAddMultiply(false, false, timelimit);
             int[] anArray = new int[NumberOfQuestions];
             for(int i = 0; i < NumberOfQuestions; i++)
             {
@@ -372,10 +375,10 @@ namespace MathWiz
 
 
 
-        public static List<Question> GeneratesAddMultiply(bool isHard, bool AddFalse_MultiplyTrue)
+        public static List<Question> GeneratesAddMultiply(bool isHard, bool AddFalse_MultiplyTrue, TimeSpan theTime)
         {
             TimeSpan timeLimit = new TimeSpan();
-            timeLimit = TimeSpan.FromTicks(5000);
+            timeLimit = theTime;
             List<Question> qL = new List<Question>();
             List<int> first = new List<int>();
             List<int> second = new List<int>();
@@ -473,10 +476,10 @@ namespace MathWiz
 
         }
 
-        public static List<Question> GeneratesSubtractDivide(bool isHard, bool SubtractFalse_DivideTrue)
+        public static List<Question> GeneratesSubtractDivide(bool isHard, bool SubtractFalse_DivideTrue, TimeSpan theTime)
         {
             TimeSpan timelimit = new TimeSpan();
-            timelimit = TimeSpan.FromTicks(5000);
+            timelimit = theTime;
             List<Question> qL = new List<Question>();
             List<int> first = new List<int>();
             List<int> second = new List<int>();
