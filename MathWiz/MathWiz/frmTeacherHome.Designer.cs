@@ -35,7 +35,6 @@
             this.cmbKlasses = new System.Windows.Forms.ComboBox();
             this.btnCreateTest = new System.Windows.Forms.Button();
             this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
-            this.grpBxStudentInfo = new System.Windows.Forms.GroupBox();
             this.dgvGradedTests = new System.Windows.Forms.DataGridView();
             this.gradedTest_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gradedTestStudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,7 +76,6 @@
             this.gradedTestsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.graded_testsTableAdapter();
             this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
-            this.grpBxStudentInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGradedTests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradedTestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).BeginInit();
@@ -94,7 +92,7 @@
             this.lblTeacherName.AutoSize = true;
             this.lblTeacherName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTeacherName.ForeColor = System.Drawing.Color.Blue;
-            this.lblTeacherName.Location = new System.Drawing.Point(22, 33);
+            this.lblTeacherName.Location = new System.Drawing.Point(22, 49);
             this.lblTeacherName.Name = "lblTeacherName";
             this.lblTeacherName.Size = new System.Drawing.Size(141, 22);
             this.lblTeacherName.TabIndex = 1;
@@ -105,7 +103,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(192, 33);
+            this.label1.Location = new System.Drawing.Point(192, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 22);
             this.label1.TabIndex = 3;
@@ -114,7 +112,7 @@
             // cmbKlasses
             // 
             this.cmbKlasses.FormattingEnabled = true;
-            this.cmbKlasses.Location = new System.Drawing.Point(351, 35);
+            this.cmbKlasses.Location = new System.Drawing.Point(351, 51);
             this.cmbKlasses.Name = "cmbKlasses";
             this.cmbKlasses.Size = new System.Drawing.Size(121, 21);
             this.cmbKlasses.TabIndex = 5;
@@ -122,7 +120,7 @@
             // 
             // btnCreateTest
             // 
-            this.btnCreateTest.Location = new System.Drawing.Point(804, 35);
+            this.btnCreateTest.Location = new System.Drawing.Point(778, 472);
             this.btnCreateTest.Name = "btnCreateTest";
             this.btnCreateTest.Size = new System.Drawing.Size(116, 36);
             this.btnCreateTest.TabIndex = 7;
@@ -134,19 +132,6 @@
             // 
             this.backgroundWorkerLoadData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerLoadData_DoWork);
             this.backgroundWorkerLoadData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerLoadData_RunWorkerCompleted);
-            // 
-            // grpBxStudentInfo
-            // 
-            this.grpBxStudentInfo.BackColor = System.Drawing.Color.Transparent;
-            this.grpBxStudentInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.grpBxStudentInfo.Controls.Add(this.dgvGradedTests);
-            this.grpBxStudentInfo.Location = new System.Drawing.Point(26, 435);
-            this.grpBxStudentInfo.Name = "grpBxStudentInfo";
-            this.grpBxStudentInfo.Size = new System.Drawing.Size(834, 223);
-            this.grpBxStudentInfo.TabIndex = 8;
-            this.grpBxStudentInfo.TabStop = false;
-            this.grpBxStudentInfo.Text = "Class Info";
-            this.grpBxStudentInfo.Visible = false;
             // 
             // dgvGradedTests
             // 
@@ -166,7 +151,7 @@
             this.gradedTestPast,
             this.recommendedLevelDataGridViewTextBoxColumn});
             this.dgvGradedTests.DataSource = this.gradedTestBindingSource;
-            this.dgvGradedTests.Location = new System.Drawing.Point(6, 36);
+            this.dgvGradedTests.Location = new System.Drawing.Point(26, 232);
             this.dgvGradedTests.MultiSelect = false;
             this.dgvGradedTests.Name = "dgvGradedTests";
             this.dgvGradedTests.ReadOnly = true;
@@ -270,7 +255,7 @@
             this.LastName,
             this.MasteryLevel});
             this.dgvStudents.DataSource = this.studentsBindingSource;
-            this.dgvStudents.Location = new System.Drawing.Point(26, 82);
+            this.dgvStudents.Location = new System.Drawing.Point(26, 103);
             this.dgvStudents.MultiSelect = false;
             this.dgvStudents.Name = "dgvStudents";
             this.dgvStudents.ReadOnly = true;
@@ -337,7 +322,7 @@
             this.minLevelDataGridViewTextBoxColumn,
             this.maxLevelDataGridViewTextBoxColumn});
             this.dgvTests.DataSource = this.testsBindingSource;
-            this.dgvTests.Location = new System.Drawing.Point(26, 266);
+            this.dgvTests.Location = new System.Drawing.Point(26, 411);
             this.dgvTests.MultiSelect = false;
             this.dgvTests.Name = "dgvTests";
             this.dgvTests.ReadOnly = true;
@@ -492,11 +477,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1290, 670);
-            this.Controls.Add(this.fillByToolStrip);
             this.Controls.Add(this.dgvTests);
+            this.Controls.Add(this.dgvGradedTests);
+            this.Controls.Add(this.fillByToolStrip);
             this.Controls.Add(this.dgvStudents);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.grpBxStudentInfo);
             this.Controls.Add(this.btnCreateTest);
             this.Controls.Add(this.lblTeacherName);
             this.Controls.Add(this.cmbKlasses);
@@ -506,7 +491,6 @@
             this.Text = "MathWiz - Teacher Portal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmTeacherHome_Load);
-            this.grpBxStudentInfo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGradedTests)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradedTestBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).EndInit();
@@ -532,7 +516,6 @@
         private MathWizGroup3DataSetTableAdapters.studentsTableAdapter studentsTableAdapter;
         private System.Windows.Forms.Button btnCreateTest;
         private System.ComponentModel.BackgroundWorker backgroundWorkerLoadData;
-        private System.Windows.Forms.GroupBox grpBxStudentInfo;
         private System.Windows.Forms.DataGridView dgvTests;
         private System.Windows.Forms.BindingSource testsBindingSource;
         private MathWizGroup3DataSetTableAdapters.testsTableAdapter testsTableAdapter;

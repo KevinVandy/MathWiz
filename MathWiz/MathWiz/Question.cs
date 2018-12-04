@@ -163,12 +163,13 @@ namespace MathWiz
         private static List<Question> GenerateAdvnacedMultiplicationDivison(TimeSpan timelimit, int numberofQuestions)
         {
             GeneratesAddMultiply(true, true);
-            Random rnd = new Random();
+            GeneratesSubtractDivide(true, true);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateAdvancedDivision(TimeSpan timelimit, int numberofQuestions)
         {
+            GeneratesSubtractDivide(true, true);
             throw new NotImplementedException();
         }
 
@@ -181,11 +182,13 @@ namespace MathWiz
         private static List<Question> GenerateSimpleMultiplicationDivision(TimeSpan timelimit, int numberofQuestions)
         {
             GeneratesAddMultiply(false, true);
+            GeneratesSubtractDivide(false, true);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateSimpleDivision(TimeSpan timelimit, int numberofQuestions)
         {
+            GeneratesSubtractDivide(false, true);
             throw new NotImplementedException();
         }
 
@@ -198,11 +201,13 @@ namespace MathWiz
         private static List<Question> GenerateMixedComplexAdditionSubtraction(TimeSpan timelimit, int numberofQuestions)
         {
             GeneratesAddMultiply(true, false);
+            GeneratesSubtractDivide(true, false);
             throw new NotImplementedException();
         }
 
         private static List<Question> GenerateComplexSubtraction(TimeSpan timelimit, int numberofQuestions)
         {
+            GeneratesSubtractDivide(true, false);
             throw new NotImplementedException();
         }
 
@@ -215,6 +220,7 @@ namespace MathWiz
         private static List<Question> GenerateMixedSimpleAdditionSubtraction(TimeSpan timelimit, int numberofQuestions)
         {
             GeneratesAddMultiply(false, false);
+            GeneratesSubtractDivide(false, false);
             string questionText;
             List<Question> qL = new List<Question>();
             List<Question> add = new List<Question>();
@@ -259,101 +265,74 @@ namespace MathWiz
 
         private static List<Question> GenerateSimpleSubtractionQuestions(TimeSpan timelimit, int numberofQuestions)
         {
-            List<Question> qL = new List<Question>();
-            List<Question> pullFrom = GeneratesSubtractDivide(false, false);
-            int[] anArray = new int[numberofQuestions];
-            for (int i = 0; i < numberofQuestions; i++)
+            GeneratesSubtractDivide(false, false);
+            string questionText;
+            List <Question> qL = new List<Question>();
+            List<int> easy = GenerateEasyRandomNumbers(0, 10);
+            List<int> takefrom = new List<int>();
+            int[] answer = new int[10];
+            
+            var easyEnumerator = easy.GetEnumerator();
+            //enumerate through the list
+            while(easyEnumerator.MoveNext())
             {
-                int aRandom = rnd.Next(0, 20);
-                anArray[i] = aRandom;
-            }
+                int counter = 0;
+                int lower = GetRandomNumberLowerThan(easyEnumerator.Current);
+                answer[counter] = easyEnumerator.Current - lower;
+                questionText = easyEnumerator.Current.ToString() + " - " + lower.ToString() + " = ";
+                Question aQuestion = new Question();
+                aQuestion.QuestionText = questionText;
+                aQuestion.CorrectAnswer = answer[counter];
+                aQuestion.TimeLimit = timelimit;
+                
+                testQuestions.Add(aQuestion);
+                //MessageBox.Show("First Number = " + easyEnumerator.Current.ToString() + "\n" +
+                //                "Second Number =" + lower.ToString() + "\n" + 
+                //                "Equals = " + answer[counter].ToString() + "\n" +
+                //                "Text = " + questionText);
 
-            foreach (int i in anArray)
-            {
-                qL.Add(pullFrom[i]);
+                counter++;
             }
+            
+
             return qL;
-            //string questionText;
-            //List <Question> qL = new List<Question>();
-            //List<int> easy = GenerateEasyRandomNumbers(0, 10);
-            //List<int> takefrom = new List<int>();
-            //int[] answer = new int[10];
-
-            //var easyEnumerator = easy.GetEnumerator();
-            ////enumerate through the list
-            //while(easyEnumerator.MoveNext())
-            //{
-            //    int counter = 0;
-            //    int lower = GetRandomNumberLowerThan(easyEnumerator.Current);
-            //    answer[counter] = easyEnumerator.Current - lower;
-            //    questionText = easyEnumerator.Current.ToString() + " - " + lower.ToString() + " = ";
-            //    Question aQuestion = new Question();
-            //    aQuestion.QuestionText = questionText;
-            //    aQuestion.CorrectAnswer = answer[counter];
-            //    aQuestion.TimeLimit = timelimit;
-
-            //    testQuestions.Add(aQuestion);
-            //    //MessageBox.Show("First Number = " + easyEnumerator.Current.ToString() + "\n" +
-            //    //                "Second Number =" + lower.ToString() + "\n" + 
-            //    //                "Equals = " + answer[counter].ToString() + "\n" +
-            //    //                "Text = " + questionText);
-
-            //    counter++;
-            //}
-
-
-            //return qL;
         }
 
         public static List<Question> GenerateSimpleAddtionQuestions(TimeSpan timelimit, int NumberOfQuestions)
         {
-            List<Question> qL = new List<Question>();
-            List<Question> pullFrom = GeneratesAddMultiply(false, false);
-            int[] anArray = new int[NumberOfQuestions];
-            for(int i = 0; i < NumberOfQuestions; i++)
+            GeneratesAddMultiply(false, false);
+            string questionText;
+            List<int> firstEasy = GenerateEasyRandomNumbers(0, NumberOfQuestions);
+            List<int> secondEasy = GenerateEasyRandomNumbers(0, NumberOfQuestions);
+            var firstEasyEnumerator = firstEasy.GetEnumerator();
+            int[] answer = new int[NumberOfQuestions];
+            var secondEasyEnumerator = secondEasy.GetEnumerator();
+            var answerEnumerator = answer.GetEnumerator();
+            //enumerate through the lists
+            while(firstEasyEnumerator.MoveNext())
             {
-                int aRandom = rnd.Next(0, 20);
-                anArray[i] = aRandom;
+                int counter = 0;
+                secondEasyEnumerator.MoveNext();
+                answerEnumerator.MoveNext();
+                answer[counter] = ((firstEasyEnumerator.Current) + (secondEasyEnumerator.Current));
+                questionText = firstEasyEnumerator.Current.ToString() + " + " + secondEasyEnumerator.Current.ToString() + " = ";
+                //MessageBox.Show("FirstNumber: " + firstEasyEnumerator.Current.ToString() + "\n" +
+                //                "SecondNumber: " + secondEasyEnumerator.Current.ToString() + "\n" +
+                //                "Answer: " + answer[counter].ToString() + "\n" +
+                //                "theText: " + questionText);
+                Question question = new Question();
+                question.QuestionText = questionText;
+                question.CorrectAnswer = answer[counter];
+                question.TimeLimit = timelimit;
+                counter++;
+                testQuestions.Add(question);
             }
 
-            foreach(int i in anArray)
-            {
-                qL.Add(pullFrom[i]);
-            }
-            return qL;
-            //GeneratesAddMultiply(false, false);
-            //string questionText;
-            //List<int> firstEasy = GenerateEasyRandomNumbers(0, NumberOfQuestions);
-            //List<int> secondEasy = GenerateEasyRandomNumbers(0, NumberOfQuestions);
-            //var firstEasyEnumerator = firstEasy.GetEnumerator();
-            //int[] answer = new int[NumberOfQuestions];
-            //var secondEasyEnumerator = secondEasy.GetEnumerator();
-            //var answerEnumerator = answer.GetEnumerator();
-            ////enumerate through the lists
-            //while(firstEasyEnumerator.MoveNext())
+            //foreach(Question q in testQuestions)
             //{
-            //    int counter = 0;
-            //    secondEasyEnumerator.MoveNext();
-            //    answerEnumerator.MoveNext();
-            //    answer[counter] = ((firstEasyEnumerator.Current) + (secondEasyEnumerator.Current));
-            //    questionText = firstEasyEnumerator.Current.ToString() + " + " + secondEasyEnumerator.Current.ToString() + " = ";
-            //    //MessageBox.Show("FirstNumber: " + firstEasyEnumerator.Current.ToString() + "\n" +
-            //    //                "SecondNumber: " + secondEasyEnumerator.Current.ToString() + "\n" +
-            //    //                "Answer: " + answer[counter].ToString() + "\n" +
-            //    //                "theText: " + questionText);
-            //    Question question = new Question();
-            //    question.QuestionText = questionText;
-            //    question.CorrectAnswer = answer[counter];
-            //    question.TimeLimit = timelimit;
-            //    counter++;
-            //    testQuestions.Add(question);
+            //    MessageBox.Show(q.QuestionText + q.CorrectAnswer.ToString());
             //}
-
-            ////foreach(Question q in testQuestions)
-            ////{
-            ////    MessageBox.Show(q.QuestionText + q.CorrectAnswer.ToString());
-            ////}
-            //return testQuestions;
+            return testQuestions;
 
         }
 
