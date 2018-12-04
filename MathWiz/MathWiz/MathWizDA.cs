@@ -223,7 +223,7 @@ namespace MathWiz
             return admin;
         }
 
-        public static Teacher SelectTeacher(string username)
+        public static Teacher Teacher(string username)
         {
             
             Teacher teacher = new Teacher();

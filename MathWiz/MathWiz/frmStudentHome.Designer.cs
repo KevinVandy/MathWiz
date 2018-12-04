@@ -36,7 +36,6 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnTakeMasteryTest = new System.Windows.Forms.Button();
-            this.btnTakePracticeTest = new System.Windows.Forms.Button();
             this.btnTakePlacementTest = new System.Windows.Forms.Button();
             this.gbxTakeTests = new System.Windows.Forms.GroupBox();
             this.lblNumberOfQuestions = new System.Windows.Forms.Label();
@@ -106,7 +105,7 @@
             // btnTakeMasteryTest
             // 
             this.btnTakeMasteryTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTakeMasteryTest.Location = new System.Drawing.Point(21, 239);
+            this.btnTakeMasteryTest.Location = new System.Drawing.Point(21, 176);
             this.btnTakeMasteryTest.Margin = new System.Windows.Forms.Padding(2);
             this.btnTakeMasteryTest.Name = "btnTakeMasteryTest";
             this.btnTakeMasteryTest.Size = new System.Drawing.Size(238, 51);
@@ -114,18 +113,6 @@
             this.btnTakeMasteryTest.Text = "Take Next Mastery Test";
             this.btnTakeMasteryTest.UseVisualStyleBackColor = true;
             this.btnTakeMasteryTest.Click += new System.EventHandler(this.btnTakeMasteryTest_Click);
-            // 
-            // btnTakePracticeTest
-            // 
-            this.btnTakePracticeTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTakePracticeTest.Location = new System.Drawing.Point(21, 103);
-            this.btnTakePracticeTest.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTakePracticeTest.Name = "btnTakePracticeTest";
-            this.btnTakePracticeTest.Size = new System.Drawing.Size(238, 51);
-            this.btnTakePracticeTest.TabIndex = 4;
-            this.btnTakePracticeTest.Text = "Take Teacher\'s Practice Test";
-            this.btnTakePracticeTest.UseVisualStyleBackColor = true;
-            this.btnTakePracticeTest.Click += new System.EventHandler(this.btnTakePracticeTest_Click);
             // 
             // btnTakePlacementTest
             // 
@@ -147,11 +134,10 @@
             this.gbxTakeTests.Controls.Add(this.btnTakeRandomPracticeTest);
             this.gbxTakeTests.Controls.Add(this.cmbMasteryLevel);
             this.gbxTakeTests.Controls.Add(this.btnTakeMasteryTest);
-            this.gbxTakeTests.Controls.Add(this.btnTakePracticeTest);
             this.gbxTakeTests.Controls.Add(this.btnTakePlacementTest);
             this.gbxTakeTests.Location = new System.Drawing.Point(23, 86);
             this.gbxTakeTests.Name = "gbxTakeTests";
-            this.gbxTakeTests.Size = new System.Drawing.Size(710, 314);
+            this.gbxTakeTests.Size = new System.Drawing.Size(710, 269);
             this.gbxTakeTests.TabIndex = 6;
             this.gbxTakeTests.TabStop = false;
             this.gbxTakeTests.Text = "Take Tests";
@@ -159,7 +145,7 @@
             // lblNumberOfQuestions
             // 
             this.lblNumberOfQuestions.AutoSize = true;
-            this.lblNumberOfQuestions.Location = new System.Drawing.Point(379, 171);
+            this.lblNumberOfQuestions.Location = new System.Drawing.Point(379, 108);
             this.lblNumberOfQuestions.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNumberOfQuestions.Name = "lblNumberOfQuestions";
             this.lblNumberOfQuestions.Size = new System.Drawing.Size(79, 13);
@@ -169,7 +155,7 @@
             // lblMasteryLevels
             // 
             this.lblMasteryLevels.AutoSize = true;
-            this.lblMasteryLevels.Location = new System.Drawing.Point(272, 171);
+            this.lblMasteryLevels.Location = new System.Drawing.Point(272, 108);
             this.lblMasteryLevels.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMasteryLevels.Name = "lblMasteryLevels";
             this.lblMasteryLevels.Size = new System.Drawing.Size(76, 13);
@@ -186,7 +172,7 @@
             "10",
             "15",
             "20"});
-            this.cmbNumberOfQuestions.Location = new System.Drawing.Point(382, 187);
+            this.cmbNumberOfQuestions.Location = new System.Drawing.Point(382, 124);
             this.cmbNumberOfQuestions.Name = "cmbNumberOfQuestions";
             this.cmbNumberOfQuestions.Size = new System.Drawing.Size(90, 33);
             this.cmbNumberOfQuestions.TabIndex = 8;
@@ -195,7 +181,7 @@
             // btnTakeRandomPracticeTest
             // 
             this.btnTakeRandomPracticeTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTakeRandomPracticeTest.Location = new System.Drawing.Point(21, 171);
+            this.btnTakeRandomPracticeTest.Location = new System.Drawing.Point(21, 108);
             this.btnTakeRandomPracticeTest.Margin = new System.Windows.Forms.Padding(2);
             this.btnTakeRandomPracticeTest.Name = "btnTakeRandomPracticeTest";
             this.btnTakeRandomPracticeTest.Size = new System.Drawing.Size(238, 51);
@@ -223,7 +209,7 @@
             "11",
             "12",
             "13"});
-            this.cmbMasteryLevel.Location = new System.Drawing.Point(275, 187);
+            this.cmbMasteryLevel.Location = new System.Drawing.Point(275, 124);
             this.cmbMasteryLevel.Name = "cmbMasteryLevel";
             this.cmbMasteryLevel.Size = new System.Drawing.Size(90, 33);
             this.cmbMasteryLevel.TabIndex = 6;
@@ -298,7 +284,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button btnTakeMasteryTest;
-        private System.Windows.Forms.Button btnTakePracticeTest;
         private System.Windows.Forms.Button btnTakePlacementTest;
         private System.Windows.Forms.GroupBox gbxTakeTests;
         private System.Windows.Forms.GroupBox gbxViewProgress;
