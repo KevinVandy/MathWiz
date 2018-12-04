@@ -128,7 +128,10 @@ namespace MathWiz
                Validation.IsComboSelected(cboRandom) &&
                Validation.secondIndexNotLower(cboMinimum, cboMaximum) == true)
                 {
-                    return true;
+                    if(MathWizDA.SelectKlassesMasteryTests(klassID) == null)
+                    {
+                        return true;
+                    } 
                 }
 
                 return false;
