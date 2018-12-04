@@ -17,10 +17,10 @@ namespace MathWiz
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmLogin());
-            List<Question> qL = new List<Question>();
-            qL = Question.GenerateRandomQuestions(2, TimeSpan.FromTicks(486000000000), 15);
-            MessageBox.Show(qL.Count().ToString());
+            Application.Run(new frmLogin());
+            //List<Question> qL = new List<Question>();
+            //qL = Question.GenerateRandomQuestions(2, TimeSpan.FromTicks(486000000000), 15);
+            //MessageBox.Show(qL.Count().ToString());
 
 
 

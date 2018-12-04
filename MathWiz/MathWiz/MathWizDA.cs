@@ -225,7 +225,6 @@ namespace MathWiz
 
         public static Teacher SelectTeacher(string username)
         {
-            
             Teacher teacher = new Teacher();
 
             //make the query the safe way by binding values to prevent SQL injection
