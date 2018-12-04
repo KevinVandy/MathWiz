@@ -14,12 +14,13 @@ namespace MathWiz
         [STAThread]
         static void Main()
         {
-            
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLogin());
             //List<Question> qL = new List<Question>();
-            //qL = Question.GenerateRandomQuestions(2, TimeSpan.FromTicks(486000000000), 15);
+            //TimeSpan ts = new TimeSpan(10, 0, 0);
+            //qL = Question.GenerateSimpleAddtionQuestions(ts, 10);
             //MessageBox.Show(qL.Count().ToString());
 
 
