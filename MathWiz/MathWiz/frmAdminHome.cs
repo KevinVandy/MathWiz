@@ -27,6 +27,8 @@ namespace MathWiz
         {
             backgroundWorkerFormDataLoad.RunWorkerAsync();
 
+            lblAdminName.Text = "Logged in as: " + admin.FirstName + " " + admin.LastName;
+
             masteryLevelSeries = this.chtMasterLevelDistribution.Series.Add("masteryLevels");
 
             chtMasterLevelDistribution.ChartAreas[0].AxisX.Title = "Mastery Levels";
