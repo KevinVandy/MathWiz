@@ -19,9 +19,10 @@ namespace MathWiz
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLogin());
             //List<Question> qL = new List<Question>();
-            //qL = Question.GeneratesSubtractDivide(true, true);
+            //qL = Question.GenerateRandomQuestions(2, TimeSpan.FromTicks(486000000000), 15);
+            //MessageBox.Show(qL.Count().ToString());
 
-            
+
 
         }
     }
