@@ -30,13 +30,11 @@ namespace MathWiz
         {
             if(student.MasteryLevel == 0)
             {
-                btnTakePracticeTest.Enabled = false;
                 btnTakeMasteryTest.Enabled = false;
                 btnTakePlacementTest.Enabled = true;
             }
             else
             {
-                btnTakePracticeTest.Enabled = true;
                 btnTakeMasteryTest.Enabled = true;
                 btnTakePlacementTest.Enabled = false;
             }
@@ -85,13 +83,6 @@ namespace MathWiz
             Form placementForm = new frmTakeTest(student, availablePlacementTest, klassID); //TODO Pass Correct Test object
             placementForm.Tag = "placement";
             placementForm.ShowDialog();
-        }
-
-        private void btnTakePracticeTest_Click(object sender, EventArgs e)
-        {
-            Form practiceForm = new frmTakeTest(student, null, klassID);
-            practiceForm.Tag = "practice";
-            practiceForm.ShowDialog();
         }
 
         private void btnTakeRandomPracticeTest_Click(object sender, EventArgs e)
