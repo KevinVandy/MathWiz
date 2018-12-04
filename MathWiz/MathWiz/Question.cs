@@ -168,7 +168,16 @@ namespace MathWiz
             List<Question> qL = new List<Question>();
             List<Question> pullfromOne = GeneratesAddMultiply(true, true, timelimit);
             List<Question> pullfromOther = GeneratesSubtractDivide(true, true, timelimit);
-            var RandomNumbers = Enumerable.Range(0, 50).OrderBy(x => rnd.Next()).Take(NumberOfQuestions).ToArray();
+            int max;
+            if (pullfromOne.Count > pullfromOther.Count)
+            {
+                max = pullfromOther.Count;
+            }
+            else
+            {
+                max = pullfromOne.Count;
+            }
+            var RandomNumbers = Enumerable.Range(0, max).OrderBy(x => rnd.Next()).Take(NumberOfQuestions).ToArray();
             foreach (int i in RandomNumbers)
             {
                 int oneOrTheOther = rnd.Next(0, 2);
@@ -235,7 +244,7 @@ namespace MathWiz
         {
             List<Question> qL = new List<Question>();
             List<Question> pullfrom = GeneratesSubtractDivide(false, true, timelimit);
-            var RandomNumbers = Enumerable.Range(0, 50).OrderBy(x => rnd.Next()).Take(NumberOfQuestions).ToArray();
+            var RandomNumbers = Enumerable.Range(0, pullfrom.Count).OrderBy(x => rnd.Next()).Take(NumberOfQuestions).ToArray();
             foreach (int i in RandomNumbers)
             {
                 qL.Add(pullfrom[i]);
@@ -247,7 +256,7 @@ namespace MathWiz
         {
             List<Question> qL = new List<Question>();
             List<Question> pullfrom = GeneratesAddMultiply(false, true, timelimit);
-            var RandomNumbers = Enumerable.Range(0, 50).OrderBy(x => rnd.Next()).Take(NumberOfQuestions).ToArray();
+            var RandomNumbers = Enumerable.Range(0, pullfrom.Count).OrderBy(x => rnd.Next()).Take(NumberOfQuestions).ToArray();
             foreach (int i in RandomNumbers)
             {
                 qL.Add(pullfrom[i]);
@@ -260,7 +269,16 @@ namespace MathWiz
             List<Question> qL = new List<Question>();
             List<Question> pullfromOne = GeneratesAddMultiply(true, false, timelimit);
             List<Question> pullfromOther = GeneratesSubtractDivide(true, false, timelimit);
-            var RandomNumbers = Enumerable.Range(0, 50).OrderBy(x => rnd.Next()).Take(NumberOfQuestions).ToArray();
+            int max;
+            if(pullfromOne.Count > pullfromOther.Count)
+            {
+                max = pullfromOther.Count;
+            }
+            else
+            {
+                max = pullfromOne.Count;
+            }
+            var RandomNumbers = Enumerable.Range(0, max).OrderBy(x => rnd.Next()).Take(NumberOfQuestions).ToArray();
             foreach (int i in RandomNumbers)
             {
                 int oneOrTheOther = rnd.Next(0, 2);
@@ -306,7 +324,16 @@ namespace MathWiz
             List<Question> qL = new List<Question>();
             List<Question> pullfromOne = GeneratesAddMultiply(false, false, timelimit);
             List<Question> pullfromOther = GeneratesSubtractDivide(false, false, timelimit);
-            var RandomNumbers = Enumerable.Range(0, 50).OrderBy(x => rnd.Next()).Take(NumberOfQuestions).ToArray();
+            int max;
+            if (pullfromOne.Count > pullfromOther.Count)
+            {
+                max = pullfromOther.Count;
+            }
+            else
+            {
+                max = pullfromOne.Count;
+            }
+            var RandomNumbers = Enumerable.Range(0, max).OrderBy(x => rnd.Next()).Take(NumberOfQuestions).ToArray();
             foreach (int i in RandomNumbers)
             {
                 int oneOrTheOther = rnd.Next(0, 2);
