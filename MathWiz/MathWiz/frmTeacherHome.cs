@@ -82,10 +82,6 @@ namespace MathWiz
         {
             DataGridViewRow row = dgvStudents.SelectedRows[0];
             string studentName = row.Cells["FirstName"].Value.ToString() + " " + row.Cells["LastName"].Value.ToString();
-            grpBxStudentInfo.Text = studentName;
-
-            grpBxStudentInfo.Visible = true;
-
             int studentId = Int32.Parse(row.Cells["Id"].Value.ToString());
             //this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, selectedItem.Id);
 
