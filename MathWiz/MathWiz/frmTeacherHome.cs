@@ -37,7 +37,13 @@ namespace MathWiz
             lblTeacherName.Text = teacher.FirstName;
             cmbKlasses.DataSource = teacher.Klasses;
             cmbKlasses.DisplayMember = "KlassName";
-            
+
+
+
+            //tabTeacher.Visible = false;
+            tabForm.TabPages.Remove(tabStudentTests);
+            tabForm.TabPages.Remove(tabKlassTests);
+
 
 
         }
@@ -85,6 +91,8 @@ namespace MathWiz
             int studentId = Int32.Parse(row.Cells["Id"].Value.ToString());
             //this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, selectedItem.Id);
 
+            tabForm.TabPages.Add(tabStudentTests);
+            tabStudentTests.Text = studentName;
             this.gradedTestsTableAdapter.FillByGradedTests(this.mathWizGroup3DataSet.graded_tests, studentId);
 
         }

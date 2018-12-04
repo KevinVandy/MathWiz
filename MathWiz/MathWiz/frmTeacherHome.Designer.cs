@@ -56,13 +56,6 @@
             this.MasteryLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgvTests = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.testTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timeLimitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.randomlyGeneratedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.passThreshHoldDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.minLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.maxLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.testsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,6 +69,16 @@
             this.gradedTestsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.graded_testsTableAdapter();
             this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
+            this.tabForm = new System.Windows.Forms.TabControl();
+            this.tabStudentTests = new System.Windows.Forms.TabPage();
+            this.tabKlassTests = new System.Windows.Forms.TabPage();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.testTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeLimitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.randomlyGeneratedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.passThreshHoldDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.minLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maxLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGradedTests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gradedTestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).BeginInit();
@@ -85,6 +88,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.fillByToolStrip.SuspendLayout();
+            this.tabForm.SuspendLayout();
+            this.tabStudentTests.SuspendLayout();
+            this.tabKlassTests.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTeacherName
@@ -120,7 +126,7 @@
             // 
             // btnCreateTest
             // 
-            this.btnCreateTest.Location = new System.Drawing.Point(778, 472);
+            this.btnCreateTest.Location = new System.Drawing.Point(1111, 475);
             this.btnCreateTest.Name = "btnCreateTest";
             this.btnCreateTest.Size = new System.Drawing.Size(116, 36);
             this.btnCreateTest.TabIndex = 7;
@@ -151,7 +157,7 @@
             this.gradedTestPast,
             this.recommendedLevelDataGridViewTextBoxColumn});
             this.dgvGradedTests.DataSource = this.gradedTestBindingSource;
-            this.dgvGradedTests.Location = new System.Drawing.Point(26, 232);
+            this.dgvGradedTests.Location = new System.Drawing.Point(25, 51);
             this.dgvGradedTests.MultiSelect = false;
             this.dgvGradedTests.Name = "dgvGradedTests";
             this.dgvGradedTests.ReadOnly = true;
@@ -261,7 +267,7 @@
             this.dgvStudents.ReadOnly = true;
             this.dgvStudents.RowHeadersVisible = false;
             this.dgvStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStudents.Size = new System.Drawing.Size(403, 123);
+            this.dgvStudents.Size = new System.Drawing.Size(405, 123);
             this.dgvStudents.TabIndex = 9;
             this.dgvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
             // 
@@ -322,62 +328,14 @@
             this.minLevelDataGridViewTextBoxColumn,
             this.maxLevelDataGridViewTextBoxColumn});
             this.dgvTests.DataSource = this.testsBindingSource;
-            this.dgvTests.Location = new System.Drawing.Point(26, 411);
+            this.dgvTests.Location = new System.Drawing.Point(35, 54);
             this.dgvTests.MultiSelect = false;
             this.dgvTests.Name = "dgvTests";
             this.dgvTests.ReadOnly = true;
-            this.dgvTests.Size = new System.Drawing.Size(746, 150);
+            this.dgvTests.RowHeadersVisible = false;
+            this.dgvTests.Size = new System.Drawing.Size(604, 259);
             this.dgvTests.TabIndex = 8;
             this.dgvTests.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTests_CellContentClick);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // testTypeDataGridViewTextBoxColumn
-            // 
-            this.testTypeDataGridViewTextBoxColumn.DataPropertyName = "TestType";
-            this.testTypeDataGridViewTextBoxColumn.HeaderText = "Test Type";
-            this.testTypeDataGridViewTextBoxColumn.Name = "testTypeDataGridViewTextBoxColumn";
-            this.testTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // timeLimitDataGridViewTextBoxColumn
-            // 
-            this.timeLimitDataGridViewTextBoxColumn.DataPropertyName = "TimeLimit";
-            this.timeLimitDataGridViewTextBoxColumn.HeaderText = "Time Limit";
-            this.timeLimitDataGridViewTextBoxColumn.Name = "timeLimitDataGridViewTextBoxColumn";
-            this.timeLimitDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // randomlyGeneratedDataGridViewCheckBoxColumn
-            // 
-            this.randomlyGeneratedDataGridViewCheckBoxColumn.DataPropertyName = "RandomlyGenerated";
-            this.randomlyGeneratedDataGridViewCheckBoxColumn.HeaderText = "Randomly Generated";
-            this.randomlyGeneratedDataGridViewCheckBoxColumn.Name = "randomlyGeneratedDataGridViewCheckBoxColumn";
-            this.randomlyGeneratedDataGridViewCheckBoxColumn.ReadOnly = true;
-            // 
-            // passThreshHoldDataGridViewTextBoxColumn
-            // 
-            this.passThreshHoldDataGridViewTextBoxColumn.DataPropertyName = "PassThreshHold";
-            this.passThreshHoldDataGridViewTextBoxColumn.HeaderText = "Pass ThreshHold";
-            this.passThreshHoldDataGridViewTextBoxColumn.Name = "passThreshHoldDataGridViewTextBoxColumn";
-            this.passThreshHoldDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // minLevelDataGridViewTextBoxColumn
-            // 
-            this.minLevelDataGridViewTextBoxColumn.DataPropertyName = "MinLevel";
-            this.minLevelDataGridViewTextBoxColumn.HeaderText = "Min Level";
-            this.minLevelDataGridViewTextBoxColumn.Name = "minLevelDataGridViewTextBoxColumn";
-            this.minLevelDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // maxLevelDataGridViewTextBoxColumn
-            // 
-            this.maxLevelDataGridViewTextBoxColumn.DataPropertyName = "MaxLevel";
-            this.maxLevelDataGridViewTextBoxColumn.HeaderText = "Max Level";
-            this.maxLevelDataGridViewTextBoxColumn.Name = "maxLevelDataGridViewTextBoxColumn";
-            this.maxLevelDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // testsBindingSource
             // 
@@ -471,14 +429,93 @@
             this.fillByToolStrip.TabIndex = 10;
             this.fillByToolStrip.Text = "fillByToolStrip";
             // 
+            // tabForm
+            // 
+            this.tabForm.Controls.Add(this.tabStudentTests);
+            this.tabForm.Controls.Add(this.tabKlassTests);
+            this.tabForm.Location = new System.Drawing.Point(12, 258);
+            this.tabForm.Name = "tabForm";
+            this.tabForm.SelectedIndex = 0;
+            this.tabForm.Size = new System.Drawing.Size(888, 364);
+            this.tabForm.TabIndex = 11;
+            this.tabForm.TabStop = false;
+            this.tabForm.Visible = false;
+            // 
+            // tabStudentTests
+            // 
+            this.tabStudentTests.Controls.Add(this.dgvGradedTests);
+            this.tabStudentTests.Location = new System.Drawing.Point(4, 22);
+            this.tabStudentTests.Name = "tabStudentTests";
+            this.tabStudentTests.Padding = new System.Windows.Forms.Padding(3);
+            this.tabStudentTests.Size = new System.Drawing.Size(880, 338);
+            this.tabStudentTests.TabIndex = 0;
+            // 
+            // tabKlassTests
+            // 
+            this.tabKlassTests.Controls.Add(this.dgvTests);
+            this.tabKlassTests.Location = new System.Drawing.Point(4, 22);
+            this.tabKlassTests.Name = "tabKlassTests";
+            this.tabKlassTests.Padding = new System.Windows.Forms.Padding(3);
+            this.tabKlassTests.Size = new System.Drawing.Size(880, 338);
+            this.tabKlassTests.TabIndex = 1;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // testTypeDataGridViewTextBoxColumn
+            // 
+            this.testTypeDataGridViewTextBoxColumn.DataPropertyName = "TestType";
+            this.testTypeDataGridViewTextBoxColumn.HeaderText = "Test Type";
+            this.testTypeDataGridViewTextBoxColumn.Name = "testTypeDataGridViewTextBoxColumn";
+            this.testTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // timeLimitDataGridViewTextBoxColumn
+            // 
+            this.timeLimitDataGridViewTextBoxColumn.DataPropertyName = "TimeLimit";
+            this.timeLimitDataGridViewTextBoxColumn.HeaderText = "Time Limit";
+            this.timeLimitDataGridViewTextBoxColumn.Name = "timeLimitDataGridViewTextBoxColumn";
+            this.timeLimitDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // randomlyGeneratedDataGridViewCheckBoxColumn
+            // 
+            this.randomlyGeneratedDataGridViewCheckBoxColumn.DataPropertyName = "RandomlyGenerated";
+            this.randomlyGeneratedDataGridViewCheckBoxColumn.HeaderText = "Randomly Generated";
+            this.randomlyGeneratedDataGridViewCheckBoxColumn.Name = "randomlyGeneratedDataGridViewCheckBoxColumn";
+            this.randomlyGeneratedDataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
+            // passThreshHoldDataGridViewTextBoxColumn
+            // 
+            this.passThreshHoldDataGridViewTextBoxColumn.DataPropertyName = "PassThreshHold";
+            this.passThreshHoldDataGridViewTextBoxColumn.HeaderText = "Pass ThreshHold";
+            this.passThreshHoldDataGridViewTextBoxColumn.Name = "passThreshHoldDataGridViewTextBoxColumn";
+            this.passThreshHoldDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // minLevelDataGridViewTextBoxColumn
+            // 
+            this.minLevelDataGridViewTextBoxColumn.DataPropertyName = "MinLevel";
+            this.minLevelDataGridViewTextBoxColumn.HeaderText = "Min Level";
+            this.minLevelDataGridViewTextBoxColumn.Name = "minLevelDataGridViewTextBoxColumn";
+            this.minLevelDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // maxLevelDataGridViewTextBoxColumn
+            // 
+            this.maxLevelDataGridViewTextBoxColumn.DataPropertyName = "MaxLevel";
+            this.maxLevelDataGridViewTextBoxColumn.HeaderText = "Max Level";
+            this.maxLevelDataGridViewTextBoxColumn.Name = "maxLevelDataGridViewTextBoxColumn";
+            this.maxLevelDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // frmTeacherHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1290, 670);
-            this.Controls.Add(this.dgvTests);
-            this.Controls.Add(this.dgvGradedTests);
+            this.Controls.Add(this.tabForm);
             this.Controls.Add(this.fillByToolStrip);
             this.Controls.Add(this.dgvStudents);
             this.Controls.Add(this.menuStrip1);
@@ -502,6 +539,9 @@
             this.menuStrip1.PerformLayout();
             this.fillByToolStrip.ResumeLayout(false);
             this.fillByToolStrip.PerformLayout();
+            this.tabForm.ResumeLayout(false);
+            this.tabStudentTests.ResumeLayout(false);
+            this.tabKlassTests.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -520,13 +560,6 @@
         private System.Windows.Forms.BindingSource testsBindingSource;
         private MathWizGroup3DataSetTableAdapters.testsTableAdapter testsTableAdapter;
         private System.Windows.Forms.DataGridView dgvStudents;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn testTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn timeLimitDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn randomlyGeneratedDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn passThreshHoldDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn minLevelDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maxLevelDataGridViewTextBoxColumn;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
@@ -554,5 +587,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn recommendedLevelDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripButton fillByToolStripButton;
         private System.Windows.Forms.ToolStrip fillByToolStrip;
+        private System.Windows.Forms.TabControl tabForm;
+        private System.Windows.Forms.TabPage tabStudentTests;
+        private System.Windows.Forms.TabPage tabKlassTests;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn testTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn timeLimitDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn randomlyGeneratedDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passThreshHoldDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn minLevelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maxLevelDataGridViewTextBoxColumn;
     }
 }
