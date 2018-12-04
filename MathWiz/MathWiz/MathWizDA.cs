@@ -1288,8 +1288,6 @@ namespace MathWiz
             return klasses;
         }
 
-
-
     }
 
 }

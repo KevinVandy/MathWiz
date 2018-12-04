@@ -20,11 +20,6 @@ namespace MathWiz
             klassID = kID;
         }
 
-        private void frmNewTest_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnCreateTest_Click(object sender, EventArgs e)
         {
             Int64 aNumber = 0;
@@ -95,7 +90,7 @@ namespace MathWiz
                         MasteryTest masteryTest = new MasteryTest(qL, time, isTrue, masteryLevel, threshold);
                         MathWizDB.InsertMasteryTest(masteryTest, klassID);
                         aNumber = MathWizDA.GetLastInsertedRecord("test", "id");
-                        //need to resolve the how on creatign questions
+                        //need to resolve the how on creating questions
                         this.Close();
                         masteryTest.Questions = Question.GenerateRandomQuestions(masteryTest.MasteryLevel, masteryTest.TimeLimit,10);
                         foreach (Question q in masteryTest.Questions)
