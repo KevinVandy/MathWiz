@@ -83,7 +83,7 @@
             this.lblCorrectAnswer.AutoSize = true;
             this.lblCorrectAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCorrectAnswer.ForeColor = System.Drawing.Color.Green;
-            this.lblCorrectAnswer.Location = new System.Drawing.Point(136, 64);
+            this.lblCorrectAnswer.Location = new System.Drawing.Point(151, 64);
             this.lblCorrectAnswer.Name = "lblCorrectAnswer";
             this.lblCorrectAnswer.Size = new System.Drawing.Size(35, 37);
             this.lblCorrectAnswer.TabIndex = 5;

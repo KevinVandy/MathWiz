@@ -38,6 +38,10 @@ namespace MathWiz
                 btnTakeMasteryTest.Enabled = true;
                 btnTakePlacementTest.Enabled = false;
             }
+
+            cmbMasteryLevel.SelectedIndex = student.MasteryLevel;
+            cmbNumberOfQuestions.SelectedIndex = 1;
+
             backgroundWorkerLoadData.RunWorkerAsync();
         }
 

@@ -104,11 +104,11 @@
             // 
             // btnTakeMasteryTest
             // 
-            this.btnTakeMasteryTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTakeMasteryTest.Location = new System.Drawing.Point(21, 176);
+            this.btnTakeMasteryTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTakeMasteryTest.Location = new System.Drawing.Point(345, 36);
             this.btnTakeMasteryTest.Margin = new System.Windows.Forms.Padding(2);
             this.btnTakeMasteryTest.Name = "btnTakeMasteryTest";
-            this.btnTakeMasteryTest.Size = new System.Drawing.Size(238, 51);
+            this.btnTakeMasteryTest.Size = new System.Drawing.Size(275, 57);
             this.btnTakeMasteryTest.TabIndex = 3;
             this.btnTakeMasteryTest.Text = "Take Next Mastery Test";
             this.btnTakeMasteryTest.UseVisualStyleBackColor = true;
@@ -116,11 +116,11 @@
             // 
             // btnTakePlacementTest
             // 
-            this.btnTakePlacementTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTakePlacementTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTakePlacementTest.Location = new System.Drawing.Point(21, 36);
             this.btnTakePlacementTest.Margin = new System.Windows.Forms.Padding(2);
             this.btnTakePlacementTest.Name = "btnTakePlacementTest";
-            this.btnTakePlacementTest.Size = new System.Drawing.Size(238, 51);
+            this.btnTakePlacementTest.Size = new System.Drawing.Size(275, 57);
             this.btnTakePlacementTest.TabIndex = 5;
             this.btnTakePlacementTest.Text = "Take Placement Test";
             this.btnTakePlacementTest.UseVisualStyleBackColor = true;
@@ -137,7 +137,7 @@
             this.gbxTakeTests.Controls.Add(this.btnTakePlacementTest);
             this.gbxTakeTests.Location = new System.Drawing.Point(23, 86);
             this.gbxTakeTests.Name = "gbxTakeTests";
-            this.gbxTakeTests.Size = new System.Drawing.Size(710, 269);
+            this.gbxTakeTests.Size = new System.Drawing.Size(640, 269);
             this.gbxTakeTests.TabIndex = 6;
             this.gbxTakeTests.TabStop = false;
             this.gbxTakeTests.Text = "Take Tests";
@@ -145,7 +145,7 @@
             // lblNumberOfQuestions
             // 
             this.lblNumberOfQuestions.AutoSize = true;
-            this.lblNumberOfQuestions.Location = new System.Drawing.Point(379, 108);
+            this.lblNumberOfQuestions.Location = new System.Drawing.Point(459, 136);
             this.lblNumberOfQuestions.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNumberOfQuestions.Name = "lblNumberOfQuestions";
             this.lblNumberOfQuestions.Size = new System.Drawing.Size(79, 13);
@@ -155,7 +155,7 @@
             // lblMasteryLevels
             // 
             this.lblMasteryLevels.AutoSize = true;
-            this.lblMasteryLevels.Location = new System.Drawing.Point(272, 108);
+            this.lblMasteryLevels.Location = new System.Drawing.Point(342, 136);
             this.lblMasteryLevels.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMasteryLevels.Name = "lblMasteryLevels";
             this.lblMasteryLevels.Size = new System.Drawing.Size(76, 13);
@@ -170,9 +170,9 @@
             this.cmbNumberOfQuestions.Items.AddRange(new object[] {
             "5",
             "10",
-            "15",
-            "20"});
-            this.cmbNumberOfQuestions.Location = new System.Drawing.Point(382, 124);
+            "25",
+            "50"});
+            this.cmbNumberOfQuestions.Location = new System.Drawing.Point(462, 160);
             this.cmbNumberOfQuestions.Name = "cmbNumberOfQuestions";
             this.cmbNumberOfQuestions.Size = new System.Drawing.Size(90, 33);
             this.cmbNumberOfQuestions.TabIndex = 8;
@@ -180,11 +180,11 @@
             // 
             // btnTakeRandomPracticeTest
             // 
-            this.btnTakeRandomPracticeTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTakeRandomPracticeTest.Location = new System.Drawing.Point(21, 108);
+            this.btnTakeRandomPracticeTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTakeRandomPracticeTest.Location = new System.Drawing.Point(21, 136);
             this.btnTakeRandomPracticeTest.Margin = new System.Windows.Forms.Padding(2);
             this.btnTakeRandomPracticeTest.Name = "btnTakeRandomPracticeTest";
-            this.btnTakeRandomPracticeTest.Size = new System.Drawing.Size(238, 51);
+            this.btnTakeRandomPracticeTest.Size = new System.Drawing.Size(275, 57);
             this.btnTakeRandomPracticeTest.TabIndex = 7;
             this.btnTakeRandomPracticeTest.Text = "Take Random Practice Test";
             this.btnTakeRandomPracticeTest.UseVisualStyleBackColor = true;
@@ -209,7 +209,7 @@
             "11",
             "12",
             "13"});
-            this.cmbMasteryLevel.Location = new System.Drawing.Point(275, 124);
+            this.cmbMasteryLevel.Location = new System.Drawing.Point(345, 160);
             this.cmbMasteryLevel.Name = "cmbMasteryLevel";
             this.cmbMasteryLevel.Size = new System.Drawing.Size(90, 33);
             this.cmbMasteryLevel.TabIndex = 6;
@@ -217,7 +217,7 @@
             // 
             // gbxViewProgress
             // 
-            this.gbxViewProgress.Location = new System.Drawing.Point(23, 438);
+            this.gbxViewProgress.Location = new System.Drawing.Point(23, 397);
             this.gbxViewProgress.Name = "gbxViewProgress";
             this.gbxViewProgress.Size = new System.Drawing.Size(710, 166);
             this.gbxViewProgress.TabIndex = 7;
@@ -243,7 +243,7 @@
             // 
             this.lblMasteryLevel.AutoSize = true;
             this.lblMasteryLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMasteryLevel.Location = new System.Drawing.Point(521, 40);
+            this.lblMasteryLevel.Location = new System.Drawing.Point(480, 40);
             this.lblMasteryLevel.Name = "lblMasteryLevel";
             this.lblMasteryLevel.Size = new System.Drawing.Size(183, 26);
             this.lblMasteryLevel.TabIndex = 8;
