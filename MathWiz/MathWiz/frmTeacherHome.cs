@@ -65,6 +65,7 @@ namespace MathWiz
                 Klass selectedItem = cmbKlasses.SelectedItem as Klass;
                 this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, selectedItem.Id);
                 this.testsTableAdapter.FillByKlassID(this.mathWizGroup3DataSet.tests, selectedItem.Id);
+                lblKlass.Text = selectedItem.KlassName + "  Tests";
             }
             
                        
@@ -90,7 +91,8 @@ namespace MathWiz
             DataGridViewRow row = dgvStudents.SelectedRows[0];
             string studentName = row.Cells["FirstName"].Value.ToString() + " " + row.Cells["LastName"].Value.ToString();
             int studentId = Int32.Parse(row.Cells["Id"].Value.ToString());
-            //this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, selectedItem.Id);
+
+            lblStudentTest.Text = studentName + " Graded Tests";
 
             
             this.gradedTestsTableAdapter.FillByGradedTests(this.mathWizGroup3DataSet.graded_tests, studentId);
