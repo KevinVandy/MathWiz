@@ -882,8 +882,7 @@ namespace MathWiz
         public static bool SelectKlassesMasteryLevels(int klassID, int masteryLevel)
         {
 
-            string query = "SELECT * FROM tests WHERE KlassID = @klassID AND " + 
-                "TestType = 'Mastery Test' AND MasteryLevel = '@masteryLevel";
+            string query = "SELECT * FROM tests WHERE KlassID = @klassID AND MasteryLevel = @masteryLevel";
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@klassID", klassID);
             selectCommand.Parameters.AddWithValue("@masteryLevel", masteryLevel);
