@@ -60,76 +60,76 @@
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFirstName.Location = new System.Drawing.Point(100, 42);
+            this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFirstName.Location = new System.Drawing.Point(123, 37);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(162, 22);
+            this.txtFirstName.Size = new System.Drawing.Size(190, 26);
             this.txtFirstName.TabIndex = 0;
             this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
             // 
             // txtLastName
             // 
-            this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLastName.Location = new System.Drawing.Point(100, 83);
+            this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLastName.Location = new System.Drawing.Point(123, 91);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(162, 22);
+            this.txtLastName.Size = new System.Drawing.Size(190, 26);
             this.txtLastName.TabIndex = 1;
             this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             // 
             // txtUsername
             // 
-            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(100, 163);
+            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsername.Location = new System.Drawing.Point(123, 199);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(162, 22);
+            this.txtUsername.Size = new System.Drawing.Size(190, 26);
             this.txtUsername.TabIndex = 3;
             this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(20, 166);
+            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Location = new System.Drawing.Point(34, 202);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(73, 17);
+            this.lblUsername.Size = new System.Drawing.Size(83, 20);
             this.lblUsername.TabIndex = 3;
             this.lblUsername.Text = "Username";
             // 
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirstName.Location = new System.Drawing.Point(21, 45);
+            this.lblFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFirstName.Location = new System.Drawing.Point(34, 40);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(72, 17);
+            this.lblFirstName.Size = new System.Drawing.Size(82, 20);
             this.lblFirstName.TabIndex = 4;
             this.lblFirstName.Text = "FirstName";
             // 
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
-            this.lblLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastName.Location = new System.Drawing.Point(24, 86);
+            this.lblLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLastName.Location = new System.Drawing.Point(34, 94);
             this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(72, 17);
+            this.lblLastName.Size = new System.Drawing.Size(82, 20);
             this.lblLastName.TabIndex = 5;
             this.lblLastName.Text = "LastName";
             // 
             // cmbParent
             // 
             this.cmbParent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbParent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbParent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbParent.FormattingEnabled = true;
-            this.cmbParent.Location = new System.Drawing.Point(339, 39);
+            this.cmbParent.Location = new System.Drawing.Point(425, 37);
             this.cmbParent.Name = "cmbParent";
-            this.cmbParent.Size = new System.Drawing.Size(200, 24);
+            this.cmbParent.Size = new System.Drawing.Size(200, 28);
             this.cmbParent.TabIndex = 5;
             // 
             // lblParent
             // 
             this.lblParent.AutoSize = true;
             this.lblParent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblParent.Location = new System.Drawing.Point(281, 42);
+            this.lblParent.Location = new System.Drawing.Point(367, 44);
             this.lblParent.Name = "lblParent";
             this.lblParent.Size = new System.Drawing.Size(50, 17);
             this.lblParent.TabIndex = 7;
@@ -137,47 +137,48 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(100, 204);
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(123, 253);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(162, 22);
+            this.txtPassword.Size = new System.Drawing.Size(190, 26);
             this.txtPassword.TabIndex = 4;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 207);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(39, 256);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 17);
+            this.label1.Size = new System.Drawing.Size(78, 20);
             this.label1.TabIndex = 9;
             this.label1.Text = "Password";
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(100, 124);
+            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID.Location = new System.Drawing.Point(123, 145);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(100, 20);
+            this.txtID.Size = new System.Drawing.Size(100, 26);
             this.txtID.TabIndex = 2;
             this.txtID.TextChanged += new System.EventHandler(this.txtID_TextChanged);
             // 
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblID.Location = new System.Drawing.Point(64, 125);
+            this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblID.Location = new System.Drawing.Point(82, 148);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(29, 17);
+            this.lblID.Size = new System.Drawing.Size(35, 20);
             this.lblID.TabIndex = 12;
             this.lblID.Text = "ID#";
             // 
             // btnCreateUser
             // 
-            this.btnCreateUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateUser.Location = new System.Drawing.Point(100, 261);
+            this.btnCreateUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateUser.Location = new System.Drawing.Point(55, 320);
             this.btnCreateUser.Name = "btnCreateUser";
-            this.btnCreateUser.Size = new System.Drawing.Size(162, 32);
+            this.btnCreateUser.Size = new System.Drawing.Size(247, 54);
             this.btnCreateUser.TabIndex = 7;
             this.btnCreateUser.Text = "Create User Account";
             this.btnCreateUser.UseVisualStyleBackColor = true;
@@ -186,10 +187,10 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(315, 261);
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(392, 320);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(162, 32);
+            this.btnCancel.Size = new System.Drawing.Size(247, 54);
             this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -199,7 +200,7 @@
             // 
             this.lblClass.AutoSize = true;
             this.lblClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClass.Location = new System.Drawing.Point(291, 85);
+            this.lblClass.Location = new System.Drawing.Point(375, 97);
             this.lblClass.Name = "lblClass";
             this.lblClass.Size = new System.Drawing.Size(42, 17);
             this.lblClass.TabIndex = 14;
@@ -208,21 +209,21 @@
             // cmbClass
             // 
             this.cmbClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbClass.FormattingEnabled = true;
-            this.cmbClass.Location = new System.Drawing.Point(339, 82);
+            this.cmbClass.Location = new System.Drawing.Point(425, 91);
             this.cmbClass.Name = "cmbClass";
-            this.cmbClass.Size = new System.Drawing.Size(200, 24);
+            this.cmbClass.Size = new System.Drawing.Size(200, 28);
             this.cmbClass.TabIndex = 6;
             // 
             // lblAdded
             // 
             this.lblAdded.AutoSize = true;
-            this.lblAdded.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdded.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAdded.ForeColor = System.Drawing.Color.Green;
-            this.lblAdded.Location = new System.Drawing.Point(157, 314);
+            this.lblAdded.Location = new System.Drawing.Point(216, 392);
             this.lblAdded.Name = "lblAdded";
-            this.lblAdded.Size = new System.Drawing.Size(220, 19);
+            this.lblAdded.Size = new System.Drawing.Size(251, 21);
             this.lblAdded.TabIndex = 16;
             this.lblAdded.Text = "First Last was succesfully Added";
             this.lblAdded.Visible = false;
@@ -230,11 +231,11 @@
             // lblUsernameError
             // 
             this.lblUsernameError.AutoSize = true;
-            this.lblUsernameError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsernameError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsernameError.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblUsernameError.Location = new System.Drawing.Point(281, 166);
+            this.lblUsernameError.Location = new System.Drawing.Point(367, 202);
             this.lblUsernameError.Name = "lblUsernameError";
-            this.lblUsernameError.Size = new System.Drawing.Size(222, 15);
+            this.lblUsernameError.Size = new System.Drawing.Size(288, 20);
             this.lblUsernameError.TabIndex = 17;
             this.lblUsernameError.Text = "That Username has already been taken";
             this.lblUsernameError.Visible = false;
@@ -242,11 +243,11 @@
             // lblPasswordError
             // 
             this.lblPasswordError.AutoSize = true;
-            this.lblPasswordError.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswordError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPasswordError.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblPasswordError.Location = new System.Drawing.Point(281, 207);
+            this.lblPasswordError.Location = new System.Drawing.Point(367, 256);
             this.lblPasswordError.Name = "lblPasswordError";
-            this.lblPasswordError.Size = new System.Drawing.Size(132, 15);
+            this.lblPasswordError.Size = new System.Drawing.Size(170, 20);
             this.lblPasswordError.TabIndex = 18;
             this.lblPasswordError.Text = "A Password is required";
             this.lblPasswordError.Visible = false;
@@ -254,9 +255,9 @@
             // btnClassQuestion
             // 
             this.btnClassQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClassQuestion.Location = new System.Drawing.Point(545, 81);
+            this.btnClassQuestion.Location = new System.Drawing.Point(648, 91);
             this.btnClassQuestion.Name = "btnClassQuestion";
-            this.btnClassQuestion.Size = new System.Drawing.Size(30, 26);
+            this.btnClassQuestion.Size = new System.Drawing.Size(30, 28);
             this.btnClassQuestion.TabIndex = 19;
             this.btnClassQuestion.Text = "?";
             this.btnClassQuestion.UseVisualStyleBackColor = true;
@@ -276,62 +277,74 @@
             // lblFirstNameRequired
             // 
             this.lblFirstNameRequired.AutoSize = true;
+            this.lblFirstNameRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFirstNameRequired.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblFirstNameRequired.Location = new System.Drawing.Point(264, 47);
+            this.lblFirstNameRequired.Location = new System.Drawing.Point(319, 40);
             this.lblFirstNameRequired.Name = "lblFirstNameRequired";
-            this.lblFirstNameRequired.Size = new System.Drawing.Size(11, 13);
+            this.lblFirstNameRequired.Size = new System.Drawing.Size(15, 20);
             this.lblFirstNameRequired.TabIndex = 21;
             this.lblFirstNameRequired.Text = "*";
+            this.lblFirstNameRequired.Click += new System.EventHandler(this.lblFirstNameRequired_Click);
             // 
             // lblLastNameRequired
             // 
             this.lblLastNameRequired.AutoSize = true;
+            this.lblLastNameRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLastNameRequired.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblLastNameRequired.Location = new System.Drawing.Point(264, 87);
+            this.lblLastNameRequired.Location = new System.Drawing.Point(319, 94);
             this.lblLastNameRequired.Name = "lblLastNameRequired";
-            this.lblLastNameRequired.Size = new System.Drawing.Size(11, 13);
+            this.lblLastNameRequired.Size = new System.Drawing.Size(15, 20);
             this.lblLastNameRequired.TabIndex = 22;
             this.lblLastNameRequired.Text = "*";
+            this.lblLastNameRequired.Click += new System.EventHandler(this.lblLastNameRequired_Click);
             // 
             // lblUsernameRequired
             // 
             this.lblUsernameRequired.AutoSize = true;
+            this.lblUsernameRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsernameRequired.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblUsernameRequired.Location = new System.Drawing.Point(264, 168);
+            this.lblUsernameRequired.Location = new System.Drawing.Point(319, 202);
             this.lblUsernameRequired.Name = "lblUsernameRequired";
-            this.lblUsernameRequired.Size = new System.Drawing.Size(11, 13);
+            this.lblUsernameRequired.Size = new System.Drawing.Size(15, 20);
             this.lblUsernameRequired.TabIndex = 23;
             this.lblUsernameRequired.Text = "*";
+            this.lblUsernameRequired.Click += new System.EventHandler(this.lblUsernameRequired_Click);
             // 
             // lblPasswordRequired
             // 
             this.lblPasswordRequired.AutoSize = true;
+            this.lblPasswordRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPasswordRequired.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblPasswordRequired.Location = new System.Drawing.Point(264, 209);
+            this.lblPasswordRequired.Location = new System.Drawing.Point(319, 256);
             this.lblPasswordRequired.Name = "lblPasswordRequired";
-            this.lblPasswordRequired.Size = new System.Drawing.Size(11, 13);
+            this.lblPasswordRequired.Size = new System.Drawing.Size(15, 20);
             this.lblPasswordRequired.TabIndex = 24;
             this.lblPasswordRequired.Text = "*";
+            this.lblPasswordRequired.Click += new System.EventHandler(this.lblPasswordRequired_Click);
             // 
             // lblClassRequired
             // 
             this.lblClassRequired.AutoSize = true;
+            this.lblClassRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClassRequired.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblClassRequired.Location = new System.Drawing.Point(545, 89);
+            this.lblClassRequired.Location = new System.Drawing.Point(631, 94);
             this.lblClassRequired.Name = "lblClassRequired";
-            this.lblClassRequired.Size = new System.Drawing.Size(11, 13);
+            this.lblClassRequired.Size = new System.Drawing.Size(15, 20);
             this.lblClassRequired.TabIndex = 25;
             this.lblClassRequired.Text = "*";
+            this.lblClassRequired.Click += new System.EventHandler(this.lblClassRequired_Click);
             // 
             // lblParentRequired
             // 
             this.lblParentRequired.AutoSize = true;
+            this.lblParentRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblParentRequired.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblParentRequired.Location = new System.Drawing.Point(545, 44);
+            this.lblParentRequired.Location = new System.Drawing.Point(631, 41);
             this.lblParentRequired.Name = "lblParentRequired";
-            this.lblParentRequired.Size = new System.Drawing.Size(11, 13);
+            this.lblParentRequired.Size = new System.Drawing.Size(15, 20);
             this.lblParentRequired.TabIndex = 26;
             this.lblParentRequired.Text = "*";
+            this.lblParentRequired.Click += new System.EventHandler(this.lblParentRequired_Click);
             // 
             // frmCreateUserAccount
             // 
@@ -339,7 +352,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(587, 354);
+            this.ClientSize = new System.Drawing.Size(698, 432);
             this.Controls.Add(this.lblParentRequired);
             this.Controls.Add(this.lblPasswordRequired);
             this.Controls.Add(this.lblUsernameRequired);
