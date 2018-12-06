@@ -34,28 +34,25 @@ namespace MathWiz
             switch (this.Tag.ToString())
             {
                 case "placement":
-
-                    gradedTest = new GradedPlacementTest();
+                    
                     gbxQuestion.Text = "Placement Test";
                     this.Text = "Placement Test";
                     break;
 
                 case "practice":
-
-                    gradedTest = new GradedPracticeTest();
+                    
                     this.Text = "Practice Test";
                     gbxQuestion.Text = "Practice Test";
                     break;
 
                 case "mastery":
-
-                    gradedTest = new GradedMasteryTest();
+                    
                     this.Text = "Mastery Test";
                     gbxQuestion.Text = "Mastery Test";
                     break;
 
                 default:
-                    gradedTest = new GradedPracticeTest();
+
                     this.Text = "Practice Test";
                     gbxQuestion.Text = "Practice Test";
                     break;

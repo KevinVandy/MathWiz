@@ -32,7 +32,7 @@ namespace MathWiz
             masteryLevelSeries = this.chtMasterLevelDistribution.Series.Add("masteryLevels");
 
             chtMasterLevelDistribution.ChartAreas[0].AxisX.Title = "Mastery Levels";
-            chtMasterLevelDistribution.ChartAreas[0].AxisX.Interval = 2;
+            chtMasterLevelDistribution.ChartAreas[0].AxisX.Interval = 1;
 
             chtMasterLevelDistribution.ChartAreas[0].AxisY.Title = "Number of Students";
             chtMasterLevelDistribution.ChartAreas[0].AxisY.Interval = 1;
@@ -54,7 +54,7 @@ namespace MathWiz
             else if (rdoParents.Checked)
             {
                 dgvUsers.DataSource = parentsBindingSource;
-                usernameToolStripLabel.Text = "Search for a Parent";
+                usernameToolStripLabel.Text = "Search for a Parent  ";
             }
             else if (rdoStudents.Checked)
             {
@@ -151,6 +151,7 @@ namespace MathWiz
                 {
                     ListViewItem lvi = new ListViewItem(drow["Id"].ToString());
                     lvi.SubItems.Add(drow["FirstName"].ToString() + " " + drow["LastName"].ToString());
+                    lvi.SubItems.Add(drow["Username"].ToString());
                     lsvTeachers.Items.Add(lvi);
                 }
             }
@@ -182,7 +183,7 @@ namespace MathWiz
             dgvUsers.Refresh();
 
             lsvTeachers.Items.Clear();
-            //TODO manage klasses update data too
+            
             for (int i = 0; i < mathWizGroup3DataSet.teachers.Rows.Count; i++)
             {
                 DataRow drow = mathWizGroup3DataSet.teachers.Rows[i];
@@ -190,6 +191,7 @@ namespace MathWiz
                 {
                     ListViewItem lvi = new ListViewItem(drow["Id"].ToString());
                     lvi.SubItems.Add(drow["FirstName"].ToString() + " " + drow["LastName"].ToString());
+                    lvi.SubItems.Add(drow["Username"].ToString());
                     lsvTeachers.Items.Add(lvi);
                 }
             }
@@ -420,6 +422,7 @@ namespace MathWiz
                     {
                         ListViewItem lvi = new ListViewItem(drow["Id"].ToString());
                         lvi.SubItems.Add(drow["FirstName"].ToString() + " " + drow["LastName"].ToString());
+                        lvi.SubItems.Add(drow["Username"].ToString());
                         lvi.SubItems.Add(drow["MasteryLevel"].ToString());
                         if (Convert.ToInt32(drow["KlassID"]) == Convert.ToInt32(lsvKlasses.SelectedItems[0].SubItems[0].Text))
                         {
@@ -450,7 +453,7 @@ namespace MathWiz
 
             for (int i = 0; i < lsvStudents.Items.Count; i++)
             {
-                masteryLevels[i] = Convert.ToInt32(lsvStudents.Items[i].SubItems[2].Text);
+                masteryLevels[i] = Convert.ToInt32(lsvStudents.Items[i].SubItems[3].Text);
             }
 
             if(masteryLevels.Count() > 0)
@@ -462,7 +465,6 @@ namespace MathWiz
                 masteryLevelFrequency = new int[12]; //only make the size of the array the size of the max mastery level achieved in class
             }
             
-
             for (int i = 0; i <= masteryLevelFrequency.GetUpperBound(0); i++)
             {
                 for (int j = 0; j < lsvStudents.Items.Count; j++)
