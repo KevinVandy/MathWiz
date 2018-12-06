@@ -37,13 +37,7 @@ namespace MathWiz
             lblTeacherName.Text = teacher.FirstName;
             cmbKlasses.DataSource = teacher.Klasses;
             cmbKlasses.DisplayMember = "KlassName";
-
-
-
-            //tabTeacher.Visible = false;
-            tabForm.TabPages.Remove(tabStudentTests);
-            tabForm.TabPages.Remove(tabKlassTests);
-
+            cmbKlasses.SelectedIndex = -1;
 
 
         }
@@ -66,8 +60,15 @@ namespace MathWiz
         
         private void cmbKlasses_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Klass selectedItem = cmbKlasses.SelectedItem as Klass;
-            this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, selectedItem.Id);
+            if(cmbKlasses.SelectedIndex != -1)
+            {
+                Klass selectedItem = cmbKlasses.SelectedItem as Klass;
+                this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, selectedItem.Id);
+                this.testsTableAdapter.FillByKlassID(this.mathWizGroup3DataSet.tests, selectedItem.Id);
+            }
+            
+                       
+
         }
 
         private void btnTest_Click(object sender, EventArgs e)
@@ -91,8 +92,7 @@ namespace MathWiz
             int studentId = Int32.Parse(row.Cells["Id"].Value.ToString());
             //this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, selectedItem.Id);
 
-            tabForm.TabPages.Add(tabStudentTests);
-            tabStudentTests.Text = studentName;
+            
             this.gradedTestsTableAdapter.FillByGradedTests(this.mathWizGroup3DataSet.graded_tests, studentId);
 
         }
@@ -130,5 +130,8 @@ namespace MathWiz
             }
 
         }
+
+
+        
     }
 }
