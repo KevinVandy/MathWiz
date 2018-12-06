@@ -65,6 +65,7 @@ namespace MathWiz
                 Klass selectedItem = cmbKlasses.SelectedItem as Klass;
                 this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, selectedItem.Id);
                 this.testsTableAdapter.FillByKlassID(this.mathWizGroup3DataSet.tests, selectedItem.Id);
+                lblKlass.Text = selectedItem.KlassName + "  Tests";
             }
             
                        
@@ -73,9 +74,17 @@ namespace MathWiz
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-
-            frmCreateTest createTest = new frmCreateTest(teacher.Klasses[cmbKlasses.SelectedIndex].Id); //passes the selected classID
-            createTest.Show();
+            if(cmbKlasses.SelectedIndex == -1)
+            {
+                MessageBox.Show("A Class was not selected please make sure the correct calss is selected");
+                cmbKlasses.SelectedIndex = 0;
+            }
+            else
+            {
+                frmCreateTest createTest = new frmCreateTest(teacher.Klasses[cmbKlasses.SelectedIndex].Id); //passes the selected classID
+                createTest.Show();
+            }
+            
             //List<Question> qL = new List<Question>();
             //TimeSpan aTime = new TimeSpan(0, 1, 0);
             //qL = Question.GenerateRandomQuestions(1, aTime);
@@ -90,7 +99,8 @@ namespace MathWiz
             DataGridViewRow row = dgvStudents.SelectedRows[0];
             string studentName = row.Cells["FirstName"].Value.ToString() + " " + row.Cells["LastName"].Value.ToString();
             int studentId = Int32.Parse(row.Cells["Id"].Value.ToString());
-            //this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, selectedItem.Id);
+
+            lblStudentTest.Text = studentName + " Graded Tests";
 
             
             this.gradedTestsTableAdapter.FillByGradedTests(this.mathWizGroup3DataSet.graded_tests, studentId);
