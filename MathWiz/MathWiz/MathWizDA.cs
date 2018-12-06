@@ -840,7 +840,7 @@ namespace MathWiz
         {
             List<MasteryTest> masteryTestsInKlass = new List<MasteryTest>();
             
-            string query = "SELECT * FROM MasteryTests WHERE KlassID = @klassID AND TestType = 'Mastery Test'";
+            string query = "SELECT * FROM tests WHERE KlassID = @klassID AND TestType = 'Mastery Test'";
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@klassID", klassID);
             
@@ -882,7 +882,7 @@ namespace MathWiz
         public static bool SelectKlassesMasteryLevels(int klassID, int masteryLevel)
         {
 
-            string query = "SELECT * FROM MasteryTests WHERE KlassID = @klassID AND " + 
+            string query = "SELECT * FROM tests WHERE KlassID = @klassID AND " + 
                 "TestType = 'Mastery Test' AND MasteryLevel = '@masteryLevel";
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@klassID", klassID);
