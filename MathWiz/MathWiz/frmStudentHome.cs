@@ -42,6 +42,8 @@ namespace MathWiz
             cmbMasteryLevel.SelectedIndex = student.MasteryLevel;
             cmbNumberOfQuestions.SelectedIndex = 1;
 
+            klassID = MathWizDA.SelectStudentsKlassID(student.Id);
+
             backgroundWorkerLoadData.RunWorkerAsync();
         }
 
@@ -53,7 +55,7 @@ namespace MathWiz
             }
             else //load the tests that the student can take, but not the placement test since they already took it
             {
-                klassID = MathWizDA.SelectStudentsKlassID(student.Id);
+                
                 availablePracticeTests = MathWizDA.SelectKlassesPracticeTests(klassID);
                 availableMasteryTests = MathWizDA.SelectKlassesMasteryTests(klassID);
             }
