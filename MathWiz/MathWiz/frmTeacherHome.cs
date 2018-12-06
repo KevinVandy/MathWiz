@@ -43,6 +43,7 @@ namespace MathWiz
             //tabTeacher.Visible = false;
             tabForm.TabPages.Remove(tabStudentTests);
             tabForm.TabPages.Remove(tabKlassTests);
+            
 
 
 
