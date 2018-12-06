@@ -93,8 +93,6 @@ namespace MathWiz
         {
             if(Validation.IsComboSelected(cmbMasteryLevel) && Validation.IsComboSelected(cmbNumberOfQuestions))
             {
-                // Number of Questions is getting kind of screwy if you make a test, but quit out of it, and then
-                // make another test
                 int masteryLevel = Convert.ToInt16(cmbMasteryLevel.SelectedItem);
                 int numberOfQuestions = Convert.ToInt16(cmbNumberOfQuestions.SelectedItem);
                 PracticeTest practiceTest = new PracticeTest(Question.GenerateRandomQuestions(masteryLevel, new TimeSpan(0, 0, 30), numberOfQuestions), new TimeSpan(0, 10, 0), true, masteryLevel, masteryLevel);
