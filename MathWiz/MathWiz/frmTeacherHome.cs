@@ -39,14 +39,6 @@ namespace MathWiz
             cmbKlasses.DisplayMember = "KlassName";
 
 
-
-            //tabTeacher.Visible = false;
-            tabForm.TabPages.Remove(tabStudentTests);
-            tabForm.TabPages.Remove(tabKlassTests);
-            
-
-
-
         }
 
         private void backgroundWorkerLoadData_DoWork(object sender, DoWorkEventArgs e)
@@ -69,6 +61,9 @@ namespace MathWiz
         {
             Klass selectedItem = cmbKlasses.SelectedItem as Klass;
             this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, selectedItem.Id);
+            this.testsTableAdapter.FillByKlassID(this.mathWizGroup3DataSet.tests, selectedItem.Id);
+                       
+
         }
 
         private void btnTest_Click(object sender, EventArgs e)
@@ -92,8 +87,7 @@ namespace MathWiz
             int studentId = Int32.Parse(row.Cells["Id"].Value.ToString());
             //this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, selectedItem.Id);
 
-            tabForm.TabPages.Add(tabStudentTests);
-            tabStudentTests.Text = studentName;
+            
             this.gradedTestsTableAdapter.FillByGradedTests(this.mathWizGroup3DataSet.graded_tests, studentId);
 
         }
@@ -131,5 +125,8 @@ namespace MathWiz
             }
 
         }
+
+
+        
     }
 }

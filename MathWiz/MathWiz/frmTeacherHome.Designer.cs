@@ -36,6 +36,17 @@
             this.btnCreateTest = new System.Windows.Forms.Button();
             this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
             this.dgvGradedTests = new System.Windows.Forms.DataGridView();
+            this.dgvStudents = new System.Windows.Forms.DataGridView();
+            this.dgvTests = new System.Windows.Forms.DataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
             this.gradedTest_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gradedTestStudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gradedTestTestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,30 +59,6 @@
             this.recommendedLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gradedTestBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mathWizGroup3DataSet = new MathWiz.MathWizGroup3DataSet();
-            this.dgvStudents = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MasteryLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dgvTests = new System.Windows.Forms.DataGridView();
-            this.testsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.studentsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.studentsTableAdapter();
-            this.testsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.testsTableAdapter();
-            this.gradedTestsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.graded_testsTableAdapter();
-            this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
-            this.tabForm = new System.Windows.Forms.TabControl();
-            this.tabStudentTests = new System.Windows.Forms.TabPage();
-            this.tabKlassTests = new System.Windows.Forms.TabPage();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.testTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeLimitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,18 +66,25 @@
             this.passThreshHoldDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.minLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maxLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.testsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MasteryLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.studentsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.studentsTableAdapter();
+            this.testsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.testsTableAdapter();
+            this.gradedTestsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.graded_testsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGradedTests)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradedTestBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTests)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.fillByToolStrip.SuspendLayout();
-            this.tabForm.SuspendLayout();
-            this.tabStudentTests.SuspendLayout();
-            this.tabKlassTests.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gradedTestBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTeacherName
@@ -157,14 +151,136 @@
             this.gradedTestPast,
             this.recommendedLevelDataGridViewTextBoxColumn});
             this.dgvGradedTests.DataSource = this.gradedTestBindingSource;
-            this.dgvGradedTests.Location = new System.Drawing.Point(25, 51);
+            this.dgvGradedTests.Location = new System.Drawing.Point(45, 438);
             this.dgvGradedTests.MultiSelect = false;
             this.dgvGradedTests.Name = "dgvGradedTests";
             this.dgvGradedTests.ReadOnly = true;
             this.dgvGradedTests.RowHeadersVisible = false;
             this.dgvGradedTests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvGradedTests.Size = new System.Drawing.Size(822, 150);
+            this.dgvGradedTests.Size = new System.Drawing.Size(804, 150);
             this.dgvGradedTests.TabIndex = 0;
+            // 
+            // dgvStudents
+            // 
+            this.dgvStudents.AllowUserToAddRows = false;
+            this.dgvStudents.AllowUserToDeleteRows = false;
+            this.dgvStudents.AutoGenerateColumns = false;
+            this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStudents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Username,
+            this.FirstName,
+            this.LastName,
+            this.MasteryLevel});
+            this.dgvStudents.DataSource = this.studentsBindingSource;
+            this.dgvStudents.Location = new System.Drawing.Point(26, 103);
+            this.dgvStudents.MultiSelect = false;
+            this.dgvStudents.Name = "dgvStudents";
+            this.dgvStudents.ReadOnly = true;
+            this.dgvStudents.RowHeadersVisible = false;
+            this.dgvStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvStudents.Size = new System.Drawing.Size(405, 123);
+            this.dgvStudents.TabIndex = 9;
+            this.dgvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
+            // 
+            // dgvTests
+            // 
+            this.dgvTests.AllowUserToAddRows = false;
+            this.dgvTests.AllowUserToDeleteRows = false;
+            this.dgvTests.AutoGenerateColumns = false;
+            this.dgvTests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTests.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.testTypeDataGridViewTextBoxColumn,
+            this.timeLimitDataGridViewTextBoxColumn,
+            this.randomlyGeneratedDataGridViewCheckBoxColumn,
+            this.passThreshHoldDataGridViewTextBoxColumn,
+            this.minLevelDataGridViewTextBoxColumn,
+            this.maxLevelDataGridViewTextBoxColumn});
+            this.dgvTests.DataSource = this.testsBindingSource;
+            this.dgvTests.Location = new System.Drawing.Point(489, 103);
+            this.dgvTests.MultiSelect = false;
+            this.dgvTests.Name = "dgvTests";
+            this.dgvTests.ReadOnly = true;
+            this.dgvTests.RowHeadersVisible = false;
+            this.dgvTests.Size = new System.Drawing.Size(604, 259);
+            this.dgvTests.TabIndex = 8;
+            this.dgvTests.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTests_CellContentClick);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1290, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logoutToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // fillByToolStripButton
+            // 
+            this.fillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.fillByToolStripButton.Name = "fillByToolStripButton";
+            this.fillByToolStripButton.Size = new System.Drawing.Size(39, 22);
+            this.fillByToolStripButton.Text = "FillBy";
+            this.fillByToolStripButton.Click += new System.EventHandler(this.fillByToolStripButton_Click);
+            // 
+            // fillByToolStrip
+            // 
+            this.fillByToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fillByToolStripButton});
+            this.fillByToolStrip.Location = new System.Drawing.Point(0, 24);
+            this.fillByToolStrip.Name = "fillByToolStrip";
+            this.fillByToolStrip.Size = new System.Drawing.Size(1290, 25);
+            this.fillByToolStrip.TabIndex = 10;
+            this.fillByToolStrip.Text = "fillByToolStrip";
             // 
             // gradedTest_Id
             // 
@@ -248,217 +364,6 @@
             this.mathWizGroup3DataSet.DataSetName = "MathWizGroup3DataSet";
             this.mathWizGroup3DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // dgvStudents
-            // 
-            this.dgvStudents.AllowUserToAddRows = false;
-            this.dgvStudents.AllowUserToDeleteRows = false;
-            this.dgvStudents.AutoGenerateColumns = false;
-            this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStudents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.Username,
-            this.FirstName,
-            this.LastName,
-            this.MasteryLevel});
-            this.dgvStudents.DataSource = this.studentsBindingSource;
-            this.dgvStudents.Location = new System.Drawing.Point(26, 103);
-            this.dgvStudents.MultiSelect = false;
-            this.dgvStudents.Name = "dgvStudents";
-            this.dgvStudents.ReadOnly = true;
-            this.dgvStudents.RowHeadersVisible = false;
-            this.dgvStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStudents.Size = new System.Drawing.Size(405, 123);
-            this.dgvStudents.TabIndex = 9;
-            this.dgvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            this.Id.Width = 40;
-            // 
-            // Username
-            // 
-            this.Username.DataPropertyName = "Username";
-            this.Username.HeaderText = "Username";
-            this.Username.Name = "Username";
-            this.Username.ReadOnly = true;
-            // 
-            // FirstName
-            // 
-            this.FirstName.DataPropertyName = "FirstName";
-            this.FirstName.HeaderText = "First Name";
-            this.FirstName.Name = "FirstName";
-            this.FirstName.ReadOnly = true;
-            // 
-            // LastName
-            // 
-            this.LastName.DataPropertyName = "LastName";
-            this.LastName.HeaderText = "Last Name";
-            this.LastName.Name = "LastName";
-            this.LastName.ReadOnly = true;
-            // 
-            // MasteryLevel
-            // 
-            this.MasteryLevel.DataPropertyName = "MasteryLevel";
-            this.MasteryLevel.HeaderText = "MasteryLevel";
-            this.MasteryLevel.Name = "MasteryLevel";
-            this.MasteryLevel.ReadOnly = true;
-            // 
-            // studentsBindingSource
-            // 
-            this.studentsBindingSource.DataMember = "students";
-            this.studentsBindingSource.DataSource = this.mathWizGroup3DataSet;
-            // 
-            // dgvTests
-            // 
-            this.dgvTests.AllowUserToAddRows = false;
-            this.dgvTests.AllowUserToDeleteRows = false;
-            this.dgvTests.AutoGenerateColumns = false;
-            this.dgvTests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTests.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.testTypeDataGridViewTextBoxColumn,
-            this.timeLimitDataGridViewTextBoxColumn,
-            this.randomlyGeneratedDataGridViewCheckBoxColumn,
-            this.passThreshHoldDataGridViewTextBoxColumn,
-            this.minLevelDataGridViewTextBoxColumn,
-            this.maxLevelDataGridViewTextBoxColumn});
-            this.dgvTests.DataSource = this.testsBindingSource;
-            this.dgvTests.Location = new System.Drawing.Point(35, 54);
-            this.dgvTests.MultiSelect = false;
-            this.dgvTests.Name = "dgvTests";
-            this.dgvTests.ReadOnly = true;
-            this.dgvTests.RowHeadersVisible = false;
-            this.dgvTests.Size = new System.Drawing.Size(604, 259);
-            this.dgvTests.TabIndex = 8;
-            this.dgvTests.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTests_CellContentClick);
-            // 
-            // testsBindingSource
-            // 
-            this.testsBindingSource.DataMember = "tests";
-            this.testsBindingSource.DataSource = this.mathWizGroup3DataSet;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1290, 24);
-            this.menuStrip1.TabIndex = 9;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.logoutToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // logoutToolStripMenuItem
-            // 
-            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.logoutToolStripMenuItem.Text = "Logout";
-            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // studentsTableAdapter
-            // 
-            this.studentsTableAdapter.ClearBeforeFill = true;
-            // 
-            // testsTableAdapter
-            // 
-            this.testsTableAdapter.ClearBeforeFill = true;
-            // 
-            // gradedTestsTableAdapter
-            // 
-            this.gradedTestsTableAdapter.ClearBeforeFill = true;
-            // 
-            // fillByToolStripButton
-            // 
-            this.fillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.fillByToolStripButton.Name = "fillByToolStripButton";
-            this.fillByToolStripButton.Size = new System.Drawing.Size(39, 22);
-            this.fillByToolStripButton.Text = "FillBy";
-            this.fillByToolStripButton.Click += new System.EventHandler(this.fillByToolStripButton_Click);
-            // 
-            // fillByToolStrip
-            // 
-            this.fillByToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fillByToolStripButton});
-            this.fillByToolStrip.Location = new System.Drawing.Point(0, 24);
-            this.fillByToolStrip.Name = "fillByToolStrip";
-            this.fillByToolStrip.Size = new System.Drawing.Size(1290, 25);
-            this.fillByToolStrip.TabIndex = 10;
-            this.fillByToolStrip.Text = "fillByToolStrip";
-            // 
-            // tabForm
-            // 
-            this.tabForm.Controls.Add(this.tabStudentTests);
-            this.tabForm.Controls.Add(this.tabKlassTests);
-            this.tabForm.Location = new System.Drawing.Point(12, 258);
-            this.tabForm.Name = "tabForm";
-            this.tabForm.SelectedIndex = 0;
-            this.tabForm.Size = new System.Drawing.Size(888, 364);
-            this.tabForm.TabIndex = 11;
-            this.tabForm.TabStop = false;
-            this.tabForm.Visible = false;
-            // 
-            // tabStudentTests
-            // 
-            this.tabStudentTests.Controls.Add(this.dgvGradedTests);
-            this.tabStudentTests.Location = new System.Drawing.Point(4, 22);
-            this.tabStudentTests.Name = "tabStudentTests";
-            this.tabStudentTests.Padding = new System.Windows.Forms.Padding(3);
-            this.tabStudentTests.Size = new System.Drawing.Size(880, 338);
-            this.tabStudentTests.TabIndex = 0;
-            // 
-            // tabKlassTests
-            // 
-            this.tabKlassTests.Controls.Add(this.dgvTests);
-            this.tabKlassTests.Location = new System.Drawing.Point(4, 22);
-            this.tabKlassTests.Name = "tabKlassTests";
-            this.tabKlassTests.Padding = new System.Windows.Forms.Padding(3);
-            this.tabKlassTests.Size = new System.Drawing.Size(880, 338);
-            this.tabKlassTests.TabIndex = 1;
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -509,13 +414,73 @@
             this.maxLevelDataGridViewTextBoxColumn.Name = "maxLevelDataGridViewTextBoxColumn";
             this.maxLevelDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // testsBindingSource
+            // 
+            this.testsBindingSource.DataMember = "tests";
+            this.testsBindingSource.DataSource = this.mathWizGroup3DataSet;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 40;
+            // 
+            // Username
+            // 
+            this.Username.DataPropertyName = "Username";
+            this.Username.HeaderText = "Username";
+            this.Username.Name = "Username";
+            this.Username.ReadOnly = true;
+            // 
+            // FirstName
+            // 
+            this.FirstName.DataPropertyName = "FirstName";
+            this.FirstName.HeaderText = "First Name";
+            this.FirstName.Name = "FirstName";
+            this.FirstName.ReadOnly = true;
+            // 
+            // LastName
+            // 
+            this.LastName.DataPropertyName = "LastName";
+            this.LastName.HeaderText = "Last Name";
+            this.LastName.Name = "LastName";
+            this.LastName.ReadOnly = true;
+            // 
+            // MasteryLevel
+            // 
+            this.MasteryLevel.DataPropertyName = "MasteryLevel";
+            this.MasteryLevel.HeaderText = "MasteryLevel";
+            this.MasteryLevel.Name = "MasteryLevel";
+            this.MasteryLevel.ReadOnly = true;
+            // 
+            // studentsBindingSource
+            // 
+            this.studentsBindingSource.DataMember = "students";
+            this.studentsBindingSource.DataSource = this.mathWizGroup3DataSet;
+            // 
+            // studentsTableAdapter
+            // 
+            this.studentsTableAdapter.ClearBeforeFill = true;
+            // 
+            // testsTableAdapter
+            // 
+            this.testsTableAdapter.ClearBeforeFill = true;
+            // 
+            // gradedTestsTableAdapter
+            // 
+            this.gradedTestsTableAdapter.ClearBeforeFill = true;
+            // 
             // frmTeacherHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1290, 670);
-            this.Controls.Add(this.tabForm);
+            this.Controls.Add(this.dgvTests);
+            this.Controls.Add(this.dgvGradedTests);
             this.Controls.Add(this.fillByToolStrip);
             this.Controls.Add(this.dgvStudents);
             this.Controls.Add(this.menuStrip1);
@@ -529,19 +494,16 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmTeacherHome_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGradedTests)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradedTestBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTests)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.fillByToolStrip.ResumeLayout(false);
             this.fillByToolStrip.PerformLayout();
-            this.tabForm.ResumeLayout(false);
-            this.tabStudentTests.ResumeLayout(false);
-            this.tabKlassTests.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gradedTestBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -587,9 +549,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn recommendedLevelDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripButton fillByToolStripButton;
         private System.Windows.Forms.ToolStrip fillByToolStrip;
-        private System.Windows.Forms.TabControl tabForm;
-        private System.Windows.Forms.TabPage tabStudentTests;
-        private System.Windows.Forms.TabPage tabKlassTests;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn testTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn timeLimitDataGridViewTextBoxColumn;
