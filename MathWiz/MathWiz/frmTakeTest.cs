@@ -108,7 +108,7 @@ namespace MathWiz
 
                     case "practice":
 
-                        test.Id = MathWizDB.InsertTest(klassID, test, "practice", 0, 1, 1);
+                        test.Id = MathWizDB.InsertTest(klassID, test, "Practice Test", 0, 1, 1);
                         MathWizDB.InsertGradedTest(gradedTest, student.Id, test.Id, "placement");
 
                         break;

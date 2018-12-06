@@ -87,18 +87,25 @@ namespace MathWiz
 
                     //case Mastery Test
                     case 2:
-                        MasteryTest masteryTest = new MasteryTest(qL, time, isTrue, masteryLevel, threshold);
-                        MathWizDB.InsertMasteryTest(masteryTest, klassID);
-                        aNumber = MathWizDA.GetLastInsertedRecord("test", "id");
-                        //need to resolve the how on creating questions
-                        this.Close();
-                        masteryTest.Questions = Question.GenerateRandomQuestions(masteryTest.MasteryLevel, masteryTest.TimeLimit,10);
-                        foreach (Question q in masteryTest.Questions)
+                        if (MathWizDA.SelectKlassesMasteryLevels(klassID, masteryLevel) == false)
                         {
-                            MathWizDB.InsertTestQuestionMastery(masteryTest, q, aNumber);
+                            MasteryTest masteryTest = new MasteryTest(qL, time, isTrue, masteryLevel, threshold);
+                            MathWizDB.InsertMasteryTest(masteryTest, klassID);
+                            aNumber = MathWizDA.GetLastInsertedRecord("test", "id");
+                            //need to resolve the how on creating questions
+                            this.Close();
+                            masteryTest.Questions = Question.GenerateRandomQuestions(masteryTest.MasteryLevel, masteryTest.TimeLimit, 10);
+                            foreach (Question q in masteryTest.Questions)
+                            {
+                                MathWizDB.InsertTestQuestionMastery(masteryTest, q, aNumber);
+                            }
+                            MessageBox.Show("Your new randomly generated mastery test has been created");
+                            break;
+                        } else
+                        {
+                            MessageBox.Show("A mastery test has already been generated for this level");
+                            break;
                         }
-                        MessageBox.Show("Your new randomly generated mastery test has been created");
-                        break;
                 }
             }
         }
@@ -128,10 +135,7 @@ namespace MathWiz
                Validation.IsComboSelected(cboRandom) &&
                Validation.secondIndexNotLower(cboMinimum, cboMaximum) == true)
                 {
-                    if(MathWizDA.SelectKlassesMasteryTests(klassID) == null)
-                    {
                         return true;
-                    } 
                 }
 
                 return false;
