@@ -74,9 +74,17 @@ namespace MathWiz
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-
-            frmCreateTest createTest = new frmCreateTest(teacher.Klasses[cmbKlasses.SelectedIndex].Id); //passes the selected classID
-            createTest.Show();
+            if(cmbKlasses.SelectedIndex == -1)
+            {
+                MessageBox.Show("A Class was not selected please make sure the correct calss is selected");
+                cmbKlasses.SelectedIndex = 0;
+            }
+            else
+            {
+                frmCreateTest createTest = new frmCreateTest(teacher.Klasses[cmbKlasses.SelectedIndex].Id); //passes the selected classID
+                createTest.Show();
+            }
+            
             //List<Question> qL = new List<Question>();
             //TimeSpan aTime = new TimeSpan(0, 1, 0);
             //qL = Question.GenerateRandomQuestions(1, aTime);

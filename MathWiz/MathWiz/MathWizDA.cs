@@ -840,7 +840,7 @@ namespace MathWiz
         {
             List<MasteryTest> masteryTestsInKlass = new List<MasteryTest>();
             
-            string query = "SELECT * FROM MasteryTests WHERE KlassID = @klassID AND TestType = 'Mastery Test'";
+            string query = "SELECT * FROM tests WHERE KlassID = @klassID AND TestType = 'Mastery Test'";
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@klassID", klassID);
             
@@ -877,6 +877,46 @@ namespace MathWiz
                 }
             }
             return masteryTestsInKlass;
+        }
+
+        public static bool SelectKlassesMasteryLevels(int klassID, int masteryLevel)
+        {
+
+            string query = "SELECT * FROM tests WHERE KlassID = @klassID AND " + 
+                "TestType = 'Mastery Test' AND MasteryLevel = '@masteryLevel";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@klassID", klassID);
+            selectCommand.Parameters.AddWithValue("@masteryLevel", masteryLevel);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                if (reader.Read() && reader.HasRows) 
+                {
+                    reader.Close();
+                    conn.Close();
+                    return true;
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return false;
         }
 
         public static Question SelectQuestion(int id)

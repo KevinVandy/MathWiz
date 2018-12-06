@@ -234,6 +234,43 @@ namespace MathWiz
             cmbClass.SelectedItem = null;
             txtPassword.Clear();
             btnCreateUser.Enabled = true;
+
+            firstName = null;
+            lastName = null;
+            username = null;
+            password = null;
+            parentID = 0;
+            klassID = 0;
+        }
+
+        private void lblUsernameRequired_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblLastNameRequired_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblFirstNameRequired_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPasswordRequired_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblParentRequired_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblClassRequired_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

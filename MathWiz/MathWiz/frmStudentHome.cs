@@ -42,6 +42,8 @@ namespace MathWiz
             cmbMasteryLevel.SelectedIndex = student.MasteryLevel;
             cmbNumberOfQuestions.SelectedIndex = 1;
 
+            klassID = MathWizDA.SelectStudentsKlassID(student.Id);
+
             backgroundWorkerLoadData.RunWorkerAsync();
         }
 
@@ -53,7 +55,7 @@ namespace MathWiz
             }
             else //load the tests that the student can take, but not the placement test since they already took it
             {
-                klassID = MathWizDA.SelectStudentsKlassID(student.Id);
+                
                 availablePracticeTests = MathWizDA.SelectKlassesPracticeTests(klassID);
                 availableMasteryTests = MathWizDA.SelectKlassesMasteryTests(klassID);
             }
@@ -93,8 +95,6 @@ namespace MathWiz
         {
             if(Validation.IsComboSelected(cmbMasteryLevel) && Validation.IsComboSelected(cmbNumberOfQuestions))
             {
-                // Number of Questions is getting kind of screwy if you make a test, but quit out of it, and then
-                // make another test
                 int masteryLevel = Convert.ToInt16(cmbMasteryLevel.SelectedItem);
                 int numberOfQuestions = Convert.ToInt16(cmbNumberOfQuestions.SelectedItem);
                 PracticeTest practiceTest = new PracticeTest(Question.GenerateRandomQuestions(masteryLevel, new TimeSpan(0, 0, 30), numberOfQuestions), new TimeSpan(0, 10, 0), true, masteryLevel, masteryLevel);

@@ -34,19 +34,22 @@ namespace MathWiz
             switch (this.Tag.ToString())
             {
                 case "placement":
-                    
+
+                    gradedTest = new GradedPlacementTest();
                     gbxQuestion.Text = "Placement Test";
                     this.Text = "Placement Test";
                     break;
 
                 case "practice":
-                    
+
+                    gradedTest = new GradedPracticeTest();
                     this.Text = "Practice Test";
                     gbxQuestion.Text = "Practice Test";
                     break;
 
                 case "mastery":
-                    
+
+                    gradedTest = new GradedMasteryTest();
                     this.Text = "Mastery Test";
                     gbxQuestion.Text = "Mastery Test";
                     break;
@@ -105,7 +108,7 @@ namespace MathWiz
 
                     case "practice":
 
-                        test.Id = MathWizDB.InsertTest(klassID, test, "practice", 0, 1, 1);
+                        test.Id = MathWizDB.InsertTest(klassID, test, "Practice Test", 0, 1, 1);
                         MathWizDB.InsertGradedTest(gradedTest, student.Id, test.Id, "placement");
 
                         break;
