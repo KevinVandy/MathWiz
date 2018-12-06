@@ -359,10 +359,13 @@ namespace MathWiz
             }
         }
 
-        public static void InsertQuestion(Question newQuestion, int testID)
+        public static int InsertQuestion(Question newQuestion, int testID)
         {
-            string insertStatement = "INSERT INTO questions (TestID, MasteryLevel, QuestionText, CorrectAnswer, TimeLimit, Weight, RandomlyGenerated) " +
-                "VALUES(@TestID, @MasteryLevel, @QuestionText, @CorrectAnswer, @TimeLimit, @Weight, @RNG)";
+            int questionID = 0;
+
+            string insertStatement = "INSERT INTO questions (TestID, MasteryLevel, QuestionText, CorrectAnswer, TimeLimit, Weight, RandomlyGenerated)" 
+                + " OUTPUT INSERTED.Id" //get the last inserted ID
+                + " VALUES(@TestID, @MasteryLevel, @QuestionText, @CorrectAnswer, @TimeLimit, @Weight, @RNG)";
 
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand(insertStatement, conn);
@@ -382,7 +385,7 @@ namespace MathWiz
                 conn.Open();
 
                 // execute the query
-                Cmd.ExecuteNonQuery();
+                questionID = Convert.ToInt32(Cmd.ExecuteScalar());
             }
             catch (SqlException ex)
             {
@@ -397,6 +400,8 @@ namespace MathWiz
                 // always close the connection
                 conn.Close();
             }
+
+            return questionID;
         }
 
         public static void InsertKlass(Klass newKlass, int teacherID)
@@ -440,7 +445,7 @@ namespace MathWiz
 
             //Everything besides TestType can be null
             string insertStatement = "INSERT INTO tests (KlassID, TestType, TimeLimit, RandomlyGenerated, PassThreshHold, MinLevel, MaxLevel)"
-                                   + " OUTPUT INSERTED.ID" //get the last inserted ID
+                                   + " OUTPUT INSERTED.Id" //get the last inserted ID
                                    + " VALUES(@KlassID, @Type, @TimeLimit, @RNG, @PassThreshold, @MinLevel, @MaxLevel)";
 
             // create command object with SQL query and link to connection object
@@ -461,7 +466,7 @@ namespace MathWiz
                 conn.Open();
 
                 // execute the query
-                testId = Cmd.ExecuteNonQuery();
+                testId = Convert.ToInt32(Cmd.ExecuteScalar());
             }
             catch (SqlException ex)
             {
@@ -506,6 +511,10 @@ namespace MathWiz
 
                 // execute the query
                 int gradedTestID = Cmd.ExecuteNonQuery();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
 
                 //after inserting the graded test, insert the graded questions too
                 foreach (GradedQuestion gq in gradedTest.CorrectlyAnsweredQuestions)
@@ -529,7 +538,10 @@ namespace MathWiz
             finally
             {
                 // always close the connection
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
         }
 

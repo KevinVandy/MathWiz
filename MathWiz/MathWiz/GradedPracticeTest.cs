@@ -8,7 +8,7 @@ namespace MathWiz
 {
     public class GradedPracticeTest : GradedTest
     {
-        PracticeTest PracticeTest { get; set; }
+        public PracticeTest PracticeTest { get; set; }
 
         //empty constructor
         public GradedPracticeTest() { }
