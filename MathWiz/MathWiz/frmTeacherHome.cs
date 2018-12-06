@@ -37,6 +37,7 @@ namespace MathWiz
             lblTeacherName.Text = teacher.FirstName;
             cmbKlasses.DataSource = teacher.Klasses;
             cmbKlasses.DisplayMember = "KlassName";
+            cmbKlasses.SelectedIndex = -1;
 
 
         }
@@ -59,9 +60,13 @@ namespace MathWiz
         
         private void cmbKlasses_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Klass selectedItem = cmbKlasses.SelectedItem as Klass;
-            this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, selectedItem.Id);
-            this.testsTableAdapter.FillByKlassID(this.mathWizGroup3DataSet.tests, selectedItem.Id);
+            if(cmbKlasses.SelectedIndex != -1)
+            {
+                Klass selectedItem = cmbKlasses.SelectedItem as Klass;
+                this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, selectedItem.Id);
+                this.testsTableAdapter.FillByKlassID(this.mathWizGroup3DataSet.tests, selectedItem.Id);
+            }
+            
                        
 
         }
