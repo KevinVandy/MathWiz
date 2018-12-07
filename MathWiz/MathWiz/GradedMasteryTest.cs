@@ -8,7 +8,7 @@ namespace MathWiz
 {
     public class GradedMasteryTest : GradedTest
     {
-        MasteryTest MasteryTest { get; set; }
+        public MasteryTest MasteryTest { get; set; }
         public bool Passed { get; set; }
         public int NumberAttempts { get; set; }
 

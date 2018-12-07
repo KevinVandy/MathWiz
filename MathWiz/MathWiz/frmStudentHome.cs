@@ -86,7 +86,7 @@ namespace MathWiz
 
         private void btnTakePlacementTest_Click(object sender, EventArgs e)
         {
-            Form placementForm = new frmTakeTest(student, availablePlacementTest, klassID); //TODO Pass Correct Test object
+            Form placementForm = new frmTakeTest(student, klassID, availablePlacementTest); //TODO Pass Correct Test object
             placementForm.Tag = "placement";
             placementForm.ShowDialog();
         }
@@ -100,7 +100,7 @@ namespace MathWiz
                 PracticeTest practiceTest = new PracticeTest(Question.GenerateRandomQuestions(masteryLevel, new TimeSpan(0, 0, 30), numberOfQuestions), new TimeSpan(0, 10, 0), true, masteryLevel, masteryLevel);
 
 
-                Form practiceForm = new frmTakeTest(student, practiceTest, klassID);
+                Form practiceForm = new frmTakeTest(student, klassID, practiceTest);
                 practiceForm.Tag = "practice";
                 practiceForm.ShowDialog();
             }
@@ -108,7 +108,7 @@ namespace MathWiz
 
         private void btnTakeMasteryTest_Click(object sender, EventArgs e)
         {
-            Form masteryForm = new frmTakeTest(student, null, klassID); //Passes the students mastery level
+            Form masteryForm = new frmTakeTest(student, klassID, null); //Passes the students mastery level
             masteryForm.Tag = "mastery";
             masteryForm.ShowDialog();
         }

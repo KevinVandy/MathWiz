@@ -8,7 +8,7 @@ namespace MathWiz
 {
     public class GradedPlacementTest : GradedTest
     {
-        PlacementTest PlacementTest { get; set; }
+        public PlacementTest PlacementTest { get; set; }
         public int RecommendedLevel { get; set; }
 
         //empty constructor
