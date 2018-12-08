@@ -15,9 +15,9 @@ namespace MathWiz
     public partial class frmTakeTest : Form
     {
         Test test;
-        GradedPlacementTest gradedPlacementTest = new GradedPlacementTest();
-        GradedPracticeTest gradedPracticeTest = new GradedPracticeTest();
-        GradedMasteryTest gradedMasteryTest = new GradedMasteryTest();
+        GradedPlacementTest gradedPlacementTest;
+        GradedPracticeTest gradedPracticeTest;
+        GradedMasteryTest gradedMasteryTest;
         Student student;
         int klassID;
         int currentQuestionNum; //set to 0 when test starts
@@ -29,8 +29,6 @@ namespace MathWiz
             student = s;
             klassID = kID;
             test = t;
-            
-            
         }
 
         private void frmTakeTest_Load(object sender, EventArgs e)
@@ -39,6 +37,7 @@ namespace MathWiz
             {
                 case "placement":
 
+                    gradedPlacementTest = new GradedPlacementTest();
                     gradedPlacementTest.PlacementTest = (PlacementTest)test;
                     gbxQuestion.Text = "Placement Test";
                     this.Text = "Placement Test";
@@ -46,14 +45,15 @@ namespace MathWiz
 
                 case "practice":
 
+                    gradedPracticeTest = new GradedPracticeTest();
                     gradedPracticeTest.PracticeTest = (PracticeTest)test;
-                    
                     this.Text = "Practice Test";
                     gbxQuestion.Text = "Practice Test";
                     break;
 
                 case "mastery":
 
+                    gradedMasteryTest = new GradedMasteryTest();
                     gradedMasteryTest.MasteryTest = (MasteryTest)test;
                     this.Text = "Mastery Test";
                     gbxQuestion.Text = "Mastery Test";
@@ -61,6 +61,7 @@ namespace MathWiz
 
                 default:
 
+                    gradedPracticeTest = new GradedPracticeTest();
                     gradedPracticeTest.PracticeTest = (PracticeTest)test;
                     this.Text = "Practice Test";
                     gbxQuestion.Text = "Practice Test";
@@ -96,50 +97,57 @@ namespace MathWiz
             }
             else if (btnStartFinish.Text == "Finish Test") //finish test, record score, write score to db
             {
+                //record information for the completed test
                 gradedPracticeTest.Score = (decimal)gradedPracticeTest.CorrectlyAnsweredQuestions.Count / (decimal)(gradedPracticeTest.CorrectlyAnsweredQuestions.Count + (decimal)gradedPracticeTest.WronglyAnsweredQuestions.Count) * 100;
                 gradedPracticeTest.TimeTakenToComplete = gradedPracticeTest.PracticeTest.TimeLimit - TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
                 gradedPracticeTest.DateTaken = DateTime.Now;
                 gradedPracticeTest.Feedback = gradedPracticeTest.Score.ToString();
 
-                //write to database
-                switch (this.Tag.ToString())
-                {
-                    case "placement":
-
-                        int recommendedLevel = 1; //TODO calculate recommended level
-
-                        MathWizDB.InsertGradedTest(gradedPracticeTest, student.Id, gradedPracticeTest.PracticeTest.Id, "Placement Test", recommendedLevel);
-
-                        break;
-
-                    case "practice":
-
-                        gradedPracticeTest.PracticeTest.Id = MathWizDB.InsertTest(klassID, gradedPracticeTest.PracticeTest, "Practice Test", 0, 1, 1);
-
-                        for (int i = 0; i < gradedPracticeTest.PracticeTest.Questions.Count; i++)
-                        {
-                            gradedPracticeTest.PracticeTest.Questions[i].Id = MathWizDB.InsertQuestion(gradedPracticeTest.PracticeTest.Questions[i], gradedPracticeTest.PracticeTest.Id);
-                        }
-
-                        MathWizDB.InsertGradedTest(gradedPracticeTest, student.Id, gradedPracticeTest.PracticeTest.Id, "Practice Test");
-
-                        break;
-
-                    case "mastery":
-
-                        bool passed = true; //TODO calculate weather the student passed the test
-                        //TODO keep track of the number of attempts that it has taken the student to pass
-                        
-                        MathWizDB.InsertGradedTest(gradedPracticeTest, student.Id, gradedPracticeTest.PracticeTest.Id, "Mastery Test", null, 1, passed);
-
-                        break;
-                }
-                
-                MessageBox.Show("Score: " + gradedPracticeTest.Score.ToString() + "%\n\n" + gradedPracticeTest.Feedback);
-
-                testFinished = true; //now it this should close with no warning message
-                this.Close();
+                //write to database in another thread
+                backgroundWorkerSaveTest.RunWorkerAsync();
             }
+            
+        }
+
+        //Thread for saving the graded test (and sometimes the practice test
+        void backgroundWorkerSaveTest_DoWork(object sender, DoWorkEventArgs e)
+        {
+            switch (this.Tag.ToString())
+            {
+                case "placement":
+
+                    int recommendedLevel = 1; //TODO calculate recommended level
+
+                    MathWizDB.InsertGradedTest(gradedPlacementTest, student.Id, gradedPlacementTest.PlacementTest.Id, "Placement Test", recommendedLevel);
+
+                    break;
+
+                case "practice":
+
+                    //first insert the test since the teacher did not make it, but the student just generated it
+                    gradedPracticeTest.PracticeTest.Id = MathWizDB.InsertTest(klassID, gradedPracticeTest.PracticeTest, "Practice Test", 0, gradedPracticeTest.PracticeTest.MinLevel, gradedPracticeTest.PracticeTest.MaxLevel);
+
+                    //then insert the graded test. The insertGradedTest method also inserts the graded Questions
+                    gradedPracticeTest.Id = MathWizDB.InsertGradedTest(gradedPracticeTest, student.Id, gradedPracticeTest.PracticeTest.Id, "Practice Test");
+
+                    break;
+
+                case "mastery":
+
+                    bool passed = true; //TODO calculate weather the student passed the test
+                                        //TODO keep track of the number of attempts that it has taken the student to pass
+
+                    MathWizDB.InsertGradedTest(gradedMasteryTest, student.Id, gradedMasteryTest.MasteryTest.Id, "Mastery Test", null, 1, passed);
+
+                    break;
+            }
+        }
+
+        void backgroundWorkerSaveTest_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("Score: " + gradedPracticeTest.Score.ToString() + "%\n\n" + gradedPracticeTest.Feedback);
+            testFinished = true; //now it this should close with no warning message
+            this.Close();
         }
 
         private async void btnSubmitAnswer_Click(object sender, EventArgs e)

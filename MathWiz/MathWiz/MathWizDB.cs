@@ -439,9 +439,9 @@ namespace MathWiz
             }
         }
 
-        public static int InsertTest(int klassID, Test newTest, string testType, decimal passThreshold, int minLevel, int maxLevel)
+        public static int InsertTest(int klassID, Test test, string testType, decimal passThreshold, int minLevel, int maxLevel)
         {
-            int testId = 0;
+            test.Id = 0;
 
             //Everything besides TestType can be null
             string insertStatement = "INSERT INTO tests (KlassID, TestType, TimeLimit, RandomlyGenerated, PassThreshHold, MinLevel, MaxLevel)"
@@ -454,8 +454,8 @@ namespace MathWiz
             // create your parameters and add values from object
             Cmd.Parameters.AddWithValue("@KlassID", klassID);
             Cmd.Parameters.AddWithValue("@Type", testType);
-            Cmd.Parameters.AddWithValue("@TimeLimit", newTest.TimeLimit);
-            Cmd.Parameters.AddWithValue("@RNG", newTest.RandomlyGenerated);
+            Cmd.Parameters.AddWithValue("@TimeLimit", test.TimeLimit);
+            Cmd.Parameters.AddWithValue("@RNG", test.RandomlyGenerated);
             Cmd.Parameters.AddWithValue("@PassThreshold", passThreshold);
             Cmd.Parameters.AddWithValue("@MinLevel", minLevel);
             Cmd.Parameters.AddWithValue("@MaxLevel", maxLevel);
@@ -466,7 +466,19 @@ namespace MathWiz
                 conn.Open();
 
                 // execute the query
-                testId = Convert.ToInt32(Cmd.ExecuteScalar());
+                test.Id = Convert.ToInt32(Cmd.ExecuteScalar());
+
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+
+                //now insert the questions in the test
+                for (int i = 0; i < test.Questions.Count; i++)
+                {
+                    test.Questions[i].Id = MathWizDB.InsertQuestion(test.Questions[i], test.Id);
+                }
+
             }
             catch (SqlException ex)
             {
@@ -478,14 +490,18 @@ namespace MathWiz
             }
             finally
             {
-                // always close the connection
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
-            return testId;
+            return test.Id;
         }
         
-        public static void InsertGradedTest(GradedTest gradedTest, int studentID, int testID, string testType, int? recommendedLevel = 1, int? attempts = 1, bool? passed = true)
+        public static int InsertGradedTest(GradedTest gradedTest, int studentID, int testID, string testType, int? recommendedLevel = 0, int? attempts = 1, bool? passed = true)
         {
+            gradedTest.Id = 0;
+
             string insertStatement = "INSERT INTO graded_tests"
                                    + " (StudentID, TestID, TestType, Score, TimeTakenToComplete, DateTaken, Feedback, NumberAttempts, Passed, RecommendedLevel)"
                                    + " OUTPUT INSERTED.ID" //get the last inserted ID
@@ -510,21 +526,22 @@ namespace MathWiz
                 conn.Open();
 
                 // execute the query
-                int gradedTestID = Cmd.ExecuteNonQuery();
+                gradedTest.Id = Convert.ToInt32(Cmd.ExecuteScalar());
+
                 if (conn != null && conn.State == ConnectionState.Open)
                 {
                     conn.Close();
                 }
 
                 //after inserting the graded test, insert the graded questions too
-                foreach (GradedQuestion gq in gradedTest.CorrectlyAnsweredQuestions)
+                foreach (GradedQuestion q in gradedTest.CorrectlyAnsweredQuestions)
                 {
-                    InsertGradedQuestion(gq, gradedTestID);
+                    InsertGradedQuestion(q, gradedTest.Id);
                 }
 
-                foreach (GradedQuestion gq in gradedTest.WronglyAnsweredQuestions)
+                foreach (GradedQuestion q in gradedTest.WronglyAnsweredQuestions)
                 {
-                    InsertGradedQuestion(gq, gradedTestID);
+                    InsertGradedQuestion(q, gradedTest.Id);
                 }
             }
             catch (SqlException ex)
@@ -543,6 +560,8 @@ namespace MathWiz
                     conn.Close();
                 }
             }
+
+            return gradedTest.Id;
         }
 
         public static void InsertGradedQuestion(GradedQuestion gradedQuestion, int gradedTestID)

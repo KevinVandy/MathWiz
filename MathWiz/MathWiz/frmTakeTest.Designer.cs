@@ -39,6 +39,7 @@
             this.timerTest = new System.Windows.Forms.Timer(this.components);
             this.lblTimerTest = new System.Windows.Forms.Label();
             this.timerQuestion = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorkerSaveTest = new System.ComponentModel.BackgroundWorker();
             this.gbxQuestion.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -142,6 +143,11 @@
             this.timerQuestion.Interval = 1000;
             this.timerQuestion.Tick += new System.EventHandler(this.timerQuestion_Tick);
             // 
+            // backgroundWorkerSaveTest
+            // 
+            this.backgroundWorkerSaveTest.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerSaveTest_DoWork);
+            this.backgroundWorkerSaveTest.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerSaveTest_RunWorkerCompleted);
+            // 
             // frmTakeTest
             // 
             this.AcceptButton = this.btnSubmitAnswer;
@@ -175,5 +181,6 @@
         private System.Windows.Forms.Label lblTimerTest;
         private System.Windows.Forms.Timer timerQuestion;
         private System.Windows.Forms.Label lblTimerQuestion;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerSaveTest;
     }
 }
