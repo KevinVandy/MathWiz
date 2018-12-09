@@ -171,6 +171,9 @@ namespace MathWiz
             this.Close();
         }
 
-        
+        private void frmCreateTest_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

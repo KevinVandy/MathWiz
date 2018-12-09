@@ -24,6 +24,34 @@ namespace MathWiz
         }
 
         //button actions
+        private void btnShowHideUsername_Click(object sender, EventArgs e)
+        {
+            if (txtUsername.UseSystemPasswordChar)
+            {
+                btnShowHideUsername.BackgroundImage = Properties.Resources.hide_password;
+                txtUsername.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                btnShowHideUsername.BackgroundImage = Properties.Resources.show_password;
+                txtUsername.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void btnShowHidePassword_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.UseSystemPasswordChar)
+            {
+                btnShowHidePassword.BackgroundImage = Properties.Resources.hide_password;
+                txtPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                btnShowHidePassword.BackgroundImage = Properties.Resources.show_password;
+                txtPassword.UseSystemPasswordChar = true;
+            }
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             //hide the errors if they were previously shown so that they only show when triggered again
@@ -122,7 +150,11 @@ namespace MathWiz
             if (e.Error == null && errorFlag == "")
             {
                 loginAttempts = 0;
-                txtPassword.Text = null;//get rid of password text for security so that the next user who uses the computer doesn't have it
+                if (txtUsername.UseSystemPasswordChar)
+                {
+                    txtUsername.Text = ""; //get rid of username text if the user was hiding their username from the screen so next user does not see it
+                }
+                txtPassword.Text = "";//get rid of password text for security so that the next user who uses the computer doesn't have it
                 this.Hide();            //hide login form
                 if(homeForm != null)
                 {

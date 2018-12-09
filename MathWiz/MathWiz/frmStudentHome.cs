@@ -13,7 +13,7 @@ namespace MathWiz
     public partial class frmStudentHome : Form
     {
         Student student;
-        int klassID;
+        Klass klass = new Klass();
 
         PlacementTest availablePlacementTest;
         List<PracticeTest> availablePracticeTests;
@@ -42,7 +42,8 @@ namespace MathWiz
             cmbMasteryLevel.SelectedIndex = student.MasteryLevel;
             cmbNumberOfQuestions.SelectedIndex = 1;
 
-            klassID = MathWizDA.SelectStudentsKlassID(student.Id);
+            klass.Id = MathWizDA.SelectStudentsKlassID(student.Id);
+            klass = MathWizDA.SelectKlass(klass.Id);
 
             backgroundWorkerLoadData.RunWorkerAsync();
         }
@@ -51,20 +52,19 @@ namespace MathWiz
         {
             if(student.MasteryLevel == 0) //if student has not taken placement test yet, only load that test
             {
-                availablePlacementTest = MathWizDA.SelectKlassesPlacementTest(klassID);
+                availablePlacementTest = MathWizDA.SelectKlassesPlacementTest(klass.Id);
             }
             else //load the tests that the student can take, but not the placement test since they already took it
             {
-                
-                availablePracticeTests = MathWizDA.SelectKlassesPracticeTests(klassID);
-                availableMasteryTests = MathWizDA.SelectKlassesMasteryTests(klassID);
+                availablePracticeTests = MathWizDA.SelectKlassesPracticeTests(klass.Id);
+                availableMasteryTests = MathWizDA.SelectKlassesMasteryTests(klass.Id);
             }
-            
         }
 
         private void backgroundWorkerLoadData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            lblStudentName.Text = "Student: " + student.FirstName + " " + student.LastName;
+            lblStudentName.Text = "Logged in as: " + student.FirstName + " " + student.LastName;
+            lblKlassName.Text = klass.KlassName;
             lblMasteryLevel.Text = "Mastery Level: " + student.MasteryLevel.ToString();
         }
 
@@ -86,7 +86,7 @@ namespace MathWiz
 
         private void btnTakePlacementTest_Click(object sender, EventArgs e)
         {
-            Form placementForm = new frmTakeTest(student, klassID, availablePlacementTest); //TODO Pass Correct Test object
+            Form placementForm = new frmTakeTest(student, klass.Id, availablePlacementTest); //TODO Pass Correct Test object
             placementForm.Tag = "placement";
             placementForm.ShowDialog();
         }
@@ -100,7 +100,7 @@ namespace MathWiz
                 PracticeTest practiceTest = new PracticeTest(Question.GenerateRandomQuestions(masteryLevel, new TimeSpan(0, 0, 30), numberOfQuestions), new TimeSpan(0, 10, 0), true, masteryLevel, masteryLevel);
 
 
-                Form practiceForm = new frmTakeTest(student, klassID, practiceTest);
+                Form practiceForm = new frmTakeTest(student, klass.Id, practiceTest);
                 practiceForm.Tag = "practice";
                 practiceForm.ShowDialog();
             }
@@ -108,7 +108,7 @@ namespace MathWiz
 
         private void btnTakeMasteryTest_Click(object sender, EventArgs e)
         {
-            Form masteryForm = new frmTakeTest(student, klassID, null); //Passes the students mastery level
+            Form masteryForm = new frmTakeTest(student, klass.Id, null); //Passes the students mastery level
             masteryForm.Tag = "mastery";
             masteryForm.ShowDialog();
         }

@@ -44,13 +44,15 @@
             this.lstChildren = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.graded_testsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.graded_testsTableAdapter();
             this.tableAdapterManager = new MathWiz.MathWizGroup3DataSetTableAdapters.TableAdapterManager();
-            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblParentName = new System.Windows.Forms.Label();
+            this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
             this.grpManageChildren.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.graded_testsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.graded_testsBindingSource)).BeginInit();
@@ -68,7 +70,7 @@
             this.grpManageChildren.Margin = new System.Windows.Forms.Padding(2);
             this.grpManageChildren.Name = "grpManageChildren";
             this.grpManageChildren.Padding = new System.Windows.Forms.Padding(2);
-            this.grpManageChildren.Size = new System.Drawing.Size(782, 297);
+            this.grpManageChildren.Size = new System.Drawing.Size(850, 344);
             this.grpManageChildren.TabIndex = 0;
             this.grpManageChildren.TabStop = false;
             this.grpManageChildren.Text = "Your Children";
@@ -78,7 +80,7 @@
             this.txtStudentMastery.BackColor = System.Drawing.SystemColors.Control;
             this.txtStudentMastery.Font = new System.Drawing.Font("Lucida Bright", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStudentMastery.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtStudentMastery.Location = new System.Drawing.Point(228, 35);
+            this.txtStudentMastery.Location = new System.Drawing.Point(242, 35);
             this.txtStudentMastery.Multiline = true;
             this.txtStudentMastery.Name = "txtStudentMastery";
             this.txtStudentMastery.ReadOnly = true;
@@ -89,7 +91,7 @@
             // lblStudentMastery
             // 
             this.lblStudentMastery.AutoSize = true;
-            this.lblStudentMastery.Location = new System.Drawing.Point(225, 19);
+            this.lblStudentMastery.Location = new System.Drawing.Point(239, 19);
             this.lblStudentMastery.Name = "lblStudentMastery";
             this.lblStudentMastery.Size = new System.Drawing.Size(120, 13);
             this.lblStudentMastery.TabIndex = 2;
@@ -108,12 +110,12 @@
             this.dataGridViewCheckBoxColumn1,
             this.dataGridViewTextBoxColumn7});
             this.graded_testsDataGridView.DataSource = this.graded_testsBindingSource;
-            this.graded_testsDataGridView.Location = new System.Drawing.Point(358, 19);
+            this.graded_testsDataGridView.Location = new System.Drawing.Point(364, 35);
             this.graded_testsDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.graded_testsDataGridView.Name = "graded_testsDataGridView";
             this.graded_testsDataGridView.ReadOnly = true;
             this.graded_testsDataGridView.RowTemplate.Height = 24;
-            this.graded_testsDataGridView.Size = new System.Drawing.Size(420, 263);
+            this.graded_testsDataGridView.Size = new System.Drawing.Size(470, 263);
             this.graded_testsDataGridView.TabIndex = 1;
             // 
             // StudentID
@@ -170,7 +172,7 @@
             // lstChildren
             // 
             this.lstChildren.FormattingEnabled = true;
-            this.lstChildren.Location = new System.Drawing.Point(5, 18);
+            this.lstChildren.Location = new System.Drawing.Point(11, 34);
             this.lstChildren.Name = "lstChildren";
             this.lstChildren.Size = new System.Drawing.Size(214, 264);
             this.lstChildren.TabIndex = 0;
@@ -186,7 +188,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(870, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -199,10 +201,17 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -245,18 +254,28 @@
             this.tableAdapterManager.testsTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = MathWiz.MathWizGroup3DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // logoutToolStripMenuItem
+            // lblParentName
             // 
-            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.logoutToolStripMenuItem.Text = "Logout";
-            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
+            this.lblParentName.AutoSize = true;
+            this.lblParentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblParentName.ForeColor = System.Drawing.Color.Blue;
+            this.lblParentName.Location = new System.Drawing.Point(129, 7);
+            this.lblParentName.Name = "lblParentName";
+            this.lblParentName.Size = new System.Drawing.Size(71, 13);
+            this.lblParentName.TabIndex = 2;
+            this.lblParentName.Text = "Logged in as:";
+            // 
+            // backgroundWorkerLoadData
+            // 
+            this.backgroundWorkerLoadData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerLoadData_DoWork);
+            this.backgroundWorkerLoadData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerLoadData_RunWorkerCompleted);
             // 
             // frmParentHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(870, 450);
+            this.Controls.Add(this.lblParentName);
             this.Controls.Add(this.grpManageChildren);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -264,7 +283,6 @@
             this.Name = "frmParentHome";
             this.Text = "MathWiz - Parent Portal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmParentHome_FormClosing);
             this.Load += new System.EventHandler(this.frmParentHome_Load);
             this.grpManageChildren.ResumeLayout(false);
             this.grpManageChildren.PerformLayout();
@@ -301,5 +319,7 @@
         private System.Windows.Forms.TextBox txtStudentMastery;
         private System.Windows.Forms.Label lblStudentMastery;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+        private System.Windows.Forms.Label lblParentName;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerLoadData;
     }
 }

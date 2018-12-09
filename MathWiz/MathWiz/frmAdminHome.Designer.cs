@@ -70,12 +70,12 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbxManageClasses = new System.Windows.Forms.GroupBox();
-            this.chtMasterLevelDistribution = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lsvStudents = new System.Windows.Forms.ListView();
             this.StudentID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.StudentName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.StudentUsername = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.MasteryLevel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lsvKlasses = new System.Windows.Forms.ListView();
             this.ClassID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -83,8 +83,10 @@
             this.lsvTeachers = new System.Windows.Forms.ListView();
             this.TeacherID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TeacherName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TeacherUsername = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.btnCreateClass = new System.Windows.Forms.Button();
+            this.chtMasterLevelDistribution = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.backgroundWorkerFormDataLoad = new System.ComponentModel.BackgroundWorker();
             this.parentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.klassesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -96,10 +98,8 @@
             this.adminsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.adminsTableAdapter();
             this.klassesTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.klassesTableAdapter();
             this.grbStatisticalAnalysis = new System.Windows.Forms.GroupBox();
-            this.lblAdminName = new System.Windows.Forms.Label();
-            this.TeacherUsername = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.StudentUsername = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label4 = new System.Windows.Forms.Label();
+            this.lblAdminName = new System.Windows.Forms.Label();
             this.gbxManageAccounts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -367,6 +367,7 @@
             // 
             // fillBySearchToolStrip
             // 
+            this.fillBySearchToolStrip.BackColor = System.Drawing.SystemColors.Control;
             this.fillBySearchToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.fillBySearchToolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.fillBySearchToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -528,15 +529,6 @@
             this.gbxManageClasses.TabStop = false;
             this.gbxManageClasses.Text = "Manage Teachers and Classes";
             // 
-            // chtMasterLevelDistribution
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chtMasterLevelDistribution.ChartAreas.Add(chartArea1);
-            this.chtMasterLevelDistribution.Location = new System.Drawing.Point(28, 72);
-            this.chtMasterLevelDistribution.Name = "chtMasterLevelDistribution";
-            this.chtMasterLevelDistribution.Size = new System.Drawing.Size(338, 233);
-            this.chtMasterLevelDistribution.TabIndex = 14;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -583,6 +575,11 @@
             // 
             this.StudentName.Text = "Name";
             this.StudentName.Width = 178;
+            // 
+            // StudentUsername
+            // 
+            this.StudentUsername.Text = "Username";
+            this.StudentUsername.Width = 172;
             // 
             // MasteryLevel
             // 
@@ -641,6 +638,11 @@
             this.TeacherName.Text = "Name";
             this.TeacherName.Width = 140;
             // 
+            // TeacherUsername
+            // 
+            this.TeacherUsername.Text = "Username";
+            this.TeacherUsername.Width = 144;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -661,6 +663,15 @@
             this.btnCreateClass.Text = "Create New Class";
             this.btnCreateClass.UseVisualStyleBackColor = true;
             this.btnCreateClass.Click += new System.EventHandler(this.btnCreateClass_Click);
+            // 
+            // chtMasterLevelDistribution
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chtMasterLevelDistribution.ChartAreas.Add(chartArea1);
+            this.chtMasterLevelDistribution.Location = new System.Drawing.Point(28, 72);
+            this.chtMasterLevelDistribution.Name = "chtMasterLevelDistribution";
+            this.chtMasterLevelDistribution.Size = new System.Drawing.Size(338, 233);
+            this.chtMasterLevelDistribution.TabIndex = 14;
             // 
             // backgroundWorkerFormDataLoad
             // 
@@ -722,6 +733,16 @@
             this.grbStatisticalAnalysis.TabStop = false;
             this.grbStatisticalAnalysis.Text = "Statistical Analysis";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(79, 41);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(202, 17);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Class Mastery Level Histogram";
+            // 
             // lblAdminName
             // 
             this.lblAdminName.AutoSize = true;
@@ -732,26 +753,6 @@
             this.lblAdminName.Size = new System.Drawing.Size(134, 13);
             this.lblAdminName.TabIndex = 14;
             this.lblAdminName.Text = "Logged in as: Admin Name";
-            // 
-            // TeacherUsername
-            // 
-            this.TeacherUsername.Text = "Username";
-            this.TeacherUsername.Width = 144;
-            // 
-            // StudentUsername
-            // 
-            this.StudentUsername.Text = "Username";
-            this.StudentUsername.Width = 172;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(79, 41);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(202, 17);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Class Mastery Level Histogram";
             // 
             // frmAdminHome
             // 

@@ -25,8 +25,6 @@ namespace MathWiz
 
         private void frmTeacherHome_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'mathWizGroup3DataSet.tests' table. You can move, or remove it, as needed.
-            
             backgroundWorkerLoadData.RunWorkerAsync();
         }
 
@@ -70,7 +68,7 @@ namespace MathWiz
 
         private void backgroundWorkerLoadData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            lblTeacherName.Text = teacher.FirstName + " " + teacher.LastName;
+            lblTeacherName.Text = "Logged in as: " + teacher.FirstName + " " + teacher.LastName;
             cmbKlasses.DataSource = teacher.Klasses;
             cmbKlasses.DisplayMember = "KlassName";
             cmbKlasses.SelectedIndex = 0;

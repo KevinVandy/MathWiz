@@ -13,28 +13,38 @@ namespace MathWiz
     public partial class frmParentHome : Form
     {
         Parent parent;
+
+        //MARK Form load stuff
         public frmParentHome(string username)
         {
             InitializeComponent();
-            parent = MathWizDA.SelectParent(username);
+            parent = MathWizDA.SelectParent(username); //this has to go here
         }
 
         private void frmParentHome_Load(object sender, EventArgs e)
         {
-            //Parent's name to form
-            grpManageChildren.Text = parent.FirstName + "'s children";
-
-            // Grab students that are assigned to the parent
-            // And output them to the listbox on the form
-            List<Student> myChildren = MathWizDA.SelectStudentsViaParent(parent.Id);
-            foreach (Student child in myChildren) {
-                lstChildren.Items.Add(child);
-            }
+            lblParentName.Text = "Logged in as: " + parent.FirstName + " " + parent.LastName;
+            backgroundWorkerLoadData.RunWorkerAsync();
         }
 
-        private void frmParentHome_FormClosing(object sender, FormClosingEventArgs e)
+        private void backgroundWorkerLoadData_DoWork(object sender, DoWorkEventArgs e)
         {
-            
+            parent.Children = MathWizDA.SelectStudentsViaParent(parent.Id);
+        }
+
+        private void backgroundWorkerLoadData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            foreach (Student c in parent.Children)
+            {
+                lstChildren.Items.Add(c);
+            }
+        }
+        //END Form load stuff
+
+        //MARK MenuStrip event handlers
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -47,18 +57,13 @@ namespace MathWiz
             Form aboutBox = new frmAboutBox();
             aboutBox.ShowDialog();
         }
+        //END MenuStrip event handlers
 
         private void graded_testsBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
             this.graded_testsBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.mathWizGroup3DataSet);
-
-        }
-
-        private void fillByGradedTestsToolStripButton_Click(object sender, EventArgs e)
-        {
-
 
         }
 
@@ -85,11 +90,6 @@ namespace MathWiz
                     System.Windows.Forms.MessageBox.Show(ex.Message);
                 }
             }
-        }
-
-        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

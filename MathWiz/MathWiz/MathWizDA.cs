@@ -1161,9 +1161,8 @@ namespace MathWiz
 
                 if (reader.Read()) 
                 {
-                    
+                    klass.Id = Convert.ToInt32(reader["Id"]);
                     klass.KlassName = Convert.ToString(reader["KlassName"]);
-                    
                 }
                 reader.Close();
             }

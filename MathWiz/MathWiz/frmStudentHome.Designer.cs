@@ -46,6 +46,7 @@
             this.gbxViewProgress = new System.Windows.Forms.GroupBox();
             this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
             this.lblStudentName = new System.Windows.Forms.Label();
+            this.lblKlassName = new System.Windows.Forms.Label();
             this.lblMasteryLevel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.gbxTakeTests.SuspendLayout();
@@ -60,7 +61,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(694, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(686, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -135,7 +136,7 @@
             this.gbxTakeTests.Controls.Add(this.cmbMasteryLevel);
             this.gbxTakeTests.Controls.Add(this.btnTakeMasteryTest);
             this.gbxTakeTests.Controls.Add(this.btnTakePlacementTest);
-            this.gbxTakeTests.Location = new System.Drawing.Point(23, 86);
+            this.gbxTakeTests.Location = new System.Drawing.Point(23, 52);
             this.gbxTakeTests.Name = "gbxTakeTests";
             this.gbxTakeTests.Size = new System.Drawing.Size(640, 269);
             this.gbxTakeTests.TabIndex = 6;
@@ -217,7 +218,7 @@
             // 
             // gbxViewProgress
             // 
-            this.gbxViewProgress.Location = new System.Drawing.Point(23, 397);
+            this.gbxViewProgress.Location = new System.Drawing.Point(23, 347);
             this.gbxViewProgress.Name = "gbxViewProgress";
             this.gbxViewProgress.Size = new System.Drawing.Size(640, 269);
             this.gbxViewProgress.TabIndex = 7;
@@ -232,30 +233,44 @@
             // lblStudentName
             // 
             this.lblStudentName.AutoSize = true;
-            this.lblStudentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStudentName.Location = new System.Drawing.Point(18, 40);
+            this.lblStudentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStudentName.ForeColor = System.Drawing.Color.Blue;
+            this.lblStudentName.Location = new System.Drawing.Point(91, 6);
             this.lblStudentName.Name = "lblStudentName";
-            this.lblStudentName.Size = new System.Drawing.Size(239, 26);
-            this.lblStudentName.TabIndex = 7;
-            this.lblStudentName.Text = "Student: Student Name";
+            this.lblStudentName.Size = new System.Drawing.Size(71, 13);
+            this.lblStudentName.TabIndex = 9;
+            this.lblStudentName.Text = "Logged in as:";
+            // 
+            // lblKlassName
+            // 
+            this.lblKlassName.AutoSize = true;
+            this.lblKlassName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKlassName.ForeColor = System.Drawing.Color.Blue;
+            this.lblKlassName.Location = new System.Drawing.Point(365, 6);
+            this.lblKlassName.Name = "lblKlassName";
+            this.lblKlassName.Size = new System.Drawing.Size(35, 13);
+            this.lblKlassName.TabIndex = 10;
+            this.lblKlassName.Text = "Class:";
             // 
             // lblMasteryLevel
             // 
             this.lblMasteryLevel.AutoSize = true;
-            this.lblMasteryLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMasteryLevel.Location = new System.Drawing.Point(480, 40);
+            this.lblMasteryLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMasteryLevel.ForeColor = System.Drawing.Color.Blue;
+            this.lblMasteryLevel.Location = new System.Drawing.Point(531, 6);
             this.lblMasteryLevel.Name = "lblMasteryLevel";
-            this.lblMasteryLevel.Size = new System.Drawing.Size(183, 26);
-            this.lblMasteryLevel.TabIndex = 8;
-            this.lblMasteryLevel.Text = "Mastery Level: 00";
+            this.lblMasteryLevel.Size = new System.Drawing.Size(76, 13);
+            this.lblMasteryLevel.TabIndex = 11;
+            this.lblMasteryLevel.Text = "Mastery Level:";
             // 
             // frmStudentHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(711, 550);
+            this.ClientSize = new System.Drawing.Size(703, 578);
             this.Controls.Add(this.lblMasteryLevel);
+            this.Controls.Add(this.lblKlassName);
             this.Controls.Add(this.lblStudentName);
             this.Controls.Add(this.gbxViewProgress);
             this.Controls.Add(this.gbxTakeTests);
@@ -289,11 +304,12 @@
         private System.Windows.Forms.GroupBox gbxViewProgress;
         private System.Windows.Forms.ComboBox cmbMasteryLevel;
         private System.ComponentModel.BackgroundWorker backgroundWorkerLoadData;
-        private System.Windows.Forms.Label lblStudentName;
-        private System.Windows.Forms.Label lblMasteryLevel;
         private System.Windows.Forms.Button btnTakeRandomPracticeTest;
         private System.Windows.Forms.Label lblNumberOfQuestions;
         private System.Windows.Forms.Label lblMasteryLevels;
         private System.Windows.Forms.ComboBox cmbNumberOfQuestions;
+        private System.Windows.Forms.Label lblStudentName;
+        private System.Windows.Forms.Label lblKlassName;
+        private System.Windows.Forms.Label lblMasteryLevel;
     }
 }

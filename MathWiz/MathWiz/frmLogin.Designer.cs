@@ -44,6 +44,8 @@
             this.lblPasswordError = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.backgroundWorkerLogin = new System.ComponentModel.BackgroundWorker();
+            this.btnShowHidePassword = new System.Windows.Forms.Button();
+            this.btnShowHideUsername = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +57,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(464, 27);
+            this.menuStrip.Size = new System.Drawing.Size(497, 27);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -86,51 +88,51 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // iCantLogInToolStripMenuItem
             // 
             this.iCantLogInToolStripMenuItem.Name = "iCantLogInToolStripMenuItem";
-            this.iCantLogInToolStripMenuItem.Size = new System.Drawing.Size(164, 24);
+            this.iCantLogInToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.iCantLogInToolStripMenuItem.Text = "I Can\'t Log in!";
             this.iCantLogInToolStripMenuItem.Click += new System.EventHandler(this.iCantLogInToolStripMenuItem_Click);
             // 
             // txtUsername
             // 
-            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(150, 58);
+            this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsername.Location = new System.Drawing.Point(137, 61);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(275, 29);
+            this.txtUsername.Size = new System.Drawing.Size(293, 32);
             this.txtUsername.TabIndex = 1;
             // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(37, 61);
+            this.lblUsername.Location = new System.Drawing.Point(34, 65);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(107, 24);
+            this.lblUsername.Size = new System.Drawing.Size(102, 24);
             this.lblUsername.TabIndex = 2;
-            this.lblUsername.Text = "Username: ";
+            this.lblUsername.Text = "Username:";
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(42, 131);
+            this.lblPassword.Location = new System.Drawing.Point(39, 134);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(102, 24);
+            this.lblPassword.Size = new System.Drawing.Size(97, 24);
             this.lblPassword.TabIndex = 3;
-            this.lblPassword.Text = "Password: ";
+            this.lblPassword.Text = "Password:";
             // 
             // txtPassword
             // 
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(150, 128);
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(137, 130);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(275, 29);
+            this.txtPassword.Size = new System.Drawing.Size(293, 32);
             this.txtPassword.TabIndex = 4;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
@@ -139,7 +141,7 @@
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft YaHei UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(241, 195);
+            this.btnLogin.Location = new System.Drawing.Point(246, 198);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(184, 53);
             this.btnLogin.TabIndex = 5;
@@ -152,7 +154,7 @@
             this.lblUsernameError.AutoSize = true;
             this.lblUsernameError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsernameError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblUsernameError.Location = new System.Drawing.Point(202, 90);
+            this.lblUsernameError.Location = new System.Drawing.Point(189, 93);
             this.lblUsernameError.Name = "lblUsernameError";
             this.lblUsernameError.Size = new System.Drawing.Size(155, 20);
             this.lblUsernameError.TabIndex = 6;
@@ -164,7 +166,7 @@
             this.lblPasswordError.AutoSize = true;
             this.lblPasswordError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPasswordError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblPasswordError.Location = new System.Drawing.Point(202, 160);
+            this.lblPasswordError.Location = new System.Drawing.Point(189, 163);
             this.lblPasswordError.Name = "lblPasswordError";
             this.lblPasswordError.Size = new System.Drawing.Size(158, 20);
             this.lblPasswordError.TabIndex = 7;
@@ -176,7 +178,7 @@
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft YaHei UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(41, 195);
+            this.btnCancel.Location = new System.Drawing.Point(38, 198);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(184, 53);
             this.btnCancel.TabIndex = 8;
@@ -190,12 +192,36 @@
             this.backgroundWorkerLogin.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerLogin_DoWork);
             this.backgroundWorkerLogin.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerLogin_RunWorkerCompleted);
             // 
+            // btnShowHidePassword
+            // 
+            this.btnShowHidePassword.BackgroundImage = global::MathWiz.Properties.Resources.show_password;
+            this.btnShowHidePassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnShowHidePassword.Location = new System.Drawing.Point(436, 130);
+            this.btnShowHidePassword.Name = "btnShowHidePassword";
+            this.btnShowHidePassword.Size = new System.Drawing.Size(40, 34);
+            this.btnShowHidePassword.TabIndex = 9;
+            this.btnShowHidePassword.UseVisualStyleBackColor = true;
+            this.btnShowHidePassword.Click += new System.EventHandler(this.btnShowHidePassword_Click);
+            // 
+            // btnShowHideUsername
+            // 
+            this.btnShowHideUsername.BackgroundImage = global::MathWiz.Properties.Resources.hide_password;
+            this.btnShowHideUsername.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnShowHideUsername.Location = new System.Drawing.Point(436, 59);
+            this.btnShowHideUsername.Name = "btnShowHideUsername";
+            this.btnShowHideUsername.Size = new System.Drawing.Size(40, 34);
+            this.btnShowHideUsername.TabIndex = 10;
+            this.btnShowHideUsername.UseVisualStyleBackColor = true;
+            this.btnShowHideUsername.Click += new System.EventHandler(this.btnShowHideUsername_Click);
+            // 
             // frmLogin
             // 
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 281);
+            this.ClientSize = new System.Drawing.Size(497, 284);
+            this.Controls.Add(this.btnShowHideUsername);
+            this.Controls.Add(this.btnShowHidePassword);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.lblPasswordError);
             this.Controls.Add(this.lblUsernameError);
@@ -209,8 +235,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(480, 320);
-            this.MinimumSize = new System.Drawing.Size(480, 300);
+            this.MaximumSize = new System.Drawing.Size(1366, 768);
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Log in to MathWiz";
@@ -239,6 +264,8 @@
         private System.Windows.Forms.ToolStripMenuItem iCantLogInToolStripMenuItem;
         private System.Windows.Forms.Button btnCancel;
         private System.ComponentModel.BackgroundWorker backgroundWorkerLogin;
+        private System.Windows.Forms.Button btnShowHidePassword;
+        private System.Windows.Forms.Button btnShowHideUsername;
     }
 }
 

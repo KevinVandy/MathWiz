@@ -99,21 +99,21 @@
             // 
             this.lblFirstName.AutoSize = true;
             this.lblFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirstName.Location = new System.Drawing.Point(34, 40);
+            this.lblFirstName.Location = new System.Drawing.Point(31, 40);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(82, 20);
+            this.lblFirstName.Size = new System.Drawing.Size(86, 20);
             this.lblFirstName.TabIndex = 4;
-            this.lblFirstName.Text = "FirstName";
+            this.lblFirstName.Text = "First Name";
             // 
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
             this.lblLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastName.Location = new System.Drawing.Point(34, 94);
+            this.lblLastName.Location = new System.Drawing.Point(31, 94);
             this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(82, 20);
+            this.lblLastName.Size = new System.Drawing.Size(86, 20);
             this.lblLastName.TabIndex = 5;
-            this.lblLastName.Text = "LastName";
+            this.lblLastName.Text = "Last Name";
             // 
             // cmbParent
             // 
@@ -128,10 +128,10 @@
             // lblParent
             // 
             this.lblParent.AutoSize = true;
-            this.lblParent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblParent.Location = new System.Drawing.Point(367, 44);
+            this.lblParent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblParent.Location = new System.Drawing.Point(363, 41);
             this.lblParent.Name = "lblParent";
-            this.lblParent.Size = new System.Drawing.Size(50, 17);
+            this.lblParent.Size = new System.Drawing.Size(56, 20);
             this.lblParent.TabIndex = 7;
             this.lblParent.Text = "Parent";
             // 
@@ -199,10 +199,10 @@
             // lblClass
             // 
             this.lblClass.AutoSize = true;
-            this.lblClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClass.Location = new System.Drawing.Point(375, 97);
+            this.lblClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClass.Location = new System.Drawing.Point(371, 94);
             this.lblClass.Name = "lblClass";
-            this.lblClass.Size = new System.Drawing.Size(42, 17);
+            this.lblClass.Size = new System.Drawing.Size(48, 20);
             this.lblClass.TabIndex = 14;
             this.lblClass.Text = "Class";
             // 
