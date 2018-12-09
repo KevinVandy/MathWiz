@@ -173,8 +173,7 @@ namespace MathWiz
                 }
 
                 lblCorrectAnswer.Show();
-
-                await Task.Delay(1500); //show the answer for a bit
+                await Task.Delay(1000); //show the answer for a bit
 
                 currentQuestionNum++;
 

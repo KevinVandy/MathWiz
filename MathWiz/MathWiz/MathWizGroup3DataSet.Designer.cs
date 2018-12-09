@@ -1306,6 +1306,8 @@ namespace MathWiz {
             
             private global::System.Data.DataColumn columnRecommendedLevel;
             
+            private global::System.Data.DataColumn columnTestType;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public graded_testsDataTable() {
@@ -1421,6 +1423,14 @@ namespace MathWiz {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TestTypeColumn {
+                get {
+                    return this.columnTestType;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1456,7 +1466,7 @@ namespace MathWiz {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public graded_testsRow Addgraded_testsRow(studentsRow parentstudentsRowByFK__graded_te__Stude__3B75D760, testsRow parenttestsRowByFK__graded_te__TestI__3C69FB99, decimal Score, System.TimeSpan TimeTakenToComplete, System.DateTime DateTaken, string Feedback, int NumberAttempts, bool Passed, int RecommendedLevel) {
+            public graded_testsRow Addgraded_testsRow(studentsRow parentstudentsRowByFK__graded_te__Stude__3B75D760, testsRow parenttestsRowByFK__graded_te__TestI__3C69FB99, decimal Score, System.TimeSpan TimeTakenToComplete, System.DateTime DateTaken, string Feedback, int NumberAttempts, bool Passed, int RecommendedLevel, string TestType) {
                 graded_testsRow rowgraded_testsRow = ((graded_testsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1468,7 +1478,8 @@ namespace MathWiz {
                         Feedback,
                         NumberAttempts,
                         Passed,
-                        RecommendedLevel};
+                        RecommendedLevel,
+                        TestType};
                 if ((parentstudentsRowByFK__graded_te__Stude__3B75D760 != null)) {
                     columnValuesArray[1] = parentstudentsRowByFK__graded_te__Stude__3B75D760[0];
                 }
@@ -1514,6 +1525,7 @@ namespace MathWiz {
                 this.columnNumberAttempts = base.Columns["NumberAttempts"];
                 this.columnPassed = base.Columns["Passed"];
                 this.columnRecommendedLevel = base.Columns["RecommendedLevel"];
+                this.columnTestType = base.Columns["TestType"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1539,6 +1551,8 @@ namespace MathWiz {
                 base.Columns.Add(this.columnPassed);
                 this.columnRecommendedLevel = new global::System.Data.DataColumn("RecommendedLevel", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRecommendedLevel);
+                this.columnTestType = new global::System.Data.DataColumn("TestType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTestType);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -1551,6 +1565,8 @@ namespace MathWiz {
                 this.columnTestID.AllowDBNull = false;
                 this.columnScore.AllowDBNull = false;
                 this.columnFeedback.MaxLength = 2147483647;
+                this.columnTestType.AllowDBNull = false;
+                this.columnTestType.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4093,6 +4109,17 @@ namespace MathWiz {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string TestType {
+                get {
+                    return ((string)(this[this.tablegraded_tests.TestTypeColumn]));
+                }
+                set {
+                    this[this.tablegraded_tests.TestTypeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public studentsRow studentsRow {
                 get {
                     return ((studentsRow)(this.GetParentRow(this.Table.ParentRelations["FK__graded_te__Stude__3B75D760"])));
@@ -6376,14 +6403,16 @@ SELECT Id, GradedTestID, QuestionID, StudentAnswer, Correct, TimeTakenToAnswer F
             tableMapping.ColumnMappings.Add("NumberAttempts", "NumberAttempts");
             tableMapping.ColumnMappings.Add("Passed", "Passed");
             tableMapping.ColumnMappings.Add("RecommendedLevel", "RecommendedLevel");
+            tableMapping.ColumnMappings.Add("TestType", "TestType");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[graded_tests] WHERE (([Id] = @Original_Id) AND ([StudentID] = @Original_StudentID) AND ([TestID] = @Original_TestID) AND ([Score] = @Original_Score) AND ((@IsNull_TimeTakenToComplete = 1 AND [TimeTakenToComplete] IS NULL) OR ([TimeTakenToComplete] = @Original_TimeTakenToComplete)) AND ((@IsNull_DateTaken = 1 AND [DateTaken] IS NULL) OR ([DateTaken] = @Original_DateTaken)) AND ((@IsNull_NumberAttempts = 1 AND [NumberAttempts] IS NULL) OR ([NumberAttempts] = @Original_NumberAttempts)) AND ((@IsNull_Passed = 1 AND [Passed] IS NULL) OR ([Passed] = @Original_Passed)) AND ((@IsNull_RecommendedLevel = 1 AND [RecommendedLevel] IS NULL) OR ([RecommendedLevel] = @Original_RecommendedLevel)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[graded_tests] WHERE (([Id] = @Original_Id) AND ([StudentID] = @Original_StudentID) AND ([TestID] = @Original_TestID) AND ([TestType] = @Original_TestType) AND ([Score] = @Original_Score) AND ((@IsNull_TimeTakenToComplete = 1 AND [TimeTakenToComplete] IS NULL) OR ([TimeTakenToComplete] = @Original_TimeTakenToComplete)) AND ((@IsNull_DateTaken = 1 AND [DateTaken] IS NULL) OR ([DateTaken] = @Original_DateTaken)) AND ((@IsNull_NumberAttempts = 1 AND [NumberAttempts] IS NULL) OR ([NumberAttempts] = @Original_NumberAttempts)) AND ((@IsNull_Passed = 1 AND [Passed] IS NULL) OR ([Passed] = @Original_Passed)) AND ((@IsNull_RecommendedLevel = 1 AND [RecommendedLevel] IS NULL) OR ([RecommendedLevel] = @Original_RecommendedLevel)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TestID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TestID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TestType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TestType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Score", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 6, "Score", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TimeTakenToComplete", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TimeTakenToComplete", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TimeTakenToComplete", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TimeTakenToComplete", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -6397,11 +6426,12 @@ SELECT Id, GradedTestID, QuestionID, StudentAnswer, Correct, TimeTakenToAnswer F
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RecommendedLevel", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RecommendedLevel", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[graded_tests] ([StudentID], [TestID], [Score], [TimeTakenToComplete], [DateTaken], [Feedback], [NumberAttempts], [Passed], [RecommendedLevel]) VALUES (@StudentID, @TestID, @Score, @TimeTakenToComplete, @DateTaken, @Feedback, @NumberAttempts, @Passed, @RecommendedLevel);
-SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, NumberAttempts, Passed, RecommendedLevel FROM graded_tests WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[graded_tests] ([StudentID], [TestID], [TestType], [Score], [TimeTakenToComplete], [DateTaken], [Feedback], [NumberAttempts], [Passed], [RecommendedLevel]) VALUES (@StudentID, @TestID, @TestType, @Score, @TimeTakenToComplete, @DateTaken, @Feedback, @NumberAttempts, @Passed, @RecommendedLevel);
+SELECT Id, StudentID, TestID, TestType, Score, TimeTakenToComplete, DateTaken, Feedback, NumberAttempts, Passed, RecommendedLevel FROM graded_tests WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TestID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TestID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TestType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TestType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Score", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 6, "Score", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TimeTakenToComplete", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TimeTakenToComplete", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateTaken", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateTaken", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6411,11 +6441,12 @@ SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, N
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RecommendedLevel", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RecommendedLevel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[graded_tests] SET [StudentID] = @StudentID, [TestID] = @TestID, [Score] = @Score, [TimeTakenToComplete] = @TimeTakenToComplete, [DateTaken] = @DateTaken, [Feedback] = @Feedback, [NumberAttempts] = @NumberAttempts, [Passed] = @Passed, [RecommendedLevel] = @RecommendedLevel WHERE (([Id] = @Original_Id) AND ([StudentID] = @Original_StudentID) AND ([TestID] = @Original_TestID) AND ([Score] = @Original_Score) AND ((@IsNull_TimeTakenToComplete = 1 AND [TimeTakenToComplete] IS NULL) OR ([TimeTakenToComplete] = @Original_TimeTakenToComplete)) AND ((@IsNull_DateTaken = 1 AND [DateTaken] IS NULL) OR ([DateTaken] = @Original_DateTaken)) AND ((@IsNull_NumberAttempts = 1 AND [NumberAttempts] IS NULL) OR ([NumberAttempts] = @Original_NumberAttempts)) AND ((@IsNull_Passed = 1 AND [Passed] IS NULL) OR ([Passed] = @Original_Passed)) AND ((@IsNull_RecommendedLevel = 1 AND [RecommendedLevel] IS NULL) OR ([RecommendedLevel] = @Original_RecommendedLevel)));
-SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, NumberAttempts, Passed, RecommendedLevel FROM graded_tests WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[graded_tests] SET [StudentID] = @StudentID, [TestID] = @TestID, [TestType] = @TestType, [Score] = @Score, [TimeTakenToComplete] = @TimeTakenToComplete, [DateTaken] = @DateTaken, [Feedback] = @Feedback, [NumberAttempts] = @NumberAttempts, [Passed] = @Passed, [RecommendedLevel] = @RecommendedLevel WHERE (([Id] = @Original_Id) AND ([StudentID] = @Original_StudentID) AND ([TestID] = @Original_TestID) AND ([TestType] = @Original_TestType) AND ([Score] = @Original_Score) AND ((@IsNull_TimeTakenToComplete = 1 AND [TimeTakenToComplete] IS NULL) OR ([TimeTakenToComplete] = @Original_TimeTakenToComplete)) AND ((@IsNull_DateTaken = 1 AND [DateTaken] IS NULL) OR ([DateTaken] = @Original_DateTaken)) AND ((@IsNull_NumberAttempts = 1 AND [NumberAttempts] IS NULL) OR ([NumberAttempts] = @Original_NumberAttempts)) AND ((@IsNull_Passed = 1 AND [Passed] IS NULL) OR ([Passed] = @Original_Passed)) AND ((@IsNull_RecommendedLevel = 1 AND [RecommendedLevel] IS NULL) OR ([RecommendedLevel] = @Original_RecommendedLevel)));
+SELECT Id, StudentID, TestID, TestType, Score, TimeTakenToComplete, DateTaken, Feedback, NumberAttempts, Passed, RecommendedLevel FROM graded_tests WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TestID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TestID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TestType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TestType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Score", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 6, "Score", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TimeTakenToComplete", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TimeTakenToComplete", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateTaken", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateTaken", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6426,6 +6457,7 @@ SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, N
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TestID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TestID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TestType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TestType", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Score", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 6, "Score", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TimeTakenToComplete", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TimeTakenToComplete", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TimeTakenToComplete", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TimeTakenToComplete", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -6453,19 +6485,19 @@ SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, N
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, Nu" +
-                "mberAttempts, Passed, RecommendedLevel FROM dbo.graded_tests";
+            this._commandCollection[0].CommandText = "SELECT Id, StudentID, TestID, TestType, Score, TimeTakenToComplete, DateTaken, Fe" +
+                "edback, NumberAttempts, Passed, RecommendedLevel FROM dbo.graded_tests";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, Nu" +
-                "mberAttempts, Passed, RecommendedLevel FROM dbo.graded_tests";
+            this._commandCollection[1].CommandText = "SELECT DateTaken, Feedback, Id, NumberAttempts, Passed, RecommendedLevel, Score, " +
+                "StudentID, TestID, TestType, TimeTakenToComplete FROM graded_tests";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, Number" +
-                "Attempts, Passed, Feedback, RecommendedLevel\r\nFROM     graded_tests\r\nWHERE  (Stu" +
-                "dentID = @StudentID)\r\nORDER BY Score";
+            this._commandCollection[2].CommandText = "SELECT DateTaken, Feedback, Id, NumberAttempts, Passed, RecommendedLevel, Score, " +
+                "StudentID, TestID, TestType, TimeTakenToComplete FROM graded_tests WHERE (Studen" +
+                "tID = @StudentID) ORDER BY Score";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "StudentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -6566,50 +6598,56 @@ SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, N
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, int Original_StudentID, int Original_TestID, decimal Original_Score, global::System.Nullable<global::System.TimeSpan> Original_TimeTakenToComplete, global::System.Nullable<global::System.DateTime> Original_DateTaken, global::System.Nullable<int> Original_NumberAttempts, global::System.Nullable<bool> Original_Passed, global::System.Nullable<int> Original_RecommendedLevel) {
+        public virtual int Delete(int Original_Id, int Original_StudentID, int Original_TestID, string Original_TestType, decimal Original_Score, global::System.Nullable<global::System.TimeSpan> Original_TimeTakenToComplete, global::System.Nullable<global::System.DateTime> Original_DateTaken, global::System.Nullable<int> Original_NumberAttempts, global::System.Nullable<bool> Original_Passed, global::System.Nullable<int> Original_RecommendedLevel) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_StudentID));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_TestID));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((decimal)(Original_Score));
-            if ((Original_TimeTakenToComplete.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((System.TimeSpan)(Original_TimeTakenToComplete.Value));
+            if ((Original_TestType == null)) {
+                throw new global::System.ArgumentNullException("Original_TestType");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_TestType));
+            }
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((decimal)(Original_Score));
+            if ((Original_TimeTakenToComplete.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((System.TimeSpan)(Original_TimeTakenToComplete.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((Original_DateTaken.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((System.DateTime)(Original_DateTaken.Value));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_DateTaken.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             if ((Original_NumberAttempts.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_NumberAttempts.Value));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_NumberAttempts.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             if ((Original_Passed.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((bool)(Original_Passed.Value));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((bool)(Original_Passed.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             if ((Original_RecommendedLevel.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((int)(Original_RecommendedLevel.Value));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((int)(Original_RecommendedLevel.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -6631,45 +6669,51 @@ SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, N
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int StudentID, int TestID, decimal Score, global::System.Nullable<global::System.TimeSpan> TimeTakenToComplete, global::System.Nullable<global::System.DateTime> DateTaken, string Feedback, global::System.Nullable<int> NumberAttempts, global::System.Nullable<bool> Passed, global::System.Nullable<int> RecommendedLevel) {
+        public virtual int Insert(int StudentID, int TestID, string TestType, decimal Score, global::System.Nullable<global::System.TimeSpan> TimeTakenToComplete, global::System.Nullable<global::System.DateTime> DateTaken, string Feedback, global::System.Nullable<int> NumberAttempts, global::System.Nullable<bool> Passed, global::System.Nullable<int> RecommendedLevel) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(StudentID));
             this.Adapter.InsertCommand.Parameters[1].Value = ((int)(TestID));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(Score));
-            if ((TimeTakenToComplete.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((System.TimeSpan)(TimeTakenToComplete.Value));
+            if ((TestType == null)) {
+                throw new global::System.ArgumentNullException("TestType");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(TestType));
             }
-            if ((DateTaken.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(DateTaken.Value));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(Score));
+            if ((TimeTakenToComplete.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((System.TimeSpan)(TimeTakenToComplete.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Feedback == null)) {
+            if ((DateTaken.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(DateTaken.Value));
+            }
+            else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Feedback));
-            }
-            if ((NumberAttempts.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(NumberAttempts.Value));
-            }
-            else {
+            if ((Feedback == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Passed.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((bool)(Passed.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Feedback));
+            }
+            if ((NumberAttempts.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(NumberAttempts.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((RecommendedLevel.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(RecommendedLevel.Value));
+            if ((Passed.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((bool)(Passed.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((RecommendedLevel.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((int)(RecommendedLevel.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -6694,6 +6738,7 @@ SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, N
         public virtual int Update(
                     int StudentID, 
                     int TestID, 
+                    string TestType, 
                     decimal Score, 
                     global::System.Nullable<global::System.TimeSpan> TimeTakenToComplete, 
                     global::System.Nullable<global::System.DateTime> DateTaken, 
@@ -6704,6 +6749,7 @@ SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, N
                     int Original_Id, 
                     int Original_StudentID, 
                     int Original_TestID, 
+                    string Original_TestType, 
                     decimal Original_Score, 
                     global::System.Nullable<global::System.TimeSpan> Original_TimeTakenToComplete, 
                     global::System.Nullable<global::System.DateTime> Original_DateTaken, 
@@ -6713,88 +6759,100 @@ SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, N
                     int Id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(StudentID));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(TestID));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(Score));
-            if ((TimeTakenToComplete.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.TimeSpan)(TimeTakenToComplete.Value));
+            if ((TestType == null)) {
+                throw new global::System.ArgumentNullException("TestType");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(TestType));
             }
-            if ((DateTaken.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(DateTaken.Value));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(Score));
+            if ((TimeTakenToComplete.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.TimeSpan)(TimeTakenToComplete.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((Feedback == null)) {
+            if ((DateTaken.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(DateTaken.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Feedback));
-            }
-            if ((NumberAttempts.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(NumberAttempts.Value));
-            }
-            else {
+            if ((Feedback == null)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Passed.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(Passed.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Feedback));
+            }
+            if ((NumberAttempts.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(NumberAttempts.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((RecommendedLevel.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(RecommendedLevel.Value));
+            if ((Passed.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((bool)(Passed.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_StudentID));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_TestID));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(Original_Score));
-            if ((Original_TimeTakenToComplete.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((System.TimeSpan)(Original_TimeTakenToComplete.Value));
+            if ((RecommendedLevel.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(RecommendedLevel.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((Original_DateTaken.HasValue == true)) {
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_StudentID));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_TestID));
+            if ((Original_TestType == null)) {
+                throw new global::System.ArgumentNullException("Original_TestType");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_TestType));
+            }
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((decimal)(Original_Score));
+            if ((Original_TimeTakenToComplete.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((System.DateTime)(Original_DateTaken.Value));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((System.TimeSpan)(Original_TimeTakenToComplete.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            if ((Original_NumberAttempts.HasValue == true)) {
+            if ((Original_DateTaken.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_NumberAttempts.Value));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((System.DateTime)(Original_DateTaken.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
-            if ((Original_Passed.HasValue == true)) {
+            if ((Original_NumberAttempts.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((bool)(Original_Passed.Value));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_NumberAttempts.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
-            if ((Original_RecommendedLevel.HasValue == true)) {
+            if ((Original_Passed.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_RecommendedLevel.Value));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((bool)(Original_Passed.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[23].Value = ((int)(Id));
+            if ((Original_RecommendedLevel.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(Original_RecommendedLevel.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[25].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6818,6 +6876,7 @@ SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, N
         public virtual int Update(
                     int StudentID, 
                     int TestID, 
+                    string TestType, 
                     decimal Score, 
                     global::System.Nullable<global::System.TimeSpan> TimeTakenToComplete, 
                     global::System.Nullable<global::System.DateTime> DateTaken, 
@@ -6828,13 +6887,14 @@ SELECT Id, StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, N
                     int Original_Id, 
                     int Original_StudentID, 
                     int Original_TestID, 
+                    string Original_TestType, 
                     decimal Original_Score, 
                     global::System.Nullable<global::System.TimeSpan> Original_TimeTakenToComplete, 
                     global::System.Nullable<global::System.DateTime> Original_DateTaken, 
                     global::System.Nullable<int> Original_NumberAttempts, 
                     global::System.Nullable<bool> Original_Passed, 
                     global::System.Nullable<int> Original_RecommendedLevel) {
-            return this.Update(StudentID, TestID, Score, TimeTakenToComplete, DateTaken, Feedback, NumberAttempts, Passed, RecommendedLevel, Original_Id, Original_StudentID, Original_TestID, Original_Score, Original_TimeTakenToComplete, Original_DateTaken, Original_NumberAttempts, Original_Passed, Original_RecommendedLevel, Original_Id);
+            return this.Update(StudentID, TestID, TestType, Score, TimeTakenToComplete, DateTaken, Feedback, NumberAttempts, Passed, RecommendedLevel, Original_Id, Original_StudentID, Original_TestID, Original_TestType, Original_Score, Original_TimeTakenToComplete, Original_DateTaken, Original_NumberAttempts, Original_Passed, Original_RecommendedLevel, Original_Id);
         }
     }
     

@@ -15,8 +15,7 @@ namespace MathWiz
     {
         Admin admin;
         Series masteryLevelSeries;
-
-
+        
         public frmAdminHome(string username)
         {
             InitializeComponent();

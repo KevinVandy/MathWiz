@@ -60,7 +60,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(796, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(694, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -145,7 +145,7 @@
             // lblNumberOfQuestions
             // 
             this.lblNumberOfQuestions.AutoSize = true;
-            this.lblNumberOfQuestions.Location = new System.Drawing.Point(459, 136);
+            this.lblNumberOfQuestions.Location = new System.Drawing.Point(508, 136);
             this.lblNumberOfQuestions.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNumberOfQuestions.Name = "lblNumberOfQuestions";
             this.lblNumberOfQuestions.Size = new System.Drawing.Size(79, 13);
@@ -170,11 +170,12 @@
             this.cmbNumberOfQuestions.Items.AddRange(new object[] {
             "5",
             "10",
+            "20",
             "25",
             "50"});
-            this.cmbNumberOfQuestions.Location = new System.Drawing.Point(462, 160);
+            this.cmbNumberOfQuestions.Location = new System.Drawing.Point(511, 160);
             this.cmbNumberOfQuestions.Name = "cmbNumberOfQuestions";
-            this.cmbNumberOfQuestions.Size = new System.Drawing.Size(90, 33);
+            this.cmbNumberOfQuestions.Size = new System.Drawing.Size(109, 33);
             this.cmbNumberOfQuestions.TabIndex = 8;
             this.cmbNumberOfQuestions.Tag = "Number of Questions";
             // 
@@ -207,11 +208,10 @@
             "9",
             "10",
             "11",
-            "12",
-            "13"});
+            "12"});
             this.cmbMasteryLevel.Location = new System.Drawing.Point(345, 160);
             this.cmbMasteryLevel.Name = "cmbMasteryLevel";
-            this.cmbMasteryLevel.Size = new System.Drawing.Size(90, 33);
+            this.cmbMasteryLevel.Size = new System.Drawing.Size(109, 33);
             this.cmbMasteryLevel.TabIndex = 6;
             this.cmbMasteryLevel.Tag = "Mastery Level";
             // 
@@ -219,7 +219,7 @@
             // 
             this.gbxViewProgress.Location = new System.Drawing.Point(23, 397);
             this.gbxViewProgress.Name = "gbxViewProgress";
-            this.gbxViewProgress.Size = new System.Drawing.Size(710, 166);
+            this.gbxViewProgress.Size = new System.Drawing.Size(640, 269);
             this.gbxViewProgress.TabIndex = 7;
             this.gbxViewProgress.TabStop = false;
             this.gbxViewProgress.Text = "View Progress";
@@ -254,7 +254,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(813, 550);
+            this.ClientSize = new System.Drawing.Size(711, 550);
             this.Controls.Add(this.lblMasteryLevel);
             this.Controls.Add(this.lblStudentName);
             this.Controls.Add(this.gbxViewProgress);

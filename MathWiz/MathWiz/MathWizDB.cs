@@ -80,8 +80,10 @@ namespace MathWiz
             }
             finally
             {
-                // always close the connection
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
         }
         public static void InsertTestQuestionPlacement(PlacementTest test, Question q, Int64 testID)
@@ -113,8 +115,10 @@ namespace MathWiz
             }
             finally
             {
-                // always close the connection
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
         }
         public static void InsertTestQuestionsPractice(PracticeTest test, Question q, Int64 testID)
@@ -146,8 +150,10 @@ namespace MathWiz
             }
             finally
             {
-                // always close the connection
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
         }
         public static void InsertPracticeTest(PracticeTest test, int klassID)
@@ -179,7 +185,10 @@ namespace MathWiz
             }
             finally
             {
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
         }
 
@@ -212,7 +221,10 @@ namespace MathWiz
             }
             finally
             {
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
         }
 
@@ -245,7 +257,10 @@ namespace MathWiz
             }
             finally
             {
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
         }
 
@@ -283,8 +298,10 @@ namespace MathWiz
             }
             finally
             {
-                // always close the connection
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
         }
 
@@ -317,8 +334,10 @@ namespace MathWiz
             }
             finally
             {
-                // always close the connection
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
         }
 
@@ -354,8 +373,10 @@ namespace MathWiz
             }
             finally
             {
-                // always close the connection
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
         }
 
@@ -397,8 +418,10 @@ namespace MathWiz
             }
             finally
             {
-                // always close the connection
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
 
             return questionID;
@@ -434,8 +457,10 @@ namespace MathWiz
             }
             finally
             {
-                // always close the connection
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
         }
 
@@ -554,7 +579,6 @@ namespace MathWiz
             }
             finally
             {
-                // always close the connection
                 if (conn != null && conn.State == ConnectionState.Open)
                 {
                     conn.Close();
@@ -597,8 +621,10 @@ namespace MathWiz
             }
             finally
             {
-                // always close the connection
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
         }
 
@@ -648,7 +674,10 @@ namespace MathWiz
             }
             finally
             {
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
         }
 
@@ -696,7 +725,10 @@ namespace MathWiz
             }
             finally
             {
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
         }
 
@@ -720,7 +752,10 @@ namespace MathWiz
             }
             finally
             {
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
         }
 
@@ -744,7 +779,10 @@ namespace MathWiz
             }
             finally
             {
-                conn.Close();
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
             }
         }
     }
