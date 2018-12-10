@@ -39,9 +39,6 @@
             this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mathWizGroup3DataSet = new MathWiz.MathWizGroup3DataSet();
             this.lblProgress = new System.Windows.Forms.Label();
@@ -102,7 +99,6 @@
             this.lblAdminName = new System.Windows.Forms.Label();
             this.gbxManageAccounts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
-            this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).BeginInit();
             this.pnlUserTypes.SuspendLayout();
@@ -177,7 +173,6 @@
             this.usernameDataGridViewTextBoxColumn,
             this.firstNameDataGridViewTextBoxColumn,
             this.lastNameDataGridViewTextBoxColumn});
-            this.dgvUsers.ContextMenuStrip = this.contextMenuStrip;
             this.dgvUsers.DataSource = this.studentsBindingSource;
             this.dgvUsers.Location = new System.Drawing.Point(407, 81);
             this.dgvUsers.MultiSelect = false;
@@ -217,29 +212,6 @@
             this.lastNameDataGridViewTextBoxColumn.FillWeight = 112.1414F;
             this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
             this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            // 
-            // contextMenuStrip
-            // 
-            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.changePasswordToolStripMenuItem,
-            this.deleteUserToolStripMenuItem});
-            this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(169, 48);
-            // 
-            // changePasswordToolStripMenuItem
-            // 
-            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.changePasswordToolStripMenuItem.Text = "Change Password";
-            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
-            // 
-            // deleteUserToolStripMenuItem
-            // 
-            this.deleteUserToolStripMenuItem.Name = "deleteUserToolStripMenuItem";
-            this.deleteUserToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.deleteUserToolStripMenuItem.Text = "Delete User";
-            this.deleteUserToolStripMenuItem.Click += new System.EventHandler(this.deleteUserToolStripMenuItem_Click);
             // 
             // studentsBindingSource
             // 
@@ -774,7 +746,6 @@
             this.gbxManageAccounts.ResumeLayout(false);
             this.gbxManageAccounts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
-            this.contextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).EndInit();
             this.pnlUserTypes.ResumeLayout(false);
@@ -843,9 +814,6 @@
         private System.Windows.Forms.ProgressBar pgbLoadData;
         private System.Windows.Forms.Label lblProgress;
         private System.Windows.Forms.Label lblDeleted;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteUserToolStripMenuItem;
         private System.Windows.Forms.BindingSource klassesBindingSource;
         private MathWizGroup3DataSetTableAdapters.klassesTableAdapter klassesTableAdapter;
         private System.Windows.Forms.ListView lsvStudents;

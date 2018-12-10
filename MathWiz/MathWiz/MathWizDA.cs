@@ -403,12 +403,12 @@ namespace MathWiz
             return students;
         }
 
-        public static int SelectStudentsKlassID(int studentID)
+        public static Klass SelectStudentsKlass(int studentID)
         {
-            int klassID = 0;
+            Klass klass = new Klass();
 
             //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT KlassID FROM students WHERE Id = @studentID";
+            string query = "SELECT * FROM klasses k join students s on k.Id=s.KlassID WHERE s.Id = @studentID";
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@studentID", studentID);
 
@@ -420,7 +420,8 @@ namespace MathWiz
 
                 while (reader.Read())
                 {
-                    klassID = Convert.ToInt32(reader["KlassID"]);
+                    klass.Id = Convert.ToInt32(reader["KlassID"]);
+                    klass.KlassName = Convert.ToString(reader["KlassName"]);
                 }
                 reader.Close();
             }
@@ -439,7 +440,7 @@ namespace MathWiz
                     conn.Close();
                 }
             }
-            return klassID;
+            return klass;
         }
         //End SELECT Single Users Methods
 

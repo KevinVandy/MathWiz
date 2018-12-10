@@ -234,11 +234,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MathWiz.ico" />
-    <None Include="Resources\teacher.jpg" />
     <None Include="Resources\hide-password.png" />
     <None Include="Resources\show-password.png" />
-    <None Include="Resources\symbols.png" />
-    <None Include="Resources\numbers.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

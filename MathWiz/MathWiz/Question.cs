@@ -75,23 +75,23 @@ namespace MathWiz
             this.RandomlyGenerated = randomlyGenerated;
         }
         /*stuff*/
-         private List<Question> GenerateQuestions(int masteryLevel)
-        {
-            return testQuestions;
-        }
+        // private List<Question> GenerateQuestions(int masteryLevel)
+        //{
+        //    return testQuestions;
+        //}
 
-        public static List<int> GenerateEasyRandomNumbers(int start, int count)
-        {
-            easyRandoms = Enumerable.Range(0, 10).OrderBy(x => rnd.Next()).Take(count).ToList();
-            return easyRandoms;
-        }
+        //public static List<int> GenerateEasyRandomNumbers(int start, int count)
+        //{
+        //    easyRandoms = Enumerable.Range(0, 10).OrderBy(x => rnd.Next()).Take(count).ToList();
+        //    return easyRandoms;
+        //}
 
-        public static List<int> GenerateHardRandomNumbers(int start, int count)
-        {
-            Random rnd = new Random();
-            hardRandoms = Enumerable.Range(10, 99).OrderBy(x => rnd.Next()).Take(count).ToList();
-            return hardRandoms;
-        }
+        //public static List<int> GenerateHardRandomNumbers(int start, int count)
+        //{
+        //    Random rnd = new Random();
+        //    hardRandoms = Enumerable.Range(10, 99).OrderBy(x => rnd.Next()).Take(count).ToList();
+        //    return hardRandoms;
+        //}
 
         /*I was looking at 12 mastery levels
          * 1. simple addition
@@ -244,7 +244,6 @@ namespace MathWiz
                 {
                     qL.Add(pullfromOther[i]);
                 }
-
             }
             return qL;
         }
@@ -383,10 +382,6 @@ namespace MathWiz
             return qL;
         }
 
-
-
-
-
         public static List<Question> GeneratesAddMultiply(bool isHard, bool AddFalse_MultiplyTrue, TimeSpan theTime)
         {
             TimeSpan timeLimit = new TimeSpan();
@@ -403,7 +398,7 @@ namespace MathWiz
             List<int> dontWrite = new List<int>();
             if (isHard == true)
             {
-                limit = 20;
+                limit = 50;
                 lowerBound = 10;
                 int dontwriteint = 11;
                 for (i = lowerBound; i < limit; i++)
@@ -503,7 +498,7 @@ namespace MathWiz
             int control = 0;
             if (isHard == true)
             {
-                limit = 20;
+                limit = 50;
                 lowerBound = 10;
                 int dontwriteint = 11;
                 for (i = lowerBound; i < limit; i++)

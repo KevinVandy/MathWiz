@@ -66,13 +66,11 @@ namespace MathWiz
             {
                 btnChangePassword.Enabled = true;
                 btnDeleteSelectedUser.Enabled = true;
-                contextMenuStrip.Enabled = true;
             }
             else
             {
                 btnChangePassword.Enabled = false;
                 btnDeleteSelectedUser.Enabled = false;
-                contextMenuStrip.Enabled = true;
             }
         }
 

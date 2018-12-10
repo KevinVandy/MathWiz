@@ -16,7 +16,6 @@ namespace MathWiz
         Klass klass = new Klass();
 
         PlacementTest availablePlacementTest;
-        List<PracticeTest> availablePracticeTests;
         List<MasteryTest> availableMasteryTests;
         
 
@@ -41,22 +40,20 @@ namespace MathWiz
 
             cmbMasteryLevel.SelectedIndex = student.MasteryLevel;
             cmbNumberOfQuestions.SelectedIndex = 1;
-
-            klass.Id = MathWizDA.SelectStudentsKlassID(student.Id);
-            klass = MathWizDA.SelectKlass(klass.Id);
-
+            
             backgroundWorkerLoadData.RunWorkerAsync();
         }
 
         private void backgroundWorkerLoadData_DoWork(object sender, DoWorkEventArgs e)
         {
-            if(student.MasteryLevel == 0) //if student has not taken placement test yet, only load that test
+            klass = MathWizDA.SelectStudentsKlass(student.Id);
+
+            if (student.MasteryLevel == 0) //if student has not taken placement test yet, only load that test
             {
                 availablePlacementTest = MathWizDA.SelectKlassesPlacementTest(klass.Id);
             }
             else //load the tests that the student can take, but not the placement test since they already took it
             {
-                availablePracticeTests = MathWizDA.SelectKlassesPracticeTests(klass.Id);
                 availableMasteryTests = MathWizDA.SelectKlassesMasteryTests(klass.Id);
             }
         }
@@ -64,7 +61,7 @@ namespace MathWiz
         private void backgroundWorkerLoadData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             lblStudentName.Text = "Logged in as: " + student.FirstName + " " + student.LastName;
-            lblKlassName.Text = klass.KlassName;
+            lblKlassName.Text = "Class Name: " + klass.KlassName;
             lblMasteryLevel.Text = "Mastery Level: " + student.MasteryLevel.ToString();
         }
 
