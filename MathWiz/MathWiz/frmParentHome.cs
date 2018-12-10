@@ -74,6 +74,8 @@ namespace MathWiz
                 //Grab the student from the listbox
                 Student currentStudent = (Student)cmbChildren.SelectedItem;
 
+                grpManageChildren.Text = currentStudent.FirstName + " " + currentStudent.LastName + "'s Info";
+
                 //Output relevant graded test info to the data set on the form
                 try
                 {
