@@ -23,21 +23,21 @@ namespace MathWiz
 
         private void frmParentHome_Load(object sender, EventArgs e)
         {
-            lblParentName.Text = "Logged in as: " + parent.FirstName + " " + parent.LastName;
             backgroundWorkerLoadData.RunWorkerAsync();
         }
 
         private void backgroundWorkerLoadData_DoWork(object sender, DoWorkEventArgs e)
         {
             parent.Children = MathWizDA.SelectStudentsViaParent(parent.Id);
+            this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet.students);
         }
 
         private void backgroundWorkerLoadData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            foreach (Student c in parent.Children)
-            {
-                lstChildren.Items.Add(c);
-            }
+            cmbChildren.DataSource = parent.Children;
+            cmbChildren.DisplayMember = "Username";
+            cmbChildren.SelectedIndex = 0;
+            lblParentName.Text = "Logged in as: " + parent.FirstName + " " + parent.LastName;
         }
         //END Form load stuff
 
@@ -67,23 +67,41 @@ namespace MathWiz
 
         }
 
-        private void lstChildren_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbChildren_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            if(lstChildren.SelectedIndex != -1 && lstChildren.Items.Count != 0)
+            if (cmbChildren.SelectedIndex != -1 && cmbChildren.Items.Count != 0)
             {
                 //Grab the student from the listbox
-                Student currentStudent = (Student)lstChildren.SelectedItem;
-
-                //Output Mastery Level
-                txtStudentMastery.Text = currentStudent.MasteryLevel.ToString();
-
-                //Update label
-                lblStudentMastery.Text = currentStudent.FirstName + "'s Mastery Level";
+                Student currentStudent = (Student)cmbChildren.SelectedItem;
 
                 //Output relevant graded test info to the data set on the form
                 try
                 {
+                    this.studentsTableAdapter.FillByStudentSearch(this.mathWizGroup3DataSet.students, currentStudent.Username);
                     this.graded_testsTableAdapter.FillByGradedTests(this.mathWizGroup3DataSet.graded_tests, currentStudent.Id);
+
+                    lsvStudentGrades.Items.Clear();
+                    if (cmbChildren.Items.Count > 0)
+                    {
+                        //show the selected student's graded tests, if any
+                        for (int i = 0; i < mathWizGroup3DataSet.graded_tests.Rows.Count; i++)
+                        {
+                            DataRow drow = mathWizGroup3DataSet.graded_tests.Rows[i];
+                            if (drow.RowState != DataRowState.Deleted)
+                            {
+                                ListViewItem lvi = new ListViewItem(drow["Id"].ToString());
+                                lvi.SubItems.Add(drow["TestType"].ToString());
+                                lvi.SubItems.Add(drow["DateTaken"].ToString());
+                                lvi.SubItems.Add(drow["TimeTakenToComplete"].ToString());
+                                lvi.SubItems.Add(drow["Score"].ToString());
+                                lvi.SubItems.Add(drow["Feedback"].ToString());
+                                if (Convert.ToInt32(currentStudent.Id) == Convert.ToInt32(dgvStudents.Rows[dgvStudents.CurrentCell.RowIndex].Cells[0].Value))
+                                {
+                                    lsvStudentGrades.Items.Add(lvi);
+                                }
+                            }
+                        }
+                    }
                 }
                 catch (System.Exception ex)
                 {

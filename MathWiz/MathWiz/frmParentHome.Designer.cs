@@ -31,17 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmParentHome));
             this.grpManageChildren = new System.Windows.Forms.GroupBox();
-            this.txtStudentMastery = new System.Windows.Forms.TextBox();
-            this.lblStudentMastery = new System.Windows.Forms.Label();
-            this.graded_testsDataGridView = new System.Windows.Forms.DataGridView();
-            this.StudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.graded_testsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mathWizGroup3DataSet = new MathWiz.MathWizGroup3DataSet();
-            this.lstChildren = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,111 +44,44 @@
             this.tableAdapterManager = new MathWiz.MathWizGroup3DataSetTableAdapters.TableAdapterManager();
             this.lblParentName = new System.Windows.Forms.Label();
             this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbChildren = new System.Windows.Forms.ComboBox();
+            this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.studentsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.studentsTableAdapter();
+            this.dgvStudents = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lsvStudentGrades = new System.Windows.Forms.ListView();
+            this.gradedTestId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.gradedTestType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.gradedTestDateTaken = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.gradedTestTimeTakenToComplete = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.gradedTestScore = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.gradedTestFeedback = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.grpManageChildren.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.graded_testsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.graded_testsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.SuspendLayout();
             // 
             // grpManageChildren
             // 
-            this.grpManageChildren.Controls.Add(this.txtStudentMastery);
-            this.grpManageChildren.Controls.Add(this.lblStudentMastery);
-            this.grpManageChildren.Controls.Add(this.graded_testsDataGridView);
-            this.grpManageChildren.Controls.Add(this.lstChildren);
-            this.grpManageChildren.Location = new System.Drawing.Point(9, 32);
+            this.grpManageChildren.Controls.Add(this.lsvStudentGrades);
+            this.grpManageChildren.Controls.Add(this.dgvStudents);
+            this.grpManageChildren.Location = new System.Drawing.Point(9, 95);
             this.grpManageChildren.Margin = new System.Windows.Forms.Padding(2);
             this.grpManageChildren.Name = "grpManageChildren";
             this.grpManageChildren.Padding = new System.Windows.Forms.Padding(2);
-            this.grpManageChildren.Size = new System.Drawing.Size(850, 344);
+            this.grpManageChildren.Size = new System.Drawing.Size(854, 302);
             this.grpManageChildren.TabIndex = 0;
             this.grpManageChildren.TabStop = false;
-            this.grpManageChildren.Text = "Your Children";
-            // 
-            // txtStudentMastery
-            // 
-            this.txtStudentMastery.BackColor = System.Drawing.SystemColors.Control;
-            this.txtStudentMastery.Font = new System.Drawing.Font("Lucida Bright", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStudentMastery.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtStudentMastery.Location = new System.Drawing.Point(242, 35);
-            this.txtStudentMastery.Multiline = true;
-            this.txtStudentMastery.Name = "txtStudentMastery";
-            this.txtStudentMastery.ReadOnly = true;
-            this.txtStudentMastery.Size = new System.Drawing.Size(117, 55);
-            this.txtStudentMastery.TabIndex = 3;
-            this.txtStudentMastery.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblStudentMastery
-            // 
-            this.lblStudentMastery.AutoSize = true;
-            this.lblStudentMastery.Location = new System.Drawing.Point(239, 19);
-            this.lblStudentMastery.Name = "lblStudentMastery";
-            this.lblStudentMastery.Size = new System.Drawing.Size(120, 13);
-            this.lblStudentMastery.TabIndex = 2;
-            this.lblStudentMastery.Text = "Student\'s Mastery Level";
-            // 
-            // graded_testsDataGridView
-            // 
-            this.graded_testsDataGridView.AllowUserToAddRows = false;
-            this.graded_testsDataGridView.AllowUserToDeleteRows = false;
-            this.graded_testsDataGridView.AutoGenerateColumns = false;
-            this.graded_testsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.graded_testsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.StudentID,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewCheckBoxColumn1,
-            this.dataGridViewTextBoxColumn7});
-            this.graded_testsDataGridView.DataSource = this.graded_testsBindingSource;
-            this.graded_testsDataGridView.Location = new System.Drawing.Point(364, 35);
-            this.graded_testsDataGridView.Margin = new System.Windows.Forms.Padding(2);
-            this.graded_testsDataGridView.Name = "graded_testsDataGridView";
-            this.graded_testsDataGridView.ReadOnly = true;
-            this.graded_testsDataGridView.RowTemplate.Height = 24;
-            this.graded_testsDataGridView.Size = new System.Drawing.Size(470, 263);
-            this.graded_testsDataGridView.TabIndex = 1;
-            // 
-            // StudentID
-            // 
-            this.StudentID.DataPropertyName = "StudentID";
-            this.StudentID.HeaderText = "StudentID";
-            this.StudentID.Name = "StudentID";
-            this.StudentID.ReadOnly = true;
-            this.StudentID.Visible = false;
-            this.StudentID.Width = 5;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "TestID";
-            this.dataGridViewTextBoxColumn3.HeaderText = "TestID";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 75;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Score";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Score";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 75;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Passed";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Passed";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.Width = 75;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Feedback";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Feedback";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 200;
+            this.grpManageChildren.Text = "Your Child\'s Info";
             // 
             // graded_testsBindingSource
             // 
@@ -168,15 +92,6 @@
             // 
             this.mathWizGroup3DataSet.DataSetName = "MathWizGroup3DataSet";
             this.mathWizGroup3DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // lstChildren
-            // 
-            this.lstChildren.FormattingEnabled = true;
-            this.lstChildren.Location = new System.Drawing.Point(11, 34);
-            this.lstChildren.Name = "lstChildren";
-            this.lstChildren.Size = new System.Drawing.Size(214, 264);
-            this.lstChildren.TabIndex = 0;
-            this.lstChildren.SelectedIndexChanged += new System.EventHandler(this.lstChildren_SelectedIndexChanged);
             // 
             // menuStrip1
             // 
@@ -270,11 +185,157 @@
             this.backgroundWorkerLoadData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerLoadData_DoWork);
             this.backgroundWorkerLoadData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerLoadData_RunWorkerCompleted);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(12, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(167, 31);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Select Child:";
+            // 
+            // cmbChildren
+            // 
+            this.cmbChildren.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChildren.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbChildren.FormattingEnabled = true;
+            this.cmbChildren.Location = new System.Drawing.Point(185, 36);
+            this.cmbChildren.Name = "cmbChildren";
+            this.cmbChildren.Size = new System.Drawing.Size(314, 39);
+            this.cmbChildren.TabIndex = 6;
+            this.cmbChildren.SelectedIndexChanged += new System.EventHandler(this.cmbChildren_SelectedIndexChanged_1);
+            // 
+            // studentsBindingSource
+            // 
+            this.studentsBindingSource.DataMember = "students";
+            this.studentsBindingSource.DataSource = this.mathWizGroup3DataSet;
+            // 
+            // studentsTableAdapter
+            // 
+            this.studentsTableAdapter.ClearBeforeFill = true;
+            // 
+            // dgvStudents
+            // 
+            this.dgvStudents.AllowUserToAddRows = false;
+            this.dgvStudents.AllowUserToDeleteRows = false;
+            this.dgvStudents.AutoGenerateColumns = false;
+            this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStudents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn11});
+            this.dgvStudents.DataSource = this.studentsBindingSource;
+            this.dgvStudents.Location = new System.Drawing.Point(9, 18);
+            this.dgvStudents.Name = "dgvStudents";
+            this.dgvStudents.ReadOnly = true;
+            this.dgvStudents.Size = new System.Drawing.Size(495, 58);
+            this.dgvStudents.TabIndex = 3;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "KlassID";
+            this.dataGridViewTextBoxColumn5.HeaderText = "KlassID";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Username";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Username";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "FirstName";
+            this.dataGridViewTextBoxColumn8.HeaderText = "First Name";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "LastName";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Last Name";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "MasteryLevel";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Mastery Level";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.dataGridViewTextBoxColumn11.Width = 50;
+            // 
+            // lsvStudentGrades
+            // 
+            this.lsvStudentGrades.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.gradedTestId,
+            this.gradedTestType,
+            this.gradedTestDateTaken,
+            this.gradedTestTimeTakenToComplete,
+            this.gradedTestScore,
+            this.gradedTestFeedback});
+            this.lsvStudentGrades.FullRowSelect = true;
+            this.lsvStudentGrades.Location = new System.Drawing.Point(9, 101);
+            this.lsvStudentGrades.MultiSelect = false;
+            this.lsvStudentGrades.Name = "lsvStudentGrades";
+            this.lsvStudentGrades.Size = new System.Drawing.Size(704, 157);
+            this.lsvStudentGrades.TabIndex = 15;
+            this.lsvStudentGrades.UseCompatibleStateImageBehavior = false;
+            this.lsvStudentGrades.View = System.Windows.Forms.View.Details;
+            // 
+            // gradedTestId
+            // 
+            this.gradedTestId.Text = "Id";
+            this.gradedTestId.Width = 36;
+            // 
+            // gradedTestType
+            // 
+            this.gradedTestType.Text = "Test Type";
+            this.gradedTestType.Width = 134;
+            // 
+            // gradedTestDateTaken
+            // 
+            this.gradedTestDateTaken.Text = "Date Taken";
+            this.gradedTestDateTaken.Width = 123;
+            // 
+            // gradedTestTimeTakenToComplete
+            // 
+            this.gradedTestTimeTakenToComplete.Text = "Duration";
+            this.gradedTestTimeTakenToComplete.Width = 102;
+            // 
+            // gradedTestScore
+            // 
+            this.gradedTestScore.Text = "Score";
+            this.gradedTestScore.Width = 71;
+            // 
+            // gradedTestFeedback
+            // 
+            this.gradedTestFeedback.Text = "Feedback";
+            this.gradedTestFeedback.Width = 209;
+            // 
             // frmParentHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(870, 450);
+            this.ClientSize = new System.Drawing.Size(870, 634);
+            this.Controls.Add(this.cmbChildren);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblParentName);
             this.Controls.Add(this.grpManageChildren);
             this.Controls.Add(this.menuStrip1);
@@ -285,12 +346,12 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmParentHome_Load);
             this.grpManageChildren.ResumeLayout(false);
-            this.grpManageChildren.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.graded_testsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.graded_testsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,21 +366,30 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ListBox lstChildren;
         private MathWizGroup3DataSet mathWizGroup3DataSet;
         private System.Windows.Forms.BindingSource graded_testsBindingSource;
         private MathWizGroup3DataSetTableAdapters.graded_testsTableAdapter graded_testsTableAdapter;
         private MathWizGroup3DataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.DataGridView graded_testsDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StudentID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.TextBox txtStudentMastery;
-        private System.Windows.Forms.Label lblStudentMastery;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.Label lblParentName;
         private System.ComponentModel.BackgroundWorker backgroundWorkerLoadData;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbChildren;
+        private System.Windows.Forms.BindingSource studentsBindingSource;
+        private MathWizGroup3DataSetTableAdapters.studentsTableAdapter studentsTableAdapter;
+        private System.Windows.Forms.DataGridView dgvStudents;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.ListView lsvStudentGrades;
+        private System.Windows.Forms.ColumnHeader gradedTestId;
+        private System.Windows.Forms.ColumnHeader gradedTestType;
+        private System.Windows.Forms.ColumnHeader gradedTestDateTaken;
+        private System.Windows.Forms.ColumnHeader gradedTestTimeTakenToComplete;
+        private System.Windows.Forms.ColumnHeader gradedTestScore;
+        private System.Windows.Forms.ColumnHeader gradedTestFeedback;
     }
 }
