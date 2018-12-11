@@ -90,6 +90,45 @@ namespace MathWiz
             return false;
         }
 
+        public static bool FindPlacementTest(int klassID) 
+        {
+            string query = "SELECT KlassID FROM tests WHERE KlassID = @klassID " +
+                           "AND TestType = 'Placement Test'";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@klassID", klassID);
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                if (reader.Read() && reader.HasRows) 
+                {
+                    reader.Close();
+                    conn.Close();
+                    return true;
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return false;
+        }
+
         public static string FindUserType(string username)
         {
             string userType = "";
@@ -670,7 +709,7 @@ namespace MathWiz
             PlacementTest placementTest = new PlacementTest();
 
             //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT * FROM PlacementTests WHERE ID = @ID AND TestType = 'Placement Test'";
+            string query = "SELECT * FROM tests WHERE KlassID = @ID AND TestType = 'Placement Test'";
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@Id", id);
             
@@ -684,7 +723,6 @@ namespace MathWiz
                 {
                     placementTest.Id = Convert.ToInt32(reader["Id"]);
                     placementTest.TimeLimit = TimeSpan.Parse(reader["TimeLimit"].ToString());
-                    placementTest.RandomlyGenerated = Convert.ToBoolean(reader["RandomlyGenerated"]);
                     placementTest.MinLevel = Convert.ToInt32(reader["MinLevel"]);
                     placementTest.MaxLevel = Convert.ToInt32(reader["MaxLevel"]);
                 }
