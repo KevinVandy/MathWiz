@@ -84,7 +84,39 @@ namespace MathWiz
                 currentKlass = cmbKlasses.SelectedItem as Klass;
                 this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, currentKlass.Id);
                 this.testsTableAdapter.FillByKlassID(this.mathWizGroup3DataSet.tests, currentKlass.Id);
-                
+
+                // Check if the class has any placement tests created
+                bool hasPlacementTests = true;
+                hasPlacementTests = MathWizDA.FindPlacementTest(currentKlass.Id);
+                if (hasPlacementTests == true)
+                {
+                    btnCreateTest.Enabled = false;
+                    btnCreateTest.Text = "Placement Test is already generated.";
+                    btnCreateTest.Height = 50;
+                }
+                else if (hasPlacementTests == false)
+                {
+                    btnCreateTest.Enabled = true;
+                    btnCreateTest.Text = "Create Placement Test";
+                    btnCreateTest.Height = 39;
+                }
+
+
+                // Check if the class has any mastery tests created
+                bool hasMasteryTestsCreated = true;
+                hasMasteryTestsCreated = MathWizDA.FindMasteryTest(currentKlass.Id);
+                if(hasMasteryTestsCreated == true)
+                {
+                    btnGenerateMasteryTests.Enabled = false;
+                    btnGenerateMasteryTests.Text = "Mastery Tests are already generated.";
+                    btnGenerateMasteryTests.Height = 50;
+                } else if (hasMasteryTestsCreated == false)
+                {
+                    btnGenerateMasteryTests.Enabled = true;
+                    btnGenerateMasteryTests.Text = "Generate All Mastery Tests";
+                    btnGenerateMasteryTests.Height = 39;
+                }
+
                 UpdateKlassInfo();
             }
         }
@@ -244,7 +276,16 @@ namespace MathWiz
         private void btnGenerateMasteryTests_Click(object sender, EventArgs e)
         {
             frmGenerateMasteryTests frmGenerateMasteryTests = new frmGenerateMasteryTests(currentKlass.Id);
-            frmGenerateMasteryTests.ShowDialog();
+            DialogResult theyCreatedTests = frmGenerateMasteryTests.ShowDialog();
+
+            if(theyCreatedTests == DialogResult.OK)
+            {
+                btnGenerateMasteryTests.Enabled = false;
+                btnGenerateMasteryTests.Text = "Mastery Tests are already generated.";
+                btnGenerateMasteryTests.Height = 50;
+
+                // Don't know how to refresh a data grid but we would want to refresh the dgvTests here
+            }
         }
 
         //MARK saving data grid view edited data to database methods

@@ -23,7 +23,9 @@ namespace MathWiz
 
         private void frmGenerateMasteryTests_Load(object sender, EventArgs e)
         {
-
+            cboNumberOfQuestions.SelectedIndex = 0;
+            cboQuestionSpeed.SelectedIndex = 0;
+            cboPassThreshhold.SelectedIndex = 0;
         }
 
         private void btnGenerateTests_Click(object sender, EventArgs e)
@@ -148,6 +150,8 @@ namespace MathWiz
                 masteryTest.RandomlyGenerated = true;
 
                 MathWizDB.InsertMasteryTest(masteryTest, klassID);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
         }
 
