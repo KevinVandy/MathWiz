@@ -246,5 +246,17 @@ namespace MathWiz
             frmGenerateMasteryTests frmGenerateMasteryTests = new frmGenerateMasteryTests(currentKlass.Id);
             frmGenerateMasteryTests.ShowDialog();
         }
+
+        //MARK saving data grid view edited data to database methods
+        private void dgvStudents_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            studentsTableAdapter.Update(mathWizGroup3DataSet.students);
+        }
+
+        private void dgvStudents_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            studentsTableAdapter.Update(mathWizGroup3DataSet.students);
+        }
+        //End saving data grid view edited data to database methods
     }
 }

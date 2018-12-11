@@ -526,7 +526,7 @@ namespace MathWiz
                                 }
                                 else
                                 {
-                                    testString += i.ToString() + " / " + j.ToString() + ", ";
+                                    testString += i.ToString() + " ÷ " + j.ToString() + ", ";
                                 }
                             }
 
@@ -560,7 +560,7 @@ namespace MathWiz
                             }
                             else
                             {
-                                testString += i.ToString() + " / " + j.ToString() + ", ";
+                                testString += i.ToString() + " ÷ " + j.ToString() + ", ";
                             }
                         }
                     }
@@ -599,7 +599,7 @@ namespace MathWiz
                 {
                     int counter = 0;
                     secondEnumerator.MoveNext();
-                    qT = firstEnumerator.Current.ToString() + " / " + secondEnumerator.Current.ToString() + " =";
+                    qT = firstEnumerator.Current.ToString() + " ÷ " + secondEnumerator.Current.ToString() + " =";
                     answer[counter] = firstEnumerator.Current / secondEnumerator.Current;
 
                     Question aQuestion = new Question();
@@ -610,9 +610,6 @@ namespace MathWiz
                     qL.Add(aQuestion);
                 }
             }
-
-
-
             return qL;
         }
     }

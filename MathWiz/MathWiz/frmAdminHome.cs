@@ -365,6 +365,11 @@ namespace MathWiz
             SaveDataInCellSheet();
         }
 
+        private void dgvUsers_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            SaveDataInCellSheet();
+        }
+
         private void SaveDataInCellSheet()
         {
             if (rdoAdmins.Checked)
@@ -474,5 +479,7 @@ namespace MathWiz
                 masteryLevelSeries.Points.Add(masteryLevelFrequency[i]);
             }
         }
+
+        
     }
 }

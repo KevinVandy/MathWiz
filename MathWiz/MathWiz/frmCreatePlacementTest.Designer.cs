@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreatePlacementTest));
             this.btnCreateTest = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.mskTime = new System.Windows.Forms.MaskedTextBox();
@@ -37,10 +38,9 @@
             // btnCreateTest
             // 
             this.btnCreateTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateTest.Location = new System.Drawing.Point(345, 151);
-            this.btnCreateTest.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCreateTest.Location = new System.Drawing.Point(259, 123);
             this.btnCreateTest.Name = "btnCreateTest";
-            this.btnCreateTest.Size = new System.Drawing.Size(209, 64);
+            this.btnCreateTest.Size = new System.Drawing.Size(157, 52);
             this.btnCreateTest.TabIndex = 0;
             this.btnCreateTest.Text = "Cre&ate Test";
             this.btnCreateTest.UseVisualStyleBackColor = true;
@@ -50,21 +50,19 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(33, 40);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(25, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(250, 29);
+            this.label2.Size = new System.Drawing.Size(195, 24);
             this.label2.TabIndex = 3;
             this.label2.Text = "Time Limit (hh:mm:ss)";
             // 
             // mskTime
             // 
             this.mskTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskTime.Location = new System.Drawing.Point(321, 40);
-            this.mskTime.Margin = new System.Windows.Forms.Padding(4);
+            this.mskTime.Location = new System.Drawing.Point(241, 32);
             this.mskTime.Mask = "00:00:00";
             this.mskTime.Name = "mskTime";
-            this.mskTime.Size = new System.Drawing.Size(233, 34);
+            this.mskTime.Size = new System.Drawing.Size(176, 29);
             this.mskTime.TabIndex = 9;
             this.mskTime.Tag = "Time Limit";
             // 
@@ -72,28 +70,27 @@
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(64, 151);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancel.Location = new System.Drawing.Point(48, 123);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(219, 64);
+            this.btnCancel.Size = new System.Drawing.Size(164, 52);
             this.btnCancel.TabIndex = 14;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // frmCreateTest
+            // frmCreatePlacementTest
             // 
             this.AcceptButton = this.btnCreateTest;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(645, 264);
+            this.ClientSize = new System.Drawing.Size(484, 214);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.mskTime);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCreateTest);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmCreateTest";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "frmCreatePlacementTest";
             this.Text = "Create Placement Test";
             this.ResumeLayout(false);
             this.PerformLayout();

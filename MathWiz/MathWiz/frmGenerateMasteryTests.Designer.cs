@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGenerateMasteryTests));
             this.btnGenerateTests = new System.Windows.Forms.Button();
             this.cboNumberOfQuestions = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -151,6 +152,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.cboNumberOfQuestions);
             this.Controls.Add(this.btnGenerateTests);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmGenerateMasteryTests";
             this.Text = "Generate Mastery Tests";
             this.Load += new System.EventHandler(this.frmGenerateMasteryTests_Load);

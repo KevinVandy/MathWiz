@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTakeTest));
             this.gbxQuestion = new System.Windows.Forms.GroupBox();
             this.lblTimerQuestion = new System.Windows.Forms.Label();
             this.btnSubmitAnswer = new System.Windows.Forms.Button();
@@ -157,9 +158,10 @@
             this.Controls.Add(this.btnStartFinish);
             this.Controls.Add(this.lblTimerTest);
             this.Controls.Add(this.gbxQuestion);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmTakeTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Test";
+            this.Text = "Taking Test";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTakeTest_FormClosing);
             this.Load += new System.EventHandler(this.frmTakeTest_Load);
