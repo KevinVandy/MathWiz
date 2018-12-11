@@ -15,6 +15,7 @@ namespace MathWiz
     public partial class frmTeacherHome : Form
     {
         Teacher teacher;
+        Klass currentKlass;
         Series masteryLevelSeries;
 
         public frmTeacherHome(string username)
@@ -80,9 +81,9 @@ namespace MathWiz
         {
             if(cmbKlasses.SelectedIndex != -1 && cmbKlasses.SelectedItem != null)
             {
-                Klass selectedItem = cmbKlasses.SelectedItem as Klass;
-                this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, selectedItem.Id);
-                this.testsTableAdapter.FillByKlassID(this.mathWizGroup3DataSet.tests, selectedItem.Id);
+                currentKlass = cmbKlasses.SelectedItem as Klass;
+                this.studentsTableAdapter.FillByKlass(this.mathWizGroup3DataSet.students, currentKlass.Id);
+                this.testsTableAdapter.FillByKlassID(this.mathWizGroup3DataSet.tests, currentKlass.Id);
                 
                 UpdateKlassInfo();
             }
@@ -135,12 +136,7 @@ namespace MathWiz
             Form changePasswordForm = new frmChangePassword(username);
             changePasswordForm.ShowDialog();
         }
-
-        private void btnGenerateTests_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void btnCreateTest_Click(object sender, EventArgs e)
         {
             if (cmbKlasses.SelectedIndex == -1)
@@ -243,6 +239,12 @@ namespace MathWiz
                     masteryLevelSeries.Points.Add(masteryLevelFrequency[i]);
                 }
             }
+        }
+
+        private void btnGenerateMasteryTests_Click(object sender, EventArgs e)
+        {
+            frmGenerateMasteryTests frmGenerateMasteryTests = new frmGenerateMasteryTests(currentKlass.Id);
+            frmGenerateMasteryTests.ShowDialog();
         }
     }
 }

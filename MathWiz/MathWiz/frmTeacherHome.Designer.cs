@@ -73,7 +73,7 @@
             this.lblProgress = new System.Windows.Forms.Label();
             this.gbxTests = new System.Windows.Forms.GroupBox();
             this.btnEditTest = new System.Windows.Forms.Button();
-            this.btnGenerateTests = new System.Windows.Forms.Button();
+            this.btnGenerateMasteryTests = new System.Windows.Forms.Button();
             this.btnCreateTest = new System.Windows.Forms.Button();
             this.dgvTests = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -443,7 +443,7 @@
             // gbxTests
             // 
             this.gbxTests.Controls.Add(this.btnEditTest);
-            this.gbxTests.Controls.Add(this.btnGenerateTests);
+            this.gbxTests.Controls.Add(this.btnGenerateMasteryTests);
             this.gbxTests.Controls.Add(this.btnCreateTest);
             this.gbxTests.Controls.Add(this.dgvTests);
             this.gbxTests.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -466,16 +466,16 @@
             this.btnEditTest.UseVisualStyleBackColor = true;
             this.btnEditTest.Click += new System.EventHandler(this.btnEditTest_Click);
             // 
-            // btnGenerateTests
+            // btnGenerateMasteryTests
             // 
-            this.btnGenerateTests.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerateTests.Location = new System.Drawing.Point(914, 145);
-            this.btnGenerateTests.Name = "btnGenerateTests";
-            this.btnGenerateTests.Size = new System.Drawing.Size(245, 39);
-            this.btnGenerateTests.TabIndex = 24;
-            this.btnGenerateTests.Text = "Generate All Mastery Tests";
-            this.btnGenerateTests.UseVisualStyleBackColor = true;
-            this.btnGenerateTests.Click += new System.EventHandler(this.btnGenerateTests_Click);
+            this.btnGenerateMasteryTests.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateMasteryTests.Location = new System.Drawing.Point(914, 145);
+            this.btnGenerateMasteryTests.Name = "btnGenerateMasteryTests";
+            this.btnGenerateMasteryTests.Size = new System.Drawing.Size(245, 39);
+            this.btnGenerateMasteryTests.TabIndex = 24;
+            this.btnGenerateMasteryTests.Text = "Generate All Mastery Tests";
+            this.btnGenerateMasteryTests.UseVisualStyleBackColor = true;
+            this.btnGenerateMasteryTests.Click += new System.EventHandler(this.btnGenerateMasteryTests_Click);
             // 
             // btnCreateTest
             // 
@@ -651,7 +651,7 @@
         private System.Windows.Forms.BindingSource testsBindingSource;
         private MathWizGroup3DataSetTableAdapters.testsTableAdapter testsTableAdapter;
         private System.Windows.Forms.Button btnEditTest;
-        private System.Windows.Forms.Button btnGenerateTests;
+        private System.Windows.Forms.Button btnGenerateMasteryTests;
         private System.Windows.Forms.Button btnCreateTest;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn testTypeDataGridViewTextBoxColumn;

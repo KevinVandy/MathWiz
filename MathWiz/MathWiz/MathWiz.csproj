@@ -100,6 +100,12 @@
     <Compile Include="frmCreateTest.Designer.cs">
       <DependentUpon>frmCreateTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmGenerateMasteryTests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGenerateMasteryTests.Designer.cs">
+      <DependentUpon>frmGenerateMasteryTests.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmParentHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCreateUserAccount.resx">
       <DependentUpon>frmCreateUserAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGenerateMasteryTests.resx">
+      <DependentUpon>frmGenerateMasteryTests.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
