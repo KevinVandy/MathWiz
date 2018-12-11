@@ -1,6 +1,6 @@
 ﻿namespace MathWiz
 {
-    partial class frmCreateTest
+    partial class frmCreatePlacementTest
     {
         /// <summary>
         /// Required designer variable.

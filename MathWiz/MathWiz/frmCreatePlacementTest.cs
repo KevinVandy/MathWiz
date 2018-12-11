@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace MathWiz
 {
-    public partial class frmCreateTest : Form
+    public partial class frmCreatePlacementTest : Form
     {
         int klassID;
 
-        public frmCreateTest(int kID)
+        public frmCreatePlacementTest(int kID)
         {
             InitializeComponent();
             klassID = kID;

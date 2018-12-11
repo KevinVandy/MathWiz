@@ -146,7 +146,7 @@ namespace MathWiz
             }
             else
             {
-                frmCreateTest createTest = new frmCreateTest(teacher.Klasses[cmbKlasses.SelectedIndex].Id); //passes the selected classID
+                frmCreatePlacementTest createTest = new frmCreatePlacementTest(teacher.Klasses[cmbKlasses.SelectedIndex].Id); //passes the selected classID
                 createTest.Show();
             }
         }
