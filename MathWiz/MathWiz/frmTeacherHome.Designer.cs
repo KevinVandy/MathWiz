@@ -462,29 +462,29 @@
             this.btnEditTest.Name = "btnEditTest";
             this.btnEditTest.Size = new System.Drawing.Size(245, 39);
             this.btnEditTest.TabIndex = 25;
-            this.btnEditTest.Text = "Edit Test";
+            this.btnEditTest.Text = "Delete Test";
             this.btnEditTest.UseVisualStyleBackColor = true;
             this.btnEditTest.Click += new System.EventHandler(this.btnEditTest_Click);
             // 
             // btnGenerateTests
             // 
             this.btnGenerateTests.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerateTests.Location = new System.Drawing.Point(914, 43);
+            this.btnGenerateTests.Location = new System.Drawing.Point(914, 145);
             this.btnGenerateTests.Name = "btnGenerateTests";
             this.btnGenerateTests.Size = new System.Drawing.Size(245, 39);
             this.btnGenerateTests.TabIndex = 24;
-            this.btnGenerateTests.Text = "Auto-Generate All Mastery Tests";
+            this.btnGenerateTests.Text = "Generate All Mastery Tests";
             this.btnGenerateTests.UseVisualStyleBackColor = true;
             this.btnGenerateTests.Click += new System.EventHandler(this.btnGenerateTests_Click);
             // 
             // btnCreateTest
             // 
             this.btnCreateTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateTest.Location = new System.Drawing.Point(914, 141);
+            this.btnCreateTest.Location = new System.Drawing.Point(914, 43);
             this.btnCreateTest.Name = "btnCreateTest";
             this.btnCreateTest.Size = new System.Drawing.Size(245, 39);
             this.btnCreateTest.TabIndex = 23;
-            this.btnCreateTest.Text = "Create New Test";
+            this.btnCreateTest.Text = "Create Placement Test";
             this.btnCreateTest.UseVisualStyleBackColor = true;
             this.btnCreateTest.Click += new System.EventHandler(this.btnCreateTest_Click);
             // 
