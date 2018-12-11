@@ -47,6 +47,14 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblKlass = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblQuestions = new System.Windows.Forms.Label();
+            this.lsvStudentGradedQuestions = new System.Windows.Forms.ListView();
+            this.gradedQuestionId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.questionId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.gradedQuestionStudentAnswer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.gradedQuestionTimeTakenToAnswer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnChangePassword = new System.Windows.Forms.Button();
             this.lblStudentGrades = new System.Windows.Forms.Label();
             this.lsvStudentGrades = new System.Windows.Forms.ListView();
@@ -71,19 +79,20 @@
             this.btnGenerateMasteryTests = new System.Windows.Forms.Button();
             this.btnCreateTest = new System.Windows.Forms.Button();
             this.dgvTests = new System.Windows.Forms.DataGridView();
-            this.testsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.testsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.testsTableAdapter();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentMasteryLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.testTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeLimitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passThreshHoldDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.minLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maxLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.testsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.testsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.testsTableAdapter();
+            this.graded_questionsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.graded_questionsTableAdapter();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studentMasteryLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).BeginInit();
@@ -152,12 +161,12 @@
             this.LastName,
             this.studentMasteryLevel});
             this.dgvStudents.DataSource = this.studentsBindingSource;
-            this.dgvStudents.Location = new System.Drawing.Point(20, 30);
+            this.dgvStudents.Location = new System.Drawing.Point(20, 102);
             this.dgvStudents.MultiSelect = false;
             this.dgvStudents.Name = "dgvStudents";
             this.dgvStudents.RowHeadersVisible = false;
             this.dgvStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStudents.Size = new System.Drawing.Size(468, 233);
+            this.dgvStudents.Size = new System.Drawing.Size(597, 199);
             this.dgvStudents.TabIndex = 9;
             this.dgvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
             this.dgvStudents.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellEndEdit);
@@ -183,7 +192,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1434, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1422, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -241,34 +250,107 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblQuestions);
+            this.groupBox1.Controls.Add(this.lsvStudentGradedQuestions);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnChangePassword);
             this.groupBox1.Controls.Add(this.lblStudentGrades);
             this.groupBox1.Controls.Add(this.lsvStudentGrades);
             this.groupBox1.Controls.Add(this.dgvStudents);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(28, 103);
+            this.groupBox1.Location = new System.Drawing.Point(28, 127);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(751, 480);
+            this.groupBox1.Size = new System.Drawing.Size(647, 647);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Students";
             // 
+            // lblQuestions
+            // 
+            this.lblQuestions.AutoSize = true;
+            this.lblQuestions.Location = new System.Drawing.Point(17, 466);
+            this.lblQuestions.Name = "lblQuestions";
+            this.lblQuestions.Size = new System.Drawing.Size(72, 17);
+            this.lblQuestions.TabIndex = 22;
+            this.lblQuestions.Text = "Questions";
+            // 
+            // lsvStudentGradedQuestions
+            // 
+            this.lsvStudentGradedQuestions.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.gradedQuestionId,
+            this.questionId,
+            this.gradedQuestionStudentAnswer,
+            this.gradedQuestionTimeTakenToAnswer});
+            this.lsvStudentGradedQuestions.FullRowSelect = true;
+            this.lsvStudentGradedQuestions.Location = new System.Drawing.Point(20, 486);
+            this.lsvStudentGradedQuestions.MultiSelect = false;
+            this.lsvStudentGradedQuestions.Name = "lsvStudentGradedQuestions";
+            this.lsvStudentGradedQuestions.Size = new System.Drawing.Size(597, 122);
+            this.lsvStudentGradedQuestions.TabIndex = 21;
+            this.lsvStudentGradedQuestions.UseCompatibleStateImageBehavior = false;
+            this.lsvStudentGradedQuestions.View = System.Windows.Forms.View.Details;
+            // 
+            // gradedQuestionId
+            // 
+            this.gradedQuestionId.Text = "Id";
+            this.gradedQuestionId.Width = 36;
+            // 
+            // questionId
+            // 
+            this.questionId.Text = "Question ID";
+            this.questionId.Width = 134;
+            // 
+            // gradedQuestionStudentAnswer
+            // 
+            this.gradedQuestionStudentAnswer.Text = "Student Answer";
+            this.gradedQuestionStudentAnswer.Width = 123;
+            // 
+            // gradedQuestionTimeTakenToAnswer
+            // 
+            this.gradedQuestionTimeTakenToAnswer.Text = "Time Taken To Answer";
+            this.gradedQuestionTimeTakenToAnswer.Width = 102;
+            // 
+            // button2
+            // 
+            this.button2.Enabled = false;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(430, 22);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(186, 49);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "Delete Student";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(225, 22);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(186, 49);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Change ML";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnChangePassword
             // 
             this.btnChangePassword.Enabled = false;
-            this.btnChangePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangePassword.Location = new System.Drawing.Point(513, 30);
+            this.btnChangePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangePassword.Location = new System.Drawing.Point(20, 22);
             this.btnChangePassword.Name = "btnChangePassword";
-            this.btnChangePassword.Size = new System.Drawing.Size(211, 39);
+            this.btnChangePassword.Size = new System.Drawing.Size(186, 49);
             this.btnChangePassword.TabIndex = 17;
-            this.btnChangePassword.Text = "Change Student\'s Password";
+            this.btnChangePassword.Text = "Change Password";
             this.btnChangePassword.UseVisualStyleBackColor = true;
             this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
             // 
             // lblStudentGrades
             // 
             this.lblStudentGrades.AutoSize = true;
-            this.lblStudentGrades.Location = new System.Drawing.Point(17, 280);
+            this.lblStudentGrades.Location = new System.Drawing.Point(17, 315);
             this.lblStudentGrades.Name = "lblStudentGrades";
             this.lblStudentGrades.Size = new System.Drawing.Size(127, 17);
             this.lblStudentGrades.TabIndex = 16;
@@ -284,13 +366,14 @@
             this.gradedTestScore,
             this.gradedTestFeedback});
             this.lsvStudentGrades.FullRowSelect = true;
-            this.lsvStudentGrades.Location = new System.Drawing.Point(20, 300);
+            this.lsvStudentGrades.Location = new System.Drawing.Point(20, 335);
             this.lsvStudentGrades.MultiSelect = false;
             this.lsvStudentGrades.Name = "lsvStudentGrades";
-            this.lsvStudentGrades.Size = new System.Drawing.Size(704, 157);
+            this.lsvStudentGrades.Size = new System.Drawing.Size(597, 122);
             this.lsvStudentGrades.TabIndex = 14;
             this.lsvStudentGrades.UseCompatibleStateImageBehavior = false;
             this.lsvStudentGrades.View = System.Windows.Forms.View.Details;
+            this.lsvStudentGrades.SelectedIndexChanged += new System.EventHandler(this.lsvStudentGrades_SelectedIndexChanged);
             // 
             // gradedTestId
             // 
@@ -320,13 +403,13 @@
             // gradedTestFeedback
             // 
             this.gradedTestFeedback.Text = "Feedback";
-            this.gradedTestFeedback.Width = 209;
+            this.gradedTestFeedback.Width = 110;
             // 
             // chtMasterLevelDistribution
             // 
             chartArea1.Name = "ChartArea1";
             this.chtMasterLevelDistribution.ChartAreas.Add(chartArea1);
-            this.chtMasterLevelDistribution.Location = new System.Drawing.Point(30, 192);
+            this.chtMasterLevelDistribution.Location = new System.Drawing.Point(25, 102);
             this.chtMasterLevelDistribution.Name = "chtMasterLevelDistribution";
             this.chtMasterLevelDistribution.Size = new System.Drawing.Size(509, 265);
             this.chtMasterLevelDistribution.TabIndex = 15;
@@ -338,9 +421,9 @@
             this.gbxKlassStatistics.Controls.Add(this.label4);
             this.gbxKlassStatistics.Controls.Add(this.chtMasterLevelDistribution);
             this.gbxKlassStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxKlassStatistics.Location = new System.Drawing.Point(812, 103);
+            this.gbxKlassStatistics.Location = new System.Drawing.Point(695, 127);
             this.gbxKlassStatistics.Name = "gbxKlassStatistics";
-            this.gbxKlassStatistics.Size = new System.Drawing.Size(571, 480);
+            this.gbxKlassStatistics.Size = new System.Drawing.Size(571, 647);
             this.gbxKlassStatistics.TabIndex = 18;
             this.gbxKlassStatistics.TabStop = false;
             this.gbxKlassStatistics.Text = "Class Statistics";
@@ -349,7 +432,7 @@
             // 
             this.lblAverageML.AutoSize = true;
             this.lblAverageML.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAverageML.Location = new System.Drawing.Point(18, 70);
+            this.lblAverageML.Location = new System.Drawing.Point(20, 423);
             this.lblAverageML.Name = "lblAverageML";
             this.lblAverageML.Size = new System.Drawing.Size(240, 26);
             this.lblAverageML.TabIndex = 20;
@@ -359,7 +442,7 @@
             // 
             this.lblNumberStudents.AutoSize = true;
             this.lblNumberStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumberStudents.Location = new System.Drawing.Point(18, 34);
+            this.lblNumberStudents.Location = new System.Drawing.Point(20, 387);
             this.lblNumberStudents.Name = "lblNumberStudents";
             this.lblNumberStudents.Size = new System.Drawing.Size(212, 26);
             this.lblNumberStudents.TabIndex = 19;
@@ -368,10 +451,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(183, 172);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(121, 73);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(202, 17);
+            this.label4.Size = new System.Drawing.Size(314, 26);
             this.label4.TabIndex = 16;
             this.label4.Text = "Class Mastery Level Histogram";
             // 
@@ -410,9 +493,9 @@
             this.gbxTests.Controls.Add(this.btnCreateTest);
             this.gbxTests.Controls.Add(this.dgvTests);
             this.gbxTests.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxTests.Location = new System.Drawing.Point(28, 613);
+            this.gbxTests.Location = new System.Drawing.Point(28, 800);
             this.gbxTests.Name = "gbxTests";
-            this.gbxTests.Size = new System.Drawing.Size(1345, 300);
+            this.gbxTests.Size = new System.Drawing.Size(1238, 300);
             this.gbxTests.TabIndex = 21;
             this.gbxTests.TabStop = false;
             this.gbxTests.Text = "Manage Tests";
@@ -420,21 +503,20 @@
             // btnEditTest
             // 
             this.btnEditTest.Enabled = false;
-            this.btnEditTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditTest.Location = new System.Drawing.Point(914, 239);
+            this.btnEditTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditTest.Location = new System.Drawing.Point(737, 234);
             this.btnEditTest.Name = "btnEditTest";
-            this.btnEditTest.Size = new System.Drawing.Size(245, 39);
+            this.btnEditTest.Size = new System.Drawing.Size(271, 45);
             this.btnEditTest.TabIndex = 25;
             this.btnEditTest.Text = "Delete Test";
             this.btnEditTest.UseVisualStyleBackColor = true;
-            this.btnEditTest.Click += new System.EventHandler(this.btnEditTest_Click);
             // 
             // btnGenerateMasteryTests
             // 
-            this.btnGenerateMasteryTests.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerateMasteryTests.Location = new System.Drawing.Point(914, 145);
+            this.btnGenerateMasteryTests.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateMasteryTests.Location = new System.Drawing.Point(737, 146);
             this.btnGenerateMasteryTests.Name = "btnGenerateMasteryTests";
-            this.btnGenerateMasteryTests.Size = new System.Drawing.Size(245, 39);
+            this.btnGenerateMasteryTests.Size = new System.Drawing.Size(271, 45);
             this.btnGenerateMasteryTests.TabIndex = 24;
             this.btnGenerateMasteryTests.Text = "Generate All Mastery Tests";
             this.btnGenerateMasteryTests.UseVisualStyleBackColor = true;
@@ -442,10 +524,10 @@
             // 
             // btnCreateTest
             // 
-            this.btnCreateTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateTest.Location = new System.Drawing.Point(914, 43);
+            this.btnCreateTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreateTest.Location = new System.Drawing.Point(737, 43);
             this.btnCreateTest.Name = "btnCreateTest";
-            this.btnCreateTest.Size = new System.Drawing.Size(245, 39);
+            this.btnCreateTest.Size = new System.Drawing.Size(271, 45);
             this.btnCreateTest.TabIndex = 23;
             this.btnCreateTest.Text = "Create Placement Test";
             this.btnCreateTest.UseVisualStyleBackColor = true;
@@ -466,53 +548,13 @@
             this.maxLevelDataGridViewTextBoxColumn});
             this.dgvTests.DataSource = this.testsBindingSource;
             this.dgvTests.Location = new System.Drawing.Point(20, 43);
+            this.dgvTests.MultiSelect = false;
             this.dgvTests.Name = "dgvTests";
-            this.dgvTests.Size = new System.Drawing.Size(704, 236);
+            this.dgvTests.RowHeadersVisible = false;
+            this.dgvTests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTests.Size = new System.Drawing.Size(644, 236);
             this.dgvTests.TabIndex = 22;
             this.dgvTests.SelectionChanged += new System.EventHandler(this.dgvTests_SelectionChanged);
-            // 
-            // testsBindingSource
-            // 
-            this.testsBindingSource.DataMember = "tests";
-            this.testsBindingSource.DataSource = this.mathWizGroup3DataSet;
-            // 
-            // testsTableAdapter
-            // 
-            this.testsTableAdapter.ClearBeforeFill = true;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 40;
-            // 
-            // Username
-            // 
-            this.Username.DataPropertyName = "Username";
-            this.Username.HeaderText = "Username";
-            this.Username.Name = "Username";
-            this.Username.Width = 150;
-            // 
-            // FirstName
-            // 
-            this.FirstName.DataPropertyName = "FirstName";
-            this.FirstName.HeaderText = "First Name";
-            this.FirstName.Name = "FirstName";
-            // 
-            // LastName
-            // 
-            this.LastName.DataPropertyName = "LastName";
-            this.LastName.HeaderText = "Last Name";
-            this.LastName.Name = "LastName";
-            // 
-            // studentMasteryLevel
-            // 
-            this.studentMasteryLevel.DataPropertyName = "MasteryLevel";
-            this.studentMasteryLevel.HeaderText = "ML";
-            this.studentMasteryLevel.Name = "studentMasteryLevel";
-            this.studentMasteryLevel.Width = 40;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -558,13 +600,62 @@
             this.maxLevelDataGridViewTextBoxColumn.Name = "maxLevelDataGridViewTextBoxColumn";
             this.maxLevelDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // testsBindingSource
+            // 
+            this.testsBindingSource.DataMember = "tests";
+            this.testsBindingSource.DataSource = this.mathWizGroup3DataSet;
+            // 
+            // testsTableAdapter
+            // 
+            this.testsTableAdapter.ClearBeforeFill = true;
+            // 
+            // graded_questionsTableAdapter
+            // 
+            this.graded_questionsTableAdapter.ClearBeforeFill = true;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 40;
+            // 
+            // Username
+            // 
+            this.Username.DataPropertyName = "Username";
+            this.Username.HeaderText = "Username";
+            this.Username.Name = "Username";
+            this.Username.Width = 150;
+            // 
+            // FirstName
+            // 
+            this.FirstName.DataPropertyName = "FirstName";
+            this.FirstName.HeaderText = "First Name";
+            this.FirstName.Name = "FirstName";
+            this.FirstName.Width = 120;
+            // 
+            // LastName
+            // 
+            this.LastName.DataPropertyName = "LastName";
+            this.LastName.HeaderText = "Last Name";
+            this.LastName.Name = "LastName";
+            this.LastName.Width = 120;
+            // 
+            // studentMasteryLevel
+            // 
+            this.studentMasteryLevel.DataPropertyName = "MasteryLevel";
+            this.studentMasteryLevel.HeaderText = "Mastery Level";
+            this.studentMasteryLevel.Name = "studentMasteryLevel";
+            this.studentMasteryLevel.Width = 120;
+            // 
             // frmTeacherHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1434, 1003);
+            this.ClientSize = new System.Drawing.Size(1439, 1061);
             this.Controls.Add(this.gbxTests);
             this.Controls.Add(this.lblProgress);
             this.Controls.Add(this.gbxKlassStatistics);
@@ -576,6 +667,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pgbLoadData);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(3000, 3000);
+            this.MinimumSize = new System.Drawing.Size(360, 360);
             this.Name = "frmTeacherHome";
             this.Text = "MathWiz - Teacher Portal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -642,16 +735,25 @@
         private System.Windows.Forms.Button btnEditTest;
         private System.Windows.Forms.Button btnGenerateMasteryTests;
         private System.Windows.Forms.Button btnCreateTest;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Username;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentMasteryLevel;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn testTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn timeLimitDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn passThreshHoldDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn minLevelDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn maxLevelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label lblQuestions;
+        private System.Windows.Forms.ListView lsvStudentGradedQuestions;
+        private System.Windows.Forms.ColumnHeader gradedQuestionId;
+        private System.Windows.Forms.ColumnHeader questionId;
+        private System.Windows.Forms.ColumnHeader gradedQuestionStudentAnswer;
+        private System.Windows.Forms.ColumnHeader gradedQuestionTimeTakenToAnswer;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private MathWizGroup3DataSetTableAdapters.graded_questionsTableAdapter graded_questionsTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Username;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn studentMasteryLevel;
     }
 }

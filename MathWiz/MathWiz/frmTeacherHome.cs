@@ -37,6 +37,7 @@ namespace MathWiz
             this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet.students);
             backgroundWorkerLoadData.ReportProgress(50);
             this.graded_testsTableAdapter.Fill(this.mathWizGroup3DataSet.graded_tests);
+            this.graded_questionsTableAdapter.Fill(this.mathWizGroup3DataSet.graded_questions);
             backgroundWorkerLoadData.ReportProgress(75);
             this.testsTableAdapter.Fill(this.mathWizGroup3DataSet.tests);
             backgroundWorkerLoadData.ReportProgress(100);
@@ -183,11 +184,6 @@ namespace MathWiz
             }
         }
 
-        private void btnEditTest_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dgvStudents_SelectionChanged(object sender, EventArgs e)
         {
             lsvStudentGrades.Items.Clear();
@@ -211,6 +207,45 @@ namespace MathWiz
                         if (Convert.ToInt32(drow["StudentID"]) == Convert.ToInt32(dgvStudents.Rows[dgvStudents.CurrentCell.RowIndex].Cells[0].Value))
                         {
                             lsvStudentGrades.Items.Add(lvi);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                btnChangePassword.Enabled = false;
+            }
+        }
+
+        private void lsvStudentGrades_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lsvStudentGradedQuestions.Items.Clear();
+            if (lsvStudentGrades.SelectedItems.Count > 0)
+            {
+                int j = 0;
+                //show the selected student's graded tests, if any
+                for (int i = 0; i < mathWizGroup3DataSet.graded_questions.Rows.Count; i++)
+                {
+                    DataRow drow = mathWizGroup3DataSet.graded_questions.Rows[i];
+                    if (drow.RowState != DataRowState.Deleted)
+                    {
+                        ListViewItem lvi = new ListViewItem(drow["Id"].ToString());
+                        lvi.SubItems.Add(drow["QuestionID"].ToString());
+                        lvi.SubItems.Add(drow["StudentAnswer"].ToString());
+                        lvi.SubItems.Add(drow["TimeTakenToAnswer"].ToString());
+                        
+                        if (Convert.ToInt32(drow["GradedTestID"]) == Convert.ToInt32(lsvStudentGrades.SelectedItems[0].SubItems[0].Text))
+                        {
+                            lsvStudentGradedQuestions.Items.Add(lvi);
+
+                            if (drow["Correct"].ToString() == "true") //show green for correct
+                            {
+                                lsvStudentGradedQuestions.Items[j++].SubItems[2].ForeColor = Color.Green;
+                            }
+                            else //show red for wrong
+                            {
+                                lsvStudentGradedQuestions.Items[j++].SubItems[2].ForeColor = Color.Red;
+                            }
                         }
                     }
                 }
@@ -298,6 +333,23 @@ namespace MathWiz
         {
             studentsTableAdapter.Update(mathWizGroup3DataSet.students);
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
         //End saving data grid view edited data to database methods
     }
 }

@@ -341,6 +341,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(360, 360);
             this.Name = "frmParentHome";
             this.Text = "MathWiz - Parent Portal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

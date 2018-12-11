@@ -154,11 +154,12 @@
             this.AcceptButton = this.btnSubmitAnswer;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 313);
+            this.ClientSize = new System.Drawing.Size(581, 321);
             this.Controls.Add(this.btnStartFinish);
             this.Controls.Add(this.lblTimerTest);
             this.Controls.Add(this.gbxQuestion);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(580, 360);
             this.Name = "frmTakeTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Taking Test";
