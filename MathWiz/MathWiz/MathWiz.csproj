@@ -76,6 +76,12 @@
     <Compile Include="frmAdminHome.Designer.cs">
       <DependentUpon>frmAdminHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmChangeML.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangeML.Designer.cs">
+      <DependentUpon>frmChangeML.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAdminHome.resx">
       <DependentUpon>frmAdminHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChangeML.resx">
+      <DependentUpon>frmChangeML.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmChangePassword.resx">
       <DependentUpon>frmChangePassword.cs</DependentUpon>

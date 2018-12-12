@@ -606,19 +606,19 @@ namespace MathWiz
             switch (userType) //need this case structure because you can't bind values to a table name, and I want to do it the safe way without {}
             {
                 case "admin":
-                    insertStatement = " admins ";
+                    insertStatement += " admins ";
                     break;
 
                 case "teacher":
-                    insertStatement = " teachers ";
+                    insertStatement += " teachers ";
                     break;
 
                 case "parent":
-                    insertStatement = " parents ";
+                    insertStatement += " parents ";
                     break;
 
                 case "student":
-                    insertStatement = " students ";
+                    insertStatement += " students ";
                     break;
 
             }
@@ -630,6 +630,37 @@ namespace MathWiz
             Cmd.Parameters.AddWithValue("@username", username);
             Cmd.Parameters.AddWithValue("@passwordHash", passwordHash);
             
+            try
+            {
+                conn.Open();
+                Cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public static void UpdateMasteryLevel(string username, int newML)
+        {
+            string insertStatement = "UPDATE students SET MasteryLevel = @newML WHERE Username = @username";
+
+            // create command object with SQL query and link to connection object
+            SqlCommand Cmd = new SqlCommand(insertStatement, conn);
+            Cmd.Parameters.AddWithValue("@username", username);
+            Cmd.Parameters.AddWithValue("@newML", newML);
+
             try
             {
                 conn.Open();
