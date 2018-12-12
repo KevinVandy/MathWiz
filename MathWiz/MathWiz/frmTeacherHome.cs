@@ -93,7 +93,7 @@ namespace MathWiz
                 {
                     btnCreateTest.Enabled = false;
                     btnCreateTest.Text = "Placement Test is already generated.";
-                    btnCreateTest.Height = 50;
+                    btnCreateTest.Height = 60;
                 }
                 else if (hasPlacementTests == false)
                 {
@@ -110,7 +110,7 @@ namespace MathWiz
                 {
                     btnGenerateMasteryTests.Enabled = false;
                     btnGenerateMasteryTests.Text = "Mastery Tests are already generated.";
-                    btnGenerateMasteryTests.Height = 50;
+                    btnGenerateMasteryTests.Height = 60;
                 } else if (hasMasteryTestsCreated == false)
                 {
                     btnGenerateMasteryTests.Enabled = true;
@@ -174,7 +174,7 @@ namespace MathWiz
         {
             if (cmbKlasses.SelectedIndex == -1)
             {
-                MessageBox.Show("A Class was not selected please make sure the correct calss is selected");
+                MessageBox.Show("A Class was not selected please make sure the correct class is selected");
                 cmbKlasses.SelectedIndex = 0;
             }
             else
@@ -191,6 +191,7 @@ namespace MathWiz
             {
                 //enable change password button
                 btnChangePassword.Enabled = true;
+                btnChangeML.Enabled = true;
 
                 //show the selected student's graded tests, if any
                 for (int i = 0; i < mathWizGroup3DataSet.graded_tests.Rows.Count; i++)
@@ -214,6 +215,7 @@ namespace MathWiz
             else
             {
                 btnChangePassword.Enabled = false;
+                btnChangeML.Enabled = false;
             }
         }
 
@@ -317,7 +319,7 @@ namespace MathWiz
             {
                 btnGenerateMasteryTests.Enabled = false;
                 btnGenerateMasteryTests.Text = "Mastery Tests are already generated.";
-                btnGenerateMasteryTests.Height = 50;
+                btnGenerateMasteryTests.Height = 60;
 
                 // Don't know how to refresh a data grid but we would want to refresh the dgvTests here
             }
@@ -339,9 +341,13 @@ namespace MathWiz
 
         }
 
+        //Change ML Button
         private void button1_Click(object sender, EventArgs e)
         {
-
+            string username = dgvStudents.Rows[dgvStudents.CurrentCell.RowIndex].Cells[1].Value.ToString();
+            int oldML = Convert.ToInt32(dgvStudents.Rows[dgvStudents.CurrentCell.RowIndex].Cells[4].Value);
+            Form changeMLForm = new frmChangeML(oldML, username);
+            changeMLForm.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)

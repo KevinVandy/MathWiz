@@ -36,6 +36,11 @@
             this.cmbKlasses = new System.Windows.Forms.ComboBox();
             this.backgroundWorkerLoadData = new System.ComponentModel.BackgroundWorker();
             this.dgvStudents = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studentMasteryLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mathWizGroup3DataSet = new MathWiz.MathWizGroup3DataSet();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -54,7 +59,7 @@
             this.gradedQuestionStudentAnswer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gradedQuestionTimeTakenToAnswer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnChangeML = new System.Windows.Forms.Button();
             this.btnChangePassword = new System.Windows.Forms.Button();
             this.lblStudentGrades = new System.Windows.Forms.Label();
             this.lsvStudentGrades = new System.Windows.Forms.ListView();
@@ -88,11 +93,6 @@
             this.testsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.testsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.testsTableAdapter();
             this.graded_questionsTableAdapter = new MathWiz.MathWizGroup3DataSetTableAdapters.graded_questionsTableAdapter();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentMasteryLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mathWizGroup3DataSet)).BeginInit();
@@ -173,6 +173,42 @@
             this.dgvStudents.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellValueChanged);
             this.dgvStudents.SelectionChanged += new System.EventHandler(this.dgvStudents_SelectionChanged);
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 40;
+            // 
+            // Username
+            // 
+            this.Username.DataPropertyName = "Username";
+            this.Username.HeaderText = "Username";
+            this.Username.Name = "Username";
+            this.Username.Width = 150;
+            // 
+            // FirstName
+            // 
+            this.FirstName.DataPropertyName = "FirstName";
+            this.FirstName.HeaderText = "First Name";
+            this.FirstName.Name = "FirstName";
+            this.FirstName.Width = 120;
+            // 
+            // LastName
+            // 
+            this.LastName.DataPropertyName = "LastName";
+            this.LastName.HeaderText = "Last Name";
+            this.LastName.Name = "LastName";
+            this.LastName.Width = 120;
+            // 
+            // studentMasteryLevel
+            // 
+            this.studentMasteryLevel.DataPropertyName = "MasteryLevel";
+            this.studentMasteryLevel.HeaderText = "Mastery Level";
+            this.studentMasteryLevel.Name = "studentMasteryLevel";
+            this.studentMasteryLevel.Width = 120;
+            // 
             // studentsBindingSource
             // 
             this.studentsBindingSource.DataMember = "students";
@@ -192,7 +228,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1422, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1439, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -253,7 +289,7 @@
             this.groupBox1.Controls.Add(this.lblQuestions);
             this.groupBox1.Controls.Add(this.lsvStudentGradedQuestions);
             this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnChangeML);
             this.groupBox1.Controls.Add(this.btnChangePassword);
             this.groupBox1.Controls.Add(this.lblStudentGrades);
             this.groupBox1.Controls.Add(this.lsvStudentGrades);
@@ -323,17 +359,17 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // btnChangeML
             // 
-            this.button1.Enabled = false;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(225, 22);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(186, 49);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Change ML";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnChangeML.Enabled = false;
+            this.btnChangeML.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeML.Location = new System.Drawing.Point(225, 22);
+            this.btnChangeML.Name = "btnChangeML";
+            this.btnChangeML.Size = new System.Drawing.Size(186, 49);
+            this.btnChangeML.TabIndex = 18;
+            this.btnChangeML.Text = "Change ML";
+            this.btnChangeML.UseVisualStyleBackColor = true;
+            this.btnChangeML.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnChangePassword
             // 
@@ -613,49 +649,13 @@
             // 
             this.graded_questionsTableAdapter.ClearBeforeFill = true;
             // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 40;
-            // 
-            // Username
-            // 
-            this.Username.DataPropertyName = "Username";
-            this.Username.HeaderText = "Username";
-            this.Username.Name = "Username";
-            this.Username.Width = 150;
-            // 
-            // FirstName
-            // 
-            this.FirstName.DataPropertyName = "FirstName";
-            this.FirstName.HeaderText = "First Name";
-            this.FirstName.Name = "FirstName";
-            this.FirstName.Width = 120;
-            // 
-            // LastName
-            // 
-            this.LastName.DataPropertyName = "LastName";
-            this.LastName.HeaderText = "Last Name";
-            this.LastName.Name = "LastName";
-            this.LastName.Width = 120;
-            // 
-            // studentMasteryLevel
-            // 
-            this.studentMasteryLevel.DataPropertyName = "MasteryLevel";
-            this.studentMasteryLevel.HeaderText = "Mastery Level";
-            this.studentMasteryLevel.Name = "studentMasteryLevel";
-            this.studentMasteryLevel.Width = 120;
-            // 
             // frmTeacherHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1439, 1061);
+            this.ClientSize = new System.Drawing.Size(1456, 881);
             this.Controls.Add(this.gbxTests);
             this.Controls.Add(this.lblProgress);
             this.Controls.Add(this.gbxKlassStatistics);
@@ -748,7 +748,7 @@
         private System.Windows.Forms.ColumnHeader gradedQuestionStudentAnswer;
         private System.Windows.Forms.ColumnHeader gradedQuestionTimeTakenToAnswer;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnChangeML;
         private MathWizGroup3DataSetTableAdapters.graded_questionsTableAdapter graded_questionsTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Username;
