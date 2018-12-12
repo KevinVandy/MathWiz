@@ -20,6 +20,11 @@ namespace MathWiz
             klassID = kID;
         }
 
+        private void frmCreatePlacementTest_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnCreateTest_Click(object sender, EventArgs e)
         {
             Int64 aNumber = 0;
@@ -45,7 +50,8 @@ namespace MathWiz
                      MathWizDB.InsertTestQuestionPlacement(PlacementTest, q, aNumber);
                  }
                  MessageBox.Show("Your new randomly generated Placement test has been created");
-                } else
+                }
+            else
             {
                 MessageBox.Show("A placement test has already been created for this class.");
             }
@@ -66,6 +72,8 @@ namespace MathWiz
 
                 return false;
             }
+
+        
     }
         
 }
