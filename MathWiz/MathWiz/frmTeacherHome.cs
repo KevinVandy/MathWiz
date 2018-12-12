@@ -374,9 +374,6 @@ namespace MathWiz
 
             if (dialogResult == DialogResult.Yes) //delete the test if they confirm yes
             {
-                //Delete Normal Questions with the Standard Test ID
-                MathWizDB.DeleteNormalQuestions(testID);
-
                 // Grab the graded_test id with the test id (I'm assuming/hoping that testid is unique with this select)
                 gradedTestID = MathWizDA.SelectGradedTestIDViaTestID(testID);
 
@@ -385,6 +382,9 @@ namespace MathWiz
 
                 //Delete the actual Graded Test with the Standard Test ID
                 MathWizDB.DeleteGradedTestWithTestID(testID);
+
+                //Delete Normal Questions with the Standard Test ID
+                MathWizDB.DeleteNormalQuestions(testID);
 
                 //Finally, delete the normal standard test
                 MathWizDB.DeleteNormalTest(testID);
