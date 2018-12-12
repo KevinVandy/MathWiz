@@ -58,7 +58,7 @@
             this.questionId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gradedQuestionStudentAnswer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gradedQuestionTimeTakenToAnswer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDeleteStudent = new System.Windows.Forms.Button();
             this.btnChangeML = new System.Windows.Forms.Button();
             this.btnChangePassword = new System.Windows.Forms.Button();
             this.lblStudentGrades = new System.Windows.Forms.Label();
@@ -228,7 +228,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1439, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1456, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -288,7 +288,7 @@
             // 
             this.groupBox1.Controls.Add(this.lblQuestions);
             this.groupBox1.Controls.Add(this.lsvStudentGradedQuestions);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.btnDeleteStudent);
             this.groupBox1.Controls.Add(this.btnChangeML);
             this.groupBox1.Controls.Add(this.btnChangePassword);
             this.groupBox1.Controls.Add(this.lblStudentGrades);
@@ -347,17 +347,17 @@
             this.gradedQuestionTimeTakenToAnswer.Text = "Time Taken To Answer";
             this.gradedQuestionTimeTakenToAnswer.Width = 102;
             // 
-            // button2
+            // btnDeleteStudent
             // 
-            this.button2.Enabled = false;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(430, 22);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(186, 49);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Delete Student";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnDeleteStudent.Enabled = false;
+            this.btnDeleteStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteStudent.Location = new System.Drawing.Point(430, 22);
+            this.btnDeleteStudent.Name = "btnDeleteStudent";
+            this.btnDeleteStudent.Size = new System.Drawing.Size(186, 49);
+            this.btnDeleteStudent.TabIndex = 19;
+            this.btnDeleteStudent.Text = "Delete Student";
+            this.btnDeleteStudent.UseVisualStyleBackColor = true;
+            this.btnDeleteStudent.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnChangeML
             // 
@@ -655,7 +655,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1456, 881);
+            this.ClientSize = new System.Drawing.Size(1473, 881);
             this.Controls.Add(this.gbxTests);
             this.Controls.Add(this.lblProgress);
             this.Controls.Add(this.gbxKlassStatistics);
@@ -747,7 +747,7 @@
         private System.Windows.Forms.ColumnHeader questionId;
         private System.Windows.Forms.ColumnHeader gradedQuestionStudentAnswer;
         private System.Windows.Forms.ColumnHeader gradedQuestionTimeTakenToAnswer;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDeleteStudent;
         private System.Windows.Forms.Button btnChangeML;
         private MathWizGroup3DataSetTableAdapters.graded_questionsTableAdapter graded_questionsTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;

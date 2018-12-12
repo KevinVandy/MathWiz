@@ -192,6 +192,7 @@ namespace MathWiz
                 //enable change password button
                 btnChangePassword.Enabled = true;
                 btnChangeML.Enabled = true;
+                btnDeleteStudent.Enabled = true;
 
                 //show the selected student's graded tests, if any
                 for (int i = 0; i < mathWizGroup3DataSet.graded_tests.Rows.Count; i++)
@@ -216,6 +217,7 @@ namespace MathWiz
             {
                 btnChangePassword.Enabled = false;
                 btnChangeML.Enabled = false;
+                btnDeleteStudent.Enabled = false;
             }
         }
 
@@ -350,12 +352,18 @@ namespace MathWiz
             changeMLForm.ShowDialog();
         }
 
+        //Delete Student Button
         private void button2_Click(object sender, EventArgs e)
         {
+            int id = Convert.ToInt32(dgvStudents.Rows[dgvStudents.CurrentCell.RowIndex].Cells[0].Value);
+            string username = dgvStudents.Rows[dgvStudents.CurrentCell.RowIndex].Cells[1].Value.ToString();
 
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this student?", "Confirm Delete?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes) //delete the user if they confirm yes
+            {
+                MathWizDB.DeleteUser("student", id, username);
+            }
         }
-
-
-        //End saving data grid view edited data to database methods
     }
 }
