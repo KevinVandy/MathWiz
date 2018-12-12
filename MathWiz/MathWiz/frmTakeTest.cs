@@ -44,6 +44,7 @@ namespace MathWiz
                     gradedPlacementTest.PlacementTest = (PlacementTest)test;
                     gbxQuestion.Text = "Placement Test";
                     this.Text = "Placement Test";
+                    lblTimerTest.Text = gradedPlacementTest.PlacementTest.TimeLimit.Minutes.ToString("00") + ":" + gradedPlacementTest.PlacementTest.TimeLimit.Seconds.ToString("00");
                     break;
 
                 case "practice":
@@ -52,6 +53,7 @@ namespace MathWiz
                     gradedPracticeTest.PracticeTest = (PracticeTest)test;
                     this.Text = "Practice Test";
                     gbxQuestion.Text = "Practice Test";
+                    lblTimerTest.Text = gradedPracticeTest.PracticeTest.TimeLimit.Minutes.ToString("00") + ":" + gradedPracticeTest.PracticeTest.TimeLimit.Seconds.ToString("00");
                     break;
 
                 case "mastery":
@@ -60,22 +62,14 @@ namespace MathWiz
                     gradedMasteryTest.MasteryTest = (MasteryTest)test;
                     this.Text = "Mastery Test";
                     gbxQuestion.Text = "Mastery Test";
-                    break;
-
-                default:
-
-                    gradedPracticeTest = new GradedPracticeTest();
-                    gradedPracticeTest.PracticeTest = (PracticeTest)test;
-                    this.Text = "Practice Test";
-                    gbxQuestion.Text = "Practice Test";
+                    lblTimerTest.Text = gradedMasteryTest.MasteryTest.TimeLimit.Minutes.ToString("00") + ":" + gradedMasteryTest.MasteryTest.TimeLimit.Seconds.ToString("00");
                     break;
             }
 
             this.Text += " - " + student.FirstName + " " + student.LastName;
             btnStartFinish.Text = "Start Test";
             gbxQuestion.Text = "";
-            lblTimerTest.Text = gradedPracticeTest.PracticeTest.TimeLimit.Minutes.ToString("00") + ":" + gradedPracticeTest.PracticeTest.TimeLimit.Seconds.ToString("00");
-
+            
             gbxQuestion.Hide();
         }
 
@@ -117,15 +111,12 @@ namespace MathWiz
                         gradedPracticeTest.Feedback = gradedPracticeTest.Score.ToString();
 
                         break;
-
-
-
+                        
                     case "mastery":
 
 
 
                         break;
-
                 }
                 
                 //write test to database in another thread
@@ -170,7 +161,6 @@ namespace MathWiz
 
         void backgroundWorkerSaveTest_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("Score: " + gradedPracticeTest.Score.ToString() + "%\n\n" + gradedPracticeTest.Feedback);
             testFinished = true; //now it this should close with no warning message
             this.Close();
         }

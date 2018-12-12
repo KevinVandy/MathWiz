@@ -92,6 +92,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCreatePlacementTest";
             this.Text = "Create Placement Test";
+            this.Load += new System.EventHandler(this.frmCreatePlacementTest_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -136,6 +136,12 @@
     <Compile Include="frmTeacherHome.Designer.cs">
       <DependentUpon>frmTeacherHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTestFeedback.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestFeedback.Designer.cs">
+      <DependentUpon>frmTestFeedback.cs</DependentUpon>
+    </Compile>
     <Compile Include="GradedTest.cs" />
     <Compile Include="GradedMasteryTest.cs" />
     <Compile Include="GradedPlacementTest.cs" />

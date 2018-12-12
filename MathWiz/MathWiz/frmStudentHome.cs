@@ -15,8 +15,8 @@ namespace MathWiz
         Student student;
         Klass klass = new Klass();
 
-        PlacementTest availablePlacementTest;
-        List<MasteryTest> availableMasteryTests;
+        PlacementTest availablePlacementTest = new PlacementTest();
+        List<MasteryTest> availableMasteryTests = new List<MasteryTest>();
         
 
         public frmStudentHome(string username)
@@ -27,17 +27,6 @@ namespace MathWiz
 
         private void frmStudentHome_Load(object sender, EventArgs e)
         {
-            if(student.MasteryLevel == 0)
-            {
-                btnTakeMasteryTest.Enabled = false;
-                btnTakePlacementTest.Enabled = true;
-            }
-            else
-            {
-                btnTakeMasteryTest.Enabled = true;
-                btnTakePlacementTest.Enabled = false;
-            }
-
             cmbMasteryLevel.SelectedIndex = student.MasteryLevel;
             cmbNumberOfQuestions.SelectedIndex = 1;
             
@@ -63,6 +52,26 @@ namespace MathWiz
             lblStudentName.Text = "Logged in as: " + student.FirstName + " " + student.LastName;
             lblKlassName.Text = "Class Name: " + klass.KlassName;
             lblMasteryLevel.Text = "Mastery Level: " + student.MasteryLevel.ToString();
+
+            if (student.MasteryLevel == 0)
+            {
+                if(availablePlacementTest != null)
+                {
+                    btnTakePlacementTest.Enabled = true;
+                }
+
+                btnTakeMasteryTest.Enabled = false; //students at mastery level 0 need to take placement test before mastery tests
+                
+            }
+            else if(student.MasteryLevel > 0)
+            {
+                if(availableMasteryTests.Count > 0)
+                {
+                    btnTakeMasteryTest.Enabled = true;
+                }
+
+                btnTakePlacementTest.Enabled = false; //students who have already taken the placement test do not need to take it again
+            }
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -83,9 +92,16 @@ namespace MathWiz
 
         private void btnTakePlacementTest_Click(object sender, EventArgs e)
         {
-            Form placementForm = new frmTakeTest(student, klass, availablePlacementTest); //TODO Pass Correct Test object
-            placementForm.Tag = "placement";
-            placementForm.ShowDialog();
+            if(availablePlacementTest != null)
+            {
+                Form placementForm = new frmTakeTest(student, klass, availablePlacementTest); //TODO Pass Correct Test object
+                placementForm.Tag = "placement";
+                placementForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Your teacher has not made your Placement Test yet");
+            }
         }
 
         private void btnTakeRandomPracticeTest_Click(object sender, EventArgs e)

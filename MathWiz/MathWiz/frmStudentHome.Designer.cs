@@ -61,7 +61,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(686, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(703, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -105,6 +105,7 @@
             // 
             // btnTakeMasteryTest
             // 
+            this.btnTakeMasteryTest.Enabled = false;
             this.btnTakeMasteryTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTakeMasteryTest.Location = new System.Drawing.Point(345, 36);
             this.btnTakeMasteryTest.Margin = new System.Windows.Forms.Padding(2);
@@ -117,6 +118,7 @@
             // 
             // btnTakePlacementTest
             // 
+            this.btnTakePlacementTest.Enabled = false;
             this.btnTakePlacementTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTakePlacementTest.Location = new System.Drawing.Point(21, 36);
             this.btnTakePlacementTest.Margin = new System.Windows.Forms.Padding(2);
@@ -268,7 +270,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(703, 578);
+            this.ClientSize = new System.Drawing.Size(720, 578);
             this.Controls.Add(this.lblMasteryLevel);
             this.Controls.Add(this.lblKlassName);
             this.Controls.Add(this.lblStudentName);
