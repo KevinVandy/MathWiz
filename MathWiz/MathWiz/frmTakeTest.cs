@@ -19,20 +19,23 @@ namespace MathWiz
         GradedPracticeTest gradedPracticeTest;
         GradedMasteryTest gradedMasteryTest;
         Student student;
-        int klassID;
+        Klass klass;
         int currentQuestionNum; //set to 0 when test starts
         bool testFinished;
 
-        public frmTakeTest(Student s, int kID , Test t ) 
+        public frmTakeTest(Student s, Klass k , Test t ) 
         {
             InitializeComponent();
             student = s;
-            klassID = kID;
+            klass = k;
             test = t;
         }
 
         private void frmTakeTest_Load(object sender, EventArgs e)
         {
+            lblStudentName.Text = student.FirstName + " " + student.LastName;
+            lblClassName.Text = klass.KlassName;
+
             switch (this.Tag.ToString())
             {
                 case "placement":
@@ -97,13 +100,35 @@ namespace MathWiz
             }
             else if (btnStartFinish.Text == "Finish Test") //finish test, record score, write score to db
             {
-                //record information for the completed test
-                gradedPracticeTest.Score = (decimal)gradedPracticeTest.CorrectlyAnsweredQuestions.Count / (decimal)(gradedPracticeTest.CorrectlyAnsweredQuestions.Count + (decimal)gradedPracticeTest.WronglyAnsweredQuestions.Count) * 100;
-                gradedPracticeTest.TimeTakenToComplete = gradedPracticeTest.PracticeTest.TimeLimit - TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
-                gradedPracticeTest.DateTaken = DateTime.Now;
-                gradedPracticeTest.Feedback = gradedPracticeTest.Score.ToString();
+                switch (this.Tag.ToString())
+                {
+                    case "placement":
 
-                //write to database in another thread
+
+
+                        break;
+
+                    case "practice":
+
+                        //record information for the completed test
+                        gradedPracticeTest.Score = (decimal)gradedPracticeTest.CorrectlyAnsweredQuestions.Count / (decimal)(gradedPracticeTest.CorrectlyAnsweredQuestions.Count + (decimal)gradedPracticeTest.WronglyAnsweredQuestions.Count) * 100;
+                        gradedPracticeTest.TimeTakenToComplete = gradedPracticeTest.PracticeTest.TimeLimit - TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
+                        gradedPracticeTest.DateTaken = DateTime.Now;
+                        gradedPracticeTest.Feedback = gradedPracticeTest.Score.ToString();
+
+                        break;
+
+
+
+                    case "mastery":
+
+
+
+                        break;
+
+                }
+                
+                //write test to database in another thread
                 backgroundWorkerSaveTest.RunWorkerAsync();
             }
             
@@ -125,7 +150,7 @@ namespace MathWiz
                 case "practice":
 
                     //first insert the test since the teacher did not make it, but the student just generated it
-                    gradedPracticeTest.PracticeTest.Id = MathWizDB.InsertTest(klassID, gradedPracticeTest.PracticeTest, "Practice Test", 0, gradedPracticeTest.PracticeTest.MinLevel, gradedPracticeTest.PracticeTest.MaxLevel);
+                    gradedPracticeTest.PracticeTest.Id = MathWizDB.InsertTest(klass.Id, gradedPracticeTest.PracticeTest, "Practice Test", 0, gradedPracticeTest.PracticeTest.MinLevel, gradedPracticeTest.PracticeTest.MaxLevel);
 
                     //then insert the graded test. The insertGradedTest method also inserts the graded Questions
                     gradedPracticeTest.Id = MathWizDB.InsertGradedTest(gradedPracticeTest, student.Id, gradedPracticeTest.PracticeTest.Id, "Practice Test");
