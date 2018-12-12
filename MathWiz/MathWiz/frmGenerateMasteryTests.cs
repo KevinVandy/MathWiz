@@ -105,7 +105,6 @@ namespace MathWiz
                         }
 
                         break;
-
                 }
 
                 switch (cboPassThreshhold.SelectedItem.ToString())

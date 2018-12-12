@@ -14,6 +14,45 @@ namespace MathWiz
     {
         readonly static SqlConnection conn = MathWizConn.GetMathWizConnection();
 
+        public static void InsertAdmin(Admin newAdmin)
+        {
+            string insertStatement = "INSERT INTO admins (Username, FirstName, LastName, PasswordHash) " +
+                "VALUES(@Username, @FirstName, @LastName, @Password)";
+
+            // create command object with SQL query and link to connection object
+            SqlCommand Cmd = new SqlCommand(insertStatement, conn);
+
+            // create your parameters and add values from object
+            Cmd.Parameters.AddWithValue("@Username", newAdmin.Username);
+            Cmd.Parameters.AddWithValue("@FirstName", newAdmin.FirstName);
+            Cmd.Parameters.AddWithValue("@LastName", newAdmin.LastName);
+            Cmd.Parameters.AddWithValue("@Password", newAdmin.Password);
+
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // execute the query
+                Cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
         public static void InsertParent(Parent newParent)
         {
             string insertStatement = "INSERT INTO parents (Username, FirstName, LastName, PasswordHash) " +
@@ -50,42 +89,7 @@ namespace MathWiz
                 conn.Close();
             }
         }
-        public static void InsertTestQuestionMastery(MasteryTest test, Question q, Int64 testID)
-        {
-            string insertStatement = "Insert into questions (testID, MasteryLevel, QuestionText, CorrectAnswer, TimeLimit, RandomlyGenerated) " +
-                "Values(@testID, @masteryLevel, @QuestionText, @CorrectAnswer, @TimeLimit, @RandomlyGenerated)";
 
-            SqlCommand cmd = new SqlCommand(insertStatement, conn);
-            cmd.Parameters.AddWithValue("@masteryLevel", test.MasteryLevel);
-            cmd.Parameters.AddWithValue("@testID", testID);
-            cmd.Parameters.AddWithValue("@timeLimit", test.TimeLimit);
-            cmd.Parameters.AddWithValue("@RandomlyGenerated", test.RandomlyGenerated);
-            cmd.Parameters.AddWithValue("@QuestionText", q.QuestionText);
-            cmd.Parameters.AddWithValue("@CorrectAnswer", q.CorrectAnswer.ToString());
-            try
-            {
-                // Open the connection
-                conn.Open();
-
-                // execute the query
-                cmd.ExecuteNonQuery();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (conn != null && conn.State == ConnectionState.Open)
-                {
-                    conn.Close();
-                }
-            }
-        }
         public static void InsertTestQuestionPlacement(PlacementTest test, Question q, Int64 testID)
         {
             string insertStatement = "Insert into questions (testID, QuestionText, CorrectAnswer, TimeLimit, RandomlyGenerated) " +
@@ -228,24 +232,27 @@ namespace MathWiz
             }
         }
 
-        internal static void InsertPlacementTest(PlacementTest test, int klassID)
+        internal static int InsertPlacementTest(PlacementTest placementTest, int klassID)
         {
-            string insertStatment = "INSERT INTO TESTS (KlassID, testtype, timelimit, randomlygenerated, minlevel, maxlevel) " +
-                "VAlUES(@klassID, @testtype, @timeLimit, @randomlygenerated, @minlevel, @maxlevel)";
+            placementTest.Id = 0;
+
+            string insertStatment = "INSERT INTO TESTS (KlassID, testtype, timelimit, randomlygenerated, minlevel, maxlevel)"
+                + " OUTPUT INSERTED.Id" //get the last inserted ID
+                + " VAlUES(@klassID, @testtype, @timeLimit, @randomlygenerated, @minlevel, @maxlevel)";
 
             SqlCommand cmd = new SqlCommand(insertStatment, conn);
 
             cmd.Parameters.AddWithValue("@klassID", klassID);
             cmd.Parameters.AddWithValue("@testtype", "Placement Test");
-            cmd.Parameters.AddWithValue("@timelimit", test.TimeLimit);
-            cmd.Parameters.AddWithValue("@randomlygenerated", test.RandomlyGenerated);
-            cmd.Parameters.AddWithValue("@minlevel", test.MinLevel);
-            cmd.Parameters.AddWithValue("@maxlevel", test.MaxLevel);
+            cmd.Parameters.AddWithValue("@timelimit", placementTest.TimeLimit);
+            cmd.Parameters.AddWithValue("@randomlygenerated", placementTest.RandomlyGenerated);
+            cmd.Parameters.AddWithValue("@minlevel", placementTest.MinLevel);
+            cmd.Parameters.AddWithValue("@maxlevel", placementTest.MaxLevel);
 
             try
             {
                 conn.Open();
-                cmd.ExecuteNonQuery();
+                placementTest.Id = Convert.ToInt32(cmd.ExecuteScalar());
             }
             catch (SqlException ex)
             {
@@ -262,6 +269,7 @@ namespace MathWiz
                     conn.Close();
                 }
             }
+            return placementTest.Id;
         }
 
         public static void InsertStudent(Student newStudent, int parentID, int klassID)
@@ -341,44 +349,7 @@ namespace MathWiz
             }
         }
 
-        public static void InsertAdmin(Admin newAdmin)
-        {
-            string insertStatement = "INSERT INTO admins (Username, FirstName, LastName, PasswordHash) " +
-                "VALUES(@Username, @FirstName, @LastName, @Password)";
-
-            // create command object with SQL query and link to connection object
-            SqlCommand Cmd = new SqlCommand(insertStatement, conn);
-
-            // create your parameters and add values from object
-            Cmd.Parameters.AddWithValue("@Username", newAdmin.Username);
-            Cmd.Parameters.AddWithValue("@FirstName", newAdmin.FirstName);
-            Cmd.Parameters.AddWithValue("@LastName", newAdmin.LastName);
-            Cmd.Parameters.AddWithValue("@Password", newAdmin.Password);
-
-            try
-            {
-                // Open the connection
-                conn.Open();
-
-                // execute the query
-                Cmd.ExecuteNonQuery();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (conn != null && conn.State == ConnectionState.Open)
-                {
-                    conn.Close();
-                }
-            }
-        }
+        
 
         public static int InsertQuestion(Question newQuestion, int testID)
         {
