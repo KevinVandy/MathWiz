@@ -49,7 +49,7 @@ namespace MathWiz
                         placementTest.Questions.Add(q);
                     }
                 }
-
+                MessageBox.Show(placementTest.Questions.Count().ToString());
                 //set other attributes of the test
                 placementTest.MinLevel = 1;
                 placementTest.MaxLevel = 12;

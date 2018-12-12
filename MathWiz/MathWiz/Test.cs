@@ -14,7 +14,10 @@ namespace MathWiz
         public bool RandomlyGenerated { get; set; }
 
         //empty constructor
-        public Test() { }
+        public Test()
+        {
+            this.Questions = new List<Question>();
+        }
 
         //full constructor
         public Test(List<Question> questions, TimeSpan timeLimit, bool randomlyGenerated)

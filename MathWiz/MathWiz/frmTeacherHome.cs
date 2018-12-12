@@ -175,7 +175,6 @@ namespace MathWiz
             if (cmbKlasses.SelectedIndex == -1)
             {
                 MessageBox.Show("A Class was not selected please make sure the correct class is selected");
-                cmbKlasses.SelectedIndex = 0;
             }
             else
             {
