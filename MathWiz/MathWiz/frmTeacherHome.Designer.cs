@@ -80,7 +80,7 @@
             this.pgbLoadData = new System.Windows.Forms.ProgressBar();
             this.lblProgress = new System.Windows.Forms.Label();
             this.gbxTests = new System.Windows.Forms.GroupBox();
-            this.btnEditTest = new System.Windows.Forms.Button();
+            this.btnDeleteTest = new System.Windows.Forms.Button();
             this.btnGenerateMasteryTests = new System.Windows.Forms.Button();
             this.btnCreateTest = new System.Windows.Forms.Button();
             this.dgvTests = new System.Windows.Forms.DataGridView();
@@ -228,7 +228,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1456, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1439, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -524,7 +524,7 @@
             // 
             // gbxTests
             // 
-            this.gbxTests.Controls.Add(this.btnEditTest);
+            this.gbxTests.Controls.Add(this.btnDeleteTest);
             this.gbxTests.Controls.Add(this.btnGenerateMasteryTests);
             this.gbxTests.Controls.Add(this.btnCreateTest);
             this.gbxTests.Controls.Add(this.dgvTests);
@@ -536,16 +536,17 @@
             this.gbxTests.TabStop = false;
             this.gbxTests.Text = "Manage Tests";
             // 
-            // btnEditTest
+            // btnDeleteTest
             // 
-            this.btnEditTest.Enabled = false;
-            this.btnEditTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditTest.Location = new System.Drawing.Point(737, 234);
-            this.btnEditTest.Name = "btnEditTest";
-            this.btnEditTest.Size = new System.Drawing.Size(271, 45);
-            this.btnEditTest.TabIndex = 25;
-            this.btnEditTest.Text = "Delete Test";
-            this.btnEditTest.UseVisualStyleBackColor = true;
+            this.btnDeleteTest.Enabled = false;
+            this.btnDeleteTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteTest.Location = new System.Drawing.Point(737, 234);
+            this.btnDeleteTest.Name = "btnDeleteTest";
+            this.btnDeleteTest.Size = new System.Drawing.Size(271, 45);
+            this.btnDeleteTest.TabIndex = 25;
+            this.btnDeleteTest.Text = "Delete Test";
+            this.btnDeleteTest.UseVisualStyleBackColor = true;
+            this.btnDeleteTest.Click += new System.EventHandler(this.btnDeleteTest_Click);
             // 
             // btnGenerateMasteryTests
             // 
@@ -655,7 +656,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1473, 881);
+            this.ClientSize = new System.Drawing.Size(1456, 881);
             this.Controls.Add(this.gbxTests);
             this.Controls.Add(this.lblProgress);
             this.Controls.Add(this.gbxKlassStatistics);
@@ -732,7 +733,7 @@
         private System.Windows.Forms.DataGridView dgvTests;
         private System.Windows.Forms.BindingSource testsBindingSource;
         private MathWizGroup3DataSetTableAdapters.testsTableAdapter testsTableAdapter;
-        private System.Windows.Forms.Button btnEditTest;
+        private System.Windows.Forms.Button btnDeleteTest;
         private System.Windows.Forms.Button btnGenerateMasteryTests;
         private System.Windows.Forms.Button btnCreateTest;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;

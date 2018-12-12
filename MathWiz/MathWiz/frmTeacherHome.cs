@@ -260,11 +260,11 @@ namespace MathWiz
         {
             if (dgvStudents.SelectedRows.Count > 0)
             {
-                btnEditTest.Enabled = true;
+                btnDeleteTest.Enabled = true;
             }
             else
             {
-                btnEditTest.Enabled = false;
+                btnDeleteTest.Enabled = false;
             }
         }
 
@@ -363,6 +363,32 @@ namespace MathWiz
             if (dialogResult == DialogResult.Yes) //delete the user if they confirm yes
             {
                 MathWizDB.DeleteUser("student", id, username);
+            }
+        }
+
+        private void btnDeleteTest_Click(object sender, EventArgs e)
+        {
+            int testID = Convert.ToInt32(dgvTests.Rows[dgvTests.CurrentCell.RowIndex].Cells[0].Value);
+            int gradedTestID;
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this test?", "Confirm Delete?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes) //delete the test if they confirm yes
+            {
+                //Delete Normal Questions with the Standard Test ID
+                MathWizDB.DeleteNormalQuestions(testID);
+
+                // Grab the graded_test id with the test id (I'm assuming/hoping that testid is unique with this select)
+                gradedTestID = MathWizDA.SelectGradedTestIDViaTestID(testID);
+
+                //Delete the Graded Questions with the Graded Test ID
+                MathWizDB.DeleteGradedQuestions(gradedTestID);
+
+                //Delete the actual Graded Test with the Standard Test ID
+                MathWizDB.DeleteGradedTestWithTestID(testID);
+
+                //Finally, delete the normal standard test
+                MathWizDB.DeleteNormalTest(testID);
             }
         }
     }

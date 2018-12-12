@@ -1403,6 +1403,47 @@ namespace MathWiz
             return klasses;
         }
 
+        public static int SelectGradedTestIDViaTestID(int testID)
+        {
+
+            int gradedTestID = 0;
+
+            //make the query the safe way by binding values to prevent SQL injection
+            string query = "SELECT Id FROM graded_tests WHERE TestID = @testID";
+            SqlCommand selectCommand = new SqlCommand(query, conn);
+            selectCommand.Parameters.AddWithValue("@TestID", testID);
+
+
+            try
+            {
+                conn.Open();
+
+                SqlDataReader reader = selectCommand.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    gradedTestID = Convert.ToInt32(reader["Id"]);
+                }
+                reader.Close();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return gradedTestID;
+        }
+
     }
 
 }

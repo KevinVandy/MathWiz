@@ -790,6 +790,87 @@ namespace MathWiz
             }
         }
 
+        public static void DeleteGradedTestWithTestID(int testID)
+        {
+            string deleteStatement = "DELETE FROM graded_tests WHERE TestID = @testID";
+            SqlCommand Cmd = new SqlCommand(deleteStatement, conn);
+            Cmd.Parameters.AddWithValue("@testID", testID);
+            try
+            {
+                conn.Open();
+                Cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public static void DeleteNormalTest(int testID)
+        {
+            string deleteStatement = "DELETE FROM tests WHERE Id = @testID";
+            SqlCommand Cmd = new SqlCommand(deleteStatement, conn);
+            Cmd.Parameters.AddWithValue("@testID", testID);
+            try
+            {
+                conn.Open();
+                Cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
+        public static void DeleteNormalQuestions(int testID)
+        {
+            string deleteStatement = "DELETE FROM questions WHERE TestID = @testID";
+            SqlCommand Cmd = new SqlCommand(deleteStatement, conn);
+            Cmd.Parameters.AddWithValue("@TestID", testID);
+            try
+            {
+                conn.Open();
+                Cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
+
         public static void DeleteGradedQuestions(int gradedTestID)
         {
             string deleteStatement = "DELETE FROM graded_questions WHERE GradedTestID = @gradedTestID";
