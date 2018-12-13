@@ -31,16 +31,25 @@ namespace MathWiz
 
         private void backgroundWorkerLoadData_DoWork(object sender, DoWorkEventArgs e)
         {
-            backgroundWorkerLoadData.ReportProgress(1);
-            teacher.Klasses = MathWizDA.SelectAllKlassesByTeacher(teacher.Id);
-            backgroundWorkerLoadData.ReportProgress(25);
-            this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet.students);
-            backgroundWorkerLoadData.ReportProgress(50);
-            this.graded_testsTableAdapter.Fill(this.mathWizGroup3DataSet.graded_tests);
-            this.graded_questionsTableAdapter.Fill(this.mathWizGroup3DataSet.graded_questions);
-            backgroundWorkerLoadData.ReportProgress(75);
-            //this.testsTableAdapter.FillByNotPractice(this.mathWizGroup3DataSet.tests); //no practice tests
-            backgroundWorkerLoadData.ReportProgress(100);
+            try
+            {
+                backgroundWorkerLoadData.ReportProgress(1);
+                teacher.Klasses = MathWizDA.SelectAllKlassesByTeacher(teacher.Id);
+                backgroundWorkerLoadData.ReportProgress(25);
+                this.studentsTableAdapter.Fill(this.mathWizGroup3DataSet.students);
+                backgroundWorkerLoadData.ReportProgress(50);
+                this.graded_testsTableAdapter.Fill(this.mathWizGroup3DataSet.graded_tests);
+                this.graded_questionsTableAdapter.Fill(this.mathWizGroup3DataSet.graded_questions);
+                backgroundWorkerLoadData.ReportProgress(75);
+                //this.testsTableAdapter.FillByNotPractice(this.mathWizGroup3DataSet.tests); //no practice tests
+                backgroundWorkerLoadData.ReportProgress(100);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Internet Connection Error. This form will close. Try logging in again", "Error");
+                this.Close();
+            }
+            
         }
 
         private void backgroundWorkerLoadData_ProgressChanged(object sender, ProgressChangedEventArgs e)

@@ -266,9 +266,9 @@ namespace MathWiz
             return test.Id;
         }
 
-        public static int InsertQuestion(Question newQuestion, int testID)
+        public static int InsertQuestion(Question question, int testID)
         {
-            int questionID = 0;
+            question.Id = 0;
 
             string insertStatement = "INSERT INTO questions (TestID, MasteryLevel, QuestionText, CorrectAnswer, TimeLimit, Weight, RandomlyGenerated)"
                 + " OUTPUT INSERTED.Id" //get the last inserted ID
@@ -279,12 +279,12 @@ namespace MathWiz
 
             // create your parameters and add values from object
             Cmd.Parameters.AddWithValue("@TestID", testID);
-            Cmd.Parameters.AddWithValue("@MasteryLevel", newQuestion.MasteryLevel);
-            Cmd.Parameters.AddWithValue("@QuestionText", newQuestion.QuestionText);
-            Cmd.Parameters.AddWithValue("@CorrectAnswer", newQuestion.CorrectAnswer);
-            Cmd.Parameters.AddWithValue("@TimeLimit", newQuestion.TimeLimit);
-            Cmd.Parameters.AddWithValue("@Weight", newQuestion.Weight);
-            Cmd.Parameters.AddWithValue("@RNG", newQuestion.RandomlyGenerated);
+            Cmd.Parameters.AddWithValue("@MasteryLevel", question.MasteryLevel);
+            Cmd.Parameters.AddWithValue("@QuestionText", question.QuestionText);
+            Cmd.Parameters.AddWithValue("@CorrectAnswer", question.CorrectAnswer);
+            Cmd.Parameters.AddWithValue("@TimeLimit", question.TimeLimit);
+            Cmd.Parameters.AddWithValue("@Weight", question.Weight);
+            Cmd.Parameters.AddWithValue("@RNG", question.RandomlyGenerated);
 
             try
             {
@@ -292,7 +292,7 @@ namespace MathWiz
                 conn.Open();
 
                 // execute the query
-                questionID = Convert.ToInt32(Cmd.ExecuteScalar());
+                question.Id = Convert.ToInt32(Cmd.ExecuteScalar());
             }
             catch (SqlException ex)
             {
@@ -310,7 +310,7 @@ namespace MathWiz
                 }
             }
 
-            return questionID;
+            return question.Id;
         }
 
         public static int InsertGradedTest(GradedTest gradedTest, int studentID, int testID, string testType, int? recommendedLevel = 0, int? attempts = 1, bool? passed = true)

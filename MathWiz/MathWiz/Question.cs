@@ -114,7 +114,7 @@ namespace MathWiz
             {
                 timeLimit = new TimeSpan(0, 0, 30);
             }
-            int caseswitch = masteryLevel;
+
             switch(masteryLevel)
             {
                 case 1:

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,11 +37,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             return aNumber;
 
@@ -74,11 +75,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -113,11 +114,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -152,11 +153,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -197,11 +198,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -239,11 +240,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -285,11 +286,11 @@ namespace MathWiz
             }
             catch(SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch(Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -329,11 +330,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -374,11 +375,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -419,11 +420,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -465,11 +466,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -505,11 +506,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -550,11 +551,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -593,11 +594,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -637,11 +638,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -681,11 +682,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -699,170 +700,44 @@ namespace MathWiz
 
         //End SELECT ALL Users Methods
 
-        public static PracticeTest SelectPracticeTest(int id)
+        public static PlacementTest SelectKlassesPlacementTest(int klassID)
         {
-            PracticeTest practiceTest = new PracticeTest();
-
-            //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT * FROM tests WHERE ID = @ID AND TestType = 'Practice Test'";
-            SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@Id", id);
-            
-            try
-            {
-                conn.Open();
-
-                SqlDataReader reader = selectCommand.ExecuteReader();
-
-                if (reader.Read()) 
-                {
-                    practiceTest.Id = Convert.ToInt32(reader["Id"]);
-                    practiceTest.TimeLimit = TimeSpan.Parse(reader["TimeLimit"].ToString());
-                    practiceTest.RandomlyGenerated = Convert.ToBoolean(reader["RandomlyGenerated"]);
-                    practiceTest.MinLevel = Convert.ToInt32(reader["MinLevel"]);
-                    practiceTest.MaxLevel = Convert.ToInt32(reader["MaxLevel"]);
-                }
-                reader.Close();
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
-            }
-            finally
-            {
-                if (conn != null && conn.State == ConnectionState.Open) 
-                {
-                    conn.Close();
-                }
-            }
-            return practiceTest;
-        }
-
-        public static PlacementTest SelectPlacementTest(int id)
-        {
-            
             PlacementTest placementTest = new PlacementTest();
 
             //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT * FROM tests WHERE KlassID = @ID AND TestType = 'Placement Test'";
-            SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@Id", id);
-            
-            try
-            {
-                conn.Open();
-
-                SqlDataReader reader = selectCommand.ExecuteReader();
-
-                if (reader.Read()) 
-                {
-                    placementTest.Id = Convert.ToInt32(reader["Id"]);
-                    placementTest.TimeLimit = TimeSpan.Parse(reader["TimeLimit"].ToString());
-                    placementTest.MinLevel = Convert.ToInt32(reader["MinLevel"]);
-                    placementTest.MaxLevel = Convert.ToInt32(reader["MaxLevel"]);
-                }
-                reader.Close();
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
-            }
-            finally
-            {
-                if (conn != null && conn.State == ConnectionState.Open) 
-                {
-                    conn.Close();
-                }
-            }
-            return placementTest;
-        }
-
-        public static MasteryTest SelectMasteryTest(int id)
-        {
-            
-            MasteryTest masteryTest = new MasteryTest();
-
-            //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT * FROM MasteryTests WHERE ID = @ID AND TestType = 'Mastery Test'";
-            SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@Id", id);
-
-            
-            try
-            {
-                conn.Open();
-
-                SqlDataReader reader = selectCommand.ExecuteReader();
-
-                if (reader.Read()) 
-                {
-                    masteryTest.Id = Convert.ToInt32(reader["Id"]);
-                    masteryTest.TimeLimit = TimeSpan.Parse(reader["TimeLimit"].ToString());
-                    masteryTest.RandomlyGenerated = Convert.ToBoolean(reader["RandomlyGenerated"]);
-                    masteryTest.MasteryLevel = Convert.ToInt32(reader["MasteryLevel"]);
-                }
-                reader.Close();
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
-            }
-            finally
-            {
-                if (conn != null && conn.State == ConnectionState.Open) 
-                {
-                    conn.Close();
-                }
-            }
-            return masteryTest;
-        }
-
-        public static PlacementTest SelectKlassesPlacementTest(int klassID)
-        {
-            PlacementTest placementTest = new PlacementTest(); ;
-
             string query = "SELECT * FROM tests WHERE KlassID = @klassID AND TestType = 'Placement Test'";
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@klassID", klassID);
-
+            
             try
             {
                 conn.Open();
+
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read())
+                if (reader.Read()) 
                 {
                     placementTest.Id = Convert.ToInt32(reader["Id"]);
-                    placementTest.TimeLimit = TimeSpan.Parse(reader["TimeLimit"].ToString());
+                    placementTest.TimeLimit = TimeSpan.ParseExact(reader["TimeLimit"].ToString(), "hh\\:mm\\:ss", CultureInfo.InvariantCulture);
                     placementTest.RandomlyGenerated = Convert.ToBoolean(reader["RandomlyGenerated"]);
                     placementTest.MinLevel = Convert.ToInt32(reader["MinLevel"]);
                     placementTest.MaxLevel = Convert.ToInt32(reader["MaxLevel"]);
                 }
                 reader.Close();
+                
+                placementTest.Questions = SelectQuestions(placementTest.Id);
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
-                if (conn != null && conn.State == ConnectionState.Open)
+                if (conn != null && conn.State == ConnectionState.Open) 
                 {
                     conn.Close();
                 }
@@ -870,121 +745,43 @@ namespace MathWiz
             return placementTest;
         }
 
-        public static List<PracticeTest> SelectKlassesPracticeTests(int klassID)
-        {
-            List<PracticeTest> practiceTestsInKlass = new List<PracticeTest>();
-
-            string query = "SELECT * FROM MasteryTests WHERE KlassID = @klassID AND TestType = 'Practice Test'";
-            SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@klassID", klassID);
-
-            try
-            {
-                conn.Open();
-                SqlDataReader reader = selectCommand.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    PracticeTest practiceTest = new PracticeTest();
-                    practiceTest.Id = Convert.ToInt32(reader["Id"]);
-                    practiceTest.TimeLimit = TimeSpan.Parse(reader["TimeLimit"].ToString());
-                    practiceTest.RandomlyGenerated = Convert.ToBoolean(reader["RandomlyGenerated"]);
-                    practiceTest.MinLevel = Convert.ToInt32(reader["MinLevel"]);
-                    practiceTest.MaxLevel = Convert.ToInt32(reader["MaxLevel"]);
-
-                    practiceTestsInKlass.Add(practiceTest);
-                }
-                reader.Close();
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
-            }
-            finally
-            {
-                if (conn != null && conn.State == ConnectionState.Open) 
-                {
-                    conn.Close();
-                }
-            }
-            return practiceTestsInKlass;
-        }
-
         public static List<MasteryTest> SelectKlassesMasteryTests(int klassID)
         {
-            List<MasteryTest> masteryTestsInKlass = new List<MasteryTest>();
-            
+            List<MasteryTest> masteryTests = new List<MasteryTest>();
+
+            //make the query the safe way by binding values to prevent SQL injection
             string query = "SELECT * FROM tests WHERE KlassID = @klassID AND TestType = 'Mastery Test'";
             SqlCommand selectCommand = new SqlCommand(query, conn);
             selectCommand.Parameters.AddWithValue("@klassID", klassID);
-            
+
             try
             {
                 conn.Open();
+
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
                 while (reader.Read())
                 {
                     MasteryTest masteryTest = new MasteryTest();
+
                     masteryTest.Id = Convert.ToInt32(reader["Id"]);
-                    masteryTest.TimeLimit = TimeSpan.Parse(reader["TimeLimit"].ToString());
+                    masteryTest.TimeLimit = TimeSpan.ParseExact(reader["TimeLimit"].ToString(), "hh\\:mm\\:ss", CultureInfo.InvariantCulture);
                     masteryTest.RandomlyGenerated = Convert.ToBoolean(reader["RandomlyGenerated"]);
-                    masteryTest.MasteryLevel = Convert.ToInt32(reader["MasteryLevel"]);
+                    masteryTest.MasteryLevel = Convert.ToInt32(reader["MinLevel"]);
 
-                    masteryTestsInKlass.Add(masteryTest);
+                    masteryTest.Questions = SelectQuestions(masteryTest.Id);
+
+                    masteryTests.Add(masteryTest);
                 }
                 reader.Close();
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
-            }
-            finally
-            {
-                if (conn != null && conn.State == ConnectionState.Open) 
-                {
-                    conn.Close();
-                }
-            }
-            return masteryTestsInKlass;
-        }
-
-        public static bool SelectKlassesMasteryLevels(int klassID, int masteryLevel)
-        {
-
-            string query = "SELECT * FROM tests WHERE KlassID = @klassID AND MasteryLevel = @masteryLevel";
-            SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@klassID", klassID);
-            selectCommand.Parameters.AddWithValue("@masteryLevel", masteryLevel);
-
-            try
-            {
-                conn.Open();
-                SqlDataReader reader = selectCommand.ExecuteReader();
-
-                if (reader.Read() && reader.HasRows) 
-                {
-                    reader.Close();
-                    conn.Close();
-                    return true;
-                }
-                reader.Close();
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -993,43 +790,50 @@ namespace MathWiz
                     conn.Close();
                 }
             }
-            return false;
+            return masteryTests;
         }
 
-        public static Question SelectQuestion(int id)
+        public static List<Question> SelectQuestions(int testID)
         {
+            List<Question> questions = new List<Question>();
             
-            Question question = new Question();
-
             //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT * FROM Questions WHERE ID = @ID";
+            string query = "SELECT * FROM questions WHERE TestID = @testID";
             SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@BranchName", id);
-
+            selectCommand.Parameters.AddWithValue("@testID", testID);
             
             try
             {
-                conn.Open();
+                if (conn != null && conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
 
                 SqlDataReader reader = selectCommand.ExecuteReader();
 
-                if (reader.Read()) 
+                while (reader.Read()) 
                 {
-                    
-                    //question.Username = Convert.ToString(reader["Username"]);
-                    //question.FirstName = Convert.ToString(reader["FirstName"]);
-                    //question.LastName = Convert.ToString(reader["LastName"]);
-                    
+                    Question question = new Question();
+
+                    question.Id = Convert.ToInt32(reader["Id"]);
+                    question.MasteryLevel = Convert.ToInt16(reader["MasteryLevel"]);
+                    question.QuestionText = Convert.ToString(reader["QuestionText"]);
+                    question.CorrectAnswer = Convert.ToInt16(reader["CorrectAnswer"]);
+                    question.TimeLimit = TimeSpan.ParseExact(reader["TimeLimit"].ToString(), "hh\\:mm\\:ss", CultureInfo.InvariantCulture);
+                    question.Weight = Convert.ToInt16(reader["Weight"]);
+                    question.RandomlyGenerated = Convert.ToBoolean(reader["RandomlyGenerated"]);
+
+                    questions.Add(question);
                 }
                 reader.Close();
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -1038,144 +842,9 @@ namespace MathWiz
                     conn.Close();
                 }
             }
-            return question;
+            return questions;
         }
-
-        public static GradedPracticeTest SelectGradePrac(int id)
-        {
-            
-            GradedPracticeTest gradePrac = new GradedPracticeTest();
-
-            //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT * FROM GradedPracticeTests WHERE ID = @ID";
-            SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@BranchName", id);
-
-            
-            try
-            {
-                conn.Open();
-
-                SqlDataReader reader = selectCommand.ExecuteReader();
-
-                if (reader.Read()) 
-                {
-                    
-                    //gradePrac.Username = Convert.ToString(reader["Username"]);
-                    //gradePrac.FirstName = Convert.ToString(reader["FirstName"]);
-                    //gradePrac.LastName = Convert.ToString(reader["LastName"]);
-                    
-                }
-                reader.Close();
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
-            }
-            finally
-            {
-                if (conn != null && conn.State == ConnectionState.Open) 
-                {
-                    conn.Close();
-                }
-            }
-            return gradePrac;
-        }
-
-        public static GradedPlacementTest SelectGradePlace(int id)
-        {
-            
-            GradedPlacementTest gradePlace = new GradedPlacementTest();
-
-            //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT * FROM GradedPlacementTests WHERE ID = @ID";
-            SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@BranchName", id);
-
-            
-            try
-            {
-                conn.Open();
-
-                SqlDataReader reader = selectCommand.ExecuteReader();
-
-                if (reader.Read()) 
-                {
-                    
-                    //gradePlace.Username = Convert.ToString(reader["Username"]);
-                    //gradePlace.FirstName = Convert.ToString(reader["FirstName"]);
-                    //gradePlace.LastName = Convert.ToString(reader["LastName"]);
-                    
-                }
-                reader.Close();
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
-            }
-            finally
-            {
-                if (conn != null && conn.State == ConnectionState.Open) 
-                {
-                    conn.Close();
-                }
-            }
-            return gradePlace;
-        }
-
-        public static GradedMasteryTest SelectGradeMaster(int id)
-        {
-            
-            GradedMasteryTest gradeMaster = new GradedMasteryTest();
-
-            //make the query the safe way by binding values to prevent SQL injection
-            string query = "SELECT * FROM GradedMasteryTests WHERE ID = @ID";
-            SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@BranchName", id);
-
-            
-            try
-            {
-                conn.Open();
-
-                SqlDataReader reader = selectCommand.ExecuteReader();
-
-                if (reader.Read()) 
-                {
-                    
-                    //gradeMaster.Username = Convert.ToString(reader["Username"]);
-                    //gradeMaster.FirstName = Convert.ToString(reader["FirstName"]);
-                    //gradeMaster.LastName = Convert.ToString(reader["LastName"]);
-                    
-                }
-                reader.Close();
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
-            }
-            finally
-            {
-                if (conn != null && conn.State == ConnectionState.Open) 
-                {
-                    conn.Close();
-                }
-            }
-            return gradeMaster;
-        }
-
+        
         public static GradedQuestion SelectGradeQuestion(int id)
         {
             
@@ -1204,11 +873,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -1220,7 +889,7 @@ namespace MathWiz
             return gradeQuestion;
         }
 
-        public static Klass SelectKlass(int id)
+        public static Klass SelectKlass(int klassID)
         {
             
             Klass klass = new Klass();
@@ -1228,7 +897,7 @@ namespace MathWiz
             //make the query the safe way by binding values to prevent SQL injection
             string query = "SELECT * FROM Klasses WHERE Id = @ID";
             SqlCommand selectCommand = new SqlCommand(query, conn);
-            selectCommand.Parameters.AddWithValue("@Id", id);
+            selectCommand.Parameters.AddWithValue("@Id", klassID);
 
             
             try
@@ -1246,11 +915,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -1294,11 +963,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -1338,11 +1007,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -1387,11 +1056,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {
@@ -1428,11 +1097,11 @@ namespace MathWiz
             }
             catch (SqlException ex)
             {
-                Console.WriteLine("Database SQL Exception\n\n" + ex.ToString());
+                MessageBox.Show("Database SQL Exception\n\n" + ex.ToString());
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Generic Exception.\n\n" + ex.ToString());
+                MessageBox.Show("Generic Exception.\n\n" + ex.ToString());
             }
             finally
             {

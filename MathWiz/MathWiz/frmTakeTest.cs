@@ -33,6 +33,7 @@ namespace MathWiz
 
         private void frmTakeTest_Load(object sender, EventArgs e)
         {
+            this.Text += " - " + student.FirstName + " " + student.LastName;
             lblStudentName.Text = student.FirstName + " " + student.LastName;
             lblClassName.Text = klass.KlassName;
 
@@ -45,6 +46,7 @@ namespace MathWiz
                     gbxQuestion.Text = "Placement Test";
                     this.Text = "Placement Test";
                     lblTimerTest.Text = gradedPlacementTest.PlacementTest.TimeLimit.Minutes.ToString("00") + ":" + gradedPlacementTest.PlacementTest.TimeLimit.Seconds.ToString("00");
+
                     break;
 
                 case "practice":
@@ -54,6 +56,7 @@ namespace MathWiz
                     this.Text = "Practice Test";
                     gbxQuestion.Text = "Practice Test";
                     lblTimerTest.Text = gradedPracticeTest.PracticeTest.TimeLimit.Minutes.ToString("00") + ":" + gradedPracticeTest.PracticeTest.TimeLimit.Seconds.ToString("00");
+
                     break;
 
                 case "mastery":
@@ -63,10 +66,10 @@ namespace MathWiz
                     this.Text = "Mastery Test";
                     gbxQuestion.Text = "Mastery Test";
                     lblTimerTest.Text = gradedMasteryTest.MasteryTest.TimeLimit.Minutes.ToString("00") + ":" + gradedMasteryTest.MasteryTest.TimeLimit.Seconds.ToString("00");
+
                     break;
             }
-
-            this.Text += " - " + student.FirstName + " " + student.LastName;
+            
             btnStartFinish.Text = "Start Test";
             gbxQuestion.Text = "";
             
@@ -78,6 +81,7 @@ namespace MathWiz
         {
             if (btnStartFinish.Text == "Start Test") //start test, show the first question
             {
+                testFinished = false;
                 btnStartFinish.Text = "Finish Test";
                 btnStartFinish.Hide();
 
@@ -86,25 +90,55 @@ namespace MathWiz
                 currentQuestionNum = 0; //array starts at 0
 
                 timerTest.Start();
-
-                ShowQuestion(gradedPracticeTest.PracticeTest.Questions[currentQuestionNum]);
-
-                testFinished = false;
-
-            }
-            else if (btnStartFinish.Text == "Finish Test") //finish test, record score, write score to db
-            {
+                
                 switch (this.Tag.ToString())
                 {
                     case "placement":
 
-
+                        ShowQuestion(gradedPlacementTest.PlacementTest.Questions[currentQuestionNum]);
 
                         break;
 
                     case "practice":
 
-                        //record information for the completed test
+                        ShowQuestion(gradedPracticeTest.PracticeTest.Questions[currentQuestionNum]);
+
+                        break;
+
+                    case "mastery":
+
+                        ShowQuestion(gradedMasteryTest.MasteryTest.Questions[currentQuestionNum]);
+
+                        break;
+                }
+            }
+            else if (btnStartFinish.Text == "Finish Test") //finish test, record score, write score to db
+            {
+                switch (this.Tag.ToString()) //record information for the completed test
+                {
+                    case "placement":
+
+                        gradedPlacementTest.Score = (decimal)gradedPlacementTest.CorrectlyAnsweredQuestions.Count / (decimal)(gradedPlacementTest.CorrectlyAnsweredQuestions.Count + (decimal)gradedPlacementTest.WronglyAnsweredQuestions.Count) * 100;
+                        gradedPlacementTest.TimeTakenToComplete = gradedPlacementTest.PlacementTest.TimeLimit - TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
+                        gradedPlacementTest.DateTaken = DateTime.Now;
+                        gradedPlacementTest.Feedback = gradedPracticeTest.Score.ToString();
+
+                        int minLevelWrong = 12;
+                        for(int i = 0; i < gradedPlacementTest.WronglyAnsweredQuestions.Count; i++)
+                        {
+                            if(gradedPlacementTest.WronglyAnsweredQuestions[i].Question.MasteryLevel < minLevelWrong)
+                            {
+                                minLevelWrong = gradedPlacementTest.WronglyAnsweredQuestions[i].Question.MasteryLevel;
+                            }
+                        }
+
+                        gradedPlacementTest.RecommendedLevel = minLevelWrong;
+
+                        break;
+
+                    case "practice":
+
+                        
                         gradedPracticeTest.Score = (decimal)gradedPracticeTest.CorrectlyAnsweredQuestions.Count / (decimal)(gradedPracticeTest.CorrectlyAnsweredQuestions.Count + (decimal)gradedPracticeTest.WronglyAnsweredQuestions.Count) * 100;
                         gradedPracticeTest.TimeTakenToComplete = gradedPracticeTest.PracticeTest.TimeLimit - TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
                         gradedPracticeTest.DateTaken = DateTime.Now;
@@ -170,43 +204,136 @@ namespace MathWiz
             if (Validation.IsInteger(txtStudentAnswer))
             {
                 string studentAnswer = txtStudentAnswer.Text;
-                TimeSpan timeTakenToAnswer = gradedPracticeTest.PracticeTest.Questions[currentQuestionNum].TimeLimit - TimeSpan.ParseExact(lblTimerQuestion.Text, "mm\\:ss", CultureInfo.InvariantCulture);
+                TimeSpan timeTakenToAnswer;
+                GradedQuestion correctlyAnsweredQuestion;
+                GradedQuestion wronglyAnsweredQuestion;
 
-                if (Convert.ToInt32(txtStudentAnswer.Text.Trim()) == gradedPracticeTest.PracticeTest.Questions[currentQuestionNum].CorrectAnswer)
+                switch (this.Tag.ToString())
                 {
-                    GradedQuestion correctlyAnsweredQuestion = new GradedQuestion(gradedPracticeTest.PracticeTest.Questions[currentQuestionNum], studentAnswer, true, timeTakenToAnswer);
-                    gradedPracticeTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
+                    case "placement":
 
-                    txtStudentAnswer.ForeColor = Color.FromArgb(0, 255, 0);
+                        timeTakenToAnswer = gradedPlacementTest.PlacementTest.Questions[currentQuestionNum].TimeLimit - TimeSpan.ParseExact(lblTimerQuestion.Text, "mm\\:ss", CultureInfo.InvariantCulture);
+
+                        if (Convert.ToInt32(txtStudentAnswer.Text.Trim()) == gradedPlacementTest.PlacementTest.Questions[currentQuestionNum].CorrectAnswer)
+                        {
+                            correctlyAnsweredQuestion = new GradedQuestion(gradedPlacementTest.PlacementTest.Questions[currentQuestionNum], studentAnswer, true, timeTakenToAnswer);
+                            gradedPlacementTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
+
+                            txtStudentAnswer.ForeColor = Color.FromArgb(0, 255, 0);
+                        }
+                        else
+                        {
+                            wronglyAnsweredQuestion = new GradedQuestion(gradedPlacementTest.PlacementTest.Questions[currentQuestionNum], studentAnswer, false, timeTakenToAnswer);
+                            gradedPlacementTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
+
+                            txtStudentAnswer.ForeColor = Color.FromArgb(255, 0, 0);
+                        }
+
+                        lblCorrectAnswer.Show();
+                        await Task.Delay(1000); //show the answer for a bit
+
+                        currentQuestionNum++;
+
+                        if (currentQuestionNum < gradedPlacementTest.PlacementTest.Questions.Count)
+                        {
+                            ShowQuestion(gradedPlacementTest.PlacementTest.Questions[currentQuestionNum]);
+                        }
+                        else //the test if finished
+                        {
+                            btnStartFinish.Show();
+                            btnStartFinish.Focus();
+                            txtStudentAnswer.Enabled = false;
+                            btnSubmitAnswer.Enabled = false;
+
+                            timerQuestion.Stop();
+                            timerTest.Stop();
+                        }
+
+                        break;
+
+                    case "practice":
+
+                        timeTakenToAnswer = gradedPracticeTest.PracticeTest.Questions[currentQuestionNum].TimeLimit - TimeSpan.ParseExact(lblTimerQuestion.Text, "mm\\:ss", CultureInfo.InvariantCulture);
+
+                        if (Convert.ToInt32(txtStudentAnswer.Text.Trim()) == gradedPracticeTest.PracticeTest.Questions[currentQuestionNum].CorrectAnswer)
+                        {
+                            correctlyAnsweredQuestion = new GradedQuestion(gradedPracticeTest.PracticeTest.Questions[currentQuestionNum], studentAnswer, true, timeTakenToAnswer);
+                            gradedPracticeTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
+
+                            txtStudentAnswer.ForeColor = Color.FromArgb(0, 255, 0);
+                        }
+                        else
+                        {
+                            wronglyAnsweredQuestion = new GradedQuestion(gradedPracticeTest.PracticeTest.Questions[currentQuestionNum], studentAnswer, false, timeTakenToAnswer);
+                            gradedPracticeTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
+
+                            txtStudentAnswer.ForeColor = Color.FromArgb(255, 0, 0);
+                        }
+
+                        lblCorrectAnswer.Show();
+                        await Task.Delay(1000); //show the answer for a bit
+
+                        currentQuestionNum++;
+
+                        if (currentQuestionNum < gradedPracticeTest.PracticeTest.Questions.Count)
+                        {
+                            ShowQuestion(gradedPracticeTest.PracticeTest.Questions[currentQuestionNum]);
+                        }
+                        else //the test if finished
+                        {
+                            btnStartFinish.Show();
+                            btnStartFinish.Focus();
+                            txtStudentAnswer.Enabled = false;
+                            btnSubmitAnswer.Enabled = false;
+
+                            timerQuestion.Stop();
+                            timerTest.Stop();
+                        }
+
+                        break;
+
+                    case "mastery":
+
+                        timeTakenToAnswer = gradedMasteryTest.MasteryTest.Questions[currentQuestionNum].TimeLimit - TimeSpan.ParseExact(lblTimerQuestion.Text, "mm\\:ss", CultureInfo.InvariantCulture);
+
+                        if (Convert.ToInt32(txtStudentAnswer.Text.Trim()) == gradedMasteryTest.MasteryTest.Questions[currentQuestionNum].CorrectAnswer)
+                        {
+                            correctlyAnsweredQuestion = new GradedQuestion(gradedMasteryTest.MasteryTest.Questions[currentQuestionNum], studentAnswer, true, timeTakenToAnswer);
+                            gradedMasteryTest.CorrectlyAnsweredQuestions.Add(correctlyAnsweredQuestion);
+
+                            txtStudentAnswer.ForeColor = Color.FromArgb(0, 255, 0);
+                        }
+                        else
+                        {
+                            wronglyAnsweredQuestion = new GradedQuestion(gradedMasteryTest.MasteryTest.Questions[currentQuestionNum], studentAnswer, false, timeTakenToAnswer);
+                            gradedMasteryTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
+
+                            txtStudentAnswer.ForeColor = Color.FromArgb(255, 0, 0);
+                        }
+
+                        lblCorrectAnswer.Show();
+                        await Task.Delay(1000); //show the answer for a bit
+
+                        currentQuestionNum++;
+
+                        if (currentQuestionNum < gradedMasteryTest.MasteryTest.Questions.Count)
+                        {
+                            ShowQuestion(gradedMasteryTest.MasteryTest.Questions[currentQuestionNum]);
+                        }
+                        else //the test if finished
+                        {
+                            btnStartFinish.Show();
+                            btnStartFinish.Focus();
+                            txtStudentAnswer.Enabled = false;
+                            btnSubmitAnswer.Enabled = false;
+
+                            timerQuestion.Stop();
+                            timerTest.Stop();
+                        }
+
+                        break;
                 }
-                else
-                {
-                    GradedQuestion wronglyAnsweredQuestion = new GradedQuestion(gradedPracticeTest.PracticeTest.Questions[currentQuestionNum], studentAnswer, false, timeTakenToAnswer);
-                    gradedPracticeTest.WronglyAnsweredQuestions.Add(wronglyAnsweredQuestion);
-
-                    txtStudentAnswer.ForeColor = Color.FromArgb(255, 0, 0);
-                }
-
-                lblCorrectAnswer.Show();
-                await Task.Delay(1000); //show the answer for a bit
-
-                currentQuestionNum++;
-
-                if (currentQuestionNum < gradedPracticeTest.PracticeTest.Questions.Count)
-                {
-                    ShowQuestion(gradedPracticeTest.PracticeTest.Questions[currentQuestionNum]);
-                }
-                else //the test if finished
-                {
-                    btnStartFinish.Show();
-                    btnStartFinish.Focus();
-                    txtStudentAnswer.Enabled = false;
-                    btnSubmitAnswer.Enabled = false;
-
-                    timerQuestion.Stop();
-                    timerTest.Stop();
-                }
-
+                
                 txtStudentAnswer.Text = "";
             }
         }
@@ -215,29 +342,33 @@ namespace MathWiz
         //MARK Timer Tick Handlers
         private void timerTest_Tick(object sender, EventArgs e)
         {
-            TimeSpan currentTime = TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
-
-            currentTime = currentTime.Subtract(new TimeSpan(0, 0, 1)); //subtract 1 second every tick
-
-            lblTimerTest.Text = currentTime.Minutes.ToString("00") + ":" + currentTime.Seconds.ToString("00");
-
             if (lblTimerTest.Text == "00:00") //if time runs out for the entire test
             {
                 EndTest();
+            }
+            else
+            {
+                TimeSpan currentTime = TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
+
+                currentTime = currentTime.Subtract(new TimeSpan(0, 0, 1)); //subtract 1 second every tick
+
+                lblTimerTest.Text = currentTime.Minutes.ToString("00") + ":" + currentTime.Seconds.ToString("00");
             }
         }
 
         private void timerQuestion_Tick(object sender, EventArgs e)
         {
-            TimeSpan currentTime = TimeSpan.ParseExact(lblTimerQuestion.Text, "mm\\:ss", CultureInfo.InvariantCulture);
-
-            currentTime = currentTime.Subtract(new TimeSpan(0, 0, 1)); //subtract 1 second every tick
-
-            lblTimerQuestion.Text = currentTime.Minutes.ToString("00") + ":" + currentTime.Seconds.ToString("00");
-
             if (lblTimerQuestion.Text == "00:00") //if time runs out for the current question
             {
                 EndQuestion();
+            }
+            else
+            {
+                TimeSpan currentTime = TimeSpan.ParseExact(lblTimerQuestion.Text, "mm\\:ss", CultureInfo.InvariantCulture);
+
+                currentTime = currentTime.Subtract(new TimeSpan(0, 0, 1)); //subtract 1 second every tick
+
+                lblTimerQuestion.Text = currentTime.Minutes.ToString("00") + ":" + currentTime.Seconds.ToString("00");
             }
         }
         //End Timer Tick Handlers
@@ -247,10 +378,39 @@ namespace MathWiz
         {
             //show timer stuff
             timerQuestion.Start();
-            lblTimerQuestion.Text = gradedPracticeTest.PracticeTest.Questions[currentQuestionNum].TimeLimit.Minutes.ToString("00") + ":" + gradedPracticeTest.PracticeTest.Questions[currentQuestionNum].TimeLimit.Seconds.ToString("00");
 
-            //show the question number
-            gbxQuestion.Text = "Question " + (currentQuestionNum + 1).ToString() + " of " + gradedPracticeTest.PracticeTest.Questions.Count;
+            switch (this.Tag.ToString())
+            {
+                case "placement":
+
+                    //show the question text
+                    lblTimerQuestion.Text = gradedPlacementTest.PlacementTest.Questions[currentQuestionNum].TimeLimit.Minutes.ToString("00") + ":" + gradedPlacementTest.PlacementTest.Questions[currentQuestionNum].TimeLimit.Seconds.ToString("00");
+
+                    //show the question number
+                    gbxQuestion.Text = "Question " + (currentQuestionNum + 1).ToString() + " of " + gradedPlacementTest.PlacementTest.Questions.Count;
+
+                    break;
+
+                case "practice":
+
+                    //show the question text
+                    lblTimerQuestion.Text = gradedPracticeTest.PracticeTest.Questions[currentQuestionNum].TimeLimit.Minutes.ToString("00") + ":" + gradedPracticeTest.PracticeTest.Questions[currentQuestionNum].TimeLimit.Seconds.ToString("00");
+
+                    //show the question number
+                    gbxQuestion.Text = "Question " + (currentQuestionNum + 1).ToString() + " of " + gradedPracticeTest.PracticeTest.Questions.Count;
+
+                    break;
+
+                case "mastery":
+
+                    //show the question text
+                    lblTimerQuestion.Text = gradedMasteryTest.MasteryTest.Questions[currentQuestionNum].TimeLimit.Minutes.ToString("00") + ":" + gradedMasteryTest.MasteryTest.Questions[currentQuestionNum].TimeLimit.Seconds.ToString("00");
+
+                    //show the question number
+                    gbxQuestion.Text = "Question " + (currentQuestionNum + 1).ToString() + " of " + gradedPracticeTest.PracticeTest.Questions.Count;
+
+                    break;
+            }
 
             //show the question text
             lblQuestionText.Text = q.QuestionText;
