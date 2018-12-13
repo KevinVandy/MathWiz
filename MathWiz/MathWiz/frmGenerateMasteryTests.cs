@@ -141,14 +141,13 @@ namespace MathWiz
 
                 }
                 
-
                 masteryTest.MasteryLevel = ml;
                 masteryTest.Questions = Question.GenerateRandomQuestions(ml, questionTimeLimit, numberOfQuestions);
                 masteryTest.TimeLimit = TimeSpan.FromTicks(questionTimeLimit.Ticks * numberOfQuestions);
                 masteryTest.PassThreshhold = passThreshhold;
                 masteryTest.RandomlyGenerated = true;
 
-                MathWizDB.InsertMasteryTest(masteryTest, klassID);
+                MathWizDB.InsertTest(klassID, masteryTest, "Mastery Test", masteryTest.PassThreshhold, masteryTest.MasteryLevel, masteryTest.MasteryLevel);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

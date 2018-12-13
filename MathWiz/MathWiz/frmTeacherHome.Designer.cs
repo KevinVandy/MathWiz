@@ -589,7 +589,7 @@
             this.dgvTests.Name = "dgvTests";
             this.dgvTests.RowHeadersVisible = false;
             this.dgvTests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTests.Size = new System.Drawing.Size(644, 236);
+            this.dgvTests.Size = new System.Drawing.Size(661, 236);
             this.dgvTests.TabIndex = 22;
             this.dgvTests.SelectionChanged += new System.EventHandler(this.dgvTests_SelectionChanged);
             // 

@@ -59,16 +59,19 @@ namespace MathWiz
                 placementTest.Id = MathWizDB.InsertTest(klassID, placementTest, "Placement Test", 0, placementTest.MinLevel, placementTest.MaxLevel);
 
                 this.Close();
-
-                foreach (Question q in placementTest.Questions)
+                
+                if(placementTest.Id > 0)
                 {
-                    MathWizDB.InsertTestQuestionPlacement(placementTest, q, placementTest.Id);
+                    MessageBox.Show("Your new randomly generated Placement test has been created");
                 }
-                MessageBox.Show("Your new randomly generated Placement test has been created");
+                else
+                {
+                    MessageBox.Show("Failed to create placement test", "error");
+                }
             }
             else
             {
-                MessageBox.Show("A placement test has already been created for this class.");
+                MessageBox.Show("A placement test has already been created for this class.","error");
             }
         }
 
@@ -150,7 +153,11 @@ namespace MathWiz
         //validation methods for the form based on which test is selected
         private bool ValidateForm()
         {
-            return true;
+            if(Validation.IsComboSelected(cboNumberOfQuestions) && Validation.IsComboSelected(cboQuestionSpeed))
+            {
+                return true;
+            }
+            return false;
         }
     } 
 }

@@ -39,7 +39,7 @@ namespace MathWiz
             this.graded_testsTableAdapter.Fill(this.mathWizGroup3DataSet.graded_tests);
             this.graded_questionsTableAdapter.Fill(this.mathWizGroup3DataSet.graded_questions);
             backgroundWorkerLoadData.ReportProgress(75);
-            this.testsTableAdapter.Fill(this.mathWizGroup3DataSet.tests);
+            //this.testsTableAdapter.FillByNotPractice(this.mathWizGroup3DataSet.tests); //no practice tests
             backgroundWorkerLoadData.ReportProgress(100);
         }
 
@@ -335,11 +335,6 @@ namespace MathWiz
         private void dgvStudents_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             studentsTableAdapter.Update(mathWizGroup3DataSet.students);
-        }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-
         }
 
         //Change ML Button
