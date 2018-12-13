@@ -768,12 +768,15 @@ namespace MathWiz
                     masteryTest.TimeLimit = TimeSpan.ParseExact(reader["TimeLimit"].ToString(), "hh\\:mm\\:ss", CultureInfo.InvariantCulture);
                     masteryTest.RandomlyGenerated = Convert.ToBoolean(reader["RandomlyGenerated"]);
                     masteryTest.MasteryLevel = Convert.ToInt32(reader["MinLevel"]);
-
-                    masteryTest.Questions = SelectQuestions(masteryTest.Id);
-
+                    
                     masteryTests.Add(masteryTest);
                 }
                 reader.Close();
+
+                foreach(MasteryTest m in masteryTests) //add the questions to the test objects
+                {
+                    m.Questions = SelectQuestions(m.Id);
+                }
             }
             catch (SqlException ex)
             {

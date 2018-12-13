@@ -119,39 +119,87 @@ namespace MathWiz
             {
                 case 1:
                     qL = GenerateSimpleAddtionQuestions(timeLimit, NumberOfQuestions);
+                    foreach(Question q in qL)
+                    {
+                        q.MasteryLevel = 1;
+                    }
                     break;
                 case 2:
                     qL = GenerateSimpleSubtractionQuestions(timeLimit, NumberOfQuestions);
+                    foreach (Question q in qL)
+                    {
+                        q.MasteryLevel = 2;
+                    }
                     break;
                 case 3:
                     qL = GenerateMixedSimpleAdditionSubtraction(timeLimit, NumberOfQuestions);
+                    foreach (Question q in qL)
+                    {
+                        q.MasteryLevel = 3;
+                    }
                     break;
                 case 4:
                     qL = GenerateComplexAddition(timeLimit, NumberOfQuestions);
+                    foreach (Question q in qL)
+                    {
+                        q.MasteryLevel = 4;
+                    }
                     break;
                 case 5:
                     qL = GenerateComplexSubtraction(timeLimit, NumberOfQuestions);
+                    foreach (Question q in qL)
+                    {
+                        q.MasteryLevel = 5;
+                    }
                     break;
                 case 6:
                     qL = GenerateMixedComplexAdditionSubtraction(timeLimit, NumberOfQuestions);
+                    foreach (Question q in qL)
+                    {
+                        q.MasteryLevel = 6;
+                    }
                     break;
                 case 7:
                     qL = GenerateSimpleMultiplication(timeLimit, NumberOfQuestions);
+                    foreach (Question q in qL)
+                    {
+                        q.MasteryLevel = 7;
+                    }
                     break;
                 case 8:
                     qL = GenerateSimpleDivision(timeLimit, NumberOfQuestions);
+                    foreach (Question q in qL)
+                    {
+                        q.MasteryLevel = 8;
+                    }
                     break;
                 case 9:
                     qL = GenerateSimpleMultiplicationDivision(timeLimit, NumberOfQuestions);
+                    foreach (Question q in qL)
+                    {
+                        q.MasteryLevel = 9;
+                    }
                     break;
                 case 10:
                     qL = GenerateAdvancedMultiplication(timeLimit, NumberOfQuestions);
+                    foreach (Question q in qL)
+                    {
+                        q.MasteryLevel = 10;
+                    }
                     break;
                 case 11:
                     qL = GenerateAdvancedDivision(timeLimit, NumberOfQuestions);
+                    foreach (Question q in qL)
+                    {
+                        q.MasteryLevel = 11;
+                    }
                     break;
                 case 12:
                     qL = GenerateAdvnacedMultiplicationDivison(timeLimit, NumberOfQuestions);
+                    foreach (Question q in qL)
+                    {
+                        q.MasteryLevel = 12;
+                    }
                     break;
                 default:
                     MessageBox.Show("No known case check that what you passed is within range");

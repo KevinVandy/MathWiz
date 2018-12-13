@@ -134,12 +134,11 @@ namespace MathWiz
 
                         gradedPlacementTest.RecommendedLevel = minLevelWrong;
 
-                        MessageBox.Show("You have been placed at Mastery Level: " + gradedPlacementTest.RecommendedLevel.ToString());
+                        MessageBox.Show("You have been placed at Mastery Level: " + gradedPlacementTest.RecommendedLevel.ToString() + "\nYour Score was: " + gradedPlacementTest.Score.ToString());
 
                         break;
 
                     case "practice":
-
                         
                         gradedPracticeTest.Score = (decimal)gradedPracticeTest.CorrectlyAnsweredQuestions.Count / (decimal)(gradedPracticeTest.CorrectlyAnsweredQuestions.Count + (decimal)gradedPracticeTest.WronglyAnsweredQuestions.Count) * 100;
                         gradedPracticeTest.TimeTakenToComplete = gradedPracticeTest.PracticeTest.TimeLimit - TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
@@ -150,7 +149,22 @@ namespace MathWiz
                         
                     case "mastery":
 
+                        gradedMasteryTest.Score = (decimal)gradedMasteryTest.CorrectlyAnsweredQuestions.Count / (decimal)(gradedMasteryTest.CorrectlyAnsweredQuestions.Count + (decimal)gradedMasteryTest.WronglyAnsweredQuestions.Count) * 100;
+                        gradedMasteryTest.TimeTakenToComplete = gradedMasteryTest.MasteryTest.TimeLimit - TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
+                        gradedMasteryTest.DateTaken = DateTime.Now;
+                        gradedMasteryTest.Feedback = gradedMasteryTest.Score.ToString();
 
+                        if(gradedMasteryTest.Score > gradedMasteryTest.MasteryTest.PassThreshhold) //determine whether they passed or not.
+                        {
+                            gradedMasteryTest.Passed = true;
+                            MathWizDB.UpdateMasteryLevel(student.Username, ++student.MasteryLevel); //bump the master level up
+                            MessageBox.Show("You scored " + gradedMasteryTest.Score.ToString("###.##") + " and have now passed to level " + student.MasteryLevel);
+                        }
+                        else
+                        {
+                            gradedMasteryTest.Passed = false;
+                            MessageBox.Show("You scored " + gradedMasteryTest.Score.ToString("###.##") + " and will need to take this test again");
+                        }
 
                         break;
                 }
@@ -189,7 +203,7 @@ namespace MathWiz
                 case "mastery":
                     
                     //just insert the graded test
-                    MathWizDB.InsertGradedTest(gradedMasteryTest, student.Id, gradedMasteryTest.MasteryTest.Id, "Mastery Test", null, 1, gradedMasteryTest.Passed);
+                    MathWizDB.InsertGradedTest(gradedMasteryTest, student.Id, gradedMasteryTest.MasteryTest.Id, "Mastery Test", 0, 1, gradedMasteryTest.Passed);
 
                     break;
             }
@@ -409,7 +423,7 @@ namespace MathWiz
                     lblTimerQuestion.Text = gradedMasteryTest.MasteryTest.Questions[currentQuestionNum].TimeLimit.Minutes.ToString("00") + ":" + gradedMasteryTest.MasteryTest.Questions[currentQuestionNum].TimeLimit.Seconds.ToString("00");
 
                     //show the question number
-                    gbxQuestion.Text = "Question " + (currentQuestionNum + 1).ToString() + " of " + gradedPracticeTest.PracticeTest.Questions.Count;
+                    gbxQuestion.Text = "Question " + (currentQuestionNum + 1).ToString() + " of " + gradedMasteryTest.MasteryTest.Questions.Count;
 
                     break;
             }

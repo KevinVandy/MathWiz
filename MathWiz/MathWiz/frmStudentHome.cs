@@ -97,6 +97,7 @@ namespace MathWiz
                 Form placementForm = new frmTakeTest(student, klass, availablePlacementTest); //TODO Pass Correct Test object
                 placementForm.Tag = "placement";
                 placementForm.ShowDialog();
+                frmStudentHome_Load(null, null);
             }
             else
             {
@@ -124,6 +125,7 @@ namespace MathWiz
             Form masteryForm = new frmTakeTest(student, klass, availableMasteryTests[student.MasteryLevel]); //Passes the students mastery level
             masteryForm.Tag = "mastery";
             masteryForm.ShowDialog();
+            frmStudentHome_Load(null, null);
         }
     }
 }
