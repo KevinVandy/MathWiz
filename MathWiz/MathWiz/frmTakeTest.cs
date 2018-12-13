@@ -145,6 +145,8 @@ namespace MathWiz
                         gradedPracticeTest.DateTaken = DateTime.Now;
                         gradedPracticeTest.Feedback = gradedPracticeTest.Score.ToString();
 
+                        MessageBox.Show("Your Score was: " + gradedPracticeTest.Score.ToString());
+
                         break;
                         
                     case "mastery":
