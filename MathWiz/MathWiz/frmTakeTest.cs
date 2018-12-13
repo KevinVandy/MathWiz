@@ -134,7 +134,7 @@ namespace MathWiz
 
                         gradedPlacementTest.RecommendedLevel = minLevelWrong;
 
-                        MessageBox.Show("You have been placed at Mastery Level: " + gradedPlacementTest.RecommendedLevel.ToString() + "\nYour Score was: " + gradedPlacementTest.Score.ToString());
+                        MessageBox.Show("You have been placed at Mastery Level: " + gradedPlacementTest.RecommendedLevel.ToString() + "\nYour Score was: " + gradedPlacementTest.Score.ToString("###.##"));
 
                         break;
 
