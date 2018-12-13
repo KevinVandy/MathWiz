@@ -94,16 +94,16 @@ namespace MathWiz
         public static void InsertTeacher(Teacher newTeacher)
         {
             string insertStatement = "INSERT INTO teachers (Username, FirstName, LastName, PasswordHash) " +
-                "VALUES(@Username, @FirstName, @LastName, @Password)";
+                "VALUES(@username, @firstName, @lastName, @password)";
 
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand(insertStatement, conn);
 
             // create your parameters and add values from object
-            Cmd.Parameters.AddWithValue("@Username", newTeacher.Username);
-            Cmd.Parameters.AddWithValue("@FirstName", newTeacher.FirstName);
-            Cmd.Parameters.AddWithValue("@LastName", newTeacher.LastName);
-            Cmd.Parameters.AddWithValue("@Password", newTeacher.Password);
+            Cmd.Parameters.AddWithValue("@username", newTeacher.Username);
+            Cmd.Parameters.AddWithValue("@firstName", newTeacher.FirstName);
+            Cmd.Parameters.AddWithValue("@lastName", newTeacher.LastName);
+            Cmd.Parameters.AddWithValue("@password", newTeacher.Password);
 
             try
             {

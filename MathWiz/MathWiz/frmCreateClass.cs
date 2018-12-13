@@ -56,6 +56,9 @@ namespace MathWiz
                 Klass newKlass = new Klass(klassName);
 
                 MathWizDB.InsertKlass(newKlass, teacherID);
+
+                lblAdded.Text = newKlass.KlassName + " was successfully added";
+                lblAdded.Show();
             }
             else
             {

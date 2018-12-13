@@ -36,6 +36,7 @@
             this.backgroundWorkerLoadTeachers = new System.ComponentModel.BackgroundWorker();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnCreateClass = new System.Windows.Forms.Button();
+            this.lblAdded = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cmbTeacher
@@ -105,6 +106,18 @@
             this.btnCreateClass.UseVisualStyleBackColor = true;
             this.btnCreateClass.Click += new System.EventHandler(this.btnCreateClass_Click);
             // 
+            // lblAdded
+            // 
+            this.lblAdded.AutoSize = true;
+            this.lblAdded.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdded.ForeColor = System.Drawing.Color.Green;
+            this.lblAdded.Location = new System.Drawing.Point(68, 183);
+            this.lblAdded.Name = "lblAdded";
+            this.lblAdded.Size = new System.Drawing.Size(273, 21);
+            this.lblAdded.TabIndex = 17;
+            this.lblAdded.Text = "Class Name was succesfully Added";
+            this.lblAdded.Visible = false;
+            // 
             // frmCreateClass
             // 
             this.AcceptButton = this.btnCreateClass;
@@ -112,6 +125,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(406, 213);
+            this.Controls.Add(this.lblAdded);
             this.Controls.Add(this.btnCreateClass);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtClassName);
@@ -136,5 +150,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorkerLoadTeachers;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnCreateClass;
+        private System.Windows.Forms.Label lblAdded;
     }
 }

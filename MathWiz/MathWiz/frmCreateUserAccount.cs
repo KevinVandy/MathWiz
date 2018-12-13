@@ -109,7 +109,6 @@ namespace MathWiz
 
         private void btnCreateUser_Click(object sender, EventArgs e)
         {
-            btnCreateUser.Enabled = false;
             if (txtFirstName.Text == "")
             {
                 MessageBox.Show("First Name is Required");
@@ -134,13 +133,15 @@ namespace MathWiz
             {
                 MessageBox.Show("A student must be added to class.");
             }
-            else if (MathWizDA.FindUsername(username))
+            else if (MathWizDA.FindUsername(txtUsername.Text))
             {
                 lblUsernameError.Text = "That username has already been taken";
                 lblUsernameError.Show();
             }
             else //info is valid
             {
+                btnCreateUser.Enabled = false;
+
                 firstName = txtFirstName.Text;
                 lastName = txtLastName.Text;
                 username = txtUsername.Text;
