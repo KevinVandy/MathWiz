@@ -257,7 +257,7 @@ namespace MathWiz
 
         private void dgvTests_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvStudents.SelectedRows.Count > 0)
+            if (dgvTests.SelectedRows.Count > 0)
             {
                 btnDeleteTest.Enabled = true;
             }
