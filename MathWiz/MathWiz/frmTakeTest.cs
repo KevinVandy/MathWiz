@@ -121,7 +121,7 @@ namespace MathWiz
                         gradedPlacementTest.Score = (decimal)gradedPlacementTest.CorrectlyAnsweredQuestions.Count / (decimal)(gradedPlacementTest.CorrectlyAnsweredQuestions.Count + (decimal)gradedPlacementTest.WronglyAnsweredQuestions.Count) * 100;
                         gradedPlacementTest.TimeTakenToComplete = gradedPlacementTest.PlacementTest.TimeLimit - TimeSpan.ParseExact(lblTimerTest.Text, "mm\\:ss", CultureInfo.InvariantCulture);
                         gradedPlacementTest.DateTaken = DateTime.Now;
-                        gradedPlacementTest.Feedback = gradedPracticeTest.Score.ToString();
+                        gradedPlacementTest.Feedback = gradedPlacementTest.Score.ToString();
 
                         int minLevelWrong = 12;
                         for(int i = 0; i < gradedPlacementTest.WronglyAnsweredQuestions.Count; i++)
@@ -133,6 +133,8 @@ namespace MathWiz
                         }
 
                         gradedPlacementTest.RecommendedLevel = minLevelWrong;
+
+                        MessageBox.Show("You have been placed at Mastery Level: " + gradedPlacementTest.RecommendedLevel.ToString());
 
                         break;
 
@@ -165,10 +167,12 @@ namespace MathWiz
             switch (this.Tag.ToString())
             {
                 case "placement":
+                    
+                    //just insert the graded test
+                    MathWizDB.InsertGradedTest(gradedPlacementTest, student.Id, gradedPlacementTest.PlacementTest.Id, "Placement Test", gradedPlacementTest.RecommendedLevel);
 
-                    int recommendedLevel = 1; //TODO calculate recommended level
-
-                    MathWizDB.InsertGradedTest(gradedPlacementTest, student.Id, gradedPlacementTest.PlacementTest.Id, "Placement Test", recommendedLevel);
+                    //update student's mastery level
+                    MathWizDB.UpdateMasteryLevel(student.Username, gradedPlacementTest.RecommendedLevel);
 
                     break;
 
@@ -183,11 +187,9 @@ namespace MathWiz
                     break;
 
                 case "mastery":
-
-                    bool passed = true; //TODO calculate weather the student passed the test
-                                        //TODO keep track of the number of attempts that it has taken the student to pass
-
-                    MathWizDB.InsertGradedTest(gradedMasteryTest, student.Id, gradedMasteryTest.MasteryTest.Id, "Mastery Test", null, 1, passed);
+                    
+                    //just insert the graded test
+                    MathWizDB.InsertGradedTest(gradedMasteryTest, student.Id, gradedMasteryTest.MasteryTest.Id, "Mastery Test", null, 1, gradedMasteryTest.Passed);
 
                     break;
             }
