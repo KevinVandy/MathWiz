@@ -124,6 +124,7 @@
             this.Controls.Add(this.btnCreateTest);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCreatePlacementTest";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create Placement Test";
             this.Load += new System.EventHandler(this.frmCreatePlacementTest_Load);
             this.ResumeLayout(false);

@@ -437,7 +437,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1141, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1158, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -643,7 +643,7 @@
             this.chtMasterLevelDistribution.ChartAreas.Add(chartArea1);
             this.chtMasterLevelDistribution.Location = new System.Drawing.Point(28, 72);
             this.chtMasterLevelDistribution.Name = "chtMasterLevelDistribution";
-            this.chtMasterLevelDistribution.Size = new System.Drawing.Size(338, 233);
+            this.chtMasterLevelDistribution.Size = new System.Drawing.Size(529, 233);
             this.chtMasterLevelDistribution.TabIndex = 14;
             // 
             // backgroundWorkerFormDataLoad
@@ -709,10 +709,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(79, 41);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(148, 36);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(202, 17);
+            this.label4.Size = new System.Drawing.Size(265, 24);
             this.label4.TabIndex = 15;
             this.label4.Text = "Class Mastery Level Histogram";
             // 
@@ -732,7 +732,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1158, 623);
+            this.ClientSize = new System.Drawing.Size(1175, 623);
             this.Controls.Add(this.lblAdminName);
             this.Controls.Add(this.grbStatisticalAnalysis);
             this.Controls.Add(this.gbxManageClasses);

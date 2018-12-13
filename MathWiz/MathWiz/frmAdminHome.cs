@@ -394,6 +394,7 @@ namespace MathWiz
         {
             lsvStudents.Items.Clear();
             lsvKlasses.Items.Clear();
+            klassesTableAdapter.Update(mathWizGroup3DataSet.klasses);
             if (lsvTeachers.SelectedItems.Count > 0)
             {
                 for (int i = 0; i < mathWizGroup3DataSet.klasses.Rows.Count; i++)

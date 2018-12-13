@@ -42,9 +42,9 @@
             // btnGenerateTests
             // 
             this.btnGenerateTests.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerateTests.Location = new System.Drawing.Point(262, 274);
+            this.btnGenerateTests.Location = new System.Drawing.Point(258, 274);
             this.btnGenerateTests.Name = "btnGenerateTests";
-            this.btnGenerateTests.Size = new System.Drawing.Size(168, 49);
+            this.btnGenerateTests.Size = new System.Drawing.Size(226, 49);
             this.btnGenerateTests.TabIndex = 0;
             this.btnGenerateTests.Text = "Generate Tests";
             this.btnGenerateTests.UseVisualStyleBackColor = true;
@@ -69,9 +69,9 @@
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(58, 274);
+            this.btnCancel.Location = new System.Drawing.Point(30, 274);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(168, 49);
+            this.btnCancel.Size = new System.Drawing.Size(200, 49);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -154,6 +154,7 @@
             this.Controls.Add(this.btnGenerateTests);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmGenerateMasteryTests";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generate Mastery Tests";
             this.Load += new System.EventHandler(this.frmGenerateMasteryTests_Load);
             this.ResumeLayout(false);

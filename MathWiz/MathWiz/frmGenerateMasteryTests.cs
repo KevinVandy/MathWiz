@@ -30,6 +30,9 @@ namespace MathWiz
 
         private void btnGenerateTests_Click(object sender, EventArgs e)
         {
+            btnGenerateTests.Text = "Generating Tests";
+            btnGenerateTests.Enabled = false;
+
             for(int ml = 1; ml <= 12; ml++)
             {
                 MasteryTest masteryTest = new MasteryTest();
@@ -151,6 +154,9 @@ namespace MathWiz
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+
+            btnGenerateTests.Text = "Generate Tests";
+            btnGenerateTests.Enabled = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

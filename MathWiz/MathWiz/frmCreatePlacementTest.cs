@@ -27,6 +27,9 @@ namespace MathWiz
 
         private void btnCreateTest_Click(object sender, EventArgs e)
         {
+            btnCreateTest.Text = "Creating Test";
+            btnCreateTest.Enabled = false;
+
             //if form validation is good then
             if (ValidateForm())
             {
@@ -49,7 +52,7 @@ namespace MathWiz
                         placementTest.Questions.Add(q);
                     }
                 }
-                MessageBox.Show(placementTest.Questions.Count().ToString());
+                
                 //set other attributes of the test
                 placementTest.MinLevel = 1;
                 placementTest.MaxLevel = 12;
@@ -73,6 +76,8 @@ namespace MathWiz
             {
                 MessageBox.Show("A placement test has already been created for this class.","error");
             }
+            btnCreateTest.Text = "Create Test";
+            btnCreateTest.Enabled = true;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
